@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {FaBars} from "react-icons/fa6"
@@ -17,6 +18,7 @@ import {
   
 
 function Header() {
+    const router = useRouter();
     const headerNavItems = [
         {
             id: 1,
@@ -26,7 +28,7 @@ function Header() {
         {
             id: 2,
             item: "Advisory Board",
-            route: "advisory-board"
+            route: "/advisory-board"
         }
     ]
   return (
@@ -40,11 +42,11 @@ function Header() {
           <div className='hidden md:flex flex-row items-center'>
               {
                   headerNavItems.map((navItem) => { 
-                      return <motion.div key={navItem.id} className='text-lg text-black mx-4' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route }  key={navItem.id} >{ navItem.item}</Link></motion.div>
+                      return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route }  key={navItem.id} >{ navItem.item}</Link></motion.div>
                   })
               }
 
-              <Button variant={"destructive"}>Get The App</Button>
+              <Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button>
           </div>
           {/* showing this section of smaller viewport */}
           <div className='flex md:hidden flex-row items-center'>

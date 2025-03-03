@@ -33,4 +33,5 @@ import UltimateFrameWork from "./components/ultimateFrameWork/UltimateFrameWork"
 // Regreat and Outcome Section
 import RegretAndOutcome from "./components/regretAndOutcomeSection/RegretAndOutcome"
 
+
 export {BlogSection, BlogCard, Main, Second, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome}

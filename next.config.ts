@@ -15,6 +15,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin();
  
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+      domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com"],
+    },
+  };
  
 export default withNextIntl(nextConfig);
