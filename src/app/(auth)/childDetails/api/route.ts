@@ -37,26 +37,33 @@ export async function GET() {
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        console.log("BODY BEHIND", body)
+        const childBody = {
+            first_name: body?.first_name || '',
+            standard_id: body?.standard_id || '',
+            parent_id: body?.parent_id || '',
+            gender_id: body?.gender_id,
+            password: body?.password,
+            avatar_id: body?.avatar_id
+        }
   
         // Call the external API to sign up the user using fetch
-    //   const response = await fetch(`http://192.168.29.64:8000/api/add-child`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: {},
-    //   });
-    //   const responseData = await response.json();
+      const response = await fetch(`http://192.168.29.64:8000/api/add-child`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(childBody),
+      });
+      const responseData = await response.json();
   
-    //   // Handle response based on status code
-    //   if (responseData.code === 201) {
-    //     // User signed up successfully
-    //     return NextResponse.json({ message: "Child Added Successfully!" }, { status: 201 });
-    //   } else {
-    //     // Handle other status codes if needed
-    //     return NextResponse.json({ error: "Unexpected response from the server." }, { status: 500 });
-    //   }
+      // Handle response based on status code
+      if (responseData.code === 201) {
+        // User signed up successfully
+        return NextResponse.json({ message: "Child Added Successfully!" }, { status: 201 });
+      } else {
+        // Handle other status codes if needed
+        return NextResponse.json({ error: "Unexpected response from the server." }, { status: 500 });
+      }
     } catch (error) {
       console.error('Error in POST /signup/api:', error);
   
