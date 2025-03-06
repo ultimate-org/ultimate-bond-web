@@ -98,7 +98,8 @@ function Login() {
 
      
       
-    } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error:any) {
       console.error('Failed to submit passcode:', error);
       toast({
         description: error.message,
