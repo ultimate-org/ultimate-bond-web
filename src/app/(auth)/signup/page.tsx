@@ -100,7 +100,7 @@ function SignUp() {
           throw new Error('Failed to fetch country codes');
         }
         const data = await response.json();
-        const codeArr: CountryCode[] = data.data.map((val) => ({
+        const codeArr: CountryCode[] = data.data.map((val: { phone_code: string; country_id: string; }) => ({
           code: val.phone_code,
           value: val.country_id,
         }));
@@ -124,6 +124,7 @@ function SignUp() {
 
   // Handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
     // Add your form submission logic here
     setEnteringPasscode(true);
     setPasscode('');
@@ -175,13 +176,14 @@ function SignUp() {
         }
       localStorage.setItem('ParentInfo', JSON.stringify(signupRegistration?.data?.parent));
       localStorage.setItem('UserInfo', JSON.stringify(signupRegistration?.data?.user));
-      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('isLoggedIn', "true");
         router.push("/childDetails")
         toast({
           description: "Sign up successful!",
         });
         
-      } catch (error:unknown) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error:any) {
         console.error('Failed to submit passcode:', error);
         toast({
           description: error.message,

@@ -64,7 +64,8 @@ function ChildDetails() {
   const [selectedAvatarType, setSelectedAvatarType] = useState("Boy");
   const [passcode, setPasscode] = useState("");
   const [confirmPasscode, setConfirmPasscode] = useState("");
-  const [parentInfo, setParentInfo] = useState<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [parentInfo, setParentInfo] = useState<any>('');
   const { toast } = useToast();
   const route = useRouter();
 
@@ -111,14 +112,16 @@ function ChildDetails() {
           },
           body: JSON.stringify(data),
         });
+      console.log("RESPONSE", response)
     
-        const childAddition = await response.json();
+        // const childAddition = await response.json();
       
       toast({
         description: "Passcode set successfully!",
         variant: "default",
       });
-    }catch(error){console.error(error.msg)}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }catch(error:any){console.error(error.msg)}
     // Add your passcode submission logic here
   };
 
@@ -128,6 +131,7 @@ function ChildDetails() {
   };
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
     if (!selectedAvatar) {
       toast({
         description: "Please select an avatar.",
@@ -171,13 +175,15 @@ function ChildDetails() {
         }
 
         const result = await response.json();
-        const standardArr: Standard[] = result?.standard?.data.map((val) => ({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const standardArr: Standard[] = result?.standard?.data.map((val: { value: any; standard_id: any; }) => ({
           name: val.value,
           value: val.standard_id,
         }));
         setStandardData(standardArr);
         setAvatarData(result?.avatar?.data);
-      } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error:any) {
         console.error("Failed to fetch data:", error);
         toast({
           description: error.message,
