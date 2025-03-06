@@ -34,12 +34,16 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 // Define the form schema using zod
 const formSchema = z.object({
   firstname: z.string()
     .min(1, { message: "First name is required." })
     .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
+    lastname: z.string()
+    .min(1, { message: "Last name is required." })
+    .regex(/^[a-zA-Z]+$/, { message: "Last name must contain only letters." }),
   countryCode: z.string().min(1, { message: "Country code is required." }),
   phoneNumber: z.string()
     .min(10, { message: "Phone number must be 10 digits." })
@@ -60,6 +64,7 @@ type CountryCode = {
 
 type userData = {
   first_name: string,
+  last_name:string,
   contact_number: string,
   contact_country_code: string,
   password: string
@@ -71,12 +76,14 @@ function SignUp() {
   const [passcode, setPasscode] = useState('');
   const [confirmPasscode, setConfirmPasscode] = useState('');
   const { toast } = useToast();
+  const router = useRouter();
 
   // Initialize the form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstname: "",
+      lastname:"",
       countryCode: "",
       phoneNumber: "",
       isLegalDependent: false,
@@ -117,7 +124,6 @@ function SignUp() {
 
   // Handle form submission
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
     // Add your form submission logic here
     setEnteringPasscode(true);
     setPasscode('');
@@ -143,14 +149,12 @@ function SignUp() {
     }
 
     // Passcodes match, proceed with sign-up logic
-
    
-
-    
    
     try {
       const data:userData = {
         first_name: form.getValues('firstname').trim(),
+        last_name: form.getValues('lastname').trim(),
         contact_number: form.getValues('phoneNumber').trim(),
         contact_country_code: form.getValues('countryCode'),
         password: passcode,
@@ -169,7 +173,10 @@ function SignUp() {
           setEnteringPasscode(false)
           throw new Error(signupRegistration.error || "Something went wrong.");
         }
-    
+      localStorage.setItem('ParentInfo', JSON.stringify(signupRegistration?.data?.parent));
+      localStorage.setItem('UserInfo', JSON.stringify(signupRegistration?.data?.user));
+      localStorage.setItem('isLoggedIn', true);
+        router.push("/childDetails")
         toast({
           description: "Sign up successful!",
         });
@@ -205,12 +212,13 @@ function SignUp() {
             <div>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  {/* First Name Field */}
-                  <FormField
+                  {/* Full Name Field */}
+                  <div className='flex md:flex-row item-center justify-between'>
+                    <FormField
                     control={form.control}
                     name="firstname"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="md:w-[49%]">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
                           <Input placeholder="Enter your first name" {...field} />
@@ -219,6 +227,20 @@ function SignUp() {
                       </FormItem>
                     )}
                   />
+                   <FormField
+                    control={form.control}
+                    name="lastname"
+                    render={({ field }) => (
+                      <FormItem  className="md:w-[49%]">
+                        <FormLabel>Last Name</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your last name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                    </div>
 
                   {/* Country Code and Phone Number Fields */}
                   <div className='flex flex-row gap-4'>

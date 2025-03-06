@@ -34,8 +34,8 @@ function Header() {
   return (
       <nav className={`w-full justify-between items-center flex flex-row absolute bg-transparent py-8 px-8 top-0 left-0 right-0 z-100`}>
           <div className='flex flex-row'>
-              <Image src={"/logo/Ultimate-Logo.png"} width={80} height={80} alt='Ultimate Logo'></Image>
-              <Image src={"/logo/Your-Parenting-Partner-Logo.png"} width={150} height={120} alt='Your Parenting Partner Logo' className='hidden md:block'></Image>
+              <Image src={"/images/logo/Ultimate-Logo.png"} width={80} height={80} alt='Ultimate Logo'></Image>
+              <Image src={"/images/logo/Your-Parenting-Partner-Logo.png"} width={150} height={120} alt='Your Parenting Partner Logo' className='hidden md:block'></Image>
 
           </div>
           {/* showing this section for viewport larger than md */}

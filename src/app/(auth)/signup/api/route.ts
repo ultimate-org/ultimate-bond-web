@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     // Handle response based on status code
     if (responseData.code === 201) {
       // User signed up successfully
-      return NextResponse.json({ message: "Sign up successful!" }, { status: 201 });
+      return NextResponse.json({ message: "Sign up successful!", data: responseData.data }, { status: 201 });
     } else if (responseData.code === 409) {
       // User already exists
       return NextResponse.json({ error: "User already exists." }, { status: 409 });

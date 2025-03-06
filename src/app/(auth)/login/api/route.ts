@@ -10,9 +10,7 @@ export async function POST(request: NextRequest) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({contact_number:bodyData.contact_number})
         });
-        
-        // console.log("RESPONSE",response.)
-    
+            
         const responseData = await response.json();
 
         if (responseData.code === 200) {

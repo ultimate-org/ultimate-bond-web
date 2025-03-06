@@ -69,11 +69,11 @@ function Footer() {
         },
     ]
   return (
-      <div className={`w-full px-8 py-2`}>
+      <div className={`w-full px-8 py-2 bg-gray-300`}>
           <div className={`w-full flex flex-col md:flex-row md:justify-between items-center`}>
               {/* Footer logo and social media links section */}
               <div className='flex flex-col items-center my-4'>
-                  <Image  src={"/logo/Ultimate-Logo.png"} alt="Ultimate Logo" width={80} height={80}></Image>
+                  <Image  src={"/images/logo/Ultimate-Logo.png"} alt="Ultimate Logo" width={80} height={80}></Image>
                   <div className=' flex flex-row my-2'>
                       {
                           socialMediaLinks.map((mediaLink) => {

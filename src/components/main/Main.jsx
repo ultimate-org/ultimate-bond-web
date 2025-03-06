@@ -4,6 +4,8 @@ import { philosopher } from '@/fonts/fonts'
 import { motion } from "framer-motion"
 import { comicNeue } from '@/fonts/fonts'
 import Image from 'next/image'
+import {DeliciousHandrawn} from "@/fonts/fonts"
+
 
 const transition = {
     duration: 0.8,
@@ -20,7 +22,7 @@ function Main() {
 "✔️ Resilience to handle setbacks?"
     ]
   return (
-      <div className='justify-center items-center   bg-gray-800  bg-cover' style={{ backgroundImage: "url('/images/main-section-background.jpg')" }}>
+      <div className='justify-center items-center bg-gray-800  bg-cover' style={{ backgroundImage: "url('/images/main-section-background.jpg')" }}>
           <div className='py-[8rem] bg-black/80'>
           <h1 className={`text-center text-6xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>The Future Starts Now</h1>
           <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>Prepare Your Child for the Unknown</h2>
@@ -42,7 +44,13 @@ function Main() {
                   }
                   </div>
           </div>
-          </div>
+      
+       <div className='mt-8'>
+                    {/* <p className='text-center'>Research proves that IQ alone isn’t enough—Success = IQ + EQ + SQ + CQ + AQ.</p> */}
+                    <p className={`text-center text-white text-2xl`}>So, are we raising <span className={`${DeliciousHandrawn.className} text-4xl`}>happy, resilient, and emotionally</span> strong children,</p>
+                    <p  className='text-center text-white text-4xl'> or just pushing them toward grades?</p>
+        </div>
+        </div>
     </div>
   )
 }

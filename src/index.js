@@ -5,8 +5,8 @@ import BlogCard from "./components/blogs/BlogCard"
 // Main Section
 import Main from "./components/main/Main"
 
-// Second Section
-import Second from "./components/second/Second"
+// Root Causes Section
+import RootCauses from "./components/rootCausesSection/RootCauses"
 
 // Statistics Section
 import Statistics from "@/components/satatisticsSection/Statistics"
@@ -33,5 +33,8 @@ import UltimateFrameWork from "./components/ultimateFrameWork/UltimateFrameWork"
 // Regreat and Outcome Section
 import RegretAndOutcome from "./components/regretAndOutcomeSection/RegretAndOutcome"
 
+// Child Details section
+import ChildSelection from "./components/childDetails/ChildSelection"
 
-export {BlogSection, BlogCard, Main, Second, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome}
+
+export {BlogSection, BlogCard, Main, RootCauses, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection}
