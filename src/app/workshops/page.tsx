@@ -111,6 +111,7 @@ function Workshops() {
 
 useEffect(() => {
     getWorkshops();
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
 
 
