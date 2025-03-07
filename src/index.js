@@ -5,8 +5,10 @@ import BlogCard from "./components/blogs/BlogCard"
 // Main Section
 import Main from "./components/main/Main"
 
-// Root Causes Section
-import RootCauses from "./components/rootCausesSection/RootCauses"
+// // Root Causes Section
+// import RootCauses from "./components/rootCausesSection/RootCauses"
+// UnderlyingCauses Section
+import UnderLyingCauses from "./components/underlyingCauses/UnderLyingCauses"
 
 // Statistics Section
 import Statistics from "@/components/satatisticsSection/Statistics"
@@ -36,5 +38,8 @@ import RegretAndOutcome from "./components/regretAndOutcomeSection/RegretAndOutc
 // Child Details section
 import ChildSelection from "./components/childDetails/ChildSelection"
 
+// modals
+import { AddChildModal } from "./components/modal/AddChildModal"
 
-export {BlogSection, BlogCard, Main, RootCauses, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection}
+
+export {BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses}

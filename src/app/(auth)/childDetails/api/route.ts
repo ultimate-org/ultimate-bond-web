@@ -58,7 +58,68 @@ export async function POST(request: NextRequest) {
   
       // Handle response based on status code
       if (responseData.code === 201) {
-        // User signed up successfully
+          // User signed up successfully
+
+          const assignmentData = {
+            child_ids: [responseData?.data?.child?.child_id],
+            is_trial: true,
+          }
+
+          const virtueData = {
+            user_id: body?.user_id,
+            is_trial: true,
+          };
+    
+          const storyData = {
+            child_ids: [responseData?.data?.child?.child_id],
+            is_trial: false,
+          };
+
+    
+          // Call the two APIs in parallel
+          await Promise.all([
+             fetch(`http://192.168.29.64:8000/api/assignment-activity`, {
+                method:'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(assignmentData)
+            }),
+             fetch(`http://192.168.29.64:8000/api/virtue/assignment`, {
+                method:'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(virtueData)
+            }),
+             fetch(`http://192.168.29.64:8000/api/child/story`, {
+                method:'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(storyData)
+            }),
+            fetch(
+                `http://192.168.29.64:8000/api/wordle`,
+                {
+                    method:'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
+                }
+              ),
+              fetch(
+                `http://192.168.29.64:8000/api/shlok/trial`,
+                  {
+                    method:'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
+                }
+              ),
+              fetch(`http://192.168.29.64:8000/api/parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
+              fetch(
+                `http://192.168.29.64:8000/api/child-trial-update`,
+                  {
+                    method:'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
+                }
+              ),
+
+         ]);
         return NextResponse.json({ message: "Child Added Successfully!" }, { status: 201 });
       } else {
         // Handle other status codes if needed

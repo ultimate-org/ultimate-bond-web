@@ -3,7 +3,6 @@ import React from 'react'
 import { philosopher } from '@/fonts/fonts'
 import { motion } from "framer-motion"
 import { comicNeue } from '@/fonts/fonts'
-import Image from 'next/image'
 import {DeliciousHandrawn} from "@/fonts/fonts"
 
 
