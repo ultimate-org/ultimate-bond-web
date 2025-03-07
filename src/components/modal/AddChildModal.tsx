@@ -81,7 +81,7 @@ interface AddChildModalProps {
   onAddAnother: () => void;
 }
 
-const BASE_URL = "http://192.168.29.64:8000/api"; // Replace with your actual base URL
+// const BASE_URL = "http://192.168.29.64:8000/api"; // Replace with your actual base URL
 
 export function AddChildModal({
   isOpen,
@@ -90,31 +90,32 @@ export function AddChildModal({
 }: AddChildModalProps) {
   const [maxAllowedChildren, setMaxAllowedChildren] = useState(false);
 
-  const getChildrenHandler = async () => {
-    const parentInfo = localStorage.getItem("ParentInfo");
-    const parentId = JSON.parse(parentInfo)?.parent_id; // Ensure you're accessing the correct field
-    try {
-      const response = await fetch(
-        `${BASE_URL}/parent/child/${parentId}`,
-      );
-      const data = await response.json(); // Parse the response as JSON
+//   const getChildrenHandler = async () => {
+//     const parentInfo = localStorage.getItem("ParentInfo");
+//     // const parentId = JSON.parse(parentInfo)?.parent_id; // Ensure you're accessing the correct field
+//     try {
+//       const response = await fetch(
+//         `${BASE_URL}/parent/child/${parentId}`,
+//       );
+//       const data = await response.json(); // Parse the response as JSON
 
-      if (data.code === 200) {
-        if (data.data.length >= 3) {
-          setMaxAllowedChildren(true);
-        } else {
-          setMaxAllowedChildren(false);
-        }
-      }
-    } catch (err) {
-      console.error("Error in add child modal", err);
-    }
-  };
+//       if (data.code === 200) {
+//         if (data.data.length >= 3) {
+//           setMaxAllowedChildren(true);
+//         } else {
+//           setMaxAllowedChildren(false);
+//         }
+//       }
+//     } catch (err) {
+//       console.error("Error in add child modal", err);
+//     }
+//   };
 
   // Fetch the number of children when the modal opens
   useEffect(() => {
-    if (isOpen) {
-      getChildrenHandler();
+      if (isOpen) {
+        setMaxAllowedChildren(true)
+    //   getChildrenHandler();
     }
   }, [isOpen]);
 

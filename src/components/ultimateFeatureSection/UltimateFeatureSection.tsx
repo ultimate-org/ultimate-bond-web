@@ -292,7 +292,7 @@ function UltimateFeatureSection() {
                 >
                   <video
                     // ref={(el: HTMLVideoElement | null) => (videoRefs.current[ultimateFeature.id - 1] = el)}
-                    ref={(el: HTMLVideoElement | null) => (videoRefs.current[ultimateFeature.id] = el)}
+                    // ref={(el: HTMLVideoElement | null) => (videoRefs.current[ultimateFeature.id] = el)}
                     autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
                     // muted
                     // loop
