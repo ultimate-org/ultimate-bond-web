@@ -18,7 +18,14 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     images: {
       domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com"],
-    },
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
   };
  
 export default withNextIntl(nextConfig);

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './UnderLyingCauses.module.css'; 
-import {fjallaOne} from "@/fonts/fonts"
+import {montserratExtraBold, montserratBold, montserratRegular} from "@/fonts/fonts"
 
  
 
@@ -29,17 +29,14 @@ function UnderLyingCauses() {
     ]
   return (
       <div className={`${styles.underlyingCausesContainer}`}>
-          <h1 className={`text-center ${fjallaOne.className} md:text-2xl`}>Underlying Causes</h1>
-          <div className='md:grid md:grid-cols-2 gap-4 justify-evenly mt-8'>
+          <h1 className={`text-center ${montserratExtraBold.className} text-2xl md:text-5xl ${styles.underlyingCauses}`}>Underlying Causes</h1>
+          <div className='md:grid md:grid-cols-2 gap-2 justify-between mt-8 px-8 w-[80%] md:w-[60%] mx-auto'>
               {
                   underlyingCauses.map((causes) => {
-                      return <div key={causes.id} className='flex rounded-lg overflow-hidden my-4 border border-white py-4'>
-                          <div className='w-32 flex justify-center items-center mr-4'>
-                              <div className='w-[50%] h-[90%] flex items-center justify-center bg-red-500 rounded-lg'><p className={`${fjallaOne.className} text-sm text-white`}>{causes.id}</p></div>
-                          </div>
-                          <div className='w-[80%]'>
-                              <h1 className={`${fjallaOne.className} text-md`}>{causes.title}</h1>
-                              <p className={`${fjallaOne.className} text-sm`}>{causes.description}</p>
+                      return <div key={causes.id} className={`flex rounded-lg overflow-hidden py-4 justify-center w-[100%] md:mb-0 mb-4 mx-auto ${styles.underlyingCardContainer}`}>
+                          <div>
+                              <h1 className={`${montserratBold.className} text-xl text-center ${styles.underlyingCauses} `}>{causes.title}</h1>
+                              <p className={`${montserratRegular.className} text-sm text-center  text-white mt-2`}>{causes.description}</p>
                           </div>
                       </div>
                   })

@@ -33,8 +33,28 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --primary-color : #1f8dba;
-    --secondary-color: #45b3e0;
+    --primary-color : #106EBE;
+    --secondary-color: #0FFCBE;
+    --primary-blue-darker-color: #233C67;
+    --primary-blue-dark-color: #4470AD;
+    --primary-blue-light-color: #6888BE;
+    --primary-blue-lighter-color: #99AFD7;
+    --primary-blue-lightest-color: #CCDBEE;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --heading-large-screen-font-size: 3rem;
+    --heading-small-screen-font-size: 1.5rem;
+    --title-large-screen-font-size: 1.25rem;
+    --title-small-screen-font-size: 1.125rem;
+    --description-large-screen-font-size: 1rem;
+    --description-small-screen-font-size: 0.825rem;
+    --heading-font-family: 
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -61,6 +81,14 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 

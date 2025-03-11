@@ -1,26 +1,23 @@
 "use client"
 import React from 'react'
-// import { motion } from "framer-motion"
-import { merienda, ubuntuCondensed, fjallaOne } from '@/fonts/fonts'
+import { montserratExtraBold, montserratBold} from '@/fonts/fonts'
 // import Image from 'next/image'
+import styles from "./WhyUltimate.module.css"
 
 function WhyUltimateSection() {
     return (
-        <div className='w-full p-8'>
-            <h1 className={`text-2xl md:text-4xl text-center ${merienda.className}`}>Why &quot;Ulti-Mate&quot; matters</h1>
+        <div className={`w-full p-8 ${styles.whyUltimateContainer}`}>
+            <h1 className={`text-2xl md:text-5xl text-center ${montserratExtraBold.className} ${styles.whyUltimateText}`}>Why &quot;Ulti-Mate&quot; matters</h1>
       <div className='grid md:grid-cols-4 gap-4  mt-[4rem]'>
                 <div className='grid md:grid-rows-3 col-span-1'>
                     <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title One</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga velit rem explicabo saepe earum perspiciatis illo quibusdam, blanditiis maxime beatae sapiente nisi aspernatur reprehenderit exercitationem consequatur. Animi facere quod dolorem.</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Very high probability of learning varied life skills by child while following UltiMate.</p>
                     </div>
                     <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title Two</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam nobis quam hic provident. Optio, magnam quae eos neque corrupti deserunt, dolore impedit, deleniti labore tenetur fuga atque possimus excepturi similique?</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Offline engaging activities reduces Screen time for child. No need for child to use mobile.</p>
                     </div>
                     <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title Three</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam neque vel animi eius! Cumque architecto fugiat saepe itaque ipsa porro molestiae, debitis veniam minus autem tempore quod! Accusantium, earum pariatur.</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Parents get readily well thought through Child&apos;s life skill development content on a periodic basis.</p>
                    </div>
                 </div>
                 {/* Image Container */}
@@ -32,16 +29,13 @@ function WhyUltimateSection() {
                 {/* Third Section */}
                 <div className='grid md:grid-rows-3 col-span-1  '>
                 <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title 4</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem consequatur, animi eaque, quas dolores amet ea exercitationem nemo placeat saepe sequi dolorum magnam eum illo quod esse temporibus numquam odit.</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Very easy to follow and simplified content.</p>
                     </div>
                     <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title 5</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis harum neque qui perspiciatis voluptate, molestias maiores sed debitis voluptatum reprehenderit ipsa a explicabo veritatis ratione eveniet, inventore aspernatur impedit nulla?</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Parenting syllabus for Child&apos;s life skill development.</p>
                     </div>
                     <div className='my-8'>
-                        <h2 className={`text-center mb-4 text-md md:text-2xl ${fjallaOne.className}`}>Title 6</h2>
-                        <p className={`text-center ${ubuntuCondensed.className}`}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus vero quam, nulla delectus ipsam ipsa, odit officia quia dicta esse culpa debitis quaerat? Id inventore impedit facere voluptatem sapiente. Magnam.</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>No such parenting aid available at one place.</p>
                    </div>
                     </div>
             </div>

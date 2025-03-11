@@ -595,7 +595,7 @@ function ChildDetails() {
         {!enteringPasscode ? (
           <div>
             <div className="mb-8">
-              <h1 className="text-2xl font-bold">
+              <h1 className="text-center md:text-left text-2xl font-bold">
                 HI, {parentInfo?.first_name || "Parent"}! Enter Child Details!
               </h1>
             </div>
@@ -615,7 +615,7 @@ function ChildDetails() {
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-6"
+                  className="space-y-8"
                 >
                   {/* Full Name Field */}
                   <FormField
@@ -665,18 +665,20 @@ function ChildDetails() {
                   />
 
                   {/* Submit Button */}
-                  <Button type="submit">Add Child</Button>
+                  <div className='flex justify-center md:justify-start'>
+                    <Button type="submit">Add Child</Button>
+                    </div>
                 </form>
               </Form>
             </div>
           </div>
         ) : (
           // Entering Passcode
-          <div>
+          <div className="space-y-8">
             <div className="mb-4">
-              <FaCircleArrowLeft onClick={() => setEnteringPasscode(false)} />
+              <FaCircleArrowLeft size={24} onClick={() => setEnteringPasscode(false)} />
             </div>
-            <p>
+            <p className="text-center md:text-left text-2xl font-bold">
               Hi {form.getValues("firstname")}! Please create your own passcode.
             </p>
             <div>

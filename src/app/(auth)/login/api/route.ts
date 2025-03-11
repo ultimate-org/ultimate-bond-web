@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
         const bodyData = await request.json();
 
         // Verfying phone number if correct
-        const response = await fetch(`http://192.168.29.64:8000/api/user/verify`, {
+        const response = await fetch(`${ process.env.BASE_URL}user/verify`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({contact_number:bodyData.contact_number})
@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
             contact_number: bodyData.contact_number,
                 password: bodyData.password,
             };
-            const loggingResponse = await fetch(`http://192.168.29.64:8000/api/login`, {
+            const loggingResponse = await fetch(`${ process.env.BASE_URL}login`, {
                 method:"POST",
                 headers: { 'Content-Type': 'application/json' },
                 body:JSON.stringify(data)
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
             if (loggedUserData.code === 200) {
                 // Getting Logged in user
                 const userId = loggedUserData.result.user_id;
-                const userInfoResponse = await fetch(`http://192.168.29.64:8000/api/parent/byUser/${userId}`,{method:"GET"});
+                const userInfoResponse = await fetch(`${ process.env.BASE_URL}parent/byUser/${userId}`,{method:"GET"});
 
                 const userInfoData = await userInfoResponse.json()
 
@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
     try {
         const searchParams = request.nextUrl.searchParams;
         const id = searchParams.get('id')
-        const response = await fetch(`http://192.168.29.64:8000/api/parent/child/${Number(id)}`);
+        const response = await fetch(`${ process.env.BASE_URL}parent/child/${Number(id)}`);
         if (!response.ok) {
             throw new Error("Something went wrong");
         }

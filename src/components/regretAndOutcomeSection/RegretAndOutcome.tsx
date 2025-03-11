@@ -77,7 +77,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
-import {comicNeue,ubuntuCondensed} from "@/fonts/fonts"
+import {montserratExtraBold, montserratBold, montserratRegular} from "@/fonts/fonts"
 
 function RegretAndOutcome() {
     const tryThis = [
@@ -116,9 +116,11 @@ function RegretAndOutcome() {
     return (
         <div className="w-full p-8">
             <div className="my-4">
-                <h3 className={`text-center text-2xl font-semibold mb-8 ${ubuntuCondensed.className}`}>
+                <div className='w-[80%] md:w-[70%] lg:w-[60%] mx-auto'>
+                <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratExtraBold.className}`}>
                     Instead, let’s try UltiMate, you can expect below:
-                </h3>
+                    </h3>
+                    </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {tryThis.map((item) => (
                         <motion.div
@@ -141,8 +143,8 @@ function RegretAndOutcome() {
                                 </div>
                             </div>
                             <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
-                                <h2 className={`text-xl font-semibold ${ubuntuCondensed.className}`}>{item.title}</h2>
-                                <p className={`text-sm mt-2 ${comicNeue.className}`}>{item.description}</p>
+                                <h2 className={`text-xl font-semibold ${montserratBold.className}`}>{item.title}</h2>
+                                <p className={`text-sm mt-2 ${montserratRegular.className}`}>{item.description}</p>
                             </div>
                         </motion.div>
                     ))}

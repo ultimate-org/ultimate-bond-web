@@ -14,15 +14,15 @@ const transition = {
 
 function Main() {
     const pointsArr = [
-        "✔️ Emotional regulation in tough situations?",
-"✔️ Conflict resolution & collaboration in relationships?",
-"✔️ Financial literacy to make smart life decisions?",
-"✔️ Networking & leadership to unlock new opportunities?",
-"✔️ Resilience to handle setbacks?"
+        "Emotional regulation in tough situations?",
+"Conflict resolution & collaboration in relationships?",
+"Financial literacy to make smart life decisions?",
+"Networking & leadership to unlock new opportunities?",
+"Resilience to handle setbacks?"
     ]
   return (
       <div className='justify-center items-center bg-gray-800  bg-cover' style={{ backgroundImage: "url('/images/main-section-background.jpg')" }}>
-          <div className='py-[8rem] bg-black/80'>
+          <div className='py-[10rem] bg-black/80'>
           <h1 className={`text-center text-6xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>The Future Starts Now</h1>
           <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>Prepare Your Child for the Unknown</h2>
 

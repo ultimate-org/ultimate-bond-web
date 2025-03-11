@@ -1,4 +1,4 @@
-import { Anton, Fjalla_One, Merienda, Roboto_Serif, Philosopher,Delicious_Handrawn,Ubuntu_Condensed, Comic_Neue, Shadows_Into_Light } from "next/font/google"
+import { Anton, Fjalla_One, Merienda, Roboto_Serif, Philosopher,Delicious_Handrawn,Ubuntu_Condensed, Comic_Neue, Shadows_Into_Light, Open_Sans, Montserrat } from "next/font/google"
 
 export const DeliciousHandrawn = Delicious_Handrawn({
     weight: '400',
@@ -41,6 +41,26 @@ export const comicNeue = Comic_Neue({
 })
 
 export const shadowsIntoLight = Shadows_Into_Light({
+    weight: '400',
+    subsets: ['latin']
+})
+
+export const openSans = Open_Sans({
+    weight: '400',
+    subsets: ['latin']
+})
+
+export const montserratExtraBold = Montserrat({
+    weight: '800',
+    subsets: ['latin']
+})
+
+export const montserratBold = Montserrat({
+    weight: '500',
+    subsets: ['latin']
+})
+
+export const montserratRegular = Montserrat({
     weight: '400',
     subsets: ['latin']
 })

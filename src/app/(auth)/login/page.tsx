@@ -120,10 +120,10 @@ function Login() {
         </div>
 
         {/* Form Section */}
-        <div className="">
+        <div className="w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%]">
           {/* Heading Container */}
           <div className="mb-8">
-            <h1 className="text-2xl font-bold">Existing User, please Login!</h1>
+            <h1 className="text-center md:text-left text-2xl font-bold">Existing User, please Login!</h1>
           </div>
 
           {/* Form Container */}
@@ -184,10 +184,12 @@ function Login() {
                 />
 
                 {/* Submit Button */}
+                <div className='flex justify-center md:justify-start'>
                 <Button type="submit">Login</Button>
+                </div>
               </form>
             </Form>
-            <div className='mt-6'>
+            <div className='text-center md:text-left mt-6'>
               <p>New to Ulti-Mate? Please {" "}<Link className='text-blue-500' href={"/signup"}>Sign up</Link></p>
             </div>
           </div>

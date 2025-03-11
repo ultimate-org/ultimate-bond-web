@@ -6,8 +6,8 @@ export async function GET() {
     try {
         // Fetch data from both endpoints in parallel
         const [avatarResponse, standardResponse] = await Promise.all([
-            fetch(`http://192.168.29.64:8000/api/avatar`),
-            fetch(`http://192.168.29.64:8000/api/standard`),
+            fetch(`${ process.env.BASE_URL}avatar`),
+            fetch(`${ process.env.BASE_URL}standard`),
         ]);
 
         // Check if both responses are successful
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
         }
   
         // Call the external API to sign up the user using fetch
-      const response = await fetch(`http://192.168.29.64:8000/api/add-child`, {
+      const response = await fetch(`${ process.env.BASE_URL}add-child`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,23 +78,23 @@ export async function POST(request: NextRequest) {
     
           // Call the two APIs in parallel
           await Promise.all([
-             fetch(`http://192.168.29.64:8000/api/assignment-activity`, {
+             fetch(`${ process.env.BASE_URL}assignment-activity`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(assignmentData)
             }),
-             fetch(`http://192.168.29.64:8000/api/virtue/assignment`, {
+             fetch(`${ process.env.BASE_URL}virtue/assignment`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(virtueData)
             }),
-             fetch(`http://192.168.29.64:8000/api/child/story`, {
+             fetch(`${ process.env.BASE_URL}child/story`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(storyData)
             }),
             fetch(
-                `http://192.168.29.64:8000/api/wordle`,
+                `${ process.env.BASE_URL}api/wordle`,
                 {
                     method:'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -102,16 +102,16 @@ export async function POST(request: NextRequest) {
                 }
               ),
               fetch(
-                `http://192.168.29.64:8000/api/shlok/trial`,
+                `${ process.env.BASE_URL}shlok/trial`,
                   {
                     method:'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
                 }
               ),
-              fetch(`http://192.168.29.64:8000/api/parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
+              fetch(`${ process.env.BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
               fetch(
-                `http://192.168.29.64:8000/api/child-trial-update`,
+                `${ process.env.BASE_URL}child-trial-update`,
                   {
                     method:'PUT',
                     headers: { 'Content-Type': 'application/json' },

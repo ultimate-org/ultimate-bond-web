@@ -27,7 +27,7 @@ function ChildSelection({ avatarData, selectedChildAvatar, setSelectedChildAvata
   }, [childType, avatarData]); // Correct dependency array
 
   return (
-      <div className=" w-[60%] md:w-[90%] lg:w-[70%] rounded-md overflow-hidden">
+      <div className="w-[90%] md:w-[90%] lg:w-[70%] rounded-md overflow-hidden">
         
       <div className="flex flex-row round">
         <button
@@ -43,10 +43,10 @@ function ChildSelection({ avatarData, selectedChildAvatar, setSelectedChildAvata
           Girl
         </button>
       </div>
-      <div className="flex flex-row flex-wrap justify-evenly mt-4 gap-4">
+      <div className="grid grid-cols-4">
         {avatarToDisplay && avatarToDisplay.map((avatar) => {
           return (
-            <button onClick={()=>setSelectedChildAvatarHandler(avatar?.avatar_id,childType)} className="relative w-[55px] h-[55px] md:w-[50px] md:h-[50px] lg:w-[70px] lg:h-[70px] rounded-full overflow-hidden" key={avatar.avatar_id}>
+            <button onClick={()=>setSelectedChildAvatarHandler(avatar?.avatar_id,childType)} className="relative w-[50px] h-[50px] md:w-[50px] md:h-[50px] lg:w-[60px] lg:h-[60px] rounded-full overflow-hidden m-2" key={avatar.avatar_id}>
 {selectedChildAvatar == avatar.avatar_id && (
                      <div className="absolute inset-0 z-10 bg-black bg-opacity-50 flex items-center justify-center">
                      <FaCheck color="green" size={24} /> 

@@ -81,7 +81,6 @@ interface AddChildModalProps {
   onAddAnother: () => void;
 }
 
-// const BASE_URL = "http://192.168.29.64:8000/api"; // Replace with your actual base URL
 
 export function AddChildModal({
   isOpen,

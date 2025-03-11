@@ -1,5 +1,13 @@
 .underlyingCausesContainer {
-    background-color: var(--secondary-color);
-    padding: 20px;
-    border-radius: 8px;
+    background-color: var(--primary-color);
+    padding: 3rem 0 3rem 0;
+  }
+
+  .underlyingCardContainer {
+    border-width: 1px;
+    border-color: var(--secondary-color);
+  }
+
+  .underlyingCauses {
+    color: var(--secondary-color)
   }

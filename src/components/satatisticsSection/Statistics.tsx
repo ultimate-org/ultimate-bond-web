@@ -2,7 +2,8 @@
 import React from 'react'
 import {StatCard} from "@/index"
 import { motion } from "framer-motion"
-import {fjallaOne} from "@/fonts/fonts"
+import {  montserratBold, montserratRegular } from "@/fonts/fonts"
+import styles from './Statistics.module.css'; 
 
 function Statistics() {
     const stats = [
@@ -33,10 +34,10 @@ function Statistics() {
         }
     ]
   return (
-      <div className='flex flex-col h-auto md:flex-row w-full bg-gradient-to-l from-purple-200 to-pink-50 p-[5rem] md:justify-evenly'>
+      <div className={`flex flex-col h-auto md:flex-row w-full ${styles.statisticsContainer} p-[5rem] md:justify-evenly`}>
           <motion.div className='md:mr-8 mb-8 md:w-[30%]'>
-              <h1 className={`mb-4 text-5xl ${fjallaOne.className}`}>General trend seen around..!!!</h1>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur error porro, quae minima natus eum aperiam possimus inventore. Iusto at nihil architecto, totam ut iure excepturi! Sint explicabo numquam magni.</p>
+              <h1 className={`mb-4 text-2xl md:text-5xl ${montserratBold.className}`}>General trend seen around..!!!</h1>
+              <p className={`${montserratRegular.className} text-base`}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur error porro, quae minima natus eum aperiam possimus inventore. Iusto at nihil architecto, totam ut iure excepturi! Sint explicabo numquam magni.</p>
           </motion.div>
           <div className='grid md:grid-cols-2 gap-8 md:w-[60%]'>
               {

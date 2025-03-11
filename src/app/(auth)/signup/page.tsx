@@ -194,7 +194,7 @@ function SignUp() {
   };
 
   return (
-    <div className='w-full p-8'>
+    <div className='w-full md:p-8 p-4'>
       {/* Main container */}
       <div className='grid md:grid-cols-2 gap-8 md:h-screen'>
         {/* Image Section */}
@@ -204,23 +204,23 @@ function SignUp() {
 
         {/* Form Section */}
         {!enteringPasscode ? (
-          <div className="">
+          <div className='w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%]'>
             {/* Heading Container */}
             <div className="mb-8">
-              <h1 className="text-2xl font-bold">Sign up to start your journey!</h1>
+              <h1 className="text-center md:text-left text-2xl font-bold">Sign up to start your journey!</h1>
             </div>
 
             {/* Form Container */}
             <div>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   {/* Full Name Field */}
-                  <div className='flex md:flex-row item-center justify-between'>
+                  <div className='flex flex-col md:flex-row item-center justify-between'>
                     <FormField
                     control={form.control}
                     name="firstname"
                     render={({ field }) => (
-                      <FormItem className="md:w-[49%]">
+                      <FormItem className="mb-8 md:mb-0 w-[100%] md:w-[49%]">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
                           <Input placeholder="Enter your first name" {...field} />
@@ -233,7 +233,7 @@ function SignUp() {
                     control={form.control}
                     name="lastname"
                     render={({ field }) => (
-                      <FormItem  className="md:w-[49%]">
+                      <FormItem  className=" w-[100%] md:w-[49%]">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
                           <Input placeholder="Enter your last name" {...field} />
@@ -245,8 +245,8 @@ function SignUp() {
                     </div>
 
                   {/* Country Code and Phone Number Fields */}
-                  <div className='flex flex-row gap-4'>
-                    <div className='w-[20%]'>
+                  <div className='flex flex-col sm:flex-row justify-between'>
+                    <div className='mb-8 md:mb-0 sm:w-[29%]'>
                       <FormField
                         control={form.control}
                         name="countryCode"
@@ -272,7 +272,7 @@ function SignUp() {
                         )}
                       />
                     </div>
-                    <div className='w-[80%]'>
+                    <div className='sm:w-[69%]'>
                       <FormField
                         control={form.control}
                         name="phoneNumber"
@@ -338,21 +338,24 @@ function SignUp() {
                   />
 
                   {/* Submit Button */}
-                  <Button type="submit">Continue</Button>
+                 
+                  <div className='flex justify-center md:justify-start'>
+                    <Button type="submit">Continue</Button>
+                    </div>
                 </form>
               </Form>
-              <div className='mt-6'>
+              <div className='text-center md:text-left mt-6'>
                 <p>Already have an account? <Link className='text-blue-500' href={"/login"}>Log in</Link></p>
               </div>
             </div>
           </div>
         ) : (
           // Passcode Entering
-          <div>
+          <div className="space-y-8">
             <div className='mb-4'>
-              <FaCircleArrowLeft onClick={() => setEnteringPasscode(false)} />
+              <FaCircleArrowLeft size={24} onClick={() => setEnteringPasscode(false)} />
             </div>
-            <p>Hi {form.getValues('firstname')}! Please create your own passcode.</p>
+            <p className="text-center md:text-left text-2xl font-bold">Hi {form.getValues('firstname')}! Please create your own passcode.</p>
             <div>
               {/* Passcode Input */}
               <div className='my-8'>
