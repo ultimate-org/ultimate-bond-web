@@ -17,12 +17,12 @@ function UltimateFeatureSection() {
     {
       id: 1,
       thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/dummy.mp4",
+      videoPath: "/videos/ultimate-feature/Parenting_virtue_feature.mp4",
     },
     {
       id: 2,
       thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/dummy.mp4",
+      videoPath: "/videos/ultimate-feature/Reading_feature.mp4",
     },
     {
       id: 3,
@@ -99,7 +99,7 @@ function UltimateFeatureSection() {
           className="w-full p-0"
           setApi={setApi}
         >
-          <CarouselContent className="p-0 flex items-center h-[20rem]">
+          <CarouselContent className="p-0 flex items-center h-[28rem]">
             {ultimateFeatures.map((ultimateFeature) => (
               <CarouselItem
                 key={ultimateFeature.id}
@@ -107,7 +107,7 @@ function UltimateFeatureSection() {
                   handleVideoClick(ultimateFeature.id);
                   setActiveIndex(ultimateFeature.id);
                 }}
-                className={`md:basis-1/2 lg:basis-1/3 rounded-lg p-0 overflow-hidden transition-all duration-300 ${
+                className={`md:basis-1/2 lg:basis-1/3  rounded-lg p-0 overflow-hidden transition-all duration-300 ${
                   activeIndex === ultimateFeature.id ? "h-full" : "h-[90%]"
                 }`}
               >
@@ -118,7 +118,7 @@ function UltimateFeatureSection() {
                     }
                   }}
                   autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
-                  className="w-[80%] mx-auto h-full object-fill rounded-lg"
+                  className="w-[80%] mx-auto h-full object-fill rounded-lg shadow-xl"
                 >
                   <source src={ultimateFeature.videoPath} type="video/mp4" />
                   Your browser does not support the video tag.

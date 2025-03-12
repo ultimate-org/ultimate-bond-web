@@ -194,7 +194,7 @@ function SignUp() {
   };
 
   return (
-    <div className='w-full md:p-8 p-4'>
+    <div className='w-full md:px-8 px-4 py-[8rem] '>
       {/* Main container */}
       <div className='grid md:grid-cols-2 gap-8 md:h-screen'>
         {/* Image Section */}

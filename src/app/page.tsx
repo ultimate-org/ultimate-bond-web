@@ -1,8 +1,7 @@
-import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureSection, Header, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample} from "@/index"
+import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample} from "@/index"
 
 function Landing() {
   return <>
-    <Header></Header>
     <Main></Main>
     <UnderLyingCauses></UnderLyingCauses>
     <Statistics></Statistics>

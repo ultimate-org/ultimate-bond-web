@@ -159,18 +159,13 @@ function UltimateSample() {
             id: 9,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente perferendis quam ullam libero officia praesentium iure necessitatibus possimus et? Repudiandae repellendus ratione obcaecati mollitia voluptatibus sapiente nihil corrupti hic aliquid?",
             videoPath: "/videos/ultimate-sample/sample_nine.mp4"
-        },
-        {
-            id: 10,
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente perferendis quam ullam libero officia praesentium iure necessitatibus possimus et? Repudiandae repellendus ratione obcaecati mollitia voluptatibus sapiente nihil corrupti hic aliquid?",
-            videoPath: "/videos/ultimate-sample/sample_ten.mp4"
         }
     ];
 
     return (
         <div className={`py-[4rem] ${styles.ultimateSampleContainer}`}>
             <div>
-                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} text-white`}>Ultimate Sample Videos</h1>
+                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} text-white`}>Ultimate Sample Activities</h1>
             </div>
             <div className='w-full mt-8'>
                 <Carousel className='w-[70%] md:w-[80%] mx-auto'>
