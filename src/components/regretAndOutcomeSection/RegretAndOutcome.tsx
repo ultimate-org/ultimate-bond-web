@@ -83,33 +83,39 @@ function RegretAndOutcome() {
     const tryThis = [
         {
             id: 1,
-            title: "Title1",
-            description: "Better performance by child in every aspect of life, be it school or in social circle"
+            title: "Maximising Child Potential",
+            description: "Better performance by child in every aspect of life, be it school or in social circle",
+            imagePath:"/images/regretandoutcome/Better_performance.png"
         },
         {
             id: 2,
-            title: "Title2",
-            description: "Critical thinker who sees things differently"
+            title: "Critical Thinker",
+            description: "Critical, Logical and Lateral thinker focusing on solutions than problems",
+            imagePath:"/images/regretandoutcome/Critical_thinker.png"
         },
         {
             id: 3,
-            title: "Title3",
-            description: "Physical, mental, Social well-being, hence confident and resilient child"
+            title: "Fostering Resilience & Confidence",
+            description: "Physical, mental, Social well-being, hence confident and resilient child",
+            imagePath:"/images/regretandoutcome/Physical_mental.png"
         },
         {
             id: 4,
-            title: "Title4",
-            description: "Life-long learner which is key in Fast Pace Tech changing world"
+            title: "Life Long Learner",
+            description: "Life-long learner which is key in Fast Pace Tech changing world",
+            imagePath:"/images/regretandoutcome/Life_long_learner.png"
         },
         {
             id: 5,
-            title: "Title5",
-            description: "Improved Financial and Digital Literacy"
+            title: "21st Century Skills",
+            description: "Improved Financial and Digital Literacy",
+            imagePath:"/images/regretandoutcome/Improved_Financial.png"
         },
         {
             id: 6,
-            title: "Title6",
-            description: "Improved family bonding and HAPPY & SUCCESSFUL CHILD."
+            title: "Building Stronger Connections",
+            description: "Improved family bonding and HAPPY & SUCCESSFUL CHILD.",
+            imagePath:"/images/regretandoutcome/Improved_family_bonding.png"
         }
     ];
 
@@ -131,15 +137,16 @@ function RegretAndOutcome() {
                             transition={{ duration: 0.3 }}
                             className="flex flex-col lg:flex-row items-center p-4 m-2 hover:bg-gradient-to-r from-slate-50 to-blue-300 rounded-lg shadow-md cursor-pointer"
                         >
-                            <div className="w-28 h-28 flex items-center justify-center">
-                                <div className="relative w-full h-full rounded-lg bg-white shadow-lg overflow-hidden">
+                            <div className="w-20 h-20 flex items-center justify-center">
+                                <div className="relative w-full h-full rounded-lg bg-white shadow-lg overflow-hidden flex justify-between items-center">
+                                    <div className='w-[40%] h-[40%] relative mx-auto'>
                                     <Image
-                                        src="/images/main-section-background.jpg"
+                                        src={item.imagePath}
                                         alt={item.title}
-                                        width={80}
-                                        height={80}
+                                        fill
                                         className="object-cover w-full h-full"
-                                    />
+                                        />
+                                        </div>
                                 </div>
                             </div>
                             <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
@@ -151,7 +158,7 @@ function RegretAndOutcome() {
                 </div>
             </div>
             <div className="my-8 text-center">
-                <h2 className="text-2xl font-semibold italic">
+                <h2 className={`text-2xl font-semibold italic ${montserratBold.className}`}>
                     “IQ gets you into the race, EQ makes you win it”
                 </h2>
             </div>

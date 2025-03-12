@@ -9,9 +9,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { motion } from "framer-motion";
 import { type CarouselApi } from "@/components/ui/carousel";
-import styles from "./UltimateFeature.module.css"
+import styles from "./UltimateFeature.module.css";
 
 function UltimateFeatureSection() {
   const ultimateFeatures = [
@@ -88,43 +87,42 @@ function UltimateFeatureSection() {
   };
 
   return (
-    <div
-      className={`py-[4rem] px-[2rem] md:px-[6rem] ${styles.ultimateFeatureContainer}`}
-    >
+    <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
       <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className}`}>
         Ultimate&apos;s Feature
       </h1>
-      <div className={`mt-[4rem]`}>
+      <div className={`mt-[4rem] w-[70%] mx-auto`}>
         <Carousel
           opts={{
-            loop: true, // Enable infinite scroll
-            align: "center", // Center the active slide
+            // loop: true, // Enable infinite scroll
           }}
-          className="w-full"
+          className="w-full p-0"
           setApi={setApi}
         >
-          <CarouselContent >
+          <CarouselContent className="p-0 flex items-center h-[20rem]">
             {ultimateFeatures.map((ultimateFeature) => (
-              <CarouselItem key={ultimateFeature.id} className="md:basis-1/2 lg:basis-1/3 ">
-                <motion.div
-                  onClick={() => { handleVideoClick(ultimateFeature.id); setActiveIndex(ultimateFeature.id); }}
-                  className="relative w-[80%]"
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: ultimateFeature.id === activeIndex ? 1.1 : 0.9 }} // Scale up the active slide
-                  transition={{ duration: 0.3 }}
+              <CarouselItem
+                key={ultimateFeature.id}
+                onClick={() => {
+                  handleVideoClick(ultimateFeature.id);
+                  setActiveIndex(ultimateFeature.id);
+                }}
+                className={`md:basis-1/2 lg:basis-1/3 rounded-lg p-0 overflow-hidden transition-all duration-300 ${
+                  activeIndex === ultimateFeature.id ? "h-full" : "h-[90%]"
+                }`}
+              >
+                <video
+                  ref={(el: HTMLVideoElement | null) => {
+                    if (el) {
+                      videoRefs.current[ultimateFeature.id] = el;
+                    }
+                  }}
+                  autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
+                  className="w-[80%] mx-auto h-full object-fill rounded-lg"
                 >
-                  <video
-                    // ref={(el: HTMLVideoElement | null) => (videoRefs.current[ultimateFeature.id - 1] = el)}
-                    // ref={(el: HTMLVideoElement | null) => (videoRefs.current[ultimateFeature.id] = el)}
-                    autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
-                    // muted
-                    // loop
-                    className="w-full h-full rounded-lg"
-                  >
-                    <source src={ultimateFeature.videoPath} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </motion.div>
+                  <source src={ultimateFeature.videoPath} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </CarouselItem>
             ))}
           </CarouselContent>

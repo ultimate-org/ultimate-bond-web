@@ -42,7 +42,7 @@ function Header() {
           <div className='hidden md:flex flex-row items-center'>
               {
                   headerNavItems.map((navItem) => { 
-                      return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route }  key={navItem.id} >{ navItem.item}</Link></motion.div>
+                      return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route}  key={navItem.id} >{ navItem.item}</Link></motion.div>
                   })
               }
 
@@ -52,14 +52,14 @@ function Header() {
           <div className='flex md:hidden flex-row items-center'>
               
           <DropdownMenu>
-  <DropdownMenuTrigger><FaBars></FaBars></DropdownMenuTrigger>
+  <DropdownMenuTrigger><FaBars color='white'></FaBars></DropdownMenuTrigger>
                   <DropdownMenuContent>
                   {
                   headerNavItems.map((navItem) => { 
-                      return <DropdownMenuItem key={navItem.id}>{navItem.item}</DropdownMenuItem>
+                      return <DropdownMenuItem onClick={()=>router.push(navItem.route)} key={navItem.id}>{navItem.item}</DropdownMenuItem>
                   })
               }
-                 <DropdownMenuItem><Button variant={"destructive"}>Get The App</Button></DropdownMenuItem>
+                 <DropdownMenuItem><Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button></DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
           </div>

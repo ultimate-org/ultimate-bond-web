@@ -35,6 +35,9 @@ import UltimateFrameWork from "./components/ultimateFrameWork/UltimateFrameWork"
 // Regreat and Outcome Section
 import RegretAndOutcome from "./components/regretAndOutcomeSection/RegretAndOutcome"
 
+// Ultimate Sample Videos Section
+import UltimateSample from "./components/ultimateSampleSection/UltimateSample"
+
 // Child Details section
 import ChildSelection from "./components/childDetails/ChildSelection"
 
@@ -42,4 +45,4 @@ import ChildSelection from "./components/childDetails/ChildSelection"
 import { AddChildModal } from "./components/modal/AddChildModal"
 
 
-export {BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses}
+export {BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample}

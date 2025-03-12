@@ -65,7 +65,6 @@ useEffect(() => {
           {upcomingWorkshops.length>0 ? upcomingWorkshops.map((workshop:{id:string, imageSource:string, imagePath: string, workshopLink: string}) => {
             return <Link href={{
               pathname: `/workshops/${workshop.id}`,          
-              query: {imageRoute: workshop.imagePath} // the data
             }}
               key={workshop?.id} className='w-[80%] h-[10rem] relative m-auto hover:scale-110 hover:drop-shadow-xl'>
               <Image src={workshop?.imageSource} alt={"workshop"} className='object-contain' fill></Image>

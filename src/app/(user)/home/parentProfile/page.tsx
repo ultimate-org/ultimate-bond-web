@@ -137,35 +137,10 @@ const form = useForm<z.infer<typeof parentSchema>>({
 
   return (
     <div className="min-h-screen w-full p-8">
-          <h1 className="text-2xl font-bold mb-8">Parent Profile Form</h1>
+          <h1 className="text-2xl font-bold mb-8 text-center md:text-left">Parent Profile Form</h1>
           <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         {/* Profile Image */}
-        {/* <div className="flex justify-center">
-          <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gray-300">
-            {profileImage ? (
-              <Image
-                src={profileImage}
-                alt="Profile"
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">No Image</span>
-              </div>
-            )}
-                      </div>
-                      <div className="flex justify-center absolute bottom-0 right-0">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="mt-4"
-          />
-        </div>
-        </div> */}
-                  
                   <div className="flex justify-center">
   <div className="relative w-32 h-32 rounded-full  border-2 border-gray-300">
                           {profileImage ? (
@@ -200,7 +175,11 @@ const form = useForm<z.infer<typeof parentSchema>>({
   </div>
 
  
-</div>
+                  </div>
+                  
+                  <div className='flex flex-col justify-center items-center'>
+                      <h2 className='text-xl md:text-2xl'>{form.getValues("firstname")} {form.getValues("lastname")}</h2>
+                  </div>
         
 
          {/* Full Name Field */}
@@ -212,7 +191,7 @@ const form = useForm<z.infer<typeof parentSchema>>({
                               <FormItem className="mb-8 md:mb-0 w-[100%] md:w-[49%]">
                                 <FormLabel>First Name</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Enter your first name" {...field} />
+                                  <Input disabled placeholder="Enter your first name" {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
