@@ -16,7 +16,6 @@ function UltimateFrameWork() {
                 <video
                     className="w-full h-full rounded-lg object-contain"
                     controls
-                    autoPlay
                     aria-label="Ulti-Mate Framework Video"
                 >
                     <source src="/videos/ultimate-framework/Ultimate-FrameWork.mp4" type="video/mp4" />

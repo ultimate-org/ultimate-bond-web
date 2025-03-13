@@ -3,42 +3,49 @@ import React from 'react'
 import { motion } from "framer-motion"
 import {montserratExtraBold,  montserratBold, montserratRegular } from "@/fonts/fonts"
 import styles from "./LifeChanging.module.css"
+import Image from 'next/image'
 
 function LifeChanging() {
     const lifeChangingValues = [
         {
             id: 1,
-            title: "Bridge the gap",
-            description: "Relax your body and mind with custom meditations,nature and sleep music.",
-            image:""
+            title: "Small Wins, Big Impact",
+            description: "Daily 20-25 mins of child engagement. We have thought on your behalf so you can just spend quality time with your child.",
+            image:"/images/lifechanging/small_wins_big_impact.jpg"
         },
         {
             id: 2,
-            title: "Practical Application",
-            description: "Relax your body and mind with custom meditations,nature and sleep music.",
-            image:""
+            title: "No Theory Only Practical",
+            description: "Philosophy is available everywhere, you can achieve goal only after implementation. 1800+ hands on Parent-Child Life skill enhancing activities.",
+             image:"/images/lifechanging/theory_practice.png"
         },
         {
             id: 3,
             title: "Parenting Roadmap",
-            description: "Relax your body and mind with custom meditations,nature and sleep music.",
-            image:""
+            description: "KYC – “Know Your Child” through dialogue. Practice Parenting Virtues every week. And many more aids. ",
+            image:"/images/lifechanging/road_map.png"
         }
     ]
   return (
       <div className={`${styles.lifeChangingContainer} flex flex-col justify-center py-8 `}>
           <div className='w-[80%] md:w-[60%] m-auto mt-4'>
-              <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratExtraBold.className}`}>Ultimate - a life-changing experience</h1>
+              <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratExtraBold.className}`}>How we solve it..!</h1>
               </div>
           <div className='flex justify-evenly items-center flex-wrap my-2 md:my-8'>
               {lifeChangingValues.map((lifeChanging) => {
                   return <motion.div initial={{opacity:0.2, scale:0.2}} whileInView={{opacity:1,scale:1}} transition={{duration:0.4}} viewport={{amount:0.8,once:true}} className=' p-[2rem] md:p-[5rem] md:w-2/4 lg:w-1/3' key={lifeChanging.id}>
+                      <div className='w-[50%] mx-auto h-[8rem] mb-4 relative rounded-full overflow-hidden'>
+                          <Image alt={lifeChanging.title} src={lifeChanging.image} fill objectFit='cover'></Image>
+                        </div>
                       <div>
-                          <h1 className={`text-center text-white text-2xl mb-4 ${montserratBold.className}`}>{lifeChanging.title}</h1>
-                          <p className={`text-center text-white text-base ${montserratRegular.className}`}>{lifeChanging.description}</p>
-                          </div>
+                          <h1 className={`text-center text-white text-xl mb-4 ${montserratBold.className}`}>{lifeChanging.title}</h1>
+                          <p className={`text-center text-white text-sm ${montserratRegular.className}`}>{lifeChanging.description}</p>
+                      </div>
+                      <div>
+                      </div>
               </motion.div>
               })}
+              <h2 className={`${montserratBold.className} text-center text-white text-xl`}>We assure you 100% results, if you use Ulti-Mate..!!!</h2>
           </div>
     </div>
   )

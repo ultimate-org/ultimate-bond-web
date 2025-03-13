@@ -27,12 +27,42 @@ function UltimateFeatureSection() {
     {
       id: 3,
       thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/dummy.mp4",
+      videoPath: "/videos/ultimate-feature/Create_task_feature.mp4",
     },
     {
       id: 4,
       thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/dummy.mp4",
+      videoPath: "/videos/ultimate-feature/Habitup_feature.mp4",
+    },
+    {
+      id: 5,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Mudra_and_shlok_feature.mp4",
+    },
+    {
+      id: 6,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Pg_feature.mp4",
+    },
+    {
+      id: 7,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Portfolio_feature.mp4",
+    },
+    {
+      id: 8,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Rewards_feature.mp4",
+    },
+    {
+      id: 9,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Assessment_feature.mp4",
+    },
+    {
+      id: 10,
+      thumbnail: "/images/main-section-background.jpg",
+      videoPath: "/videos/ultimate-feature/Story_feature.mp4",
     },
   ];
 
@@ -89,7 +119,7 @@ function UltimateFeatureSection() {
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
       <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className}`}>
-        Ultimate&apos;s Feature
+        Explore Ulti-Mate Features
       </h1>
       <div className={`mt-[4rem] w-[70%] mx-auto`}>
         <Carousel
@@ -108,7 +138,7 @@ function UltimateFeatureSection() {
                   setActiveIndex(ultimateFeature.id);
                 }}
                 className={`md:basis-1/2 lg:basis-1/3  rounded-lg p-0 overflow-hidden transition-all duration-300 ${
-                  activeIndex === ultimateFeature.id ? "h-full" : "h-[90%]"
+                  activeIndex === ultimateFeature.id ? "h-full" : "h-[85%]"
                 }`}
               >
                 <video
@@ -118,7 +148,7 @@ function UltimateFeatureSection() {
                     }
                   }}
                   autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
-                  className="w-[80%] mx-auto h-full object-fill rounded-lg shadow-xl"
+                  className={`${activeIndex === ultimateFeature.id ? "w-[90%]" : "w-[80%]"} mx-auto h-full object-fill rounded-lg `}
                 >
                   <source src={ultimateFeature.videoPath} type="video/mp4" />
                   Your browser does not support the video tag.

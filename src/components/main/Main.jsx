@@ -22,7 +22,7 @@ function Main() {
     ]
   return (
       <div className='justify-center items-center bg-gray-800  bg-cover' style={{ backgroundImage: "url('/images/main-section-background.jpg')" }}>
-          <div className='py-[10rem] bg-black/80'>
+          <div className='pt-[8rem] pb-[5rem] bg-black/80'>
           <h1 className={`text-center text-6xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>The Future Starts Now</h1>
           <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>Prepare Your Child for the Unknown</h2>
 

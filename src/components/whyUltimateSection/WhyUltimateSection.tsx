@@ -7,7 +7,7 @@ import styles from "./WhyUltimate.module.css"
 function WhyUltimateSection() {
     return (
         <div className={`w-full p-8 ${styles.whyUltimateContainer}`}>
-            <h1 className={`text-2xl md:text-5xl text-center ${montserratExtraBold.className} ${styles.whyUltimateText}`}>Why &quot;Ulti-Mate&quot; matters</h1>
+            <h1 className={`text-2xl md:text-5xl text-center ${montserratExtraBold.className} ${styles.whyUltimateText}`}>Why &quot;Ulti-Mate&quot;</h1>
       <div className='grid md:grid-cols-4 gap-4  mt-[4rem]'>
                 <div className='grid md:grid-rows-3 col-span-1'>
                     <div className='my-8'>

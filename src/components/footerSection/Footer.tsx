@@ -70,7 +70,7 @@ function Footer() {
     ]
   return (
       <div className={`w-full px-8 py-2 bg-blue-300`}>
-          <div className={`w-full flex flex-col md:flex-row md:justify-between items-center`}>
+          <div className={`w-full flex flex-col md:flex-row md:justify-between items-start`}>
               {/* Footer logo and social media links section */}
               <div className='flex flex-col items-center my-4'>
                   <Image  src={"/images/logo/Ultimate-Logo.png"} alt="Ultimate Logo" width={80} height={80}></Image>
@@ -102,7 +102,7 @@ function Footer() {
                  </div>
               </div>
           </div>
-          <div className='my-4'><p className={`text-center text-md md:text-md text-slate-800`}>@ 2025 Adeptify Technologies Pvt. Ltd. All rights reserved</p></div>
+          <div className='my-4'><p className={`text-center text-[0.55rem] text-slate-800`}>@ 2025 Adeptify Technologies Pvt. Ltd. All rights reserved</p></div>
     </div>
   )
 }

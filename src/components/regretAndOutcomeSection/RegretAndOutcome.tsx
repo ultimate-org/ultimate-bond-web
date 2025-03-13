@@ -124,7 +124,7 @@ function RegretAndOutcome() {
             <div className="my-4">
                 <div className='w-[80%] md:w-[70%] lg:w-[60%] mx-auto'>
                 <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratExtraBold.className}`}>
-                    Instead, let’s try UltiMate, you can expect below:
+                    With Ulti-Mate, you can expect
                     </h3>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

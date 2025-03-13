@@ -118,7 +118,8 @@ function UltimateSample() {
         {
             id: 1,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente perferendis quam ullam libero officia praesentium iure necessitatibus possimus et? Repudiandae repellendus ratione obcaecati mollitia voluptatibus sapiente nihil corrupti hic aliquid?",
-            videoPath: "/videos/ultimate-sample/sample_one.mp4"
+            videoPath: "/videos/ultimate-sample/sample_eight.mp4"
+
         },
         {
             id: 2,
@@ -153,7 +154,7 @@ function UltimateSample() {
         {
             id: 8,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente perferendis quam ullam libero officia praesentium iure necessitatibus possimus et? Repudiandae repellendus ratione obcaecati mollitia voluptatibus sapiente nihil corrupti hic aliquid?",
-            videoPath: "/videos/ultimate-sample/sample_eight.mp4"
+            videoPath: "/videos/ultimate-sample/sample_one.mp4"
         },
         {
             id: 9,
