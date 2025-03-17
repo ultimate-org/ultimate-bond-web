@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {NextIntlClientProvider} from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
-import { Footer } from "@/index"
+import { Footer, Header } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
 
 
@@ -37,7 +37,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
                 <NextIntlClientProvider messages={messages}>
-                {/* <Header></Header> */}
+                <Header></Header>
 
           {children}
           <Toaster />

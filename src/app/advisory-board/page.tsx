@@ -53,7 +53,7 @@ function AdvisoryBoard() {
         }
     ]
   return (
-      <div className='bg-gradient-to-br from-cyan-100 to-white-500'>
+      <div className='bg-gradient-to-br from-cyan-100 to-white-500 py-[8rem]'>
           {/* The advisory Board */}
 
           <div className='py-8'>

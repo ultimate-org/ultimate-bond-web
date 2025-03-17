@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter,usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {FaBars} from "react-icons/fa6"
@@ -19,6 +19,7 @@ import {
 
 function Header() {
     const router = useRouter();
+    const pathName = usePathname();
     const headerNavItems = [
         {
             id: 1,
@@ -34,7 +35,7 @@ function Header() {
   return (
       <nav className={`w-full justify-between items-start flex flex-row absolute bg-transparent py-8 px-8 top-0 left-0 right-0 z-100`}>
           <div className='flex flex-row'>
-              <Image src={"/images/logo/Ultimate-Logo.png"} className='object-contain' width={60} height={60} alt='Ultimate Logo'></Image>
+              <Image onClick={()=>router.push("/")} src={"/images/logo/Ultimate-Logo.png"} className='object-contain' width={60} height={60} alt='Ultimate Logo'></Image>
               {/* <Image src={"/images/logo/Your-Parenting-Partner-Logo.png"} width={150} height={120} alt='Your Parenting Partner Logo' className='hidden md:block'></Image> */}
 
           </div>
@@ -42,7 +43,7 @@ function Header() {
           <div className='hidden md:flex flex-row items-center'>
               {
                   headerNavItems.map((navItem) => { 
-                      return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route}  key={navItem.id} >{ navItem.item}</Link></motion.div>
+                      return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route}  key={navItem.id} className={`${pathName == "/" ? "text-white": "text-black"}`} >{ navItem.item}</Link></motion.div>
                   })
               }
 
