@@ -24,6 +24,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea"
+import { montserratExtraBold } from '@/fonts/fonts';
 
 
 // Define the schema using Zod
@@ -137,7 +138,7 @@ const form = useForm<z.infer<typeof parentSchema>>({
 
   return (
     <div className="min-h-screen w-full p-8">
-          <h1 className="text-2xl font-bold mb-8 text-center md:text-left">Parent Profile Form</h1>
+          <h1 className={`text-2xl font-bold mb-8 text-center md:text-left ${montserratExtraBold.className}`}>Parent Profile Form</h1>
           <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         {/* Profile Image */}

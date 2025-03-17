@@ -118,7 +118,7 @@ function UltimateFeatureSection() {
 
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
-      <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className}`}>
+      <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.ultimateFeatureText}`}>
         Explore Ulti-Mate Features
       </h1>
       <div className={`mt-[4rem] w-[70%] mx-auto`}>

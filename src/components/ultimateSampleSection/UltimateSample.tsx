@@ -166,15 +166,15 @@ function UltimateSample() {
     return (
         <div className={`py-[4rem] ${styles.ultimateSampleContainer}`}>
             <div>
-                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} text-white`}>Ultimate Sample Activities</h1>
+                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.ultimateSampleText}`}>Ulti-Mate&apos;s Illustrative Activities</h1>
             </div>
-            <div className='w-full mt-8'>
+            <div className='w-full mt-[4rem]'>
                 <Carousel className='w-[70%] md:w-[80%] mx-auto'>
                     <CarouselContent className="p-0">
                         {ultimateSample.map((sample) => (
                             <CarouselItem key={sample.id} className="flex flex-col md:flex-row justify-evenly items-center">
                                 <div className='w-full md:w-[50%] md:p-2 mb-4'>
-                                    <p className={`${montserratBold.className} text-sm md:text-md text-white`}>{sample.description}</p>
+                                    <p className={`${montserratBold.className} text-sm md:text-md text-white ${styles.ultimateSampleText}`}>{sample.description}</p>
                                 </div>
                                 <div className='w-full md:w-[50%]'>
                                     <video

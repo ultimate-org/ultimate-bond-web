@@ -1,3 +1,7 @@
 .lifeChangingContainer {
-    background-color: var(--primary-blue-dark-color);
+    background-color: var(--primary-color);
+}
+
+.lifeChangingText {
+    color : var(--primary-blue-lightest-color)
 }

@@ -17,7 +17,7 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com"],
+      domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com","ultimate-user-data.s3.ap-south-1.amazonaws.com"],
   },
   typescript: {
     // !! WARN !!

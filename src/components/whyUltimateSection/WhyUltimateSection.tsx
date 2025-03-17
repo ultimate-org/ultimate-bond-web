@@ -11,14 +11,15 @@ function WhyUltimateSection() {
       <div className='grid md:grid-cols-4 gap-4  mt-[4rem]'>
                 <div className='grid md:grid-rows-3 col-span-1'>
                     <div className='my-8'>
-                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Very high probability of learning varied life skills by child while following UltiMate.</p>
+                    <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Parents get readily well thought through Child&apos;s life skill development content on a periodic basis.</p>
+
                     </div>
                     <div className='my-8'>
                         <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Offline engaging activities reduces Screen time for child. No need for child to use mobile.</p>
                     </div>
                     <div className='my-8'>
-                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Parents get readily well thought through Child&apos;s life skill development content on a periodic basis.</p>
-                   </div>
+                    <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Simplified content and very easy to follow. Catch up with past activities and stories</p>
+                    </div>
                 </div>
                 {/* Image Container */}
                 <div className='col-span-2'>
@@ -29,10 +30,10 @@ function WhyUltimateSection() {
                 {/* Third Section */}
                 <div className='grid md:grid-rows-3 col-span-1  '>
                 <div className='my-8'>
-                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Very easy to follow and simplified content.</p>
+                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>KYC – “Know Your Child” through 100&apos;s of dialogue based activities.</p>
                     </div>
                     <div className='my-8'>
-                        <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Parenting syllabus for Child&apos;s life skill development.</p>
+                    <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>Very high probability of learning varied life skills by child while following UltiMate.</p>
                     </div>
                     <div className='my-8'>
                         <p className={`text-center ${montserratBold.className} ${styles.whyUltimateText}`}>No such parenting aid available at one place.</p>

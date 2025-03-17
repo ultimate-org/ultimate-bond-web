@@ -41,8 +41,14 @@ import UltimateSample from "./components/ultimateSampleSection/UltimateSample"
 // Child Details section
 import ChildSelection from "./components/childDetails/ChildSelection"
 
+// Home Page Side Bar
+import HomeSideBar from "./components/homeSideBar/HomeSideBar"
+
 // modals
 import { AddChildModal } from "./components/modal/AddChildModal"
 
 
-export {BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging,UltimateFeatureSection, Header,Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample}
+export {
+    BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
+    HomeSideBar
+}

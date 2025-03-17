@@ -76,8 +76,9 @@ useEffect(() => {
         <h1 className={`text-2xl ml-8 ${anton.className}`}>Previous Workshops</h1>
         <div className='grid  md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
           {previousWorkshops.length>0 ? previousWorkshops.map((workshop:{id:string, imageSource:string, imagePath: string, workshopLink: string}) => {
-            return <button key={workshop?.id} className='w-[80%] h-[10rem] relative m-auto'>
-              <Image src={workshop?.imageSource} alt={"workshop"} className='object-cover' fill></Image>
+            return <button
+             key={workshop?.id}  className='w-[80%] h-[10rem] relative m-auto hover:scale-110 hover:drop-shadow-xl'>
+              <Image src={workshop?.imageSource} alt={"workshop"} className='object-contain' fill></Image>
             </button>
           }): <div className='col-span-3'><h1 className='text-center'>No Previous Workshops Available</h1></div>}
         </div>

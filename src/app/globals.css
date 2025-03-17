@@ -33,8 +33,9 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --primary-color : #106EBE;
-    --secondary-color: #0FFCBE;
+    /* --primary-color : #106EBE; */
+    --primary-color: #020e25;
+    --secondary-color: #F6F0F0;
     --primary-blue-darker-color: #233C67;
     --primary-blue-dark-color: #4470AD;
     --primary-blue-light-color: #6888BE;

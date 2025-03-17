@@ -1,3 +1,7 @@
 .ultimateSampleContainer {
-    background-color: var(--primary-blue-darker-color);
+    background-color: var(--primary-blue-lightest-color);
+}
+
+.ultimateSampleText {
+    color : var(--primary-color)
 }

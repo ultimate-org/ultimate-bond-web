@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { motion } from "framer-motion"
-import {montserratExtraBold,  montserratBold, montserratRegular } from "@/fonts/fonts"
+import {montserratExtraBold,  montserratBold, montserratRegular, DeliciousHandrawn } from "@/fonts/fonts"
 import styles from "./LifeChanging.module.css"
 import Image from 'next/image'
 
@@ -22,30 +22,30 @@ function LifeChanging() {
         {
             id: 3,
             title: "Parenting Roadmap",
-            description: "KYC – “Know Your Child” through dialogue. Practice Parenting Virtues every week. And many more aids. ",
+            description: "Child age appropriate customised schedule. Practice Parenting Virtues every week. And many more aids.",
             image:"/images/lifechanging/road_map.png"
         }
     ]
   return (
       <div className={`${styles.lifeChangingContainer} flex flex-col justify-center py-8 `}>
           <div className='w-[80%] md:w-[60%] m-auto mt-4'>
-              <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratExtraBold.className}`}>How we solve it..!</h1>
+              <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratExtraBold.className} ${styles.lifeChangingText}`}>How have we solved it..!</h1>
               </div>
-          <div className='flex justify-evenly items-center flex-wrap my-2 md:my-8'>
+          <div className='flex justify-evenly items-center flex-wrap '>
               {lifeChangingValues.map((lifeChanging) => {
                   return <motion.div initial={{opacity:0.2, scale:0.2}} whileInView={{opacity:1,scale:1}} transition={{duration:0.4}} viewport={{amount:0.8,once:true}} className=' p-[2rem] md:p-[5rem] md:w-2/4 lg:w-1/3' key={lifeChanging.id}>
-                      <div className='w-[50%] mx-auto h-[8rem] mb-4 relative rounded-full overflow-hidden'>
+                      <div className='w-[50%] mx-auto h-[8rem] mb-4 relative rounded-lg overflow-hidden'>
                           <Image alt={lifeChanging.title} src={lifeChanging.image} fill objectFit='cover'></Image>
                         </div>
                       <div>
-                          <h1 className={`text-center text-white text-xl mb-4 ${montserratBold.className}`}>{lifeChanging.title}</h1>
-                          <p className={`text-center text-white text-sm ${montserratRegular.className}`}>{lifeChanging.description}</p>
+                          <h1 className={`text-center text-white text-xl mb-4 ${montserratBold.className} ${styles.lifeChangingText}`}>{lifeChanging.title}</h1>
+                          <p className={`text-center text-white text-sm ${montserratRegular.className} ${styles.lifeChangingText}`}>{lifeChanging.description}</p>
                       </div>
                       <div>
                       </div>
               </motion.div>
               })}
-              <h2 className={`${montserratBold.className} text-center text-white text-xl`}>We assure you 100% results, if you use Ulti-Mate..!!!</h2>
+              <h2 className={`${DeliciousHandrawn.className} text-center text-white text-4xl`}>Just follow us, we assure you 100% results..!!</h2>
           </div>
     </div>
   )

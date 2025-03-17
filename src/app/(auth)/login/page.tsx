@@ -72,6 +72,7 @@ function Login() {
       
       const loggedUserInfo = await loginResponse.json();
       
+      
       if (!loginResponse.ok) {
         throw new Error(loggedUserInfo.error || "Something went wrong.");
       }
@@ -81,7 +82,9 @@ function Login() {
               description: "Logged in successfuly",
             });
       
-      // store data into the localstorage --pending
+            localStorage.setItem('ParentInfo', JSON.stringify(loggedUserInfo?.userInfo?.data));
+            localStorage.setItem('UserInfo', JSON.stringify(loggedUserInfo?.userInfo?.data?.user));
+            localStorage.setItem('isLoggedIn', "true");
       const response = await fetch(`/login/api?id=${loggedUserInfo?.userInfo?.data?.parent_id}`)
 
       if (!response.ok) {
@@ -91,7 +94,7 @@ function Login() {
 
       const isChildAvailable = await response.json();
       if (isChildAvailable?.data.length > 0) {
-        router.replace("/")
+        router.replace("/home")
       } else {
         router.replace("/childDetails")
       }

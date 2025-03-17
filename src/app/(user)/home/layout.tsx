@@ -1,3 +1,4 @@
+import HomeSideBar from "@/components/homeSideBar/HomeSideBar";
 
 export default async function RootLayout({
   children,
@@ -9,7 +10,10 @@ export default async function RootLayout({
   return (
     <html>
       <body>
+        <div className="flex">
+          <HomeSideBar></HomeSideBar>
           {children}
+          </div>
       </body>
     </html>
   );

@@ -70,7 +70,7 @@ function Footer() {
     ]
   return (
       <div className={`w-full px-8 py-2 bg-blue-300`}>
-          <div className={`w-full flex flex-col md:flex-row md:justify-between items-start`}>
+          <div className={`w-full flex flex-col md:flex-row md:justify-between items-end`}>
               {/* Footer logo and social media links section */}
               <div className='flex flex-col items-center my-4'>
                   <Image  src={"/images/logo/Ultimate-Logo.png"} alt="Ultimate Logo" width={80} height={80}></Image>
@@ -87,7 +87,7 @@ function Footer() {
               <div className='grid md:grid-cols-2 gap-2 my-4'>
                   {
                       legalDocuments.map((doc) => {
-                        return  <Link key={doc.id} href={doc.route} className='text-sm text-center'>{ doc.name}</Link>
+                        return  <Link key={doc.id} href={doc.route} className='text-xs text-center'>{ doc.name}</Link>
                       })
                   }
               </div>
@@ -96,9 +96,8 @@ function Footer() {
                <div className='my-4'>
                   <div>
                       <h3 className='font-bold text-center'>Contact Us</h3>
-                      <p className='my-1 text-center text-sm'>+91 9356452498</p>
-                      <p className='my-1 text-center text-sm'>contact@adeptifytechnologies.com</p>
-                      <address className='my-1 text-center text-sm'>Pune - 411038, Maharashtra, India</address>
+                      <p className='my-1 text-center text-xs'>+91 9356452498</p>
+                      <p className='my-1 text-center text-xs'>contact@adeptifytechnologies.com</p>
                  </div>
               </div>
           </div>
