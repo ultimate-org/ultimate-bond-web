@@ -16,7 +16,7 @@ function LifeChanging() {
         {
             id: 2,
             title: "No Theory Only Practical",
-            description: "Philosophy is available everywhere, you can achieve goal only after implementation. 1800+ hands on Parent-Child Life skill enhancing activities.",
+            description: "Philosophy is available everywhere, but you can achieve your goal only after practicing it. 1800+ hands on Parent-Child Life skill enhancing practical activities.",
              image:"/images/lifechanging/theory_practice.png"
         },
         {

@@ -18,7 +18,7 @@ function UltimateFrameWork() {
             {/* Video Container */}
             <div className="md:w-[70%] sm:[w-80%] relative h-96 md:h-[24rem] mt-[4rem]">
                 <video
-                    className="w-full h-full rounded-lg object-contain"
+                    className="w-full h-full rounded-lg object-fill"
                     controls
                     aria-label="Ulti-Mate Framework Video"
                 >

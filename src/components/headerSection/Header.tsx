@@ -35,7 +35,7 @@ function Header() {
   return (
       <nav className={`w-full justify-between items-start flex flex-row absolute bg-transparent py-8 px-8 top-0 left-0 right-0 z-100`}>
           <div className='flex flex-row'>
-              <Image onClick={()=>router.push("/")} src={"/images/logo/Ultimate-Logo.png"} className='object-contain' width={60} height={60} alt='Ultimate Logo'></Image>
+              <Image onClick={()=>router.push("/")} src={"/images/logo/Ultimate-Logo.png"} className='object-cover' width={70} height={70} alt='Ultimate Logo'></Image>
               {/* <Image src={"/images/logo/Your-Parenting-Partner-Logo.png"} width={150} height={120} alt='Your Parenting Partner Logo' className='hidden md:block'></Image> */}
 
           </div>
