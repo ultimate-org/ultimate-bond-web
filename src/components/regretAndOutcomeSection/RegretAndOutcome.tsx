@@ -88,7 +88,10 @@ function RegretAndOutcome() {
             <div className='mt-[3rem]'>
               <p className={`${DeliciousHandrawn.className} text-4xl text-center`}>“IQ gets you into the race, EQ makes you win it”</p>
             </div>
-            
+            <div className='md:flex flex-cols md:w-[40%] w-[90%] mx-auto my-8'>
+                <div className='md:w-[48%] h-12 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
+                <div className='md:w-[48%] h-12 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div>
+            </div>
         </div>
     );
 }

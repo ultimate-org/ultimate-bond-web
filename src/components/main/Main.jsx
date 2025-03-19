@@ -156,7 +156,7 @@ function Main() {
           <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500`}>Prepare Your Child for the Unknown</h2> */}
            <h1 className={`text-center text-6xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>The Future Starts Now</h1>
            <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>Prepare Your Child for the Unknown</h2>
-          <div className='justify-center mt-8 '>
+          <div className='justify-center my-8 '>
               <div>
             <p className={`text-center text-xl text-white ${montserratRegular.className} ${styles.mainTextColor}`}>Traditional education prepares children for <span className={`underline underline-offset-2 ${styles.mainTextColor}`}>Tests, Grades, Degrees</span></p>
             <p className={`text-center mt-6 text-2xl text-white  ${montserratBold.className} ${styles.mainTextColor}`}>But does it prepare them for:</p>

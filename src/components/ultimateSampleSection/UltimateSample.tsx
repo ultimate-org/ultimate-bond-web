@@ -166,7 +166,7 @@ function UltimateSample() {
     return (
         <div className={`py-[4rem] ${styles.ultimateSampleContainer}`}>
             <div>
-                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.ultimateSampleText}`}>Ulti-Mate&apos;s Illustrative Activities</h1>
+                <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.ultimateSampleText}`}>Ulti-Mate&apos;s illustrative activities</h1>
             </div>
             <div className='w-full mt-[4rem]'>
                 <Carousel className='w-[70%] md:w-[80%] mx-auto'>

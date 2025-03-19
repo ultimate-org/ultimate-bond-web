@@ -43,7 +43,7 @@ function UnderLyingCauses() {
               }
           </div>
            <div className='mt-[3rem]'>
-                        <p className={`${DeliciousHandrawn.className} text-4xl text-center  ${styles.underlyingCauses}`}>Apparently, you see these causes in everyday life, but do you care?</p>
+                        <p className={`${DeliciousHandrawn.className} text-4xl text-center  ${styles.underlyingCauses}`}>Apparently, you see{"\u00A0"} these causes in everyday life, but do you care?</p>
                       </div>
     </div>
   )
