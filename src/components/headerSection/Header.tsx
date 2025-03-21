@@ -26,11 +26,6 @@ function Header() {
             item: "Workshops",
             route: "/workshops"
         },
-        {
-            id: 2,
-            item: "Advisory Board",
-            route: "/advisory-board"
-        }
     ]
   return (
       <nav className={`w-full justify-between items-start flex flex-row absolute bg-transparent py-8 px-8 top-0 left-0 right-0 z-100`}>

@@ -38,8 +38,14 @@ import RegretAndOutcome from "./components/regretAndOutcomeSection/RegretAndOutc
 // Ultimate Sample Videos Section
 import UltimateSample from "./components/ultimateSampleSection/UltimateSample"
 
+// Advisory Board Container
+import AdvisoryBoard from "./components/advisoryBoardSection/AdvisoryBoard"
+
 // Child Details section
 import ChildSelection from "./components/childDetails/ChildSelection"
+
+// Parent Testimony section
+import ParentTestimony from "./components/parentTestimony/ParentTestimony"
 
 // Home Page Side Bar
 import HomeSideBar from "./components/homeSideBar/HomeSideBar"
@@ -50,5 +56,5 @@ import { AddChildModal } from "./components/modal/AddChildModal"
 
 export {
     BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
-    HomeSideBar
+    HomeSideBar, AdvisoryBoard, ParentTestimony
 }

@@ -1,0 +1,8 @@
+.advisoryBoardContainer {
+    
+    background-color: var(--primary-blue-lightest-color);
+}
+
+.adivisoryBoardText {
+    color : var(--primary-color)
+}

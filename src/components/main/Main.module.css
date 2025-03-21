@@ -1,3 +1,24 @@
+/* .title {
+    text-shadow: '0 0 15px #fff, 0 0 10px #fff, 0 0 20px #ff00de, 0 0 40px #ff00de, 0 0 80px #ff00de';
+    animation: 'glow 1.5s infinite alternate';
+    color: #06A5D8
+} */
+/* Main.module.css */
+.title {
+    text-shadow: 0 0 2px #06A5D8, 0 0 2px #06A5D8, 0 0 5px #06A5D8, 0 0 20px #06A5D8, 0 0 40px #06A5D8;
+    /* animation: glow 3s infinite alternate; */
+    color: #06A5D8
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #06A5D8, 0 0 10px #06A5D8, 0 0 20px #06A5D8, 0 0 40px #06A5D8, 0 0 80px #06A5D8;
+    }
+    to {
+        text-shadow: 0 0 10px #06A5D8, 0 0 20px #06A5D8, 0 0 40px #06A5D8, 0 0 80px #06A5D8, 0 0 120px #06A5D8;
+    }
+}
 .mainTextColor {
-    color : var(--primary-blue-lightest-color)
+    color : var(--primary-blue-lightest-color);
+    
 }

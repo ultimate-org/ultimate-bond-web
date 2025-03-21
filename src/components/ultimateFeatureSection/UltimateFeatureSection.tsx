@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { montserratExtraBold } from "@/fonts/fonts";
+import { montserratBold } from "@/fonts/fonts";
 import {
   Carousel,
   CarouselContent,
@@ -118,7 +118,7 @@ function UltimateFeatureSection() {
 
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
-      <h1 className={`text-center text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.ultimateFeatureText}`}>
+      <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>
         Explore Ulti-Mate Features
       </h1>
       <div className={`mt-[4rem] w-[70%] mx-auto`}>

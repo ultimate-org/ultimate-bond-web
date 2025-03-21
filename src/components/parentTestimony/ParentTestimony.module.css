@@ -1,0 +1,7 @@
+.parentTestimonyContainer {
+    background-color: var(--primary-color);
+}
+
+.parentTestimony {
+    color : var(--primary-blue-lightest-color)
+}

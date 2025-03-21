@@ -1,7 +1,9 @@
 .ultimateFrameworkContainer {
-    background-color: var(--primary-blue-lightest-color);
+    
+    /* background-color:var(--primary-color); */
+    background-color: #010817;
 }
 
 .ultimateFrameworkText {
-    color: var(--primary-color);
+    color:  var(--primary-blue-lightest-color);
 }

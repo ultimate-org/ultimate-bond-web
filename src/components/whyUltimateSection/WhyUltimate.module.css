@@ -1,7 +1,8 @@
 .whyUltimateContainer {
-    background-color: var(--primary-color);
+    
+    background-color: #1D5B89;
 }
 
 .whyUltimateText {
-    color :var(--primary-blue-lighter-color)
+    color : var(--primary-color)
 }

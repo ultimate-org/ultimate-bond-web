@@ -73,7 +73,9 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 interface AddChildModalProps {
   isOpen: boolean;
@@ -88,33 +90,45 @@ export function AddChildModal({
   onAddAnother,
 }: AddChildModalProps) {
   const [maxAllowedChildren, setMaxAllowedChildren] = useState(false);
+  const  router  = useRouter();
+  const { toast } = useToast();
+    
 
-//   const getChildrenHandler = async () => {
-//     const parentInfo = localStorage.getItem("ParentInfo");
-//     // const parentId = JSON.parse(parentInfo)?.parent_id; // Ensure you're accessing the correct field
-//     try {
-//       const response = await fetch(
-//         `${BASE_URL}/parent/child/${parentId}`,
-//       );
-//       const data = await response.json(); // Parse the response as JSON
+  const getChildrenDataHandler = async() => {
+      try {
+          const parentInfo = JSON.parse(localStorage.getItem('ParentInfo') || '{}');
+          const parentId = parentInfo?.parent_id;
+          if (!parentInfo) {
+            router.replace("/signup");
+              return;
+          }
 
-//       if (data.code === 200) {
-//         if (data.data.length >= 3) {
-//           setMaxAllowedChildren(true);
-//         } else {
-//           setMaxAllowedChildren(false);
-//         }
-//       }
-//     } catch (err) {
-//       console.error("Error in add child modal", err);
-//     }
-//   };
+          const response = await fetch(`/home/childProfile/api?id=${parentId}`, {
+              method: 'GET', // Use GET method
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+          if (!response.ok) {
+              toast({
+                  description: "Something went wrong!",
+                  variant:"destructive"
+              })
+              return;
+          }
+          const childResponseData = await response.json();
+          if (childResponseData.data.length >= 3) {
+            setMaxAllowedChildren(true)
+          } else {
+            setMaxAllowedChildren(false)
+          }
+      }catch(err){console.error(err)}
+  }
 
   // Fetch the number of children when the modal opens
   useEffect(() => {
       if (isOpen) {
-        setMaxAllowedChildren(true)
-    //   getChildrenHandler();
+        getChildrenDataHandler();
     }
   }, [isOpen]);
 
@@ -137,7 +151,7 @@ export function AddChildModal({
                   :
                   <div className="flex justify-evenly">
          
-            <Button onClick={onAddAnother}>Continue</Button>
+            <Button onClick={()=>router.replace("/home/childProfile")}>Continue</Button>
               </div>
         }
       </AlertDialogContent>

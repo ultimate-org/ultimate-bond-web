@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './UnderLyingCauses.module.css'; 
-import {montserratExtraBold, montserratBold, montserratRegular, DeliciousHandrawn} from "@/fonts/fonts"
+import { montserratBold, montserratRegular, DeliciousHandrawn} from "@/fonts/fonts"
 
  
 
@@ -29,7 +29,7 @@ function UnderLyingCauses() {
     ]
   return (
         <div className={`${styles.underlyingCausesContainer}`}>
-          <h1 className={`text-center ${montserratExtraBold.className} text-2xl md:text-5xl ${styles.underlyingCauses}`}>Underlying Causes</h1>
+          <h1 className={`text-center ${montserratBold.className} text-2xl md:text-5xl ${styles.underlyingCauses}`}>Underlying Causes</h1>
           <div className='md:grid md:grid-cols-2 gap-2 justify-between mt-8 px-8 w-[80%] md:w-[60%] mx-auto mt-[4rem]'>
               {
                   underlyingCauses.map((causes) => {
@@ -43,7 +43,7 @@ function UnderLyingCauses() {
               }
           </div>
            <div className='mt-[3rem]'>
-                        <p className={`${DeliciousHandrawn.className} text-4xl text-center  ${styles.underlyingCauses}`}>Apparently, you see{"\u00A0"} these causes in everyday life, but do you care?</p>
+                        <p className={`${DeliciousHandrawn.className} text-4xl text-center  ${styles.underlyingCauses}`}>Apparently, you see{"\u00A0"} these causes in everyday life, but who cares?</p>
                       </div>
     </div>
   )

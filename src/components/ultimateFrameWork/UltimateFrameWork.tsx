@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeliciousHandrawn, montserratExtraBold } from '@/fonts/fonts';
+import { DeliciousHandrawn, montserratBold, } from '@/fonts/fonts';
 import styles from "./UltimateFrameWork.module.css"
 
 function UltimateFrameWork() {
@@ -7,16 +7,16 @@ function UltimateFrameWork() {
         <div className={`w-full p-4 md:p-8 flex flex-col justify-center items-center ${styles.ultimateFrameworkContainer}`}>
             {/* Heading */}
             <div className="w-[80%] md:w-[70%] mx-auto">
-                <h1 className={`text-2xl md:text-5xl text-center ${montserratExtraBold.className} ${styles.ultimateFrameworkText}`}>
-                    But, we are changing this with
+                <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
+                    We care with...
           </h1>
-          <h1 className={`text-2xl md:text-5xl text-center ${montserratExtraBold.className} ${styles.ultimateFrameworkText}`}>
+          <h1 className={`text-2xl md:text-5xl text-center ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                      &quot;Ulti-Mate&quot; framework
                 </h1>
             </div>
 
             {/* Video Container */}
-            <div className="md:w-[70%] sm:[w-80%] relative h-98 md:h-[30rem] mt-[4rem]">
+            <div className="md:w-[60%] sm:[w-80%] relative h-98 md:h-[25rem] mt-[4rem]">
                 <video
                     className="w-full h-full rounded-lg object-fill"
                     controls
