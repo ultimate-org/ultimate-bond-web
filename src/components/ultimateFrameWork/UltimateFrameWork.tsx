@@ -27,7 +27,7 @@ function UltimateFrameWork() {
                 </video>
         </div>
         <div className='mt-[3rem]'>
-              <p className={`${DeliciousHandrawn.className} text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee you, there is no such One Stop Shop solution on parenting..!!!</p>
+              <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee you, there is no such One Stop Shop solution on parenting..!!!</p>
             </div>
         </div>
     );

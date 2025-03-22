@@ -177,10 +177,10 @@ function Main() {
                   })
                   }
                   </div> */}
-          <div className='my-[4rem] flex md:flex-row justify-center items-center px-8'>
+          <div className='my-[4rem] flex flex-col md:flex-row justify-center items-center px-8'>
               {
                   pointsArr.map((point,index) => {
-                      return <motion.div key={point} className={`border border-1 w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE]`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
+                      return <motion.div key={point} className={`border border-1 mb-2 w-[80%] md:w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE]`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
                         ...transition,
                         delay: transition.delay + index * 0.5, // Add delay based on index
                       }} >
@@ -191,7 +191,7 @@ function Main() {
                   </div>
           </div>
       
-       <div className='mt-8'>
+       <div className='mt-6'>
                     {/* <p className='text-center'>Research proves that IQ alone isn’t enough—Success = IQ + EQ + SQ + CQ + AQ.</p> */}
                     <p className={`text-center text-white text-3xl ${DeliciousHandrawn.className} ${styles.mainTextColor}`}>So, are we raising <span className={`${DeliciousHandrawn.className} text-4xl`}>happy, resilient, and emotionally</span> strong children?</p>
         </div>

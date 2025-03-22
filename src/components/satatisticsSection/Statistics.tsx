@@ -49,7 +49,7 @@ function Statistics() {
           </div>
     </div>
           <div className='mt-[3rem]'>
-                <p className={`${DeliciousHandrawn.className} text-4xl text-center text-white ${styles.statisticsDescription}`}>But, everybody{"\u00A0\u00A0"}thinks{"\u00A0\u00A0"}they will not be / aren’t part of such statistics. Then, who is?</p>
+                <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center text-white ${styles.statisticsDescription}`}>But, everybody{"\u00A0\u00A0"}thinks{"\u00A0\u00A0"}they will not be / aren’t part of such statistics. Then, who is?</p>
             </div>
             </div>
   )
