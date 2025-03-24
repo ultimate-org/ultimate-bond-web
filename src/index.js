@@ -17,8 +17,11 @@ import StatCard from "@/components/satatisticsSection/StatCard"
 // Life Changing Section
 import LifeChanging from "@/components/lifeChangingSection/LifeChanging"
 
+// Ultimate Feature Video Section
+import UltimateFeatureVideoSection from "@/components/ultimateFeatureVideoSection/UltimateFeatureVideoSection"
+
 // Ultimate Feature Section
-import UltimateFeatureSection from "@/components/ultimateFeatureSection/UltimateFeatureSection"
+import UltimateFeatureSection from "./components/UltimateFeatureSection/UltimateFeatureSection"
 
 // Header Section
 import Header from "@/components/headerSection/Header"
@@ -55,6 +58,6 @@ import { AddChildModal } from "./components/modal/AddChildModal"
 
 
 export {
-    BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
-    HomeSideBar, AdvisoryBoard, ParentTestimony
+    BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureVideoSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
+    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection
 }

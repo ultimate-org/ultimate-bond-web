@@ -33,7 +33,7 @@ function UnderLyingCauses() {
           <div className='md:grid md:grid-cols-2 gap-2 justify-between mt-8 px-8 w-[80%] md:w-[60%] mx-auto mt-[4rem]'>
               {
                   underlyingCauses.map((causes) => {
-                      return <div key={causes.id} className={`flex rounded-lg overflow-hidden py-4 justify-center w-[100%] md:mb-0 mb-4 mx-auto ${styles.underlyingCardContainer}`}>
+                      return <div key={causes.id} className={`flex rounded-lg overflow-hidden p-4 justify-center w-[100%] md:mb-0 mb-4 mx-auto ${styles.underlyingCardContainer}`}>
                           <div>
                               <h1 className={`${montserratBold.className} text-xl text-center ${styles.underlyingCauses} `}>{causes.title}</h1>
                               <p className={`${montserratRegular.className} text-sm text-center  text-white mt-2  ${styles.underlyingCauses}`}>{causes.description}</p>

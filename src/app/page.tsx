@@ -1,4 +1,4 @@
-import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony} from "@/index"
+import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony} from "@/index"
 
 function Landing() {
   return <>
@@ -11,6 +11,7 @@ function Landing() {
     <LifeChanging></LifeChanging>
     <UltimateSample></UltimateSample>
     <RegretAndOutcome></RegretAndOutcome>
+    <UltimateFeatureVideoSection></UltimateFeatureVideoSection>
     <UltimateFeatureSection></UltimateFeatureSection>
     <WhyUltimateSection></WhyUltimateSection>
     <ParentTestimony></ParentTestimony>

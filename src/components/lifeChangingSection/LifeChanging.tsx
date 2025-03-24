@@ -27,18 +27,18 @@ function LifeChanging() {
         }
     ]
   return (
-      <div className={`${styles.lifeChangingContainer} flex flex-col justify-center py-8 `}>
+      <div className={`${styles.lifeChangingContainer} flex flex-col justify-center py-[4rem] `}>
           <div className='w-[80%] md:w-[60%] m-auto mt-4'>
               <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratBold.className} ${styles.lifeChangingText}`}>How we have solved it!</h1>
               </div>
-          <div className='flex flex-col md:flex-row mb-8 mt-8 w-[80%] mx-auto'>
+          <div className='flex flex-col md:flex-row my-8 md:my-[3rem] w-[80%] mx-auto'>
               {lifeChangingValues.map((lifeChanging) => {
                   return <motion.div initial={{opacity:0.2, scale:0.2}} whileInView={{opacity:1,scale:1}} transition={{duration:0.4}} viewport={{amount:0.8,once:true}} className=' p-[1rem] w-[90%] md:w-[30%] mx-auto '  key={lifeChanging.id}>
                       <div className='w-[8rem] mx-auto h-[8rem] mb-4 relative rounded-lg overflow-hidden'>
                           <Image alt={lifeChanging.title} src={lifeChanging.image} fill objectFit='cover'></Image>
                         </div>
                       <div >
-                          <h1 className={`text-center text-xl mb-4 ${montserratBold.className} ${styles.lifeChangingText} text-orange-600`}>{lifeChanging.title}</h1>
+                          <h1 className={`text-center text-xl mb-4 ${montserratBold.className} text-orange-600`}>{lifeChanging.title}</h1>
                           <p className={`text-center text-white text-sm ${montserratRegular.className} ${styles.lifeChangingText}`}>{lifeChanging.description}</p>
                       </div>
                       <div>
@@ -46,7 +46,7 @@ function LifeChanging() {
               </motion.div>
               })}
           </div>
-              <h2 className={`${DeliciousHandrawn.className} text-xl text-center text-white text-4xl`}>Just follow us, we assure you 100% results..!!</h2>
+              <h2 className={`${DeliciousHandrawn.className} text-xl text-center text-white md:text-4xl`}>Just follow us, we assure you 100% results..!!</h2>
     </div>
   )
 }

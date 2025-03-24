@@ -52,16 +52,16 @@ function Footer() {
             name: "Terms and Conditions",
             route:"/terms-and-conditions"
         },
-        {
-            id: 2,
-            name: "Refund and Cancellation Policy",
-            route: "/refund-and-cancellation-policy"
-        },
-        {
-            id: 3,
-            name: "Shipping Policy",
-            route: "/shipping-policy"
-        },
+        // {
+        //     id: 2,
+        //     name: "Refund and Cancellation Policy",
+        //     route: "/refund-and-cancellation-policy"
+        // },
+        // {
+        //     id: 3,
+        //     name: "Shipping Policy",
+        //     route: "/shipping-policy"
+        // },
         {
             id: 4,
             name: "Privacy Policy",
@@ -101,7 +101,7 @@ function Footer() {
                  </div>
               </div>
           </div>
-          <div className='my-4'><p className={`text-center text-[0.55rem] text-slate-800 text-white`}>@ 2025 Adeptify Technologies Pvt. Ltd. All rights reserved</p></div>
+          <div className='my-4'><p className={`text-center text-[0.55rem] text-slate-800 text-white md:mr-[6rem]`}>@ 2025 Adeptify Technologies Pvt. Ltd. All rights reserved</p></div>
     </div>
   )
 }

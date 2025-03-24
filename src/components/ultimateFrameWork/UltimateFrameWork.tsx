@@ -4,9 +4,9 @@ import styles from "./UltimateFrameWork.module.css"
 
 function UltimateFrameWork() {
     return (
-        <div className={`w-full p-4 md:p-8 flex flex-col justify-center items-center ${styles.ultimateFrameworkContainer}`}>
+        <div className={`w-full px-4 md:px-8 py-[4rem] flex flex-col justify-center items-center ${styles.ultimateFrameworkContainer}`}>
             {/* Heading */}
-            <div className="w-[80%] md:w-[70%] mx-auto">
+            <div className="w-[80%] md:w-[70%] mx-auto md:mt-4">
                 <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                     We care with...
           </h1>
@@ -27,7 +27,7 @@ function UltimateFrameWork() {
                 </video>
         </div>
         <div className='mt-[3rem]'>
-              <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee you, there is no such One Stop Shop solution on parenting..!!!</p>
+              <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee, there is no such One Stop Shop solution on parenting..!!!</p>
             </div>
         </div>
     );

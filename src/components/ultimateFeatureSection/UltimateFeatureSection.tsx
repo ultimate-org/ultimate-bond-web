@@ -1,164 +1,206 @@
-"use client";
+// import { montserratBold, montserratRegular } from "@/fonts/fonts"
+// import styles from "./UltimateFeature.module.css"
 
-import React, { useEffect, useState } from "react";
-import { montserratBold } from "@/fonts/fonts";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { type CarouselApi } from "@/components/ui/carousel";
+// import React from 'react'
+// import Image from "next/image"
+
+// function UltimateFeatureSection() {
+//     const ultimateFeatures = [
+//         {
+//             id: 1,
+//             title: "Hands on Activities",
+//             description: "Age appropriate 1800 Life Skill enhancing activity videos for your child. Fun while learning basic concepts. Ensure better grades.",
+//             imagePath:""
+//         },
+//         {
+//             id: 2,
+//             title: "Audio Stories",
+//             description: "Access a rich collection of age-appropriate 1000’s of audio stories. Spark imagination. Meaningful conversations. Socratic style questions at the end of each story.",
+//             imagePath:""
+//         },
+//         {
+//             id: 3,
+//             title: "Parenting Virtue Week",
+//             description: "Only for parents! Weekly focus on building a parenting quality to instill positive values. E.g. Encouraging Independence, Setting Boundaries, Active Listening & many more",
+//             imagePath:""
+//         },
+//         {
+//             id: 4,
+//             title: "Case Studies for Children",
+//             description: "Case study-based, easy-to-understand learning inspired by Harvard studies designed to promote deeper understanding and practical application of key concepts.",
+//             imagePath:""
+//         },
+//         {
+//             id: 5,
+//             title: "Reading Habit Tracker",
+//             description: "Track & log daily reading minutes of your child. Improve love for reading. Reinforce consistent reading habits & reward.",
+//             imagePath:""
+//         },
+//         {
+//             id: 6,
+//             title: "Build Portfolio",
+//             description: "Easily record your child's extracurricular achievements across Sports, Academics, Arts & more. Platform allows to track and store milestones with photos and videos.",
+//             imagePath:""
+//         },
+//         {
+//             id: 7,
+//             title: "Parenting Workshops",
+//             description: "Expert-led workshops every month. Gain valuable insights & parenting strategies for parenting & child development to navigate the challenges of modern parenting.",
+//             imagePath:""
+//         },
+//         {
+//             id: 8,
+//             title: "Shlok and Mudra Videos",
+//             description: "Learn and recite hundreds of Shlokas and practice Mudras with simple video instructions. Enhance memory & speech, boost mental alertness, & reduce stress & anxiety.",
+//             imagePath:""
+//         },
+//     ]
+//   return (
+//     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
+//       <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>
+//         Explore Ulti-Mate Features
+//           </h1>
+
+//           {/* Ultimate Features Container */}
+//           <div className="w-full flex flex-row overflow-clip">
+//               {
+//                   ultimateFeatures.map((feature) => {
+//                       return <div
+//                       key={feature.id}
+//                       className=" w-[20rem] bg-lime-500 flex flex-col lg:flex-row items-center p-4 m-2 rounded-lg shadow-md cursor-pointer"
+//                   >
+//                       <div className="w-[30%] h-20 flex items-center justify-center">
+//                           <div className="relative w-full h-full rounded-lg bg-white shadow-lg overflow-hidden flex justify-between items-center">
+//                               <div className='w-[40%] h-[40%] relative mx-auto'>
+//                               <Image
+//                                   src={feature.imagePath}
+//                                   alt={feature.title}
+//                                   fill
+//                                   className="object-cover w-full h-full"
+//                                   />
+//                                   </div>
+//                           </div>
+//                       </div>
+//                       <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
+//                           <h2 className={`text-xl font-semibold ${montserratBold.className}`}>{feature.title}</h2>
+//                           <p className={`text-sm mt-2 ${montserratRegular.className}`}>{feature.description}</p>
+//                       </div>
+//                   </div>
+//                   })
+//               }
+//           </div>
+//       </div>
+//   )
+// }
+
+// export default UltimateFeatureSection
+
+
+import { montserratBold, montserratRegular } from "@/fonts/fonts";
 import styles from "./UltimateFeature.module.css";
+import React from "react";
+import Image from "next/image";
 
 function UltimateFeatureSection() {
   const ultimateFeatures = [
     {
       id: 1,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Parenting_virtue_feature.mp4",
+      title: "Hands on Activities",
+      description:
+        "Age appropriate 1800 Life Skill enhancing activity videos for your child. Fun while learning basic concepts. Ensure better grades.",
+      imagePath: "/images/ultimateFeature/1.png",
     },
     {
       id: 2,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Reading_feature.mp4",
+      title: "Audio Stories",
+      description:
+        "Access a rich collection of age-appropriate 1000’s of audio stories. Spark imagination. Meaningful conversations. Socratic style questions at the end of each story.",
+      imagePath:  "/images/ultimateFeature/2.png",
     },
     {
       id: 3,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Create_task_feature.mp4",
+      title: "Parenting Virtue Week",
+      description:
+        "Only for parents! Weekly focus on building a parenting quality to instill positive values. E.g. Encouraging Independence, Setting Boundaries, Active Listening & many more",
+      imagePath:  "/images/ultimateFeature/3.png",
     },
     {
       id: 4,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Habitup_feature.mp4",
+      title: "Case Studies for Children",
+      description:
+        "Case study-based, easy-to-understand learning inspired by Harvard studies designed to promote deeper understanding and practical application of key concepts.",
+      imagePath:  "/images/ultimateFeature/4.png",
     },
     {
       id: 5,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Mudra_and_shlok_feature.mp4",
+      title: "Reading Habit Tracker",
+      description:
+        "Track & log daily reading minutes of your child. Improve love for reading. Reinforce consistent reading habits & reward.",
+      imagePath:  "/images/ultimateFeature/5.png",
     },
     {
       id: 6,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Pg_feature.mp4",
+      title: "Build Portfolio",
+      description:
+        "Easily record your child's extracurricular achievements across Sports, Academics, Arts & more. Platform allows to track and store milestones with photos and videos.",
+      imagePath:  "/images/ultimateFeature/6.png",
     },
     {
       id: 7,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Portfolio_feature.mp4",
+      title: "Parenting Workshops",
+      description:
+        "Expert-led workshops every month. Gain valuable insights & parenting strategies for parenting & child development to navigate the challenges of modern parenting.",
+      imagePath:  "/images/ultimateFeature/7.png",
     },
     {
       id: 8,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Rewards_feature.mp4",
-    },
-    {
-      id: 9,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Assessment_feature.mp4",
-    },
-    {
-      id: 10,
-      thumbnail: "/images/main-section-background.jpg",
-      videoPath: "/videos/ultimate-feature/Story_feature.mp4",
+      title: "Shlok and Mudra Videos",
+      description:
+        "Learn and recite hundreds of Shlokas and practice Mudras with simple video instructions. Enhance memory & speech, boost mental alertness, & reduce stress & anxiety.",
+      imagePath:  "/images/ultimateFeature/8.png",
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(1);
-  const [clickedVideo, setClickedVideo] = useState<number | null>(null);
-  const [api, setApi] = useState<CarouselApi>();
-  const videoRefs = React.useRef<(HTMLVideoElement | null)[]>([]);
-
-  // Handle video play/pause based on active index
-  useEffect(() => {
-    if (!api) return;
-    const handleSelect = () => {
-      const newIndex = api.selectedScrollSnap();
-      setActiveIndex(newIndex);
-
-      // Pause all videos except the active one
-      videoRefs.current.forEach((video, index) => {
-        if (video && index !== newIndex) {
-          video.pause();
-        }
-      });
-    };
-
-    api.on("select", handleSelect);
-    return () => {
-      api.off("select", handleSelect);
-    };
-  }, [api]);
-
-  // Handle video click
-  const handleVideoClick = (index: number) => {
-    const clickedVideoRef = videoRefs.current[index];
-
-    if (clickedVideoRef) {
-      if (clickedVideoRef.paused) {
-        // If the video is paused, play it
-        clickedVideoRef.play();
-        setClickedVideo(index);
-
-        // Pause all other videos
-        videoRefs.current.forEach((video, i) => {
-          if (video && i !== index) {
-            video.pause();
-          }
-        });
-      } else {
-        // If the video is playing, pause it
-        clickedVideoRef.pause();
-        setClickedVideo(null); // Reset the clicked video state
-      }
-    }
-  };
+  // Duplicate the features array to create the infinite loop effect
+  const duplicatedFeatures = [...ultimateFeatures, ...ultimateFeatures];
 
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
-      <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>
-        Explore Ulti-Mate Features
+      <h1
+        className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText} mb-8`}
+      >
+        What&apos;s in the Ulti-Mate app
       </h1>
-      <div className={`mt-[4rem] w-[70%] mx-auto`}>
-        <Carousel
-          opts={{
-            // loop: true, // Enable infinite scroll
-          }}
-          className="w-full p-0"
-          setApi={setApi}
-        >
-          <CarouselContent className="p-0 flex items-center h-[28rem]">
-            {ultimateFeatures.map((ultimateFeature) => (
-              <CarouselItem
-                key={ultimateFeature.id}
-                onClick={() => {
-                  handleVideoClick(ultimateFeature.id);
-                  setActiveIndex(ultimateFeature.id);
-                }}
-                className={`md:basis-1/2 lg:basis-1/3  rounded-lg p-0 overflow-hidden transition-all duration-300 ${
-                  activeIndex === ultimateFeature.id ? "h-full" : "h-[85%]"
-                }`}
-              >
-                <video
-                  ref={(el: HTMLVideoElement | null) => {
-                    if (el) {
-                      videoRefs.current[ultimateFeature.id] = el;
-                    }
-                  }}
-                  autoPlay={ultimateFeature.id === clickedVideo} // Autoplay the clicked video
-                  className={`${activeIndex === ultimateFeature.id ? "w-[90%]" : "w-[80%]"} mx-auto h-full object-fill rounded-lg `}
-                >
-                  <source src={ultimateFeature.videoPath} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+
+      {/* Slider Container */}
+      <div className={styles.sliderContainer}>
+        {duplicatedFeatures.map((feature, index) => (
+          <div
+            key={`${feature.id}-${index}`} // Unique key for duplicated items
+            className="w-[20rem] md:w-[30rem] flex flex-col lg:flex-row items-center p-4 m-2 rounded-lg shadow-md cursor-pointer"
+          >
+            <div className="w-[30%] h-20 flex items-center justify-center">
+              <div className="relative w-full h-full rounded-lg bg-white shadow-lg overflow-hidden flex justify-between items-center">
+                <div className="w-[60%] h-[80%] relative mx-auto">
+                  <Image
+                    src={feature.imagePath}
+                    alt={feature.title}
+                    fill
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
+              <h2 className={`text-xl font-semibold ${montserratBold.className}`}>
+                {feature.title}
+              </h2>
+              <p className={`text-sm mt-2 ${montserratRegular.className}`}>
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -94,7 +94,7 @@ function Login() {
 
       const isChildAvailable = await response.json();
       if (isChildAvailable?.data.length > 0) {
-        router.replace("/home")
+        router.replace("/")
       } else {
         router.replace("/childDetails")
       }

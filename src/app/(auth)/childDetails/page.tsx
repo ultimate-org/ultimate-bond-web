@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -24,23 +24,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-import { FaCircleArrowLeft } from "react-icons/fa6";
+// import {
+//   InputOTP,
+//   InputOTPGroup,
+//   InputOTPSeparator,
+//   InputOTPSlot,
+// } from "@/components/ui/input-otp";
+// import { REGEXP_ONLY_DIGITS } from "input-otp";
+// import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { AddChildModal } from "@/index";
 // import { AddAnotherChildDialog } from "./AddAnotherChildDialog"; // Import the dialog component
 
 const formSchema = z.object({
-  firstname: z
-    .string()
-    .min(1, { message: "First name is required." })
-    .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
+  // firstname: z
+  //   .string()
+  //   .min(1, { message: "First name is required." })
+  //   .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
   standard: z.string().min(1, { message: "Please select Standard." }),
 });
 
@@ -50,23 +50,23 @@ type Standard = {
 };
 
 type userData = {
-  first_name: string;
+  // first_name: string;
   standard_id: string;
   avatar_id: string;
   parent_id: string;
   gender_id: number;
   user_id: string;
-  password: string;
+  // password: string;
 };
 
 function ChildDetails() {
   const [standardData, setStandardData] = useState<Standard[]>([]);
   const [avatarData, setAvatarData] = useState([]);
-  const [enteringPasscode, setEnteringPasscode] = useState(false);
+  // const [enteringPasscode, setEnteringPasscode] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState("");
   const [selectedAvatarType, setSelectedAvatarType] = useState("Boy");
-  const [passcode, setPasscode] = useState("");
-  const [confirmPasscode, setConfirmPasscode] = useState("");
+  // const [passcode, setPasscode] = useState("");
+  // const [confirmPasscode, setConfirmPasscode] = useState("");
   const [parentInfo, setParentInfo] = useState<any>("");
   const [isDialogOpen, setIsDialogOpen] = useState(false); // State for dialog
   const { toast } = useToast();
@@ -75,37 +75,37 @@ function ChildDetails() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstname: "",
+      // firstname: "",
       standard: "",
     },
   });
 
   const handlePasscodeSubmit = async () => {
-    if (passcode.length !== 4 || confirmPasscode.length !== 4) {
-      toast({
-        description: "Passcode must be 4 digits.",
-        variant: "destructive",
-      });
-      return;
-    }
+    // if (passcode.length !== 4 || confirmPasscode.length !== 4) {
+    //   toast({
+    //     description: "Passcode must be 4 digits.",
+    //     variant: "destructive",
+    //   });
+    //   return;
+    // }
 
-    if (passcode !== confirmPasscode) {
-      toast({
-        description: "Passcodes do not match.",
-        variant: "destructive",
-      });
-      return;
-    }
+    // if (passcode !== confirmPasscode) {
+    //   toast({
+    //     description: "Passcodes do not match.",
+    //     variant: "destructive",
+    //   });
+    //   return;
+    // }
 
     try {
       const data: userData = {
-        first_name: form.getValues("firstname").trim(),
+        // first_name: form.getValues("firstname").trim(),
         standard_id: form.getValues("standard"),
         avatar_id: selectedAvatar,
         parent_id: parentInfo?.parent_id,
         gender_id: selectedAvatarType === "Boy" ? 1 : 2,
         user_id: parentInfo?.user_id,
-        password: passcode,
+        // password: passcode,
       };
       const response = await fetch("/childDetails/api", {
         method: "POST",
@@ -147,21 +147,22 @@ function ChildDetails() {
       });
       return;
     }
-    setEnteringPasscode(true);
-    setPasscode("");
-    setConfirmPasscode("");
+    handlePasscodeSubmit()
+    // setEnteringPasscode(true);
+    // setPasscode("");
+    // setConfirmPasscode("");
   };
 
   const handleAddAnother = () => {
     setIsDialogOpen(false); // Close the dialog
     form.reset(); // Reset the form
     setSelectedAvatar(""); // Reset the selected avatar
-    setEnteringPasscode(false); // Reset the passcode screen
+    // setEnteringPasscode(false); // Reset the passcode screen
   };
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false); // Close the dialog
-    // route.push("/dashboard"); // Redirect to dashboard or another page
+    route.push("/home/childProfile"); // Redirect to dashboard or another page
   };
 
   useEffect(() => {
@@ -177,7 +178,8 @@ function ChildDetails() {
     setParentInfo(parsedParentInfo);
 
     if (!isLoggedIn || JSON.parse(isLoggedIn) === false) {
-      route.replace("/signup");
+      // route.replace("/signup");
+      route.replace("/")
       return;
     }
 
@@ -223,7 +225,7 @@ function ChildDetails() {
           />
         </div>
         {/* Child Addition Container */}
-        {!enteringPasscode ? (
+        {/* {!enteringPasscode ? ( */}
           <div>
             <div className="mb-8">
               <h1 className="text-center md:text-left text-2xl font-bold">
@@ -249,7 +251,7 @@ function ChildDetails() {
                   className="space-y-8"
                 >
                   {/* Full Name Field */}
-                  <FormField
+                  {/* <FormField
                     control={form.control}
                     name="firstname"
                     render={({ field }) => (
@@ -261,7 +263,7 @@ function ChildDetails() {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
 
                   {/* Standard Field */}
                   <FormField
@@ -303,8 +305,8 @@ function ChildDetails() {
               </Form>
             </div>
           </div>
-        ) : (
-          // Entering Passcode
+        {/* ) : ( */}
+          {/* // Entering Passcode
           <div className="space-y-8">
             <div className="mb-4">
               <FaCircleArrowLeft size={24} onClick={() => setEnteringPasscode(false)} />
@@ -314,7 +316,7 @@ function ChildDetails() {
             </p>
             <div>
               {/* Passcode Input */}
-              <div className="my-8">
+              {/* <div className="my-8">
                 <p className="my-4">Enter Passcode</p>
                 <InputOTP
                   pattern={REGEXP_ONLY_DIGITS}
@@ -332,10 +334,10 @@ function ChildDetails() {
                     <InputOTPSlot index={3} />
                   </InputOTPGroup>
                 </InputOTP>
-              </div>
+              </div> */} 
 
               {/* Confirm Passcode Input */}
-              <div className="my-8">
+              {/* <div className="my-8">
                 <p className="my-4">Confirm Passcode</p>
                 <InputOTP
                   pattern={REGEXP_ONLY_DIGITS}
@@ -368,7 +370,7 @@ function ChildDetails() {
               </Button>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* Add Another Child Dialog */}

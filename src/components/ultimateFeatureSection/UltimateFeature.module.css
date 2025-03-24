@@ -1,7 +1,35 @@
-.ultimateFeatureContainer {
+/* .ultimateFeatureContainer {
     background-color: var(--primary-blue-lightest-color);
 }
 
 .ultimateFeatureText {
     color : var(--primary-color)
-}
+} */
+
+/* UltimateFeature.module.css */
+.ultimateFeatureContainer {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .sliderContainer {
+    display: flex;
+    width: max-content; /* Allow the container to expand based on content */
+    animation: slide 50s linear infinite; /* Adjust animation duration as needed */
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Move by half the total width */
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .sliderContainer {
+      animation-duration: 30s; /* Slower animation for smaller screens */
+    }
+  }

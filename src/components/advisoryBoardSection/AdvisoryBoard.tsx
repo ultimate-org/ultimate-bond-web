@@ -33,17 +33,17 @@ function AdvisoryBoard() {
         },
     ]
   return (
-      <div className= {`${styles.advisoryBoardContainer}`}>
+      <div className= {`${styles.advisoryBoardContainer} py-[4rem]`}>
             <div className='py-8'>
                         <div className='my-2'>
                             <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.adivisoryBoardText}`}>Our Advisors</h1>
                         </div>
-                        <div className='flex flex-col md:flex-row items-center justify-center my-4'>
+                        <div className='flex flex-col md:flex-row items-center justify-center my-4 md:my-8'>
                             {
                                 advisoryBoard.map((advisors) => {
-                                    return <div key={advisors.id} className='w-[50%] md:w-[15%] justify-center items-center' >
+                                    return <div key={advisors.id} className='w-[50%] md:w-[20%] justify-center items-center' >
                                         {/* Image */}
-                                        <div className='h-[6rem]  w-[6rem] m-auto my-8 relative rounded-lg overflow-hidden drop-shadow-2xl'>
+                                        <div className='h-[8rem]  w-[8rem] m-auto my-4 relative rounded-lg overflow-hidden drop-shadow-2xl'>
                                             <Image src={advisors.image} alt='advisor'  className='object-cover' fill></Image>
                                         </div>
                                         {/* Info */}

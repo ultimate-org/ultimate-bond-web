@@ -142,13 +142,20 @@ const transition = {
   }
 
 function Main() {
-    const pointsArr = [
-        "Emotional regulation in tough situations?",
-"Conflict resolution & decision making in relationships?",
-"Financial literacy to make smart life decisions?",
-"Networking & leadership to unlock new opportunities?",
-"Resilience to handle setbacks?"
-    ]
+//     const pointsArr = [
+//         `Emotional regulation in tough situations?`,
+// "Conflict resolution & decision making in relationships?",
+// "Financial literacy to make smart life decisions?",
+// "Networking & leadership to unlock new opportunities?",
+// "Resilience to handle setbacks?"
+  //     ]
+  const pointsArr = [
+    { normal: "Emotional regulation", bold: "in tough situations?" },
+    { normal: "Conflict resolution & decision making", bold: "in relationships?" },
+    { normal: "Financial literacy to make", bold: "smart life decisions?" },
+    { normal: "Networking & leadership to", bold: "unlock new opportunities?" },
+    { normal: "Resilience to", bold: "handle setbacks?" }
+];
   return (
     <div className='justify-center items-center'>
           <div className='pt-[8rem] pb-[5rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
@@ -180,12 +187,15 @@ function Main() {
           <div className='my-[4rem] flex flex-col md:flex-row justify-center items-center px-8'>
               {
                   pointsArr.map((point,index) => {
-                      return <motion.div key={point} className={`border border-1 mb-2 w-[80%] md:w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE]`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
+                      return <motion.div key={point} className={`border border-1 mb-2 w-[80%] md:w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE] p-4`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
                         ...transition,
-                        delay: transition.delay + index * 0.5, // Add delay based on index
+                        delay: transition.delay + index * 0.3, // Add delay based on index
                       }} >
-                        <p className={`text-md my-1 text-[#020e25] ${montserratBold.className} text-center`}>{point}</p>
-                        </motion.div>
+                        {/* <p className={`text-md my-1 text-[#020e25] ${montserratBold.className} text-center`}>{point}</p> */}
+                        <p className={`text-md my-1 text-[#020e25] ${montserratBold.className} text-center`}>
+                {point.normal} <strong>{point.bold}</strong>
+            </p>
+                      </motion.div>
                   })
                   }
                   </div>

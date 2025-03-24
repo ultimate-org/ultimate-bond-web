@@ -51,8 +51,11 @@ function RegretAndOutcome() {
         <div className="w-full p-8">
             <div className="my-4">
                 <div className='w-[80%] md:w-[70%] lg:w-[60%] mx-auto'>
-                <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
-                    With Ulti-Mate, you can expect
+                <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-2 ${montserratBold.className}`}>
+                    How will
+                    </h3>
+                    <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
+                    Ulti-Mate child be like
                     </h3>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

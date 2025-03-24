@@ -24,26 +24,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+// import {
+//   InputOTP,
+//   InputOTPGroup,
+//   InputOTPSeparator,
+//   InputOTPSlot,
+// } from "@/components/ui/input-otp";
 import { Checkbox } from '@/components/ui/checkbox';
-import { FaCircleArrowLeft } from "react-icons/fa6";
-import { REGEXP_ONLY_DIGITS } from 'input-otp';
+// import { FaCircleArrowLeft } from "react-icons/fa6";
+// import { REGEXP_ONLY_DIGITS } from 'input-otp';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 // Define the form schema using zod
 const formSchema = z.object({
-  firstname: z.string()
-    .min(1, { message: "First name is required." })
-    .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
-    lastname: z.string()
-    .min(1, { message: "Last name is required." })
-    .regex(/^[a-zA-Z]+$/, { message: "Last name must contain only letters." }),
+  // firstname: z.string()
+  //   .min(1, { message: "First name is required." })
+  //   .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
+  //   lastname: z.string()
+  //   .min(1, { message: "Last name is required." })
+  //   .regex(/^[a-zA-Z]+$/, { message: "Last name must contain only letters." }),
   countryCode: z.string().min(1, { message: "Country code is required." }),
   phoneNumber: z.string()
     .min(10, { message: "Phone number must be 10 digits." })
@@ -63,18 +63,18 @@ type CountryCode = {
 
 
 type userData = {
-  first_name: string,
-  last_name:string,
+  // first_name: string,
+  // last_name:string,
   contact_number: string,
   contact_country_code: string,
-  password: string
+  // password: string
 }
 
 function SignUp() {
   const [countryCodeData, setCountryCodeData] = useState<CountryCode[]>([]);
-  const [enteringPasscode, setEnteringPasscode] = useState(false);
-  const [passcode, setPasscode] = useState('');
-  const [confirmPasscode, setConfirmPasscode] = useState('');
+  // const [enteringPasscode, setEnteringPasscode] = useState(false);
+  // const [passcode, setPasscode] = useState('');
+  // const [confirmPasscode, setConfirmPasscode] = useState('');
   const { toast } = useToast();
   const router = useRouter();
 
@@ -82,8 +82,8 @@ function SignUp() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstname: "",
-      lastname:"",
+      // firstname: "",
+      // lastname:"",
       countryCode: "",
       phoneNumber: "",
       isLegalDependent: false,
@@ -126,39 +126,37 @@ function SignUp() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
     // Add your form submission logic here
-    setEnteringPasscode(true);
-    setPasscode('');
-    setConfirmPasscode('')
+    handlePasscodeSubmit();
   }
 
   // Handle passcode submission
   const handlePasscodeSubmit = async () => {
-    if (passcode.length !== 4 || confirmPasscode.length !== 4) {
-      toast({
-        description: "Please enter a 4-digit passcode.",
-        variant: "destructive",
-      });
-      return;
-    }
+    // if (passcode.length !== 4 || confirmPasscode.length !== 4) {
+    //   toast({
+    //     description: "Please enter a 4-digit passcode.",
+    //     variant: "destructive",
+    //   });
+    //   return;
+    // }
 
-    if (passcode !== confirmPasscode) {
-      toast({
-        description: "Passcodes do not match.",
-        variant: "destructive",
-      });
-      return;
-    }
+    // if (passcode !== confirmPasscode) {
+    //   toast({
+    //     description: "Passcodes do not match.",
+    //     variant: "destructive",
+    //   });
+    //   return;
+    // }
 
     // Passcodes match, proceed with sign-up logic
    
    
     try {
       const data:userData = {
-        first_name: form.getValues('firstname').trim(),
-        last_name: form.getValues('lastname').trim(),
+        // first_name: form.getValues('firstname').trim(),
+        // last_name: form.getValues('lastname').trim(),
         contact_number: form.getValues('phoneNumber').trim(),
         contact_country_code: form.getValues('countryCode'),
-        password: passcode,
+        // password: passcode,
       };
         const response = await fetch('/signup/api', {
           method: 'POST',
@@ -171,7 +169,7 @@ function SignUp() {
         const signupRegistration = await response.json();
     
       if (!response.ok) {
-          setEnteringPasscode(false)
+          // setEnteringPasscode(false)
           throw new Error(signupRegistration.error || "Something went wrong.");
         }
       localStorage.setItem('ParentInfo', JSON.stringify(signupRegistration?.data?.parent));
@@ -194,7 +192,7 @@ function SignUp() {
   };
 
   return (
-    <div className='w-full md:px-8 px-4 py-[8rem] '>
+    <div className='w-full md:px-8 px-4 py-[2rem] '>
       {/* Main container */}
       <div className='grid md:grid-cols-2 gap-8 md:h-screen'>
         {/* Image Section */}
@@ -203,7 +201,7 @@ function SignUp() {
         </div>
 
         {/* Form Section */}
-        {!enteringPasscode ? (
+        
           <div className='w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%]'>
             {/* Heading Container */}
             <div className="mb-8">
@@ -216,7 +214,7 @@ function SignUp() {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                   {/* Full Name Field */}
                   <div className='flex flex-col md:flex-row item-center justify-between'>
-                    <FormField
+                    {/* <FormField
                     control={form.control}
                     name="firstname"
                     render={({ field }) => (
@@ -228,8 +226,8 @@ function SignUp() {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
-                   <FormField
+                  /> */}
+                   {/* <FormField
                     control={form.control}
                     name="lastname"
                     render={({ field }) => (
@@ -241,7 +239,7 @@ function SignUp() {
                         <FormMessage />
                       </FormItem>
                     )}
-                  />
+                  /> */}
                     </div>
 
                   {/* Country Code and Phone Number Fields */}
@@ -349,24 +347,24 @@ function SignUp() {
               </div>
             </div>
           </div>
-        ) : (
-          // Passcode Entering
-          <div className="space-y-8">
+       
+          {/* // Passcode Entering */}
+          {/* <div className="space-y-8">
             <div className='mb-4'>
               <FaCircleArrowLeft size={24} onClick={() => setEnteringPasscode(false)} />
             </div>
             <p className="text-center md:text-left text-2xl font-bold">Hi {form.getValues('firstname')}! Please create your own passcode.</p>
-            <div>
+            <div> */}
               {/* Passcode Input */}
-              <div className='my-8'>
+              {/* <div className='my-8'>
                 <p className='my-4'>Enter Passcode</p>
                 <InputOTP
                   pattern={REGEXP_ONLY_DIGITS}
                   maxLength={4}
                   value={passcode}
                   onChange={(value) => setPasscode(value)}
-                >
-                  <InputOTPGroup>
+                > */}
+                  {/* <InputOTPGroup>
                     <InputOTPSlot index={0} />
                     <InputOTPSeparator />
                     <InputOTPSlot index={1} />
@@ -376,10 +374,10 @@ function SignUp() {
                     <InputOTPSlot index={3} />
                   </InputOTPGroup>
                 </InputOTP>
-              </div>
+              </div> */}
 
               {/* Confirm Passcode Input */}
-              <div className='my-8'>
+              {/* <div className='my-8'>
                 <p className='my-4'>Confirm Passcode</p>
                 <InputOTP
                   pattern={REGEXP_ONLY_DIGITS}
@@ -397,8 +395,8 @@ function SignUp() {
                     <InputOTPSlot index={3} />
                   </InputOTPGroup>
                 </InputOTP>
-              </div>
-            </div>
+              </div> */}
+            {/* </div>
             <div>
               <Button
                 onClick={handlePasscodeSubmit}
@@ -407,8 +405,8 @@ function SignUp() {
                 Sign Up
               </Button>
             </div>
-          </div>
-        )}
+          </div> */}
+        {/* )} */}
       </div>
     </div>
   );

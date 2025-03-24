@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter,usePathname } from 'next/navigation'
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import {FaBars} from "react-icons/fa6"
 import {
     DropdownMenu,
@@ -42,7 +42,7 @@ function Header() {
                   })
               }
 
-              <Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button>
+              {/* <Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button> */}
           </div>
           {/* showing this section of smaller viewport */}
           <div className='flex md:hidden flex-row items-center'>
@@ -55,7 +55,7 @@ function Header() {
                       return <DropdownMenuItem onClick={()=>router.push(navItem.route)} key={navItem.id}>{navItem.item}</DropdownMenuItem>
                   })
               }
-                 <DropdownMenuItem><Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button></DropdownMenuItem>
+                 {/* <DropdownMenuItem><Button onClick={()=>router.push("/signup")} variant={"destructive"}>Get The App</Button></DropdownMenuItem> */}
   </DropdownMenuContent>
 </DropdownMenu>
           </div>
