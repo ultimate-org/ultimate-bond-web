@@ -33,7 +33,7 @@ function AdvisoryBoard() {
         },
     ]
   return (
-      <div className= {`${styles.advisoryBoardContainer} py-[4rem]`}>
+      <div className= {`${styles.advisoryBoardContainer}`}>
             <div className='py-8'>
                         <div className='my-2'>
                             <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.adivisoryBoardText}`}>Our Advisors</h1>
@@ -49,13 +49,13 @@ function AdvisoryBoard() {
                                         {/* Info */}
                                         <div className='justify-center items-center'>
                                             <div className='my-1'>   
-                                            <h2 className={`text-center text-lg ${montserratBold.className} font-bold text-orange-600`}>{advisors.name}</h2>
+                                            <h2 className={`text-center text-lg ${montserratBold.className} font-bold text-white`}>{advisors.name}</h2>
                                             </div>
                                             <div className='flex flex-col justify-evenly'>
                                                 <div className='h-[3rem]'>
-                                                <h4 className={`text-center text-sm ${montserratBold.className} text-gray-500`}>{advisors.profession}</h4>
+                                                <h4 className={`text-center text-sm ${montserratBold.className} text-white`}>{advisors.profession}</h4>
                                                 
-                                                <h4 className={`text-center text-sm ${montserratBold.className} text-gray-500`}>{advisors.school}</h4> 
+                                                <h4 className={`text-center text-sm ${montserratBold.className} text-white`}>{advisors.school}</h4> 
                                                 </div>
                                                 
                                                 {/* <div className='w-[80%] mx-auto'>

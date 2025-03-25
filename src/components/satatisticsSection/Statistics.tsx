@@ -14,9 +14,10 @@ function Statistics() {
         },
         {
             id: 2,
-            stat: "40%",
-            title: "of children in India struggle with anxiety, stress, depression.",
+            stat: "59%",
+            title: "of parents say their children are too distracted to engage in family interactions.",
         },
+        
         {
             id: 3,
             stat: "50%",
@@ -24,8 +25,8 @@ function Statistics() {
         },
         {
             id: 4,
-            stat: "59%",
-            title: "of parents say their children are too distracted to engage in family interactions.",
+            stat: "40%",
+            title: "of children in India struggle with anxiety, stress, depression.",
         },
         {
             id: 5,
@@ -37,7 +38,7 @@ function Statistics() {
       <div className={`w-full ${styles.statisticsContainer} p-[5rem]`}>
       <div className={`flex flex-col h-auto md:flex-row  md:justify-evenly`}>
           <motion.div className='md:mr-8 mb-8 md:w-[30%]'>
-              <h1 className={`mb-4 text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.statisticsDescription}`}>Alarming trends..!!!</h1>
+              <h1 className={`mb-4 text-2xl md:text-5xl ${montserratExtraBold.className} ${styles.statisticsDescription}`}>Alarming trends!!!</h1>
               <p className={`${montserratRegular.className} text-base text-white ${styles.statisticsDescription}`}>These are concerning trends. Parents of children over 12-13 years old have come to realize they could have done a better job in their parenting. They&apos;ve also discovered that it becomes challenging to influence their child&apos;s EQ, AQ, SQ, and CQ once they reach their teenage years.</p>
           </motion.div>
           <div className='grid md:grid-cols-2 gap-8 md:w-[60%]'>

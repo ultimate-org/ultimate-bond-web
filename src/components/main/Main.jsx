@@ -158,20 +158,20 @@ function Main() {
 ];
   return (
     <div className='justify-center items-center'>
-          <div className='pt-[8rem] pb-[5rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
-        <div className=' py-[8rem] relative'> 
-        <h1 className={`text-center text-6xl ${philosopher.className} ${styles.title}`}>The Future Starts Now!</h1>
-          <div className='relative w-auto mt-4'>
-          <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>Prepare Your Child for the Unknown</h2>
-          <div className='w-[9%] h-5 absolute bottom-[-0.7rem] right-[34%]'>
-            <Image src="/images/stroke.png" fill objectFit='cover'></Image>
+          <div className='pt-[8rem] pb-[7rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
+        <div className=' pt-[7rem] pb-[8rem] relative'> 
+        <h1 className={`text-center text-8xl ${philosopher.className} ${styles.title}`}>The Future Starts Now!</h1>
+          <div className='relative w-auto mt-8'>
+          <h2 className={`text-center text-4xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>Prepare Your Child for the Unknown</h2>
+          <div className='w-[9%] h-5 absolute bottom-[-0.7rem] right-[30%]'>
+            <Image src="/images/stroke.png" alt="stroke" fill objectFit='cover'></Image>
             </div>
           </div>   
         </div> 
           <div className='justify-center my-8 bg-[#020e25] pt-[6rem]'>
               <div>
-            <p className={`text-center text-xl text-white ${montserratRegular.className} ${styles.mainTextColor}`}>Traditional education prepares children for <span className={`underline underline-offset-2 ${styles.mainTextColor}`}>Tests, Grades, Degrees</span></p>
-            <p className={`text-center mt-[3rem] text-4xl text-white  ${montserratBold.className} ${styles.mainTextColor}`}>But does it prepare them for:</p>
+            <p className={`text-center text-2xl text-white ${montserratRegular.className} ${styles.mainTextColor}`}>Traditional education prepares children for <span className={`underline underline-offset-2 ${styles.mainTextColor}`}>Tests, Grades, Degrees</span></p>
+            <p className={`text-center mt-[3rem] text-5xl text-white  ${montserratBold.className} ${styles.mainTextColor}`}>But does it prepare them for</p>
               </div>
               {/* <p className='text-center text-xl'>Traditional education prepares children for <span className='underline underline-offset-2'>Tests, Degrees, and Careers</span> <br /><span className=' mt-4 text-2xl'>But does it prepare them for:</span></p> */}
               {/* <div className='mt-4'>
@@ -184,27 +184,27 @@ function Main() {
                   })
                   }
                   </div> */}
-          <div className='my-[4rem] flex flex-col md:flex-row justify-center items-center px-8'>
+          <div className='my-[4rem] flex flex-col md:flex-row justify-center bg-[#020e25] items-center px-8'>
               {
                   pointsArr.map((point,index) => {
-                      return <motion.div key={point} className={`border border-1 mb-2 w-[80%] md:w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE] p-4`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
+                      return <motion.div key={index} className={`border border-1 mb-2 w-[80%] md:w-[18%] h-[8rem] mx-1 rounded-md flex items-center justify-center bg-[#CCDBEE] p-4`} initial={{scale:0, opacity:0}} whileInView={{scale:1, opacity:1}} viewport={{amount:1, once:true}} transition={{
                         ...transition,
-                        delay: transition.delay + index * 0.3, // Add delay based on index
+                        delay:  index == 0 ?  0 : transition.delay + index * 0.5 , // Add delay based on index
                       }} >
                         {/* <p className={`text-md my-1 text-[#020e25] ${montserratBold.className} text-center`}>{point}</p> */}
-                        <p className={`text-md my-1 text-[#020e25] ${montserratBold.className} text-center`}>
+                        <p className={`text-lg my-1 text-[#020e25] ${montserratBold.className} text-center`}>
                 {point.normal} <strong>{point.bold}</strong>
             </p>
                       </motion.div>
                   })
                   }
                   </div>
+       <div className='mt-6 bg-[#020e25]'>
+                    {/* <p className='text-center'>Research proves that IQ alone isn’t enough—Success = IQ + EQ + SQ + CQ + AQ.</p> */}
+                    <p className={`text-center text-white text-xl md:text-4xl ${DeliciousHandrawn.className} ${styles.mainTextColor}`}>So, are we raising <span className={`${DeliciousHandrawn.className} text-4xl`}>happy, resilient, and emotionally</span> strong children?</p>
+        </div>
           </div>
       
-       <div className='mt-6'>
-                    {/* <p className='text-center'>Research proves that IQ alone isn’t enough—Success = IQ + EQ + SQ + CQ + AQ.</p> */}
-                    <p className={`text-center text-white text-3xl ${DeliciousHandrawn.className} ${styles.mainTextColor}`}>So, are we raising <span className={`${DeliciousHandrawn.className} text-4xl`}>happy, resilient, and emotionally</span> strong children?</p>
-        </div>
         </div>
     </div>
   )

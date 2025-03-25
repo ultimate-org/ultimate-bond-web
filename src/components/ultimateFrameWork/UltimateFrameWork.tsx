@@ -8,7 +8,7 @@ function UltimateFrameWork() {
             {/* Heading */}
             <div className="w-[80%] md:w-[70%] mx-auto md:mt-4">
                 <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
-                    We care with...
+                    <span className="text-[#F15A29] font-bold">We care</span> with...
           </h1>
           <h1 className={`text-2xl md:text-5xl text-center ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                      &quot;Ulti-Mate&quot; framework

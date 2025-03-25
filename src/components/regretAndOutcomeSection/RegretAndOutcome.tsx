@@ -55,7 +55,7 @@ function RegretAndOutcome() {
                     How will
                     </h3>
                     <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
-                    Ulti-Mate child be like
+                    <span className='font-bold text-[#F15A29]'>Ulti-Mate child</span> be like?
                     </h3>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

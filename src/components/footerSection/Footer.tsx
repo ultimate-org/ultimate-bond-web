@@ -69,7 +69,7 @@ function Footer() {
         },
     ]
   return (
-      <div className={`w-full px-8 py-2 bg-[#020e25]`}>
+      <div className={`w-full px-8 py-2 bg-[#1D5B89]`}>
           <div className={`w-full flex flex-col md:flex-row md:justify-between items-center`}>
               {/* Footer logo and social media links section */}
               <div className='flex flex-col items-center my-4'>
