@@ -41,6 +41,7 @@
 import React from 'react';
 import styles from "./ParentTestimony.module.css";
 import { montserratBold } from '@/fonts/fonts';
+import Image from 'next/image';
 
 function ParentTestimony() {
     const parentTestimony = [
@@ -55,7 +56,8 @@ function ParentTestimony() {
     ];
 
     return (
-        <div className={`${styles.parentTestimonyContainer} py-8 flex flex-col md:flex-row justify-center`}>
+        <div className={`${styles.parentTestimonyContainer} py-8 `}>
+        <div className={` flex flex-col md:flex-row justify-center`}>
             <div className='q-[80%] mb-4 md:mb-0 md:w-[30%] mx-auto flex justify-end items-center ml-[4rem]'>
                 <h1 className={`text-2xl md:text-2xl text-white text-center ${montserratBold.className} ${styles.parentTestimony}`}>
                 See what other parents are saying, not just us.
@@ -73,8 +75,43 @@ function ParentTestimony() {
                         </video>
                     </div>
                 ))}
+                </div>
+                </div>
+            {/* app download links */}
+             <div className='flex flex-col md:flex-row md:w-[40%] w-[90%] mx-auto my-10'>
+                            {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
+                            <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
+                             <a
+                                href={process.env.APP_APPSTORE_SHARE_LINK}
+                                target="_blank" // Opens link in a new tab
+                                rel="noopener noreferrer" // Security best practice for external links
+                                className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
+                            >
+                                <Image
+                                    src="/images/applink/app_store_white.png"
+                                    alt="App store"
+                                    fill
+                                    className="object-contain"
+                                    priority // Add priority for above-the-fold images
+                                />
+                            </a>
+                            <a
+                                href={process.env.APP_PLAYSTORE_SHARE_LINK}
+                                target="_blank" // Opens link in a new tab
+                                rel="noopener noreferrer" // Security best practice for external links
+                                className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
+                            >
+                                <Image
+                                    src="/images/applink/play_store_white.png"
+                                    alt="Play store"
+                                    fill
+                                    className="object-contain"
+                                    priority // Add priority for above-the-fold images
+                                />
+                            </a>
+                        </div>
+            
             </div>
-        </div>
     );
 }
 
