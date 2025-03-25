@@ -44,6 +44,9 @@ import UltimateSample from "./components/ultimateSampleSection/UltimateSample"
 // Advisory Board Container
 import AdvisoryBoard from "./components/advisoryBoardSection/AdvisoryBoard"
 
+// End Tag Line Container
+import EndTagLine from "./components/endTagLineSection/EndTagLine"
+
 // Child Details section
 import ChildSelection from "./components/childDetails/ChildSelection"
 
@@ -59,5 +62,5 @@ import { AddChildModal } from "./components/modal/AddChildModal"
 
 export {
     BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureVideoSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
-    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection
+    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection, EndTagLine
 }

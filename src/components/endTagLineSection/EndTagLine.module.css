@@ -1,0 +1,5 @@
+.tagLine {
+    text-shadow: 0 0 2px #06A5D8, 0 0 2px #06A5D8, 0 0 5px #06A5D8, 0 0 20px #06A5D8, 0 0 40px #06A5D8;
+    /* animation: glow 3s infinite alternate; */
+    color: #06A5D8
+}

@@ -58,14 +58,14 @@ function ParentTestimony() {
     return (
         <div className={`${styles.parentTestimonyContainer} py-8 `}>
         <div className={` flex flex-col md:flex-row justify-center`}>
-            <div className='q-[80%] mb-4 md:mb-0 md:w-[30%] mx-auto flex justify-end items-center ml-[4rem]'>
+            <div className='w-[80%] mb-4 md:mb-0 md:w-[30%] mx-auto flex justify-end items-center md:ml-[4rem]'>
                 <h1 className={`text-2xl md:text-2xl text-white text-center ${montserratBold.className} ${styles.parentTestimony}`}>
-                Listen from other parents, not just from us..!
+                Listen from other parents, not just from us!
                 </h1>
             </div>
-            <div className='flex flex-col md:flex-row justify-center mt-8 items-center mx-auto gap-4 w-[70%]'>
+            <div className='flex flex-col md:flex-row justify-center mt-8 items-center mx-auto w-[70%]'>
                 {parentTestimony.map((testimony) => (
-                    <div key={testimony.id} className='w-[80%]  md:w-[30%] max-w-[300px] h-auto aspect-[14/16] md:aspect-[16/16] overflow-hidden rounded-lg shadow-lg mx-auto'>
+                    <div key={testimony.id} className='w-[80%] md:w-[30%] border border-1 h-auto aspect-[14/16] md:aspect-[14/16] overflow-hidden rounded-lg shadow-lg my-4 md:mx-4'>
                         <video
                             className="w-full h-full object-contain"
                             controls

@@ -38,7 +38,7 @@ function LifeChanging() {
                           <Image alt={lifeChanging.title} src={lifeChanging.image} fill objectFit='cover'></Image>
                         </div>
                       <div >
-                          <h1 className={`text-center text-xl mb-4 ${montserratBold.className} text-orange-600`}>{lifeChanging.title}</h1>
+                          <h1 className={`text-center text-xl mb-4 ${montserratBold.className} text-[#F15A29]`}>{lifeChanging.title}</h1>
                           <p className={`text-center text-white text-sm ${montserratRegular.className} ${styles.lifeChangingText}`}>{lifeChanging.description}</p>
                       </div>
                       <div>
@@ -46,7 +46,7 @@ function LifeChanging() {
               </motion.div>
               })}
           </div>
-              <h2 className={`${DeliciousHandrawn.className} text-xl text-center text-white md:text-4xl`}>Just follow us, we assure you 100% results..!!</h2>
+              <h2 className={`${DeliciousHandrawn.className} text-xl text-center text-white md:text-4xl`}>Just follow us, we assure you 100% results !!</h2>
     </div>
   )
 }

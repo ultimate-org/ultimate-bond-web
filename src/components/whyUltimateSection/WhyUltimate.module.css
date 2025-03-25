@@ -6,3 +6,9 @@
 .whyUltimateText {
     color : var(--primary-blue-lightest-color)
 }
+
+.weText {
+    /* text-shadow: 0 0 2px #F15A29, 0 0 2px #F15A29, 0 0 5px #F15A29, 0 0 5px #F15A29, 0 0 5px #F15A29; */
+    /* animation: glow 3s infinite alternate; */
+    color: #F15A29
+}
