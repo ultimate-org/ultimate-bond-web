@@ -21,7 +21,8 @@ import LifeChanging from "@/components/lifeChangingSection/LifeChanging"
 import UltimateFeatureVideoSection from "@/components/ultimateFeatureVideoSection/UltimateFeatureVideoSection"
 
 // Ultimate Feature Section
-import UltimateFeatureSection from "./components/UltimateFeatureSection/UltimateFeatureSection"
+// import UltimateFeatureSection from "@/components/UltimateFeatureSection/UltimateFeatureSection"
+import UltimateFeatureSection from "@/components/UltimateFeatureSection/UltimateFeatureSection"
 
 // Header Section
 import Header from "@/components/headerSection/Header"
