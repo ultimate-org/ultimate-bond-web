@@ -60,7 +60,7 @@ function ParentTestimony() {
         <div className={` flex flex-col md:flex-row justify-center`}>
             <div className='q-[80%] mb-4 md:mb-0 md:w-[30%] mx-auto flex justify-end items-center ml-[4rem]'>
                 <h1 className={`text-2xl md:text-2xl text-white text-center ${montserratBold.className} ${styles.parentTestimony}`}>
-                See what other parents are saying, not just us.
+                Listen from other parents, not just from us..!
                 </h1>
             </div>
             <div className='flex flex-col md:flex-row justify-center mt-8 items-center mx-auto gap-4 w-[70%]'>

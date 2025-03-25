@@ -7,7 +7,6 @@ function Landing() {
     <Statistics></Statistics>
     <UnderLyingCauses></UnderLyingCauses>
     <UltimateFrameWork></UltimateFrameWork>
-    <AdvisoryBoard></AdvisoryBoard>
     <LifeChanging></LifeChanging>
     <UltimateSample></UltimateSample>
     <RegretAndOutcome></RegretAndOutcome>
@@ -15,6 +14,7 @@ function Landing() {
     <UltimateFeatureSection></UltimateFeatureSection>
     <WhyUltimateSection></WhyUltimateSection>
     <ParentTestimony></ParentTestimony>
+    <AdvisoryBoard></AdvisoryBoard>
     {/* <BlogSection></BlogSection> */}
   </>
 }

@@ -160,8 +160,8 @@ function Main() {
     <div className='justify-center items-center'>
           <div className='pt-[8rem] pb-[5rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
         <div className=' py-[8rem] relative'> 
-        <h1 className={`text-center text-6xl ${philosopher.className} ${styles.title}`}>The Future Starts Now</h1>
-          <div className='relative w-auto'>
+        <h1 className={`text-center text-6xl ${philosopher.className} ${styles.title}`}>The Future Starts Now!</h1>
+          <div className='relative w-auto mt-4'>
           <h2 className={`text-center text-2xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>Prepare Your Child for the Unknown</h2>
           <div className='w-[9%] h-5 absolute bottom-[-0.7rem] right-[34%]'>
             <Image src="/images/stroke.png" fill objectFit='cover'></Image>
