@@ -22,7 +22,7 @@ import UltimateFeatureVideoSection from "@/components/ultimateFeatureVideoSectio
 
 // Ultimate Feature Section
 // import UltimateFeatureSection from "@/components/UltimateFeatureSection/UltimateFeatureSection"
-import UltimateFeatureSection from "@/components/UltimateFeatureSection/UltimateFeatureSection"
+import UltimateFeatureSection from "@/components/ultimateFeatureSection/UltimateFeatureSection"
 
 // Header Section
 import Header from "@/components/headerSection/Header"
