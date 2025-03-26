@@ -1,6 +1,8 @@
 import React from 'react';
 import { DeliciousHandrawn, montserratBold, } from '@/fonts/fonts';
 import styles from "./UltimateFrameWork.module.css"
+import Link from 'next/link';
+import Image from 'next/image';
 
 function UltimateFrameWork() {
     return (
@@ -29,6 +31,36 @@ function UltimateFrameWork() {
         <div className='mt-[3rem]'>
               <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee that, there is no such One Stop Shop solution on parenting..!!!</p>
             </div>
+            <div className='flex flex-col md:flex-row md:w-[40%] w-[90%] mx-auto my-10'>
+                                       {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
+                                       <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
+                                        <Link
+                                           href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
+                                           target="_blank" // Opens link in a new tab
+                                           className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
+                                       >
+                                           <Image
+                                               src="/images/applink/app_store_white.png"
+                                               alt="App store"
+                                               fill
+                                               className="object-contain"
+                                               priority // Add priority for above-the-fold images
+                                           />
+                                       </Link>
+                                       <Link
+                                           href={`${process.env.APP_PLAYSTORE_SHARE_LINK}`}
+                                           target="_blank" // Opens link in a new tab
+                                           className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
+                                       >
+                                           <Image
+                                               src="/images/applink/play_store_white.png"
+                                               alt="Play store"
+                                               fill
+                                               className="object-contain"
+                                               priority // Add priority for above-the-fold images
+                                           />
+                                       </Link>
+                                   </div>
         </div>
     );
 }
