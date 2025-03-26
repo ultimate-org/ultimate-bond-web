@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { montserratBold, montserratRegular, DeliciousHandrawn} from "@/fonts/fonts"
+import Link from 'next/link';
 
 function RegretAndOutcome() {
     const tryThis = [
@@ -52,7 +53,7 @@ function RegretAndOutcome() {
             <div className="my-4">
                 <div className='w-[80%] md:w-[70%] lg:w-[60%] mx-auto'>
                 <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-2 ${montserratBold.className}`}>
-                    How will
+                    How will the
                     </h3>
                     <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
                     <span className='font-bold text-[#F15A29]'>Ulti-Mate child</span> be like?
@@ -94,10 +95,9 @@ function RegretAndOutcome() {
            <div className='flex flex-col md:flex-row md:w-[40%] w-[90%] mx-auto my-10'>
                                        {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
                                        <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
-                                        <a
-                                           href={process.env.APP_APPSTORE_SHARE_LINK}
+                                        <Link
+                                           href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
                                            target="_blank" // Opens link in a new tab
-                                           rel="noopener noreferrer" // Security best practice for external links
                                            className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
                                        >
                                            <Image
@@ -107,11 +107,10 @@ function RegretAndOutcome() {
                                                className="object-contain"
                                                priority // Add priority for above-the-fold images
                                            />
-                                       </a>
-                                       <a
-                                           href={process.env.APP_PLAYSTORE_SHARE_LINK}
+                                       </Link>
+                                       <Link
+                                           href={`${process.env.APP_PLAYSTORE_SHARE_LINK}`}
                                            target="_blank" // Opens link in a new tab
-                                           rel="noopener noreferrer" // Security best practice for external links
                                            className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
                                        >
                                            <Image
@@ -121,7 +120,7 @@ function RegretAndOutcome() {
                                                className="object-contain"
                                                priority // Add priority for above-the-fold images
                                            />
-                                       </a>
+                                       </Link>
                                    </div>
                        
         </div>

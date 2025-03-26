@@ -159,9 +159,9 @@ function Main() {
   return (
     <div className='justify-center items-center'>
           <div className='pt-[8rem] pb-[7rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
-        <div className=' pt-[7rem] pb-[8rem] relative'> 
+        <div className=' pt-[7rem] pb-[10rem] relative'> 
         <h1 className={`text-center text-8xl ${philosopher.className} ${styles.title}`}>The Future Starts Now!</h1>
-          <div className='relative w-auto mt-8'>
+          <div className='relative  mt-8 '>
           <h2 className={`text-center text-4xl ${philosopher.className} text-transparent bg-clip-text bg-[#06A5D8]`}>Prepare Your Child for the Unknown</h2>
           <div className='w-[9%] h-5 absolute bottom-[-0.7rem] right-[30%]'>
             <Image src="/images/stroke.png" alt="stroke" fill objectFit='cover'></Image>

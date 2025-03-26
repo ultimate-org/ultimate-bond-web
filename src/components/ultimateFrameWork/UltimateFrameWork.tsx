@@ -8,7 +8,7 @@ function UltimateFrameWork() {
             {/* Heading */}
             <div className="w-[80%] md:w-[70%] mx-auto md:mt-4">
                 <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
-                    <span className="text-[#F15A29] font-bold">We care</span> with...
+                    <span className="text-[#F15A29] font-bold">We care</span> with the...
           </h1>
           <h1 className={`text-2xl md:text-5xl text-center ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                      &quot;Ulti-Mate&quot; framework
@@ -27,7 +27,7 @@ function UltimateFrameWork() {
                 </video>
         </div>
         <div className='mt-[3rem]'>
-              <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee, there is no such One Stop Shop solution on parenting..!!!</p>
+              <p className={`${DeliciousHandrawn.className} text-xl md:text-4xl text-center ${styles.ultimateFrameworkText}`}>We guarantee that, there is no such One Stop Shop solution on parenting..!!!</p>
             </div>
         </div>
     );
