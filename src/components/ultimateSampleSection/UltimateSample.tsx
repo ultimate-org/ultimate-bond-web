@@ -222,7 +222,7 @@ function UltimateSample() {
                                            />
                                        </Link>
                                        <Link
-                                           href={`${process.env.APP_PLAYSTORE_SHARE_LINK}`}
+                                           href={`https://play.google.com/store/apps/details?id=com.ultimate_bond`}
                                            target="_blank" // Opens link in a new tab
                                            className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
                                        >

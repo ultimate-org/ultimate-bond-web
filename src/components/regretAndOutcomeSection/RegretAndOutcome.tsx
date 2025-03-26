@@ -30,13 +30,13 @@ function RegretAndOutcome() {
         {
             id: 4,
             title: "Life Long Learner",
-            description: "Life-long learner which is key in Fast Pace changing world",
+            description: "Life-long learner which is key in Fast Paced changing world",
             imagePath:"/images/regretandoutcome/Life_long_learner.png"
         },
         {
             id: 5,
-            title: "21st Century Skills",
-            description: "Improved Financial and Digital Literacy",
+            title: "Highly Adaptive",
+            description: "Improved Financial, Digital Literacy and 21st Century Skills",
             imagePath:"/images/regretandoutcome/Improved_Financial.png"
         },
         {
@@ -55,7 +55,7 @@ function RegretAndOutcome() {
                     How will the
                     </h3>
                     <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
-                    <span className='font-bold text-[#F15A29]'>Ulti-Mate child</span> be like?
+                    <span className='font-bold text-[#F15A29]'>Ulti-Mate child</span> be?
                     </h3>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
