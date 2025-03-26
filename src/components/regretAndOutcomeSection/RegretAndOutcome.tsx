@@ -6,14 +6,13 @@ import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { montserratBold, montserratRegular, DeliciousHandrawn} from "@/fonts/fonts"
-import Link from 'next/link';
 
 function RegretAndOutcome() {
     const tryThis = [
         {
             id: 1,
-            title: "Maximising Child Potential",
-            description: "Better performance by child in every aspect of life, be it school or in social circle",
+            title: "Maximised Potential",
+            description: "Better performance by child in every aspect of life, be it school or in social life",
             imagePath:"/images/regretandoutcome/Better_performance.png"
         },
         {
@@ -24,14 +23,14 @@ function RegretAndOutcome() {
         },
         {
             id: 3,
-            title: "Fostering Resilience & Confidence",
-            description: "Physical, mental, Social well-being, hence confident and resilient child",
+            title: "Resilient and Confident",
+            description: "Physical, Mental, Social well-being, hence confident and resilient child",
             imagePath:"/images/regretandoutcome/Physical_mental.png"
         },
         {
             id: 4,
             title: "Life Long Learner",
-            description: "Life-long learner which is key in Fast Pace Tech changing world",
+            description: "Life-long learner which is key in Fast Pace changing world",
             imagePath:"/images/regretandoutcome/Life_long_learner.png"
         },
         {
@@ -51,7 +50,7 @@ function RegretAndOutcome() {
     return (
         <div className="w-full p-8">
             <div className="my-4">
-                <div className='w-[80%] md:w-[70%] lg:w-[60%] mx-auto'>
+                <div className='w-[90%] md:w-[70%] lg:w-[60%] mx-auto'>
                 <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-2 ${montserratBold.className}`}>
                     How will the
                     </h3>
@@ -82,8 +81,8 @@ function RegretAndOutcome() {
                                 </div>
                             </div>
                             <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
-                                <h2 className={`text-xl font-semibold ${montserratBold.className}`}>{item.title}</h2>
-                                <p className={`text-sm mt-2 ${montserratRegular.className}`}>{item.description}</p>
+                                <h2 className={`text-md md:text-lg font-semibold ${montserratBold.className}`}>{item.title}</h2>
+                                <p className={`md:text-base text-xs mt-2 ${montserratRegular.className}`}>{item.description}</p>
                             </div>
                         </motion.div>
                     ))}
@@ -92,36 +91,6 @@ function RegretAndOutcome() {
             <div className='mt-[3rem]'>
               <p className={`${DeliciousHandrawn.className} text-4xl text-center`}>“IQ gets you into the race, EQ makes you win it”</p>
             </div>
-           <div className='flex flex-col md:flex-row md:w-[40%] w-[90%] mx-auto my-10'>
-                                       {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
-                                       <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
-                                        <Link
-                                           href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
-                                           target="_blank" // Opens link in a new tab
-                                           className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
-                                       >
-                                           <Image
-                                               src="/images/applink/app_store.png"
-                                               alt="App store"
-                                               fill
-                                               className="object-contain"
-                                               priority // Add priority for above-the-fold images
-                                           />
-                                       </Link>
-                                       <Link
-                                           href={`${process.env.APP_PLAYSTORE_SHARE_LINK}`}
-                                           target="_blank" // Opens link in a new tab
-                                           className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
-                                       >
-                                           <Image
-                                               src="/images/applink/play_store.png"
-                                               alt="Play store"
-                                               fill
-                                               className="object-contain"
-                                               priority // Add priority for above-the-fold images
-                                           />
-                                       </Link>
-                                   </div>
                        
         </div>
     );

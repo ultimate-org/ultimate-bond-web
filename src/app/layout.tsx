@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Ulti-Mate",
-  description: "Ulti-Mate is the parenting app designed and developed for enhancing bond between parent and child.",
+  description: "Unleash the power of Child Development and Parenting with UltiMate. We offer age appropriate Life Skills enhancing 4000+ Child engagement along with practical parenting guidance and many more aids to enhance parent child bond.",
   icons: {
     icon: '/favicon.ico', // Path from /app
     shortcut: '/icon.png', // Optional
