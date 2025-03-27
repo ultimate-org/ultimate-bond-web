@@ -5,7 +5,8 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { montserratBold, montserratRegular, DeliciousHandrawn} from "@/fonts/fonts"
+import { montserratBold, montserratRegular, DeliciousHandrawn } from "@/fonts/fonts"
+import styles from "./RegretAndOutcome.module.css"
 
 function RegretAndOutcome() {
     const tryThis = [
@@ -55,7 +56,7 @@ function RegretAndOutcome() {
                     How will the
                     </h3>
                     <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
-                    <span className='font-bold text-[#F15A29]'>Ulti-Mate child</span> be?
+                    <span className={`font-bold text-[#F15A29] ${styles.ultimateText}`}>Ulti-Mate child</span> be?
                     </h3>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -89,7 +90,7 @@ function RegretAndOutcome() {
                 </div>
             </div>
             <div className='mt-[3rem]'>
-              <p className={`${DeliciousHandrawn.className} text-4xl text-center`}>“IQ gets you into the race, EQ makes you win it”</p>
+              <p className={`${DeliciousHandrawn.className} text-2xl md:text-4xl text-center`}>“IQ gets you into the race, EQ makes you win it”</p>
             </div>
                        
         </div>

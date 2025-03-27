@@ -3,6 +3,10 @@
     background-color:#010817 ;
 }
 
+.ultimateText{
+    font-family: "SmallPrint";
+}
+
 .ultimateFeatureText {
     color : var(--primary-blue-lightest-color)
 }

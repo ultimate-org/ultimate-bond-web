@@ -169,7 +169,7 @@ function UltimateFeatureSection() {
       <h1
         className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText} mb-8`}
       >
-        What&apos;s in the Ulti-Mate app
+        What&apos;s in the <span className={`${styles.ultimateText}`}>Ulti-Mate</span> app
       </h1>
 
       {/* Slider Container */}

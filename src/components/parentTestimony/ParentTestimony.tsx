@@ -83,7 +83,7 @@ function ParentTestimony() {
                             {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
                             <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
                              <Link
-                                href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
+                                href={`https://apps.apple.com/in/app/ultimate-parenting/id6593687319`}
                                 target="_blank" // Opens link in a new tab
                                 rel="noopener noreferrer" // Security best practice for external links
                                 className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'

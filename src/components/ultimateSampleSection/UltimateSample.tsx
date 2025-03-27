@@ -177,7 +177,7 @@ function UltimateSample() {
     return (
         <div className={`py-[4rem] ${styles.ultimateSampleContainer}`}>
             <div>
-                <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateSampleText}`}>Ulti-Mate&apos;s illustrative activities</h1>
+                <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateSampleText}`}><span className={`${styles.ultimateText}`}>Ulti-Mate&apos;s</span> illustrative activities</h1>
             </div>
             <div className='w-full mt-[4rem]'>
                 <Carousel className='w-[70%] md:w-[80%] mx-auto'>
@@ -209,7 +209,7 @@ function UltimateSample() {
                                        {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
                                        <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
                                         <Link
-                                           href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
+                                           href={`https://apps.apple.com/in/app/ultimate-parenting/id6593687319`}
                                            target="_blank" // Opens link in a new tab
                                            className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
                                        >

@@ -53,6 +53,9 @@ import ChildSelection from "./components/childDetails/ChildSelection"
 // Parent Testimony section
 import ParentTestimony from "./components/parentTestimony/ParentTestimony"
 
+// Cone of Learning Section
+import ConeOfLearning from "./components/coneOfLearningSection/ConeOfLearning"
+
 // Home Page Side Bar
 import HomeSideBar from "./components/homeSideBar/HomeSideBar"
 
@@ -62,5 +65,5 @@ import { AddChildModal } from "./components/modal/AddChildModal"
 
 export {
     BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureVideoSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
-    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection, EndTagLine
+    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection, EndTagLine, ConeOfLearning
 }

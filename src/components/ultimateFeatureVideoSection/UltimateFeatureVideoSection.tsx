@@ -19,7 +19,7 @@ function UltimateFeatureVideoSection() {
       id: 1,
       title: "Hands on Activities",
       description: "Hands-on activities provide children with real-world experiences, helping them develop problem-solving, teamwork, and decision-making skills. These activities foster creativity and confidence, equipping children with essential life skills for the future. Engage in activities",
-      listOptions: [{id:1,value:"Personal Growth"},{id:2,value:"Life Hacks"},{id:3,value:"Interpersonal Growth"},{id:1,value:"Explore N Learn"}],
+      listOptions: [{id:1,value:"Personal Growth"},{id:2,value:"Life Hacks"},{id:3,value:"Interpersonal Growth"},{id:4,value:"Explore N Learn"}],
       videoPath: "/videos/ultimate-feature/Pg_feature.mp4",
     },
     {
@@ -99,7 +99,7 @@ function UltimateFeatureVideoSection() {
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
     <div>
-        <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>Explore Ulti-Mate Features</h1>
+        <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>Explore <span className={`${styles.ultimateText}`}>Ulti-Mate</span> Features</h1>
     </div>
     <div className='w-full mt-[4rem]'>
         <Carousel className='w-[70%] md:w-[80%] mx-auto'>
@@ -141,7 +141,7 @@ function UltimateFeatureVideoSection() {
                                        {/* <div className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/app_store.png"} alt="App store" objectFit='contain' fill></Image></div>
                                        <div  className='md:w-[48%] h-14 w-full my-2 relative overflow-hidden'><Image src={"/images/applink/play_store.png"} alt="Play store" objectFit='contain' fill></Image></div> */}
                                         <Link
-                                           href={`${process.env.APP_APPSTORE_SHARE_LINK}`}
+                                           href={`https://apps.apple.com/in/app/ultimate-parenting/id6593687319`}
                                            target="_blank" // Opens link in a new tab
                                            className='md:w-[48%] mx-4 h-14 w-full my-2 relative overflow-hidden'
                                        >
