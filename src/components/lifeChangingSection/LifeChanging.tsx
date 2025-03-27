@@ -46,7 +46,7 @@ function LifeChanging() {
               </motion.div>
               })}
           </div>
-              <h2 className={`${DeliciousHandrawn.className} text-xl text-center text-white md:text-4xl`}>Just follow us, we assure you 100% results !!</h2>
+              <h2 className={`${DeliciousHandrawn.className} text-2xl md:text-4xl text-center text-white `}>Just follow us, we assure you 100% results !!</h2>
     </div>
   )
 }

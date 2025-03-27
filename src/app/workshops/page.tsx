@@ -58,7 +58,7 @@ useEffect(() => {
 
 
   return (
-      <div className='min-h-screen py-[8rem] '>
+      <div className='min-h-screen py-[2rem] '>
       <div className='my-8'>
         <h1 className={`text-2xl ml-8 ${anton.className}`}>Upcoming Workshops</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>

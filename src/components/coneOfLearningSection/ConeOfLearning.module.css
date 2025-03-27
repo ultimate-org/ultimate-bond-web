@@ -1,0 +1,13 @@
+.coneOfLearningContainer {
+    
+    /* background-color:var(--primary-color); */
+    background-color: #010817;
+}
+
+.ultimateText {
+    font-family: "SmallPrint";
+}
+
+.coneOfLearningText {
+    color:  var(--primary-blue-lightest-color);
+}

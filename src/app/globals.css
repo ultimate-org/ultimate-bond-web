@@ -5,6 +5,15 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 } 
+@font-face {
+  font-family: 'SmallPrint';
+  src: 
+    url('/fonts/SmallPrint.woff2') format('woff2'),
+    url('/fonts/SmallPrint.woff') format('woff');
+  font-weight: 400; /* Adjust if needed */
+  font-style: normal;
+  font-display: swap; /* Prevents invisible text during load */
+}
 
 @layer base {
   :root {

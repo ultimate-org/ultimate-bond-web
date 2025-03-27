@@ -2,6 +2,11 @@
     background-color: var(--primary-blue-lightest-color);
 }
 
+.ultimateText {
+    font-family: "SmallPrint";
+}
+
+
 .ultimateSampleText {
     color : var(--primary-color)
 }

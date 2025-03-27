@@ -4,6 +4,10 @@
     background-color: #010817;
 }
 
+.ultimateText {
+    font-family: "SmallPrint";
+}
+
 .ultimateFrameworkText {
     color:  var(--primary-blue-lightest-color);
 }
