@@ -3,14 +3,14 @@ import { NextResponse } from "next/server";
 export async function GET() {
     try {
         // Fetch upcoming workshops from the first API
-        const upcomingResponse = await fetch(`https://backend.ultimate-bond.com/api/upcoming-workshops`);
+        const upcomingResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}upcoming-workshops`);
         if (!upcomingResponse.ok) {
             throw new Error('Failed to fetch upcoming workshops');
         }
         const upcomingData = await upcomingResponse.json();
 
         // Fetch previous workshops from the second API
-        const previousResponse = await fetch(`https://backend.ultimate-bond.com/api/previous-workshops`);
+        const previousResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}previous-workshops`);
         if (!previousResponse.ok) {
             throw new Error('Failed to fetch previous workshops');
         }

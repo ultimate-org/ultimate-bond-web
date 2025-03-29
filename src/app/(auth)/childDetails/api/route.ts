@@ -6,8 +6,8 @@ export async function GET() {
     try {
         // Fetch data from both endpoints in parallel
         const [avatarResponse, standardResponse] = await Promise.all([
-            fetch(`${ process.env.BASE_URL}avatar`),
-            fetch(`${ process.env.BASE_URL}standard`),
+            fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}avatar`),
+            fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}standard`),
         ]);
 
         // Check if both responses are successful
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
         }
   
         // Call the external API to sign up the user using fetch
-      const response = await fetch(`${ process.env.BASE_URL}add-child`, {
+      const response = await fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}add-child`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,23 +78,23 @@ export async function POST(request: NextRequest) {
     
           // Call the two APIs in parallel
           await Promise.all([
-             fetch(`${ process.env.BASE_URL}assignment-activity`, {
+             fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}assignment-activity`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(assignmentData)
             }),
-             fetch(`${ process.env.BASE_URL}virtue/assignment`, {
+             fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}virtue/assignment`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(virtueData)
             }),
-             fetch(`${ process.env.BASE_URL}child/story`, {
+             fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}child/story`, {
                 method:'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(storyData)
             }),
             fetch(
-                `${ process.env.BASE_URL}api/wordle`,
+                `${ process.env.NEXT_PUBLIC_BASE_URL}api/wordle`,
                 {
                     method:'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -102,16 +102,16 @@ export async function POST(request: NextRequest) {
                 }
               ),
               fetch(
-                `${ process.env.BASE_URL}shlok/trial`,
+                `${ process.env.NEXT_PUBLIC_BASE_URL}shlok/trial`,
                   {
                     method:'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
                 }
               ),
-              fetch(`${ process.env.BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
+              fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
               fetch(
-                `${ process.env.BASE_URL}child-trial-update`,
+                `${ process.env.NEXT_PUBLIC_BASE_URL}child-trial-update`,
                   {
                     method:'PUT',
                     headers: { 'Content-Type': 'application/json' },

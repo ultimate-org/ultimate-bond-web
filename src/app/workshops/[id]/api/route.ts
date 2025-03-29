@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
       const body = await request.json();
   
       // Call the external API to sign up the user using fetch
-      const response = await fetch(`${process.env.BASE_URL}register-workshops`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}register-workshops`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export async function GET(request:Request, {params}:{params:Promise<{id: string}
     try {
         const { id } = await params;
         // Fetch upcoming workshops from the first API
-        const workshopDetailsResponse = await fetch(`${process.env.BASE_URL}/workshop/${id}`);
+        const workshopDetailsResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/workshop/${id}`);
         if (!workshopDetailsResponse.ok) {
             throw new Error('Failed to fetch upcoming workshops');
         }
