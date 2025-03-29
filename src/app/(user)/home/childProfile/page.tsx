@@ -62,7 +62,7 @@ function ChildProfile() {
           <div className='w-full md:w-[70%] md:flex md:flex-row justify-between mx-auto'>
           {
                   children && children.length > 0 && children.map((child, i) => {
-                      return <button key={i} className='border border-1 rounded-lg px-6 py-1 flex justify-center items-center shadow-xl'>
+                      return <button key={i} onClick={()=>{router.push(`/home/childProfile/${child?.child_id}`)}} className='border border-1 rounded-lg px-6 py-1 flex justify-center items-center shadow-xl'>
                           <div className='w-16 h-16 rounded-full relative overflow-hidden mr-4'>
                               <Image src={child?.file_path} alt={child?.child_id} fill></Image>
                           </div>

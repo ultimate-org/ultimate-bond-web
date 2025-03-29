@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET() {
   try {
     // Fetch country data from the external API
-    const countryDataResponse = await fetch(`${process.env.BASE_URL}country`);
+    const countryDataResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}country`);
     if (!countryDataResponse.ok) {
       throw new Error('Failed to fetch country data');
     }
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Call the external API to sign up the user using fetch
-    const response = await fetch(`${process.env.BASE_URL}signup`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

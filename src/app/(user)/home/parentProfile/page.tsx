@@ -84,8 +84,11 @@ const form = useForm<z.infer<typeof parentSchema>>({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/home/parentProfile/api?id=${2}`);
-          const data = await response.json();
+        const parentInfo = JSON.parse(localStorage.getItem('ParentInfo') || '{}');
+            const parentId = parentInfo?.parent_id;;
+        const response = await fetch(`/home/parentProfile/api?id=${parentId}`);
+        const data = await response.json();
+        console.log("Reeee",data)
         setRoles(data.roles);
         setGenders(data.genders);
         setReligions(data.religions);

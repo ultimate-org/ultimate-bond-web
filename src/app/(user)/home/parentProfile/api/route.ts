@@ -9,12 +9,12 @@ export async function GET(request: Request) {
     // Fetch all data concurrently using Promise.all
     const [rolesResponse, gendersResponse, religionsResponse, languagesResponse, statesResponse, parentResponse] =
       await Promise.all([
-        fetch(`${process.env.BASE_URL}/parent-role`).then((res) => res.json()),
-        fetch(`${process.env.BASE_URL}/gender`).then((res) => res.json()),
-        fetch(`${process.env.BASE_URL}/religion`).then((res) => res.json()),
-        fetch(`${process.env.BASE_URL}/language`).then((res) => res.json()),
-        fetch(`${process.env.BASE_URL}/state`).then((res) => res.json()),
-        id ? fetch(`${process.env.BASE_URL}/parent/${id}`).then((res) => res.json()) : Promise.resolve(null), // Fetch parent details only if ID is provided
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/parent-role`).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/gender`).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/religion`).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/language`).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URLL}/state`).then((res) => res.json()),
+        id ? fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/parent/${id}`).then((res) => res.json()) : Promise.resolve(null), // Fetch parent details only if ID is provided
       ]);
 
     // Transform role data
