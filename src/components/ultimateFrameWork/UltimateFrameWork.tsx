@@ -18,7 +18,7 @@ function UltimateFrameWork() {
             </div>
 
             {/* Video Container */}
-            <div className="md:w-[60%] sm:[w-80%] relative h-98 md:h-[25rem] mt-[4rem]">
+            <div className="md:w-[80%] sm:[w-80%] relative h-98 md:h-[35rem] mt-[4rem]">
                 <video
                     className="w-full h-full rounded-lg object-fill"
                     controls
