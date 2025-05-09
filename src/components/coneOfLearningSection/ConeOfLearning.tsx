@@ -10,7 +10,7 @@ function ConeOfLearning() {
             {/* Heading */}
             <div className="w-[80%] md:w-[70%] mx-auto md:mt-4">
                 <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.coneOfLearningText}`}>
-                <span className={`${styles.ultimateText}`}>Ulit-Mate&apos;s</span> Philosophy of Learning
+                <span className={`${styles.ultimateText}`}>Ulti-Mate&apos;s</span> Philosophy of Learning
                 </h1>
             </div>
 
