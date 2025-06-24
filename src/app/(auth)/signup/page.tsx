@@ -34,7 +34,7 @@ const getFormSchema = (countryCode: string) => {
   return z.object({
     countryCode: z.string().min(1, { message: "Country code is required." }),
     phoneNumber: z.string()
-      .min(9)
+      .min(9, { message: "Phone number must be 10 digits." })
       .max(10, { message: "Phone number must be 10 digits." })
       .regex(/^\d+$/, { message: "Phone number must contain only numbers." }),
     userName: countryCode === '1' 

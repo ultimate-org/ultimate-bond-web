@@ -159,7 +159,7 @@ function ChildDetails() {
   const handleAddAnother = () => {
     setIsDialogOpen(false); // Close the dialog
     form.reset(); // Reset the form
-    setSelectedAvatar(""); // Reset the selected avatar
+    // setSelectedAvatar(""); // Reset the selected avatar
     // setEnteringPasscode(false); // Reset the passcode screen
   };
 

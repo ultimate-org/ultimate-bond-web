@@ -1164,6 +1164,30 @@ export default function SubscriptionPlans() {
                 body: JSON.stringify(data),
             });
             const response = await res.json();
+
+            if (response.code === 400) {
+                toast({
+                    title: "Invalid Coupon",
+                    variant: "destructive",
+                });
+                return;
+            }
+            
+            if (response.code === 403) {
+                toast({
+                    title: "Coupon not valid for you",
+                    variant: "destructive",
+                });
+                return;
+            }
+            
+            if (response.code === 404) {
+                toast({
+                    title: "Coupon doesn't exist",
+                    variant: "destructive",
+                });
+                return;
+             }
       
             if (response.code === 200) {
                 toast({

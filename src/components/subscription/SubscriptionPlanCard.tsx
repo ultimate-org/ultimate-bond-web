@@ -219,7 +219,7 @@ export default function SubscriptionPlanCard({
             <div className="flex items-center">
 
                {/* Original Price */}
-            <div className={` ${poppinsRegular.className} text-[0.6rem] text-[#FF0000] text-decoration-color-[#FF0000] line-through`}>
+            <div className={` ${poppinsRegular.className} text-[0.6rem] text-[#000] text-decoration-color-[#5C5C5C] line-through`}>
               {planDetails.currency.is_prefix
                 ? `${planDetails.currency.symbol}${Math.trunc(
                     planDetails.original_cost

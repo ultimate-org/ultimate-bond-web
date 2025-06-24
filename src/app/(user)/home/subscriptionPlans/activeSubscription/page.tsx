@@ -146,6 +146,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import { poppinsBold, poppinsRegular } from '@/fonts/fonts';
+import Image from 'next/image';
 
 const MySubscriptions = () => {
   const [loading, setLoading] = useState(false);
@@ -209,7 +210,7 @@ const MySubscriptions = () => {
 
               {/* Desktop Grid */}
               <div className="hidden md:grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-                {subscriptions.map((item) => (
+                              {subscriptions.map((item) => (
                   <div key={item.user_subscription_id}>
                     <UserSubscriptionDetailCard data={item} />
                   </div>
@@ -230,50 +231,72 @@ const MySubscriptions = () => {
 };
 
 const UserSubscriptionDetailCard = ({ data }: { data: any }) => {
-  return (
-    <div className="px-4 py-6 rounded-lg border border-gray-300 w-full h-full flex flex-col justify-evenly bg-blue-50 shadow-sm">
-      <h2 className={`${poppinsBold.className} text-base text-black`}>Your Current Plan</h2>
-      <div>
-        <p className={`${poppinsBold.className} text-sm text-blue-500 mb-1`}>
-          {data?.subscription_plan?.description}
-        </p>
-        <div className="flex justify-between items-center">
-          <p className={`${poppinsRegular.className} text-xs text-gray-500`}>Premium Plan applied to: </p>
-          <p className={`${poppinsRegular.className} text-xs text-black`}>
+    console.log("DDDDAA", data)
+    return (
+      <div className="px-4 py-6 rounded-lg border border-gray-300 w-full h-full flex flex-col justify-evenly bg-blue-50 shadow-sm">
+        {/* Child image and name section - centered and properly spaced */}
+        <div className="flex flex-col items-center gap-2 mb-3">
+          {data?.presigned_image_url && (
+            <div className="w-16 h-16 rounded-full relative overflow-hidden border-2 border-white shadow-sm">
+              <Image
+                src={data.presigned_image_url}
+                alt={data?.child?.first_name || 'Child image'}
+                fill
+                className="object-cover"
+                sizes="(max-width: 64px)"
+              />
+            </div>
+          )}
+          <p className={`${poppinsBold.className} text-sm text-black`}>
             {data?.child?.first_name}
           </p>
         </div>
-        <p className={`${poppinsRegular.className} text-xs text-gray-500`}>
-          {data?.subscription_plan?.label} | Access to all features
-        </p>
-      </div>
-      <div className="w-1/2 mx-auto border-t border-black my-2"></div>
-      <div className="flex justify-between items-center">
+  
+        <h2 className={`${poppinsBold.className} text-base text-black text-center`}>Your Current Plan</h2>
+        
         <div>
-          <p className={`${poppinsRegular.className} text-sm text-gray-500`}>
-            Start Date:{' '}
-            {new Date(data?.start_date).toLocaleDateString('en-GB', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric',
-            })}
+          <p className={`${poppinsBold.className} text-sm text-blue-500 mb-1 text-center`}>
+            {data?.subscription_plan?.description}
           </p>
-          <p className={`${poppinsRegular.className} text-xs text-gray-500`}>(dd/mm/yyyy)</p>
+          <div className="flex justify-between items-center">
+            <p className={`${poppinsRegular.className} text-xs text-gray-500`}>Premium Plan applied to: </p>
+            <p className={`${poppinsRegular.className} text-xs text-black`}>
+              {data?.child?.first_name}
+            </p>
+          </div>
+          <p className={`${poppinsRegular.className} text-xs text-gray-500`}>
+            {data?.subscription_plan?.label} | Access to all features
+          </p>
         </div>
-        <div>
-          <p className={`${poppinsRegular.className} text-sm text-gray-500`}>
-            End Date:{' '}
-            {new Date(data?.end_date).toLocaleDateString('en-GB', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric',
-            })}
-          </p>
-          <p className={`${poppinsRegular.className} text-xs text-gray-500`}>(dd/mm/yyyy)</p>
+  
+        <div className="w-1/2 mx-auto border-t border-black my-2"></div>
+  
+        <div className="flex justify-between items-center">
+          <div>
+            <p className={`${poppinsRegular.className} text-sm text-gray-500`}>
+              Start Date:{' '}
+              {new Date(data?.start_date).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              })}
+            </p>
+            <p className={`${poppinsRegular.className} text-xs text-gray-500`}>(dd/mm/yyyy)</p>
+          </div>
+          <div>
+            <p className={`${poppinsRegular.className} text-sm text-gray-500`}>
+              End Date:{' '}
+              {new Date(data?.end_date).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              })}
+            </p>
+            <p className={`${poppinsRegular.className} text-xs text-gray-500`}>(dd/mm/yyyy)</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
 
 export default MySubscriptions;
