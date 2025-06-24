@@ -8,8 +8,8 @@ function AdvisoryBoard() {
         {
             id: 1,
             name: "Dr. Nandita Babu",
-            profession: "HoD, Psychology",
-            school:"Delhi University",
+            profession: "Senior Prof(rtd), Former HOD",
+            school:"Dept of Psychology Delhi University",
             quote: "Parenting: were the smallest moments becomes the biggest memories",
             image: "/images/advisoryBoard/nandita-babu.jpg"
         },

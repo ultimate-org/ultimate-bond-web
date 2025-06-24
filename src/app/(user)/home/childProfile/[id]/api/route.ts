@@ -8,7 +8,7 @@ interface Gender {
 
 interface Standard {
   standard_id: number;
-  name: string;
+  value: string;
 }
 
 interface Child {
@@ -17,7 +17,7 @@ interface Child {
   gender_id: number;
   standard_id: number;
   birth_date: string;
-  profile_image_url: string;
+  file_path: string;
   user?: {
     user_id: number;
   };
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
       : [];
 
     const standardArr = standardResponse.code === 200
-      ? transformData(standardResponse.data, undefined, (val) => ({ label: val.name, value: val.standard_id }))
+      ? transformData(standardResponse.data, undefined, (val) => ({ label: val.value, value: val.standard_id }))
       : [];
 
     let childData = null;
@@ -64,7 +64,7 @@ export async function GET(request: Request) {
         gender: parseInt(childResponse.data.gender_id.toString()) || 0,
         standard: parseInt(childResponse.data.standard_id.toString()) || 0,
         dateOfBirth: new Date(childResponse.data.birth_date) || new Date(),
-        profileImagePath: childResponse.data.profile_image_url || '',
+        profileImagePath: childResponse.data.file_path || '',
         userId: childResponse.data.user?.user_id || 0,
       };
     }
@@ -89,8 +89,6 @@ export async function POST(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     const body = await request.json();
-    console.log("ID", id);
-    console.log("BODY DATA", body)
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}child/${id}`,{
       method: 'PUT',

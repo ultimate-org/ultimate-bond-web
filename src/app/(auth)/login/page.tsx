@@ -94,7 +94,11 @@ function Login() {
 
       const isChildAvailable = await response.json();
       if (isChildAvailable?.data.length > 0) {
-        router.replace("/")
+        if (loggedUserInfo?.userInfo?.data?.trail_count > 0) {
+          router.replace("/home/parentProfile")
+        } else {
+            router.replace("/trialSubscription")
+        }
       } else {
         router.replace("/childDetails")
       }
@@ -114,12 +118,12 @@ function Login() {
   }
 
   return (
-    <div className='w-full p-8'>
+    <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md bg-[#ECFCFF]'>
       {/* Main container */}
-      <div className='grid md:grid-cols-2 gap-8 md:h-screen'>
+      <div className='grid md:grid-cols-2 gap-8 h-full'>
         {/* Image Section */}
-        <div className='size-full hidden md:block relative'>
-          <Image src={"/images/authentication/login.jpg"} alt='Login' fill className='object-cover'></Image>
+        <div className='size-full hidden md:block relative rounded-md overflow-hidden'>
+          <Image src={"/images/authentication/login.jpg"} alt='Login' fill className='object-fill'></Image>
         </div>
 
         {/* Form Section */}
@@ -146,6 +150,7 @@ function Login() {
                           maxLength={10}
                           placeholder="Phone number"
                           {...field}
+                          className="border-black bg-transparent h-10"
                           onInput={(e) => {
                             // Ensure only numbers are entered
                             e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
@@ -185,7 +190,9 @@ function Login() {
                     </FormItem>
                   )}
                 />
-
+                <div>
+                  <p>Use default password as 1234. Reset Password on app</p>
+                </div>
                 {/* Submit Button */}
                 <div className='flex justify-center md:justify-start'>
                 <Button type="submit">Login</Button>
