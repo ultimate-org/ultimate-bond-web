@@ -5,6 +5,7 @@ import { useToast } from "@/hooks/use-toast"
 import Image from 'next/image';
 import { anton } from '@/fonts/fonts';
 import Link from 'next/link';
+import Header from '@/components/headerSection/Header';
 
 type workshop = { workshop_id: string; cover_image_path: string; image_path: string; workshop_video_link: string; }
 
@@ -58,8 +59,9 @@ useEffect(() => {
 
 
   return (
-      <div className='min-h-screen py-[2rem] '>
-      <div className='my-8'>
+    <div className='min-h-screen py-[5rem] '>
+      <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo1.png"></Header>
+      <div className='my-10'>
         <h1 className={`text-2xl ml-8 ${anton.className}`}>Upcoming Workshops</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
           {upcomingWorkshops.length>0 ? upcomingWorkshops.map((workshop:{id:string, imageSource:string, imagePath: string, workshopLink: string}) => {

@@ -2,7 +2,7 @@ import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSect
 
 function Landing() {
   return <>
-    <Header></Header>
+    <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo.png"></Header>
     <Main></Main>
     <Statistics></Statistics>
     <UnderLyingCauses></UnderLyingCauses>

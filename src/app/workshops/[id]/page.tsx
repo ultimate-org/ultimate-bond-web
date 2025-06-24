@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
+import Header from '@/components/headerSection/Header';
 
 
 interface WorkshopDetails {
@@ -115,11 +116,12 @@ function Workshop({ params }: { params: Promise<{ id: string }> }) {
   };
 
   return (
-    <div className="w-full flex justify-center items-center p-4">
+    <div className="w-full flex justify-center items-center pt-[5rem]">
+      <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo1.png"></Header>
       {workshopDetails && (
         <button
           onClick={handleRegister}
-          className="w-full h-[30rem] md:w-[40%] md:h-[35rem] rounded-lg bg-gray-500 relative overflow-hidden"
+          className="w-full h-[30rem] md:w-[40%] md:h-[35rem] rounded-lg bg-gray-500 relative overflow-hidden my-4"
         >
           <Image
             alt="Workshop image"
