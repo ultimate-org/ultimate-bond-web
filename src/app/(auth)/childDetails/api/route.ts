@@ -72,8 +72,13 @@ export async function POST(request: NextRequest) {
     
           const storyData = {
             child_ids: [responseData?.data?.child?.child_id],
-            is_trial: false,
-          };
+            is_trial: true,
+        };
+        
+        const childCaseStudyData = {
+          child_ids: [responseData?.data?.child?.child_id],
+          is_trial: true,
+        };
 
     
           // Call the two APIs in parallel
@@ -94,7 +99,7 @@ export async function POST(request: NextRequest) {
                 body: JSON.stringify(storyData)
             }),
             fetch(
-                `${ process.env.NEXT_PUBLIC_BASE_URL}api/wordle`,
+                `${ process.env.NEXT_PUBLIC_BASE_URL}wordle`,
                 {
                     method:'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -108,8 +113,24 @@ export async function POST(request: NextRequest) {
                     headers: { 'Content-Type': 'application/json' },
                     body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
                 }
-              ),
-              fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
+            ),
+            fetch(
+              `${ process.env.NEXT_PUBLIC_BASE_URL}case-study/assignment`,
+                {
+                  method:'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(childCaseStudyData)
+              }
+            ),
+            fetch(
+              `${ process.env.NEXT_PUBLIC_BASE_URL}riddles/assignment/${body?.user_id}`,
+                {
+                  method:'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
+              }
+            ),
+              // fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
               fetch(
                 `${ process.env.NEXT_PUBLIC_BASE_URL}child-trial-update`,
                   {
@@ -126,7 +147,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Unexpected response from the server." }, { status: 500 });
       }
     } catch (error) {
-      console.error('Error in POST /signup/api:', error);
+      console.error('Error in adding child:', error);
   
       // Generic error response
       return NextResponse.json({ error: "Something Went Wrong!" }, { status: 500 });

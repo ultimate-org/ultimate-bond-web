@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { NextResponse } from 'next/server';
+import { NextResponse} from 'next/server';
 
 
 export async function GET(request: Request) {
@@ -13,7 +13,7 @@ export async function GET(request: Request) {
         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/gender`).then((res) => res.json()),
         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/religion`).then((res) => res.json()),
         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/language`).then((res) => res.json()),
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URLL}/state`).then((res) => res.json()),
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/state`).then((res) => res.json()),
         id ? fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/parent/${id}`).then((res) => res.json()) : Promise.resolve(null), // Fetch parent details only if ID is provided
       ]);
 
@@ -98,6 +98,5 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 });
   }
 }
-
 
 

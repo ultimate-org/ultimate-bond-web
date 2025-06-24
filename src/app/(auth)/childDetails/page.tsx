@@ -34,13 +34,14 @@ import {
 // import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
 import { AddChildModal } from "@/index";
+import { Input } from "@/components/ui/input";
 // import { AddAnotherChildDialog } from "./AddAnotherChildDialog"; // Import the dialog component
 
 const formSchema = z.object({
-  // firstname: z
-  //   .string()
-  //   .min(1, { message: "First name is required." })
-  //   .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
+  firstname: z
+    .string()
+    .min(1, { message: "First name is required." })
+    .regex(/^[a-zA-Z]+$/, { message: "First name must contain only letters." }),
   standard: z.string().min(1, { message: "Please select Standard." }),
 });
 
@@ -50,7 +51,7 @@ type Standard = {
 };
 
 type userData = {
-  // first_name: string;
+  first_name: string;
   standard_id: string;
   avatar_id: string;
   parent_id: string;
@@ -65,6 +66,7 @@ function ChildDetails() {
   // const [enteringPasscode, setEnteringPasscode] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState("");
   const [selectedAvatarType, setSelectedAvatarType] = useState("Boy");
+  const [selectedAvatarUrl, setSelectedAvatarUrl] = useState("");
   // const [passcode, setPasscode] = useState("");
   // const [confirmPasscode, setConfirmPasscode] = useState("");
   const [parentInfo, setParentInfo] = useState<any>("");
@@ -75,7 +77,7 @@ function ChildDetails() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      // firstname: "",
+      firstname: "",
       standard: "",
     },
   });
@@ -99,7 +101,7 @@ function ChildDetails() {
 
     try {
       const data: userData = {
-        // first_name: form.getValues("firstname").trim(),
+        first_name: form.getValues("firstname").trim(),
         standard_id: form.getValues("standard"),
         avatar_id: selectedAvatar,
         parent_id: parentInfo?.parent_id,
@@ -133,13 +135,14 @@ function ChildDetails() {
     }
   };
 
-  const selectChildAvatarHandler = (avatarId: string, avatarType: string) => {
+  const selectChildAvatarHandler = (avatarId: string, avatarType: string, avatarUrl:string) => {
     setSelectedAvatar(avatarId);
     setSelectedAvatarType(avatarType);
+    setSelectedAvatarUrl(avatarUrl)
+
   };
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+  const onSubmit = () => {
     if (!selectedAvatar) {
       toast({
         description: "Please select an avatar.",
@@ -160,10 +163,10 @@ function ChildDetails() {
     // setEnteringPasscode(false); // Reset the passcode screen
   };
 
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false); // Close the dialog
-    route.push("/home/childProfile"); // Redirect to dashboard or another page
-  };
+  // const handleCloseDialog = () => {
+  //   setIsDialogOpen(false); // Close the dialog
+  //   route.push("/home/subscriptionPlans"); // Redirect to dashboard or another page
+  // };
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -213,29 +216,63 @@ function ChildDetails() {
   }, [route, toast]);
 
   return (
-    <div className="w-full p-8">
-      <div className="grid md:grid-cols-2 gap-8 lg:h-screen md:4 md:mb-6">
+    <div className="w-[80%] my-[2rem] h-full md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md bg-[#ECFCFF]">
+      <div className="grid md:grid-cols-2 gap-8  h-full">
         {/* Left Image Container */}
-        <div className="hidden md:block relative">
+        {/* <div className="hidden md:block relative">
           <Image
             src="/images/authentication/sign-up.jpeg"
             alt="child-details"
             className="size-full object-cover"
             fill
           />
-        </div>
+        </div> */}
+        <div className="size-full hidden md:block relative rounded-md overflow-hidden">
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="size-full object-cover"
+  >
+    <source src="/videos/user-onboarding/child-details-addition.mp4" type="video/mp4" />
+    {/* Fallback for browsers that don't support the video element */}
+    {/* <Image
+      src="/images/authentication/sign-up.jpeg"
+      alt="child-details"
+      className="size-full object-cover"
+      fill
+    /> */}
+  </video>
+</div>
         {/* Child Addition Container */}
         {/* {!enteringPasscode ? ( */}
-          <div>
+          <div className="w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%] flex flex-col justify-center">
             <div className="mb-8">
               <h1 className="text-center md:text-left text-2xl font-bold">
-                HI, {parentInfo?.first_name || "Parent"}! Enter Child Details!
+                Enter Child Details!
               </h1>
+          </div>
+          
+           {/* Selected Avatar Preview */}
+           {selectedAvatarUrl && (
+            <div className="mb-2 flex flex-col items-center align-center w-full">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-primary mx-auto">
+                <Image
+                  src={selectedAvatarUrl}
+                  alt="Selected Avatar"
+                  width={60}
+                  height={60}
+                  className="object-cover w-full h-full"
+                />
+              </div>
             </div>
+          )}
+
             {/* Child Avatar Selection */}
             {standardData && (
               <div className="mb-6">
-                <h2 className="text-sm my-2">Choose Avatar</h2>
+                <h2 className="text-md my-2 font-bold">Select avatar of your choice</h2>
                 <ChildSelection
                   avatarData={avatarData}
                   selectedChildAvatar={selectedAvatar}
@@ -249,23 +286,26 @@ function ChildDetails() {
                 <form
                   onSubmit={form.handleSubmit(onSubmit)}
                   className="space-y-8"
-                >
-                  {/* Full Name Field */}
-                  {/* <FormField
+              >
+                <div className="flex flex-col md:flex-row justify-start items-center gap-4">
+                  <div className="w-full md:w-1/2">
+                {/* Full Name Field  */}
+                  <FormField
                     control={form.control}
                     name="firstname"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your first name" {...field} />
+                          <Input className="border-black bg-transparent h-10" placeholder="Enter first name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
-                  /> */}
-
+                  />
+                  </div>
                   {/* Standard Field */}
+                  <div className="w-full md:w-1/2">
                   <FormField
                     control={form.control}
                     name="standard"
@@ -277,7 +317,7 @@ function ChildDetails() {
                           value={field.value}
                         >
                           <FormControl>
-                            <SelectTrigger>
+                            <SelectTrigger className="border-black bg-transparent h-10">
                               <SelectValue placeholder="Select Standard" />
                             </SelectTrigger>
                           </FormControl>
@@ -294,12 +334,16 @@ function ChildDetails() {
                         </Select>
                         <FormMessage />
                       </FormItem>
+                     
                     )}
-                  />
+                    />
+                    </div>
+                </div>
 
+                  {/* Avatar Selection */}
                   {/* Submit Button */}
                   <div className='flex justify-center md:justify-start'>
-                    <Button type="submit">Add Child</Button>
+                    <Button type="submit">Submit</Button>
                     </div>
                 </form>
               </Form>
@@ -376,7 +420,6 @@ function ChildDetails() {
       {/* Add Another Child Dialog */}
       <AddChildModal
         isOpen={isDialogOpen}
-        onClose={handleCloseDialog}
         onAddAnother={handleAddAnother}
       />
     </div>

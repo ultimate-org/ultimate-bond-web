@@ -59,11 +59,23 @@ import ConeOfLearning from "./components/coneOfLearningSection/ConeOfLearning"
 // Home Page Side Bar
 import HomeSideBar from "./components/homeSideBar/HomeSideBar"
 
+// Subscription Plan
+import SubscriptionPlanCard from "./components/subscription/SubscriptionPlanCard"
+// import  FeatureList  from "./components/subscription/FeatureListCard"
+import { FeatureListCard } from "./components/subscription/FeatureListCard"
+
+// import FAQ from "./components/faq/faq"
+import FAQAccordian from "./components/faq/FAQAccordian"
+
+// Download app header strip
+import DownloadAppStrip from "./components/downloadAppStrip/DownloadAppStrip"
+
 // modals
 import { AddChildModal } from "./components/modal/AddChildModal"
+import DownloadAppModal from "./components/modal/DownloadAppModal"
 
 
 export {
     BlogSection, BlogCard, Main, Statistics, StatCard, LifeChanging, UltimateFeatureVideoSection, Header, Footer, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, ChildSelection, AddChildModal, UnderLyingCauses, UltimateSample,
-    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection, EndTagLine, ConeOfLearning
+    HomeSideBar, AdvisoryBoard, ParentTestimony, UltimateFeatureSection, EndTagLine, ConeOfLearning, SubscriptionPlanCard, FeatureListCard, DownloadAppModal,FAQAccordian,DownloadAppStrip
 }
