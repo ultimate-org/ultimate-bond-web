@@ -23,6 +23,8 @@ import {
 import { REGEXP_ONLY_DIGITS } from 'input-otp'; // Import the regex for digits only
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import DownloadAppModal from '@/components/modal/DownloadAppModal';
 
 // Define the form schema using zod
 const formSchema = z.object({
@@ -42,6 +44,7 @@ type userData = {
 };
 
 function Login() {
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -191,7 +194,7 @@ function Login() {
                   )}
                 />
                 <div>
-                  <p>Use default password as 1234. Reset Password on app</p>
+                  <p>Use default password as 1234. Reset Password on <button onClick={()=>setShowDownloadModal(true)} className='text-decoration-line:underline text-decoration-color-blue-500 text-blue-500'>app</button></p>
                 </div>
                 {/* Submit Button */}
                 <div className='flex justify-center md:justify-start'>
@@ -205,6 +208,11 @@ function Login() {
           </div>
         </div>
       </div>
+      {
+        showDownloadModal && (
+          <DownloadAppModal isOpen={showDownloadModal} onClose={()=>setShowDownloadModal(false)}></DownloadAppModal>
+        )
+      }
     </div>
   );
 }

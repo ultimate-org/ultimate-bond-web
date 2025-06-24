@@ -63,10 +63,12 @@ export default function DownloadAppModal({
 
         {/* Left Content */}
         <div className="p-4 md:p-6 flex-1 flex flex-col justify-center order-2 md:order-1">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 md:text-left text-center">
+          <h2 className="text-xl md:text-xl font-bold md:text-left text-center">
           Download app to get Age-appropriate, Easy to follow activities & features designed to enhance Life Skills.
-          Applicable for children from 3 to 13 years age.
-          </h2>
+                  </h2>
+                  <h2 className="text-xl md:text-xl font-bold mb-4 md:mb-6 md:text-left text-center">
+                  Applicable for children from 3 to 13 years age.
+                  </h2>
 
           {/* App Store Buttons - Smaller on mobile */}
           <div className="flex flex-row gap-2 md:gap-4 mb-6 justify-center md:justify-start">
