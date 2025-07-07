@@ -2,10 +2,11 @@
 
 import React, { useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+// import Link from 'next/link'
+// import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {FaBars} from "react-icons/fa6"
 import {
@@ -21,15 +22,15 @@ import {
 function Header({ secondaryLogo }: { secondaryLogo: string }) {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const router = useRouter();
-    const pathName = usePathname();
-    const headerNavItems = [
+    // const pathName = usePathname();
+    // const headerNavItems = [
         
-        {
-            id: 1,
-            item: "Workshops",
-            route: "/workshops"
-        },
-    ]
+    //     {
+    //         id: 1,
+    //         item: "Workshops",
+    //         route: "/workshops"
+    //     },
+    // ]
 
     useEffect(() => {
         const parentInfo = localStorage.getItem("ParentInfo");
@@ -52,11 +53,11 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
           </div>
           {/* showing this section for viewport larger than md */}
           <div className='hidden md:flex flex-row items-center'>
-              {
+              {/* {
                  headerNavItems.length>0 && headerNavItems.map((navItem) => { 
                       return <motion.div key={navItem.id} className='text-lg text-black mx-4 text-white' whileHover={{textDecoration:"underline", color:"purple"}} transition={{duration:0.8}}><Link href={navItem.route}  key={navItem.id} className={`${pathName == "/" ? "text-white": "text-black"}`} >{ navItem.item}</Link></motion.div>
                   })
-              } 
+              }  */}
 
               <Button onClick={()=> {return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup")}} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button> 
            </div> 
@@ -66,11 +67,11 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
           <DropdownMenu>
   <DropdownMenuTrigger><FaBars color='white'></FaBars></DropdownMenuTrigger>
                   <DropdownMenuContent> 
-                  {
+                  {/* {
                   headerNavItems.map((navItem) => { 
                       return <DropdownMenuItem onClick={()=>router.push(navItem.route)} key={navItem.id}>{navItem.item}</DropdownMenuItem>
                   })
-              } 
+              }  */}
                  <DropdownMenuItem><Button onClick={()=>router.push("/signup")} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button></DropdownMenuItem>
  </DropdownMenuContent>
 </DropdownMenu>
