@@ -40,10 +40,16 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <GoogleTagManager gtmId="GTM-KBZ3G8M6"></GoogleTagManager>
+      <GoogleTagManager gtmId="GTM-KR55C25Q"></GoogleTagManager>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <noscript
+    dangerouslySetInnerHTML={{
+      __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KR55C25Q"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+    }}
+  />
         <NextIntlClientProvider messages={messages}>
           {/* <Header></Header> */}
           {children}
