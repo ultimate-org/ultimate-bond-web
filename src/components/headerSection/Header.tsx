@@ -59,7 +59,9 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
                   })
               }  */}
 
-              <Button onClick={()=> {return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup")}} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button> 
+            <Button className='mx-2' onClick={()=> {router.push("/blogs")}} variant={"destructive"}>Blogs</Button> 
+              <Button onClick={() => { return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup") }} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button> 
+
            </div> 
            {/* showing this section of smaller viewport */} 
           <div className='flex md:hidden flex-row items-center'>
