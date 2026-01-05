@@ -5,7 +5,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Footer, } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
-import { GoogleTagManager } from '@next/third-parties/google';
+// import { GoogleTagManager } from '@next/third-parties/google';
 
 
 const geistSans = Geist({
@@ -40,7 +40,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <GoogleTagManager gtmId="GTM-KR55C25Q"></GoogleTagManager>
+      {/* <GoogleTagManager gtmId="GTM-KR55C25Q"></GoogleTagManager> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
