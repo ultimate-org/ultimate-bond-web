@@ -1482,6 +1482,30 @@ export default function SubscriptionPlans() {
                                 }),
                             })
 
+                            await fetch('/home/featureAssignment/subscription/kyc/api', {
+                                method:"POST",
+                                headers: {  
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    parent_id: parseInt(parentDetails?.parent_id),
+                                    child_ids: selectedChildrens,
+                                    is_trial: false
+                                }),
+                            }) 
+
+                            await fetch('/home/featureAssignment/subscription/wonderchat/api', {
+                                method:"POST",
+                                headers: {  
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    parent_id: parseInt(parentDetails?.parent_id),
+                                    child_ids: selectedChildrens,
+                                    is_trial: false
+                                }),
+                            }) 
+
                             setShowAppDownloadModal(true);
                             // const featureAssignmentRes = await fetch('/home/featureAssignment/subscription/api', {
                             //     method:"POST",

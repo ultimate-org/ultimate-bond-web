@@ -95,8 +95,8 @@ function Footer() {
                {/* Contact us and share link */}
                <div className='mt-6'>
                   <div>
-                      <h3 className='font-bold text-center text-white'>Contactus</h3>
-                      <p className='my-1 text-center text-xs text-white'>+91 9356452498</p>
+                      <h3 className='font-bold text-center text-white'>Contact Us</h3>
+                      <p className='my-1 text-center text-xs text-white'>+91 9158810069</p>
                       <p className='my-1 text-center text-xs text-white'>contact@adeptifytechnologies.com</p>
                       <p className='my-1 text-center text-xs text-white'>Pune - 411038, Maharashtra, India</p>
                  </div>
