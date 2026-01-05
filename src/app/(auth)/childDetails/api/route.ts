@@ -80,6 +80,18 @@ export async function POST(request: NextRequest) {
           is_trial: true,
         };
 
+        const kycData = {
+          parent_id: responseData?.data?.child?.parent_id,
+          child_ids: [responseData?.data?.child?.child_id],
+          is_trial: true,
+        };
+
+        const wonderchatData = {
+          parent_id: responseData?.data?.child?.parent_id,
+          child_ids: [responseData?.data?.child?.child_id],
+          is_trial: true,
+        };
+
     
           // Call the two APIs in parallel
           await Promise.all([
@@ -128,6 +140,22 @@ export async function POST(request: NextRequest) {
                   method:'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body : JSON.stringify({child_ids: [responseData?.data?.child?.child_id]})
+              }
+            ),
+             fetch(
+              `${ process.env.NEXT_PUBLIC_BASE_URL}/ultimate/kyc/assign-kyc`,
+                {
+                  method:'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body : JSON.stringify(kycData)
+              }
+            ),
+            fetch(
+              `${ process.env.NEXT_PUBLIC_BASE_URL}/ultimate/wonderchat/assign-wonderchat`,
+                {
+                  method:'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body : JSON.stringify(wonderchatData)
               }
             ),
               // fetch(`${ process.env.NEXT_PUBLIC_BASE_URL}parent/${body.parent_id}?type=${'trial'}`,{method:'PUT'}),
