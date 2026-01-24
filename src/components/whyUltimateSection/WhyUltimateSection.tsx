@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import {  montserratBold} from '@/fonts/fonts'
+// import {  montserratBold} from '@/fonts/fonts'
 import Image from 'next/image'
 import styles from "./WhyUltimate.module.css"
 
