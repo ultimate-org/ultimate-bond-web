@@ -6,7 +6,7 @@ function Landing() {
     <Main></Main>
     <Statistics></Statistics>
     <UnderLyingCauses></UnderLyingCauses>
-    <ConeOfLearning></ConeOfLearning>
+    {/* <ConeOfLearning></ConeOfLearning> */}
     <UltimateFrameWork></UltimateFrameWork>
     <LifeChanging></LifeChanging>
     <UltimateSample></UltimateSample>

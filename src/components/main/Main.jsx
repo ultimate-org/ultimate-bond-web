@@ -24,9 +24,10 @@ function Main() {
     { normal: "Resilience to", bold: "handle setbacks?" }
 ];
   return (
-    <div className='justify-center items-center'>
-          <div className='pt-[8rem] pb-[7rem] bg-gradient-to-tr from-[#020e25] via-[#04122e] to-[#004E6B]'>
-        <div className=' pt-[7rem] pb-[10rem] relative'>
+    <div className='justify-center items-center bg-[url(/images/landing-image.png)] bg-bottom bg-cover bg-no-repeat'>
+          <div className='pt-[8rem]  '>
+        {/* <div className='pt-[8rem] pb-[7rem] '> */}
+        <div className=' pt-[7rem] pb-[10rem] relative  '>
         <h1 className={`text-center text-8xl ${philosopher.className} ${styles.title}`}>The Future Starts Now!</h1>
           <div className='flex flex-row mt-8 w-[90%] mx-auto'>
           <div className='relative mx-auto'>
@@ -36,7 +37,7 @@ function Main() {
             </div>
             </div>
         </div>
-          <div className='justify-center my-8 bg-[#020e25] pt-[6rem]'>
+          <div className='justify-center bg-[#020e25] py-[6rem]'>
               <div>
             <p className={`text-center text-2xl text-white ${montserratRegular.className} ${styles.mainTextColor}`}>Traditional education prepares children for <span className={`underline underline-offset-2 ${styles.mainTextColor}`}>Tests, Grades, Degrees</span></p>
             <p className={`text-center mt-[3rem] text-5xl text-white  ${montserratBold.className} ${styles.mainTextColor}`}>But does it prepare them for...</p>

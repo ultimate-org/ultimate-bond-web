@@ -25,12 +25,11 @@ function Blogs() {
         const data = await response.json();
 
       if (data.blogsData) {
-          console.log("BLOG DATA", data.blogsData);
         const blogArr: blog[] = data.blogsData.map((blog: any) => ({ carousel_content_id: blog?.carousel_content_id, carousel_type_id: blog?.carousel_type_id, file_path: blog?.file_path, click_url: blog?.click_url }));
       setBlogs(blogArr);}
 
-    } catch (err) {
-        console.error('Error while getting workshops', err);
+    } catch (err:any) {
+        console.error('Error while getting workshops', err.response);
         toast({
             description: "Something went wrong.",
             variant: "destructive",
@@ -39,7 +38,6 @@ function Blogs() {
 };
 
   useEffect(() => {
-  console.log("USE EFFECT CALLED");
     getBlogs();
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);

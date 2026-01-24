@@ -7,7 +7,6 @@ export async function GET() {
             throw new Error('Failed to fetch blogs');
         }
         const blogsData = await blogsResponse.json();
-
         return NextResponse.json({
             blogsData: blogsData.data, 
         });
