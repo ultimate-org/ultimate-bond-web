@@ -166,11 +166,11 @@ function UltimateFeatureSection() {
 
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
-      <h1
+      <h2
         className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText} mb-8`}
       >
-        What&apos;s in the <span className={`${styles.ultimateText}`}>Ulti-Mate</span> app
-      </h1>
+        What&apos;s Included in the <span className={`${styles.ultimateText}`}>Ulti-Mate</span> Parenting App
+      </h2>
 
       {/* Slider Container */}
       <div className={styles.sliderContainer}>
@@ -192,9 +192,9 @@ function UltimateFeatureSection() {
               </div>
             </div>
             <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
-              <h2 className={`text-xl font-semibold ${montserratBold.className}`}>
+              <h3 className={`text-xl font-semibold ${montserratBold.className}`}>
                 {feature.title}
-              </h2>
+              </h3>
               <p className={`text-sm mt-2 ${montserratRegular.className}`}>
                 {feature.description}
               </p>

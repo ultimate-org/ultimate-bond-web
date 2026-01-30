@@ -60,9 +60,9 @@ function ParentTestimony() {
         <div className={`${styles.parentTestimonyContainer} py-8 `}>
         <div className={` flex flex-col md:flex-row justify-center`}>
             <div className='w-[80%] mb-4 md:mb-0 md:w-[30%] mx-auto flex justify-end items-center md:ml-[4rem]'>
-                <h1 className={`text-2xl md:text-4xl text-white text-center ${montserratBold.className} ${styles.parentTestimony}`}>
-                Listen from other parents, not just from us!
-                </h1>
+                <h2 className={`text-2xl md:text-4xl text-white text-center ${montserratBold.className} ${styles.parentTestimony}`}>
+                What Parents Say About <span className={`${styles.ultimateText}`}>Ulti-Mate</span>
+                </h2>
             </div>
             <div className='flex flex-col md:flex-row justify-center mt-8 items-center mx-auto w-[70%]'>
                 {parentTestimony.map((testimony) => (

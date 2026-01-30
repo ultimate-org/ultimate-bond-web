@@ -29,7 +29,7 @@ function LifeChanging() {
   return (
       <div className={`${styles.lifeChangingContainer} flex flex-col justify-center py-[4rem] `}>
           <div className='w-[80%] md:w-[60%] m-auto mt-4'>
-              <h1 className={`text-2xl md:text-5xl text-white text-center ${montserratBold.className} ${styles.lifeChangingText}`}>How we have solved it!</h1>
+              <h2 className={`text-2xl md:text-5xl text-white text-center ${montserratBold.className} ${styles.lifeChangingText}`}>How we have solved it!</h2>
               </div>
           <div className='flex flex-col md:flex-row my-8 md:my-[3rem] w-[80%] mx-auto'>
               {lifeChangingValues.map((lifeChanging) => {

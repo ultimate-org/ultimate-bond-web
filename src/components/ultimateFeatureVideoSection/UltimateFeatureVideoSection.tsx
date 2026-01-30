@@ -99,7 +99,7 @@ function UltimateFeatureVideoSection() {
   return (
     <div className={`py-[4rem] ${styles.ultimateFeatureContainer}`}>
     <div>
-        <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>Explore <span className={`${styles.ultimateText}`}>Ulti-Mate</span> Features</h1>
+        <h2 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.ultimateFeatureText}`}>Explore <span className={`${styles.ultimateText}`}>Ulti-Mate</span> App Features</h2>
     </div>
     <div className='w-full mt-[4rem]'>
         <Carousel className='w-[70%] md:w-[80%] mx-auto'>
@@ -107,7 +107,7 @@ function UltimateFeatureVideoSection() {
                 {ultimateFeatures.map((feature) => (
                     <CarouselItem key={feature.id} className="flex flex-col md:flex-row justify-evenly items-center">
                         <div className='w-full md:w-[50%] md:p-2 mb-4'>
-                            <h2 className={`${montserratExtraBold.className} text-md md:text-3xl ${styles.ultimateFeatureText}`}>{ feature.title }</h2>
+                            <h3 className={`${montserratExtraBold.className} text-md md:text-3xl ${styles.ultimateFeatureText}`}>{ feature.title }</h3>
                             <div className='h-[0.1rem] w-full bg-slate-500 my-2'></div>
                       <p className={`${montserratBold.className} text-sm md:text-lg ${styles.ultimateFeatureText}`}>{feature.description}</p>
                       {

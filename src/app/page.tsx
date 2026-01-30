@@ -1,4 +1,9 @@
-import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine,} from "@/index"
+import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, ConeOfLearning,} from "@/index"
+
+export const metadata = {
+  title:"UltiMate Parenting Smart App for Daily Child & Family Bonding",
+  description:"Ultimate Parenting app offers daily activities, storytelling, mantras, habits, and live workshops to support confident and emotionally strong children."
+}
 
 function Landing() {
   return <>

@@ -9,9 +9,9 @@ function UltimateFrameWork() {
         <div className={`w-full px-4 md:px-8 py-[4rem] flex flex-col justify-center items-center ${styles.ultimateFrameworkContainer}`}>
             {/* Heading */}
             <div className="w-[80%] md:w-[70%] mx-auto md:mt-4">
-                <h1 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
+                <h2 className={`text-2xl md:text-5xl text-center mb-2 ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                     <span className="text-[#F15A29] font-bold">We care</span> with the...
-          </h1>
+          </h2>
           <h1 className={`text-2xl md:text-5xl text-center ${montserratBold.className} ${styles.ultimateFrameworkText}`}>
                     <span className={`${styles.ultimateText}`}>&quot;Ulti-Mate&quot;</span>  framework
                 </h1>

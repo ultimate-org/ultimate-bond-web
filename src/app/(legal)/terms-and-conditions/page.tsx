@@ -1,5 +1,10 @@
 import React from 'react'
 
+export const metadata = {
+  title:"Terms and Conditions | UltiMate Parenting App",
+  description:"Review Ultimate Parenting’s terms and conditions for using our parenting app, services, workshops, and digital content platform."
+}
+
 function TermsConditions
 () {
   return (
