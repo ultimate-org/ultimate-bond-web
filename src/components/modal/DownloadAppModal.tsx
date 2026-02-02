@@ -27,7 +27,7 @@ export default function DownloadAppModal({
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      <div className="bg-[#B7ECFF] rounded-lg shadow-xl w-full max-w-4xl lg:w-[70%] md:w-[80%] sm:w-[90%] h-auto max-h-[90vh] overflow-auto flex flex-col md:flex-row relative p-6 md:p-8 lg:p-12">
+      <div className="bg-[#061D2D] rounded-lg shadow-xl w-full max-w-4xl lg:w-[70%] md:w-[80%] sm:w-[90%] h-auto max-h-[90vh] overflow-auto flex flex-col md:flex-row relative p-6 md:p-8 lg:p-12 border-white rounded-lg border-1">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -63,10 +63,10 @@ export default function DownloadAppModal({
 
         {/* Left Content */}
         <div className="p-4 md:p-6 flex-1 flex flex-col justify-center order-2 md:order-1">
-          <h2 className="text-xl md:text-xl font-bold md:text-left text-center">
+          <h2 className="text-xl md:text-xl md:text-left text-center text-white">
           Download app to get Age-appropriate, Easy to follow activities & features designed to enhance Life Skills.
                   </h2>
-                  <h2 className="text-xl md:text-xl font-bold mb-4 md:mb-6 md:text-left text-center">
+                  <h2 className="text-xl md:text-xl mb-4 md:mb-6 md:text-left text-center text-white">
                   Applicable for children from 3 to 13 years age.
                   </h2>
 
@@ -104,21 +104,23 @@ export default function DownloadAppModal({
 
           {/* QR Codes - Hidden on mobile */}
           <div className="hidden md:flex flex-col justify-center gap-2">
-            <h2 className="text-lg font-bold text-center">Scan to download our App</h2>
+            {/* <h2 className="text-lg font-bold text-center text-white">Scan to download our App</h2> */}
             <div className="hidden md:flex justify-center gap-8">
               <div className="text-center">
                 <div className="bg-white p-2 rounded-lg inline-block">
                   <Image
-                    src="/images/appQR/Appstore_QR.png"
+                    src="/images/appQR/app-qr.jpeg"
                     width={120}
                     height={120}
                     className="w-28 h-28 md:w-32 md:h-32"
-                    alt="iOS QR Code"
+                    alt="QR Code"
                   />
                 </div>
-                <p className="mt-2 text-sm">iOS App Store</p>
+                            <h2 className="text-lg text-center text-white">Scan to download our App</h2>
+
+                {/* <p className="mt-2 text-sm">iOS App Store</p> */}
               </div>
-              <div className="text-center">
+              {/* <div className="text-center">
                 <div className="bg-white p-2 rounded-lg inline-block">
                   <Image
                     src="/images/appQR/Playstore_QR.png"
@@ -129,7 +131,7 @@ export default function DownloadAppModal({
                   />
                 </div>
                 <p className="mt-2 text-sm">Google Play Store</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

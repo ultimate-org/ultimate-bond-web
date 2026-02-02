@@ -187,22 +187,23 @@ function SignUp() {
   };
 
   return (
-    <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md bg-[#ECFCFF]'>
+    <div className='w-full h-screen bg-[url(/images/authentication/auth-bg.png)] bg-cover bg-center flex items-center justify-center'>
+    <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md '>
       <div className='grid md:grid-cols-2 gap-8  md:h-full'>
         <div className='size-full hidden md:block relative rounded-md overflow-hidden'>
-          <Image src={"/images/authentication/sign-up.jpg"} alt='Sign up' fill className='object-fill'></Image>
+          <Image src={"/images/authentication/sign-up.png"} alt='Sign up' fill className='object-contain'></Image>
         </div>
 
         <div className='w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%] flex flex-col justify-center'>
           <div className="mb-4">
-            <h1 className="text-center md:text-left text-2xl font-bold">Get started with Ulti-Mate!</h1>
+            <h1 className="text-center md:text-left text-2xl font-bold text-[#E4781A]">Get started with Ulti-Mate!</h1>
           </div>
           
           {
             message.map((msg) => (
-              <div key={msg.id} className='mb-8'>
-                <h3 className="text-center md:text-left text-lg">{msg.title}</h3>
-                <p className="text-center md:text-left text-sm">{msg.description}</p>
+              <div key={msg.id} className='mb-6'>
+                <h3 className="text-center md:text-left text-lg text-white">{msg.title}</h3>
+                <p className="text-center md:text-left text-sm text-white">{msg.description}</p>
               </div>
             ))
           }
@@ -221,7 +222,7 @@ function SignUp() {
                       name="countryCode"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Country Code</FormLabel>
+                          <FormLabel className='text-white'>Country Code</FormLabel>
                           <Select 
                             onValueChange={(value) => {
                               form.setValue('phoneNumber', ''); 
@@ -231,7 +232,7 @@ function SignUp() {
                             value={field.value}
                           >
                             <FormControl>
-                              <SelectTrigger className="border-black bg-transparent h-10">
+                              <SelectTrigger className="border-white bg-transparent h-10 text-white">
                                 <SelectValue placeholder="Country code" />
                               </SelectTrigger>
                             </FormControl>
@@ -254,14 +255,14 @@ function SignUp() {
                       name="phoneNumber"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel className='text-white'>Phone Number</FormLabel>
                           <FormControl>
                             <Input 
                               type="tel" 
                               maxLength={currentCountryCode == '4' ? 9 : 10} 
                               placeholder="Enter your phone number" 
                               {...field}  
-                              className="border-black bg-transparent h-10"
+                              className="border-white bg-transparent h-10 text-white"
                               onInput={(e) => {
                                 e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
                               }}
@@ -280,9 +281,11 @@ function SignUp() {
                     name="userName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel className='text-white'>Email</FormLabel>
                         <FormControl>
                           <Input 
+                            className="border-white bg-transparent h-10 text-white"
+                            type="email"
                             placeholder="Enter your email address" 
                             {...field} 
                           />
@@ -300,12 +303,13 @@ function SignUp() {
                     <FormItem className="flex flex-row items-start space-x-3 space-y-0 ">
                       <FormControl>
                         <Checkbox
+                          className="border-white"
                           checked={field.value}
                           onCheckedChange={field.onChange}
                         />
                       </FormControl>
                       <div className="space-y-1 leading-none">
-                        <FormDescription>
+                        <FormDescription className='text-white'>
                           I am 18 years or older and I agree to Ulti-Mate&apos;s{" "}
                           <Link className='text-blue-500 underline' href="/terms-and-conditions">Terms and Policies</Link>
                         </FormDescription>
@@ -316,19 +320,25 @@ function SignUp() {
                 />
 
                 <div className='flex justify-center md:justify-start'>
-                  <Button type="submit" disabled={isSubmitting}>
+                  <Button type="submit" disabled={isSubmitting} className="w-full md:w-auto bg-[#E4781A] hover:bg-[#E4781A]">
                     {isSubmitting ? "Processing..." : "Create my account"}
                   </Button>
                 </div>
               </form>
             </Form>
-            <div className='text-center md:text-left mt-6'>
-              <p>Already have an account? <Link className='text-blue-500 font-bold' href={"/login"}>Log in</Link></p>
-            </div>
+              <div className='text-center md:text-left mt-6 flex flex-row justify-center md:justify-between items-start   '>
+                  <div>
+              <p className='text-white'>Already have an account? <Link className='text-blue-500 font-bold' href={"/login"}>Log in</Link></p>
+              </div>
+              <div className='w-[100px] h-[100px] relative '>
+          <Image src={"/images/appQR/app-qr.jpeg"} alt='Sign up' fill className='object-fill'></Image>
+                </div>
+                </div>
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
   );
 }
 

@@ -121,19 +121,21 @@ function Login() {
   }
 
   return (
-    <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md bg-[#ECFCFF]'>
+        <div className='w-full h-screen bg-[url(/images/authentication/auth-bg.png)] bg-cover bg-center flex items-center justify-center'>
+
+    <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md '>
       {/* Main container */}
       <div className='grid md:grid-cols-2 gap-8 h-full'>
         {/* Image Section */}
         <div className='size-full hidden md:block relative rounded-md overflow-hidden'>
-          <Image src={"/images/authentication/login.jpg"} alt='Login' fill className='object-fill'></Image>
+          <Image src={"/images/authentication/sign-up.png"} alt='Sign up' fill className='object-contain'></Image>
         </div>
 
         {/* Form Section */}
         <div className="w-[90%] sm:w-[60%] m-auto md:m-0 md:w-[100%]">
           {/* Heading Container */}
           <div className="mb-8">
-            <h1 className="text-center md:text-left text-2xl font-bold">Existing User, please Login!</h1>
+            <h1 className="text-center md:text-left text-2xl font-bold text-[#E4781A]">Existing User, please Login!</h1>
           </div>
 
           {/* Form Container */}
@@ -146,14 +148,14 @@ function Login() {
                   name="phoneNumber"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Enter Phone Number</FormLabel>
+                      <FormLabel className='text-white'>Enter Phone Number</FormLabel>
                       <FormControl>
                         <Input
                           type="tel"
                           maxLength={10}
                           placeholder="Phone number"
                           {...field}
-                          className="border-black bg-transparent h-10"
+                          className="border-white text-white bg-transparent h-10"
                           onInput={(e) => {
                             // Ensure only numbers are entered
                             e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
@@ -171,21 +173,22 @@ function Login() {
                   name="passcode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Enter Passcode</FormLabel>
+                      <FormLabel className='text-white'>Enter Passcode</FormLabel>
                       <FormControl>
                         <InputOTP
+                          className='border-white text-white'
                           maxLength={4}
                           pattern={REGEXP_ONLY_DIGITS} // Restrict input to digits only
                           {...field}
                         >
                           <InputOTPGroup>
-                            <InputOTPSlot index={0} />
+                            <InputOTPSlot index={0} className='border-white text-white' />
                             <InputOTPSeparator />
-                            <InputOTPSlot index={1} />
+                            <InputOTPSlot index={1} className='border-white text-white' />
                             <InputOTPSeparator />
-                            <InputOTPSlot index={2} />
+                            <InputOTPSlot index={2} className='border-white text-white' />
                             <InputOTPSeparator />
-                            <InputOTPSlot index={3} />
+                            <InputOTPSlot index={3} className='border-white text-white' />
                           </InputOTPGroup>
                         </InputOTP>
                       </FormControl>
@@ -194,16 +197,16 @@ function Login() {
                   )}
                 />
                 <div>
-                  <p>Use default password as 1234. Reset Password on <button onClick={()=>setShowDownloadModal(true)} className='text-decoration-line:underline text-decoration-color-blue-500 text-blue-500'>app</button></p>
+                  <p className='text-white'>Use default password as 1234. Reset Password on <button onClick={()=>setShowDownloadModal(true)} className='text-decoration-line:underline text-decoration-color-blue-500 text-blue-500'>app</button></p>
                 </div>
                 {/* Submit Button */}
-                <div className='flex justify-center md:justify-start'>
-                <Button type="submit">Login</Button>
+                <div className='flex justify-center md:justify-start '>
+                <Button type="submit" className='bg-[#E4781A] hover:bg-[#E4781A] text-white'>Login</Button>
                 </div>
               </form>
             </Form>
             <div className='text-center md:text-left mt-6'>
-              <p>New to Ulti-Mate? Please {" "}<Link className='text-blue-500' href={"/signup"}>Sign up</Link></p>
+              <p className='text-white'>New to Ulti-Mate? Please {" "}<Link className='text-blue-500' href={"/signup"}>Sign up</Link></p>
             </div>
           </div>
         </div>
@@ -213,7 +216,8 @@ function Login() {
           <DownloadAppModal isOpen={showDownloadModal} onClose={()=>setShowDownloadModal(false)}></DownloadAppModal>
         )
       }
-    </div>
+      </div>
+      </div>
   );
 }
 
