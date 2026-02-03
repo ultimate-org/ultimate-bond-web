@@ -122,7 +122,8 @@ function Login() {
   }
 
   return (
-        <div className='w-full h-screen bg-[url(/images/authentication/auth-bg.png)] bg-cover bg-center flex items-center justify-center'>
+        <div className='w-full h-screen bg-[url(/images/authentication/auth-bg.png)] bg-cover bg-center flex items-center justify-center relative'>
+     <button onClick={()=> router.replace("/")} className='bg-[red] absolute top-10 left-10 px-4 py-1 rounded-md text-white '>Home</button>
 
     <div className='w-[80%] my-[2rem] h-screen md:px-8 px-4 py-[2rem] mx-auto shadow-lg rounded-md '>
       {/* Main container */}
