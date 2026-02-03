@@ -25,6 +25,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import DownloadAppModal from '@/components/modal/DownloadAppModal';
+import { sendGAEvent } from '@next/third-parties/google'
 
 // Define the form schema using zod
 const formSchema = z.object({
@@ -80,7 +81,7 @@ function Login() {
         throw new Error(loggedUserInfo.error || "Something went wrong.");
       }
       
-      
+        sendGAEvent({ event: 'LoggedIn', value: loggedUserInfo?.userInfo?.data?.user?.user_id })
             toast({
               description: "Logged in successfuly",
             });

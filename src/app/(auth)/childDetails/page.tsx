@@ -35,6 +35,7 @@ import {
 import { useRouter } from "next/navigation";
 import { AddChildModal } from "@/index";
 import { Input } from "@/components/ui/input";
+import { sendGAEvent } from "@next/third-parties/google";
 // import { AddAnotherChildDialog } from "./AddAnotherChildDialog"; // Import the dialog component
 
 const formSchema = z.object({
@@ -118,6 +119,7 @@ function ChildDetails() {
       });
 
       if (response.ok) {
+        sendGAEvent({ event: 'ChildAdded'})
         toast({
           description: "Child added successfully!",
           variant: "default",

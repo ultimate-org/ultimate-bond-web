@@ -28,7 +28,7 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
+import { sendGAEvent } from '@next/third-parties/google';
 // Dynamic form schema based on country code
 const getFormSchema = (countryCode: string) => {
   return z.object({
@@ -169,7 +169,7 @@ function SignUp() {
       localStorage.setItem('ParentInfo', JSON.stringify(signupRegistration?.data?.parent));
       localStorage.setItem('UserInfo', JSON.stringify(signupRegistration?.data?.user));
       localStorage.setItem('isLoggedIn', "true");
-      
+      sendGAEvent({ event: 'SignUp', value: signupRegistration?.data?.user?.user_id })
       toast({
         description: "Sign up successful!",
       });
