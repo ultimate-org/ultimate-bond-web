@@ -61,10 +61,7 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
                   })
               }  */}
 
-            <Button className='mx-2' onClick={()=> {       sendGAEvent('event', 'blog_button_click', { 
-      value: 'Blogs',
-      
-    });
+            <Button className='mx-2' onClick={()=> { sendGAEvent('event', 'blog_button_click', {  value: 'Blogs', });
             router.push("/blogs")}} variant={"destructive"}>Blogs</Button> 
               <Button onClick={() => { return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup") }} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button> 
 

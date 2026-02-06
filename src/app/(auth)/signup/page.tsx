@@ -169,7 +169,7 @@ function SignUp() {
       localStorage.setItem('ParentInfo', JSON.stringify(signupRegistration?.data?.parent));
       localStorage.setItem('UserInfo', JSON.stringify(signupRegistration?.data?.user));
       localStorage.setItem('isLoggedIn', "true");
-      sendGAEvent({ event: 'SignUp', value: signupRegistration?.data?.user?.user_id })
+      sendGAEvent('event', 'signup_completed', {  value: signupRegistration?.data?.user?.user_id,});
       toast({
         description: "Sign up successful!",
       });

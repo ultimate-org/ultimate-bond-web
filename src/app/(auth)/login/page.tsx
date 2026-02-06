@@ -81,7 +81,7 @@ function Login() {
         throw new Error(loggedUserInfo.error || "Something went wrong.");
       }
       
-        sendGAEvent({ event: 'LoggedIn', value: loggedUserInfo?.userInfo?.data?.user?.user_id })
+        sendGAEvent('event', 'loggedIn_completed', {  value: loggedUserInfo?.userInfo?.data?.user?.user_id});
             toast({
               description: "Logged in successfuly",
             });

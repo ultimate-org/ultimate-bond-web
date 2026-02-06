@@ -1038,6 +1038,7 @@ import {  DownloadAppModal, FAQAccordian, FeatureListCard, SubscriptionPlanCard 
 import { Textarea } from "@/components/ui/textarea";
 import Script from "next/script";
 import { poppinsBold, poppinsRegular } from "@/fonts/fonts";
+import { sendGAEvent } from "@next/third-parties/google";
 // import { set } from "date-fns";
 
 interface Child {
@@ -1735,6 +1736,7 @@ export default function SubscriptionPlans() {
             setLoadingMessage("Fetching Parent Details...");
             const parentInfo = localStorage.getItem("ParentInfo");
             const parent = parentInfo ? JSON.parse(parentInfo) : null;
+            sendGAEvent('event', 'plans_page_viewed',{value:parent?.parent_id});
             const res = await fetch(`/home/subscriptionPlans/user/${parent?.parent_id}/api`);
             const response = await res.json();
             if (response.code === 200) {

@@ -119,7 +119,8 @@ function ChildDetails() {
       });
 
       if (response.ok) {
-        sendGAEvent({ event: 'ChildAdded'})
+        sendGAEvent('event', 'child_profile_added');
+        // sendGAEvent({ event: 'ChildAdded'})
         toast({
           description: "Child added successfully!",
           variant: "default",
