@@ -5,6 +5,8 @@ import Image from 'next/image'
 // import Link from 'next/link'
 // import { useRouter, usePathname } from 'next/navigation'
 import { useRouter } from 'next/navigation'
+import { sendGAEvent } from "@next/third-parties/google";
+
 
 // import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
@@ -59,7 +61,8 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
                   })
               }  */}
 
-            <Button className='mx-2' onClick={()=> {router.push("/blogs")}} variant={"destructive"}>Blogs</Button> 
+            <Button className='mx-2' onClick={()=> {        sendGAEvent({ event: 'Blogs'})
+            router.push("/blogs")}} variant={"destructive"}>Blogss</Button> 
               <Button onClick={() => { return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup") }} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button> 
 
            </div> 
