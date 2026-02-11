@@ -26,7 +26,9 @@ export const metadata: Metadata = {
     shortcut: '/icon.png', // Optional
     apple: '/icon.png', // Apple touch icon
   },
-
+  verification: {
+    google: 'google76ad3333d1d13637.html',
+  }
 };
 
 export default async function RootLayout({
