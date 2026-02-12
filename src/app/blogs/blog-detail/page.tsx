@@ -12,7 +12,7 @@ interface blogDetails {
   click_url: string;
 }
 
-function page() {
+function Page() {
   const searchParams = useSearchParams();
   const name = searchParams.get('name');
   const [blogDetails, setBlogDetails] = useState<blogDetails | null>(null);
@@ -70,4 +70,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
