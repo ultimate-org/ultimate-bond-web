@@ -1,8 +1,7 @@
 "use client";
 
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { use, useEffect, useState } from 'react';
 
 import Header from '@/components/headerSection/Header';
 
@@ -12,9 +11,8 @@ interface blogDetails {
   click_url: string;
 }
 
-function Page() {
-  const searchParams = useSearchParams();
-  const name = searchParams.get('name');
+function Page({searchParams}:{searchParams:Promise<{name?:string}>}) {
+    const {name} = use(searchParams)
   const [blogDetails, setBlogDetails] = useState<blogDetails | null>(null);
 
   const getBlogDetails = async () => {
