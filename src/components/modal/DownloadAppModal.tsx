@@ -24,7 +24,7 @@ export default function DownloadAppModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[200]"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="bg-[#061D2D] rounded-lg shadow-xl w-full max-w-4xl lg:w-[70%] md:w-[80%] sm:w-[90%] h-auto max-h-[90vh] overflow-auto flex flex-col md:flex-row relative p-6 md:p-8 lg:p-12 border-white rounded-lg border-1">
