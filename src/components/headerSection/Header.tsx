@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import Image from 'next/image'
 // import Link from 'next/link'
 // import { useRouter, usePathname } from 'next/navigation'
@@ -23,7 +23,7 @@ import DownloadAppModal from '../modal/DownloadAppModal';
   
 
 function Header({ secondaryLogo }: { secondaryLogo: string }) {
-    const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+    // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const [showDownloadModal, setShowDownloadModal] = React.useState(false)
     const router = useRouter();
     // const pathName = usePathname();
@@ -36,18 +36,18 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
     //     },
     // ]
 
-    useEffect(() => {
-        const parentInfo = localStorage.getItem("ParentInfo");
-        const parent = parentInfo ? JSON.parse(parentInfo) : null;
-        if (!parent || !parent?.parent_id) {
-            setIsLoggedIn(false)
-            // router.push("/signup");
-        } else {
-            setIsLoggedIn(true);
-            // router.push("/home/parentProfile");
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    // useEffect(() => {
+    //     const parentInfo = localStorage.getItem("ParentInfo");
+    //     const parent = parentInfo ? JSON.parse(parentInfo) : null;
+    //     if (!parent || !parent?.parent_id) {
+    //         setIsLoggedIn(false)
+    //         // router.push("/signup");
+    //     } else {
+    //         setIsLoggedIn(true);
+    //         // router.push("/home/parentProfile");
+    //     }
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // },[])
   return (
       <nav className={`w-full justify-between items-start flex flex-row absolute bg-transparent py-8 px-8 top-0 left-0 right-0 z-[100]`}>
           <div className='flex flex-row'>
