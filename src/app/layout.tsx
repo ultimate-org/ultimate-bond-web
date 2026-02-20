@@ -6,6 +6,7 @@ import { getLocale, getMessages } from 'next-intl/server';
 import { Footer, } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
 import { GoogleAnalytics } from '@next/third-parties/google';
+import MetaPixel from '@/components/MetaPixel'; 
 
 
 const geistSans = Geist({
@@ -53,6 +54,7 @@ export default async function RootLayout({
           <Toaster />
           <Footer />
         </NextIntlClientProvider>
+        <MetaPixel/>
       </body>
         <GoogleAnalytics gaId="G-8FN0J3Y8CC"></GoogleAnalytics>
     </html>
