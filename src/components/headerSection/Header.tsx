@@ -19,12 +19,12 @@ import {
     // DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
-import DownloadAppModal from '../modal/DownloadAppModal';
+// import DownloadAppModal from '../modal/DownloadAppModal';
   
 
 function Header({ secondaryLogo }: { secondaryLogo: string }) {
     // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [showDownloadModal, setShowDownloadModal] = React.useState(false)
+    // const [showDownloadModal, setShowDownloadModal] = React.useState(false)
     const router = useRouter();
     // const pathName = usePathname();
     // const headerNavItems = [
@@ -61,7 +61,7 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
             <Button className='mx-2' onClick={()=> { sendGAEvent('event', 'blog_button_click', {  value: 'Blogs', });
             router.push("/blogs")}} variant={"destructive"}>Blogs</Button>  
               {/* <Button onClick={() => { return isLoggedIn ? router.push("/home/parentProfile") : router.push("/signup") }} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button>  */}
-            <Button onClick={() => { setShowDownloadModal(true);}} variant={"destructive"}>{"Get The App"}</Button> 
+            <Button onClick={() => { router.push("/download-app")}} variant={"destructive"}>{"Get The App"}</Button> 
 
            </div> 
            {/* showing this section of smaller viewport */} 
@@ -75,15 +75,15 @@ function Header({ secondaryLogo }: { secondaryLogo: string }) {
                       return <DropdownMenuItem onClick={()=>router.push(navItem.route)} key={navItem.id}>{navItem.item}</DropdownMenuItem>
                   })
               }  */}
-                          <Button onClick={() => { setShowDownloadModal(true);}} variant={"destructive"}>{"Get The App"}</Button> 
+                          <Button onClick={() => { router.push("/download-app")}} variant={"destructive"}>{"Get The App"}</Button> 
 
                  {/* <DropdownMenuItem><Button onClick={()=>router.push("/signup")} variant={"destructive"}>{isLoggedIn ? "My Account" : "Get The App"}</Button></DropdownMenuItem> */}
  </DropdownMenuContent>
 </DropdownMenu>
           </div>
-{
+{/* {
     showDownloadModal && <DownloadAppModal isOpen={showDownloadModal} onClose={()=>setShowDownloadModal(false)}/>
-}
+} */}
     </nav>
   )
 }
