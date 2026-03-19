@@ -26,6 +26,7 @@ function Page({searchParams}:{searchParams:Promise<{name?:string}>}) {
       const data = await response.json();
       setBlogDetails(data?.blogData);
       
+      
     } catch (err) {
       console.error("Something Went Wrong", err);
     }
@@ -39,11 +40,11 @@ function Page({searchParams}:{searchParams:Promise<{name?:string}>}) {
 
   return (
     <div className="min-h-screen py-[5rem] justify-center items-center">
-      <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo1.png"></Header>
+      <Header></Header>
       {blogDetails ? (
         <div className="w-full my-10 px-2 md:px-4">
           {/* Image Section */}
-          <div className='w-[100%] md:w-[70%] h-[20rem] md:h-[30rem] relative m-auto mb-8 hover:drop-shadow-xl rounded-xl overflow-hidden'>
+          <div className='w-[100%] md:w-[40%] h-[20rem] md:h-[30rem] relative m-auto mb-8 hover:drop-shadow-xl rounded-xl overflow-hidden'>
             <Image
               alt="blog image"
               src={blogDetails.file_path}

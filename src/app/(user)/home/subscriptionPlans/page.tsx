@@ -1370,7 +1370,6 @@ export default function SubscriptionPlans() {
                     order_id: response.razorpay_order_id,
                     handler: async function (response: any) {
                         // Handle successful payment
-                        console.log('Payment successful:', response);
                         
                         try {
                             setLoading(true);

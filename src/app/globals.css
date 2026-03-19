@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+  
 } 
 @font-face {
   font-family: 'SmallPrint';
@@ -64,7 +69,19 @@ body {
     --title-small-screen-font-size: 1.125rem;
     --description-large-screen-font-size: 1rem;
     --description-small-screen-font-size: 0.825rem;
-    --heading-font-family: 
+    /* --heading-font-family:  */
+     --bg:#04060f;
+  --surface:#0a0e1f;
+  --surface2:#0f1428;
+  --orange:#f97316;
+  --orange-glow:rgba(249,115,22,0.18);
+  --orange-dim:#c2530a;
+  --blue:#3b82f6;
+  --teal:#14b8a6;
+  --white:#f0f4ff;
+  --muted:#7a8ab0;
+  --border:rgba(255,255,255,0.07);
+  --border-orange:rgba(249,115,22,0.3);
   }
   .dark {
     --background: 240 10% 3.9%;

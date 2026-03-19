@@ -7,6 +7,7 @@ import { Footer, } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
 import { GoogleAnalytics } from '@next/third-parties/google';
 import MetaPixel from '@/components/MetaPixel'; 
+import Stars from "@/components/star/Star";
 
 
 const geistSans = Geist({
@@ -50,6 +51,7 @@ export default async function RootLayout({
        
         <NextIntlClientProvider messages={messages}>
           {/* <Header></Header> */}
+          <Stars/>
           {children}
           <Toaster />
           <Footer />
