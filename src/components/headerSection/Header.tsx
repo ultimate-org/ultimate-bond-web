@@ -656,7 +656,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 const NAV_LINKS = [
   { label: "Problem",  href: "#problem"  },
@@ -672,7 +672,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);

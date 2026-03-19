@@ -981,7 +981,7 @@ export default function Blogs() {
 
                 <p className="text-[#9ca3af] text-[0.9rem] leading-[1.75] mb-7">
                   Explore this featured insight from our parenting experts — practical,
-                  research-backed and designed for today's families.
+                  research-backed and designed for today&apos;s families.
                 </p>
 
                 <Link

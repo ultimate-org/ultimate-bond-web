@@ -1368,9 +1368,9 @@ export default function SubscriptionPlans() {
                     name: 'Adeptify Technologies Pvt Ltd',
                     description: selectedSubscriptionPlan.name,
                     order_id: response.razorpay_order_id,
-                    handler: async function (response: any) {
+                    // handler: async function (response: any) {
                         // Handle successful payment
-                        
+                        handler: async function () {
                         try {
                             setLoading(true);
                             setLoadingMessage(

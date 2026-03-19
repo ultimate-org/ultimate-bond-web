@@ -308,7 +308,7 @@ export default function Solution() {
             background: "rgba(249,115,22,0.03)",
           }}
         >
-          "Ordinary moments. Extraordinary family." —{" "}
+          &quot;Ordinary moments. Extraordinary family.&quot; —{" "}
           <strong className="text-[#f97316] not-italic">
             Where research meets real life, one intentional moment at a time.
           </strong>

@@ -11,8 +11,10 @@ import Science from "@/components/science/Science";
 import Solution from "@/components/solution/Solution";
 import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
 import Why from "@/components/why/Why";
-import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
-import { Star } from "lucide-react";
+import {Main, Header} from "@/index"
+
+// import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
+// import { Star } from "lucide-react";
 
 export const metadata = {
   title:"UltiMate Parenting Smart App for Daily Child & Family Bonding",

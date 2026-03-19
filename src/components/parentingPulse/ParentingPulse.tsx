@@ -85,7 +85,7 @@ export default function ParentingPulse() {
 
             {/* .radar-desc */}
             <p className="text-[#9ca3af] text-[0.9rem] leading-[1.7] font-light mb-6">
-              Every morning, Parenting Pulse scans what's happening in the world of family,
+              Every morning, Parenting Pulse scans what&apos;s happening in the world of family,
               parenting and child development — and delivers specific, actionable insights
               tailored to your journey. Not generic advice. Timely signals that matter right now.
             </p>
@@ -130,7 +130,7 @@ export default function ParentingPulse() {
                 className="text-[0.7rem] tracking-[0.08em] uppercase text-[#2dd4bf] font-bold mb-1.5"
                 style={{ fontFamily: "'Rubik', sans-serif" }}
               >
-                📡 Today's Parenting Pulse
+                📡 Today&apos;s Parenting Pulse
               </div>
               <div className="text-[0.85rem] font-semibold mb-1">
                 3 signals · Age 7 · Milestone: Explorer

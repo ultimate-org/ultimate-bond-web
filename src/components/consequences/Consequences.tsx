@@ -299,7 +299,7 @@ export default function Consequences() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center mt-8 text-white text-[1rem] font-medium italic"
         >
-          The window to act is ages 3–13. After that, you're not building — you're rebuilding.
+          The window to act is ages 3–13. After that, you&apos;re not building — you&apos;re rebuilding.
         </motion.p>
 
       </div>

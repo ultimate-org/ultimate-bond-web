@@ -156,7 +156,7 @@ export default function Why() {
             <>
               We Are Not Another Parenting Blog,
               <br />
-              Workshop, or Children's App.
+              Workshop, or Children&apos;s App.
             </>
           }
         />

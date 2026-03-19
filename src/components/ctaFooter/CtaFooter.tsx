@@ -433,12 +433,12 @@ export default function Cta() {
           <em className="text-[#f97316] not-italic">UltiMate</em>{" "}
           Parent
           <br />
-          in Your Child's Growth
+          in Your Child&apos;s Growth
         </motion.h2>
 
         {/* p */}
         <p className="text-[#9ca3af] text-[1rem] mb-10 font-light">
-          Download the app today and start your family's journey across the stars.
+          Download the app today and start your family&apos;s journey across the stars.
           <br />
           20 minutes a day. 20+ milestones. One extraordinary family. 100% results guaranteed.
         </p>

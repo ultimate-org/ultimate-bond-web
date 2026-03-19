@@ -288,18 +288,18 @@ export default function SpaceWhy() {
         >
           Space is Infinite.
           <br />
-          So Is Your Family's Journey.
+          So Is Your Family&apos;s Journey.
         </h2>
 
         {/* p */}
         <p className="text-[#9ca3af] text-[1.05rem] leading-[1.85] font-light">
           Just as space has no boundary,{" "}
           <strong className="text-white font-medium">
-            a parent's love and a family's growth know no limits.
+            a parent&apos;s love and a family&apos;s growth know no limits.
           </strong>{" "}
           Every deed completed is fuel. Every milestone crossed is a new planet
           reached. The journey through the cosmos of parenthood never truly ends
-          — it only deepens. UltiMate maps your family's infinite growth across
+          — it only deepens. UltiMate maps your family&apos;s infinite growth across
           the stars, one intentional moment at a time.
         </p>
 

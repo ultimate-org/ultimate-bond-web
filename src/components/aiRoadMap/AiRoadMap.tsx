@@ -327,7 +327,7 @@ export default function AiRoadmap() {
 
           {/* span — subline */}
           <span className="text-[#9ca3af] text-[0.85rem]">
-            The families who use UltiMate today are building the intelligence that will make UltiMate tomorrow's most personalised family platform in the world.
+            The families who use UltiMate today are building the intelligence that will make UltiMate tomorrow&apos;s most personalised family platform in the world.
           </span>
         </motion.div>
 

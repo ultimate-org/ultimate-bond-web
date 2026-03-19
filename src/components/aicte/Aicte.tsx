@@ -143,7 +143,7 @@ import { containerClass } from "@/components/ui/UI";
 
 // Base64 logo from the provided HTML — drop your actual logo in /public/aicte-logo.png
 // and replace this with: src="/aicte-logo.png"
-const AICTE_LOGO_B64 = "./images/aictelogo.png"; // swap if you have the file in /public
+// const AICTE_LOGO_B64 = "./images/aictelogo.png"; // swap if you have the file in /public
 
 export default function AicteBadge() {
   return (
@@ -198,7 +198,7 @@ export default function AicteBadge() {
             <strong className="text-[#f97316] font-semibold">
               AICTE (All India Council for Technical Education)
             </strong>
-            , under India's Ministry of Education — recognising our app as an
+            , under India&apos;s Ministry of Education — recognising our app as an
             essential resource for Indian families and parents in child
             development.
           </p>
