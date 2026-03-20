@@ -10,6 +10,7 @@ import Problem from "@/components/problem/Problem";
 import Science from "@/components/science/Science";
 import Solution from "@/components/solution/Solution";
 import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
+import TransformationJourney from "@/components/transformations/Transformations";
 import Why from "@/components/why/Why";
 import {Main, Header} from "@/index"
 
@@ -34,6 +35,7 @@ function Landing() {
     <Solution/>
     <Journey/>
     <FeaturesRadar/>
+    <TransformationJourney/>
     <ParentingPulse/>
     <AiRoadmap/>
     <Why/>

@@ -217,21 +217,22 @@ export default function Problem() {
                 {card.stat}
               </p>
 
-              {/* h3 */}
-              <h3 className="text-white font-bold text-[1.05rem] mb-2.5">
-                {card.heading}
-              </h3>
+              
 
               {/* p */}
               <p className="text-[#9ca3af] text-[0.88rem] leading-[1.7] font-light">
                 {card.body}
               </p>
+              {/* h3 */}
+              <h3 className="text-white font-bold text-[1.05rem] mb-2.5">
+                {card.heading}
+              </h3>
             </motion.div>
           ))}
         </div>
 
         {/* .problem-headlines.reveal */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -241,14 +242,14 @@ export default function Problem() {
             background: "rgba(249,115,22,0.05)",
             border: "1px solid rgba(249,115,22,0.25)",
           }}
-        >
+        > */}
           {/* p */}
-          <p className="text-[#9ca3af] text-[0.85rem] mb-3">
+          {/* <p className="text-[#9ca3af] text-[0.85rem] mb-3">
             Real headlines. Real families. This is happening now.
-          </p>
+          </p> */}
 
           {/* .headlines-row */}
-          <div className="flex flex-wrap gap-4">
+          {/* <div className="flex flex-wrap gap-4">
             {PILLS.map((pill) => (
               <span
                 key={pill}
@@ -261,8 +262,8 @@ export default function Problem() {
                 {pill}
               </span>
             ))}
-          </div>
-        </motion.div>
+          </div> */}
+        {/* </motion.div> */}
 
       </div>
     </section>

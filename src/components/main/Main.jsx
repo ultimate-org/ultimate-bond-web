@@ -254,7 +254,7 @@ import { motion } from "framer-motion";
 import { BtnPrimary, BtnSecondary } from "@/components/ui/UI";
 
 const STATS = [
-  { val: "1800+", label: "Life Skill Activities" },
+  { val: "1500+", label: "Life Skill Activities" },
   { val: "1000+", label: "Audio Stories"         },
   { val: "20+",   label: "Family Milestones"      },
   { val: "20min", label: "Daily Engagement"       },
@@ -313,7 +313,7 @@ export default function Hero() {
           <motion.h1
             custom={1} initial="hidden" animate="visible" variants={fadeUp}
             className="text-white font-black leading-[1.05] tracking-[-0.03em] mb-4"
-            style={{ fontSize: "clamp(2.6rem, 5.5vw, 4.2rem)", fontFamily: "'Rubik', sans-serif" }}
+            style={{ fontSize: "clamp(2.2rem, 5.5vw, 3.8rem)", fontFamily: "'Rubik', sans-serif" }}
           >
             Ordinary Moments.
             <br />
@@ -325,13 +325,13 @@ export default function Hero() {
           {/* .hero-sub */}
           <motion.p
             custom={2} initial="hidden" animate="visible" variants={fadeUp}
-            className="text-[#9ca3af] text-[1.05rem] max-w-[460px] mb-8 font-light leading-[1.8]"
+            className="text-[#9ca3af] text-[1.1rem] max-w-[460px] mb-8 font-light leading-[1.8]"
           >
-            Support every milestone in your child's growth — and yours as a caregiver.{" "}
+            No prep. No screen. Just meaningful conversations and real family time. Spend just 20 mins a day with simple, age appropriate activities designed to build your child&apos;s{" "}
             <strong className="text-white font-medium">
-              Your child still wants to tell you everything.
+              emotional strength, resilience, and thinking skills,
             </strong>{" "}
-            The window to act is ages 3–13. UltiMate makes every day count.
+            while helping you understand your child better.
           </motion.p>
 
           {/* .hero-ctas */}
