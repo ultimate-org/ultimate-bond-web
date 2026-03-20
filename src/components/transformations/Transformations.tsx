@@ -364,7 +364,7 @@ export default function TransformationJourney() {
           </h2>
 
           <p className="text-[#94A3B8] text-[1.05rem] max-w-[640px] mx-auto leading-[1.7]">
-            This isn't a course you finish. It's a shift that unfolds — week by week, deed by deed
+            This isn&apos;t a course you finish. It&apos;s a shift that unfolds — week by week, deed by deed
             — across your child, you as a parent, and your family as a whole.
           </p>
         </motion.div>
@@ -451,7 +451,7 @@ export default function TransformationJourney() {
             className="text-white font-black text-[1.5rem] mb-2"
             style={{ fontFamily: "'Rubik', sans-serif" }}
           >
-            Every family's journey starts with Day 1.
+            Every family&apos;s journey starts with Day 1.
           </p>
           <p className="text-[#94A3B8] text-[0.92rem] mb-7">
             20 minutes. One deed. Three lives transformed.
@@ -465,7 +465,7 @@ export default function TransformationJourney() {
               fontFamily: "'Rubik', sans-serif",
             }}
           >
-            Start Your Family's Journey 🚀
+            Start Your Family&apos;s Journey 🚀
           </a>
         </motion.div>
 
