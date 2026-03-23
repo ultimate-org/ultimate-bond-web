@@ -153,11 +153,11 @@ const CARDS = [
   },
 ];
 
-const PILLS = [
-  "Suicide claiming 1 student every hour",
-  "16-yr-old dies near Pune after gaming addiction",
-  "The child who hides everything at 15 was the 7-yr-old who never talks",
-];
+// const PILLS = [
+//   "Suicide claiming 1 student every hour",
+//   "16-yr-old dies near Pune after gaming addiction",
+//   "The child who hides everything at 15 was the 7-yr-old who never talks",
+// ];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
