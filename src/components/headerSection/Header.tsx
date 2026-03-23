@@ -660,7 +660,7 @@ import { sendGAEvent } from "@next/third-parties/google";
 
 const NAV_LINKS = [
   { label: "Problem",  href: "#problem"  },
-  { label: "Solution", href: "#solution" },
+  // { label: "Solution", href: "#solution" },
   { label: "Journey",  href: "#journey"  },
   { label: "Features", href: "#features" },
   { label: "AI",       href: "#ai"       },

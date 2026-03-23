@@ -249,7 +249,7 @@
 
 "use client";
 
-import Link from "next/link";
+// import Link from "next/link";
 import { motion } from "framer-motion";
 import { BtnPrimary, BtnSecondary } from "@/components/ui/UI";
 
@@ -340,7 +340,7 @@ export default function Hero() {
             className="flex gap-4 flex-wrap mb-12"
           >
             <BtnPrimary href="#cta">Get the App</BtnPrimary>
-            <BtnSecondary href="#solution">See How It Works →</BtnSecondary>
+            <BtnSecondary href="#journey">See How It Works →</BtnSecondary>
           </motion.div>
 
           {/* .hero-stats */}
