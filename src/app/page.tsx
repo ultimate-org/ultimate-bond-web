@@ -8,10 +8,10 @@ import Journey from "@/components/journey/Journey";
 import ParentingPulse from "@/components/parentingPulse/ParentingPulse";
 import Problem from "@/components/problem/Problem";
 import Science from "@/components/science/Science";
-import Solution from "@/components/solution/Solution";
+// import Solution from "@/components/solution/Solution";
 import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
 import TransformationJourney from "@/components/transformations/Transformations";
-import Why from "@/components/why/Why";
+// import Why from "@/components/why/Why";
 import {Main, Header} from "@/index"
 
 // import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
@@ -32,13 +32,13 @@ function Landing() {
     <Problem/>
     <Consequences/>
     <Science/>
-    <Solution/>
+    {/* <Solution/> */}
+    <TransformationJourney/>
     <Journey/>
     <FeaturesRadar/>
-    <TransformationJourney/>
     <ParentingPulse/>
     <AiRoadmap/>
-    <Why/>
+    {/* <Why/> */}
     <Advisors/>
     <CtaFooter/>
     {/* <Problem/> */}

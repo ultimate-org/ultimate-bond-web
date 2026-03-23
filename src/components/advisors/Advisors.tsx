@@ -326,9 +326,10 @@ export default function Advisors() {
           tag="Expert Backed"
           heading={
             <>
-              Our Child Psychology &amp;
+              {/* Our Child Psychology &amp;
               <br />
-              Parenting Advisors
+              Parenting Advisors */}
+              Our Advisors
             </>
           }
           sub="Built on decades of research and guided by India's leading child development experts."
