@@ -257,7 +257,7 @@ const STATS = [
   { val: "1500+", label: "Life Skill Activities" },
   { val: "1000+", label: "Audio Stories"         },
   { val: "20+",   label: "Family Milestones"      },
-  { val: "20min", label: "Daily Engagement"       },
+  { val: "10min", label: "Daily Engagement"       },
 ];
 
 const fadeUp = {
@@ -327,7 +327,7 @@ export default function Hero() {
             custom={2} initial="hidden" animate="visible" variants={fadeUp}
             className="text-[#9ca3af] text-[1.1rem] max-w-[460px] mb-8 font-light leading-[1.8]"
           >
-            No prep. No screen. Just meaningful conversations and real family time. Spend just 20 mins a day with simple, age appropriate activities designed to build your child&apos;s{" "}
+            No prep. No screen. Just meaningful conversations and real family time. Spend just 10 mins a day with simple, age appropriate activities designed to build your child&apos;s{" "}
             <strong className="text-white font-medium">
               emotional strength, resilience, and thinking skills,
             </strong>{" "}

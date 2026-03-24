@@ -440,7 +440,7 @@ export default function Cta() {
         <p className="text-[#9ca3af] text-[1rem] mb-10 font-light">
           Download the app today and start your family&apos;s journey across the stars.
           <br />
-          20 minutes a day. 20+ milestones. One extraordinary family. 100% results guaranteed.
+          10 minutes a day. 20+ milestones. One extraordinary family. 100% results guaranteed.
         </p>
 
         {/* store badge buttons */}

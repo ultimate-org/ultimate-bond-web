@@ -156,7 +156,7 @@ const FAMILY_JOURNEY: TimelineItem[] = [
     desc: "Everyone's home — but no one's really present. Evenings are a cycle of homework, screens, and \"eat your food.\" Weekends disappear without a single meaningful interaction. You're a family by structure, not by connection.",
     beforeAfter: {
       before: "Dinner = TV on, phones out, silence between bites.",
-      after: "Dinner = today's WonderChat question sparks a 20-minute conversation.",
+      after: "Dinner = today's WonderChat question sparks a 10-minute conversation.",
     },
   },
   {
@@ -165,8 +165,8 @@ const FAMILY_JOURNEY: TimelineItem[] = [
     phaseColor: "#fbbf24",
     dotGradient: "linear-gradient(135deg,#78350f,#92400e)",
     dotShadow: "0 0 20px rgba(245,158,11,0.2)",
-    heading: "20 Minutes That Change the Texture of a Day",
-    desc: "A daily 20-minute deed becomes the anchor. One story together. One activity. One conversation. It's small — but it's consistent. And consistency is where bonds are built. The gamified milestone journey keeps everyone showing up.",
+    heading: "10 Minutes That Change the Texture of a Day",
+    desc: "A daily 10-minute deed becomes the anchor. One story together. One activity. One conversation. It's small — but it's consistent. And consistency is where bonds are built. The gamified milestone journey keeps everyone showing up.",
     tags: ["Daily Deeds", "Points & Rewards", "Milestone Journey"],
   },
   {
@@ -454,7 +454,7 @@ export default function TransformationJourney() {
             Every family&apos;s journey starts with Day 1.
           </p>
           <p className="text-[#94A3B8] text-[0.92rem] mb-7">
-            20 minutes. One deed. Three lives transformed.
+            10 minutes. One deed. Three lives transformed.
           </p>
           <a
             href="#cta"
