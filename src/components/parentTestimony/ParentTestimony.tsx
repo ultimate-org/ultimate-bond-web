@@ -125,7 +125,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { containerClass, SectionHeader } from "@/components/ui/UI";
 
 /* ── Video sources — add your files to /public/videos/ ── */
