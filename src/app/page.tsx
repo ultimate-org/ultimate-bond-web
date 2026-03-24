@@ -12,7 +12,7 @@ import Science from "@/components/science/Science";
 import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
 import TransformationJourney from "@/components/transformations/Transformations";
 // import Why from "@/components/why/Why";
-import {Main, Header} from "@/index"
+import {Main, Header, ParentTestimony} from "@/index"
 
 // import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
 // import { Star } from "lucide-react";
@@ -40,6 +40,7 @@ function Landing() {
     <AiRoadmap/>
     {/* <Why/> */}
     <Advisors/>
+    <ParentTestimony/>
     <CtaFooter/>
     {/* <Problem/> */}
     {/* {/* <Statistics></Statistics> */}

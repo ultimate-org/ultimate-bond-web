@@ -252,6 +252,7 @@
 // import Link from "next/link";
 import { motion } from "framer-motion";
 import { BtnPrimary, BtnSecondary } from "@/components/ui/UI";
+import { useRouter } from "next/navigation";
 
 const STATS = [
   { val: "1500+", label: "Life Skill Activities" },
@@ -269,6 +270,7 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const router = useRouter()
   return (
     <section
       id="hero"
@@ -339,7 +341,7 @@ export default function Hero() {
             custom={3} initial="hidden" animate="visible" variants={fadeUp}
             className="flex gap-4 flex-wrap mb-12"
           >
-            <BtnPrimary href="#cta">Get the App</BtnPrimary>
+            <BtnPrimary onClick={()=>router.push("/download-app")}>Get the App</BtnPrimary>
             <BtnSecondary href="#journey">See How It Works →</BtnSecondary>
           </motion.div>
 

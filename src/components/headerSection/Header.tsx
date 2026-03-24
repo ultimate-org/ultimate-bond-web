@@ -656,7 +656,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { sendGAEvent } from "@next/third-parties/google";
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const NAV_LINKS = [
   { label: "Problem",  href: "#problem"  },
@@ -672,7 +672,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  // const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -732,8 +732,9 @@ export default function Navbar() {
             Blog
           </Link>
 
-          <Link
-            href="#cta"
+          <button
+            // href="#cta"
+            onClick={() => {router.push("/download-app");}}
             className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full transition-all duration-200 hover:bg-[#ea6a0a] hover:-translate-y-[1px]"
             style={{
               background: "#f97316",
@@ -742,7 +743,7 @@ export default function Navbar() {
             }}
           >
             Get the App
-          </Link>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -798,9 +799,9 @@ export default function Navbar() {
                 Blog
               </Link>
 
-              <Link
-                href="#cta"
-                onClick={() => setMenuOpen(false)}
+              <button
+                // href="#cta"
+                onClick={() => {router.push("/download-app"); setMenuOpen(false)}}
                 className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full"
                 style={{
                   background: "#f97316",
@@ -809,7 +810,7 @@ export default function Navbar() {
                 }}
               >
                 Get the App
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
