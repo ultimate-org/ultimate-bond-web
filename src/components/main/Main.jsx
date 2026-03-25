@@ -333,7 +333,7 @@ export default function Hero() {
             <strong className="text-white font-medium">
               emotional strength, resilience, and thinking skills,
             </strong>{" "}
-            while helping you understand your child better.
+            while bridging the gap between Knowing and Doing.
           </motion.p>
 
           {/* .hero-ctas */}
