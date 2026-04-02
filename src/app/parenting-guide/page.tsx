@@ -1,0 +1,2488 @@
+// // // // "use client";
+
+// // // // import { useState } from "react";
+// // // // import { motion, AnimatePresence } from "framer-motion";
+// // // // import { ChevronDown, ChevronRight } from "lucide-react";
+// // // // // import Link from "next/link";
+
+// // // // /* ── Navbar import path — adjust to match your project ── */
+// // // // // This component is self-contained; the Navbar is rendered separately via layout
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    DATA
+// // // // ══════════════════════════════════════════════ */
+
+// // // // const CATEGORIES = [
+// // // //   {
+// // // //     id: "child_behaviour",
+// // // //     label: "Child Behaviour",
+// // // //     subtopics: [
+// // // //       { id: "cb_01", label: "Why Children Lie" },
+// // // //       { id: "cb_02", label: "Why Kids Talk Back" },
+// // // //       { id: "cb_03", label: "Stubborn Children" },
+// // // //       { id: "cb_04", label: "Discipline Without Punishment" },
+// // // //       { id: "cb_05", label: "Aggressive Behaviour" },
+// // // //       { id: "cb_06", label: "Why Children Refuse to Listen" },
+// // // //       { id: "cb_07", label: "Sibling Fights" },
+// // // //       { id: "cb_08", label: "Tantrums" },
+// // // //       { id: "cb_09", label: "Teaching Respect" },
+// // // //       { id: "cb_10", label: "Setting Boundaries" },
+// // // //     ],
+// // // //   },
+// // // //   {
+// // // //     id: "emotional_development",
+// // // //     label: "Emotional Development",
+// // // //     subtopics: [
+// // // //       { id: "ed_01", label: "Building Emotional Resilience" },
+// // // //       { id: "ed_02", label: "Emotional Intelligence in Children" },
+// // // //       { id: "ed_03", label: "Helping Children Express Emotions" },
+// // // //       { id: "ed_04", label: "Helping Children Overcome Fear" },
+// // // //       { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+// // // //       { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+// // // //       { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+// // // //       { id: "ed_08", label: "Raising Emotionally Strong Children" },
+// // // //       { id: "ed_09", label: "Teaching Patience to Children" },
+// // // //       { id: "ed_10", label: "Why Children Get Angry" },
+// // // //     ],
+// // // //   },
+// // // //   {
+// // // //     id: "habits_discipline",
+// // // //     label: "Habits & Discipline",
+// // // //     subtopics: [
+// // // //       { id: "hd_01", label: "Building Reading Habits" },
+// // // //       { id: "hd_02", label: "Daily Routines for Children" },
+// // // //       { id: "hd_03", label: "Helping Kids Stay Organized" },
+// // // //       { id: "hd_04", label: "How Children Develop Habits" },
+// // // //       { id: "hd_05", label: "Morning Routines for Kids" },
+// // // //       { id: "hd_06", label: "Teaching Responsibility at Home" },
+// // // //       { id: "hd_07", label: "Teaching Self Discipline" },
+// // // //       { id: "hd_08", label: "Teaching Time Management" },
+// // // //       { id: "hd_09", label: "Screen Time Balance for Kids" },
+// // // //       { id: "hd_10", label: "Why Routines Help Children" },
+// // // //     ],
+// // // //   },
+// // // //   {
+// // // //     id: "school_life",
+// // // //     label: "School Life",
+// // // //     subtopics: [
+// // // //       { id: "sl_01", label: "Bullying in Primary Schools" },
+// // // //       { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+// // // //       { id: "sl_03", label: "Helping Children Focus on Studies" },
+// // // //       { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+// // // //       { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+// // // //       { id: "sl_06", label: "Helping Kids Make Friends" },
+// // // //       { id: "sl_07", label: "Homework Struggles in Children" },
+// // // //       { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+// // // //       { id: "sl_09", label: "Reducing School Stress" },
+// // // //       { id: "sl_10", label: "School Anxiety in Children" },
+// // // //     ],
+// // // //   },
+// // // //   {
+// // // //     id: "family_resources",
+// // // //     label: "Family Resources",
+// // // //     subtopics: [
+// // // //       { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+// // // //       { id: "fr_02", label: "Emotional Development Chart" },
+// // // //       { id: "fr_03", label: "Habit Tracker for Kids" },
+// // // //       { id: "fr_04", label: "Parenting Checklist" },
+// // // //       { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+// // // //       { id: "fr_06", label: "School Readiness Guide" },
+// // // //     ],
+// // // //   },
+// // // // ];
+
+// // // // /* category landing summaries */
+// // // // const CATEGORY_INTRO: Record<string, string> = {
+// // // //   child_behaviour:
+// // // //     "Your child is not trying to ruin your evening. Every tantrum, refusal, or moment of aggression is a message — and when you learn to read it, everything changes. Choose a topic below to start.",
+// // // //   emotional_development:
+// // // //     "Real emotional development means your child can feel a difficult emotion without it taking over their behaviour. Click any topic to explore practical, age-specific guidance.",
+// // // //   habits_discipline:
+// // // //     "The parents who have an easier time are building habits, not enforcing rules. Because a habit does not need to be enforced — it just happens. Explore the guides below.",
+// // // //   school_life:
+// // // //     "What shapes your child's relationship with school is what happens at home. The conversations after school. The way you respond when they fail. Explore practical guides for every school challenge.",
+// // // //   family_resources:
+// // // //     "Practical tools every parent can use today — checklists, trackers, conversation starters, and readiness guides. Use what fits your family.",
+// // // // };
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    CONTENT MAP — all article HTML
+// // // //    (trimmed for brevity; full content passed via props)
+// // // // ══════════════════════════════════════════════ */
+
+// // // // /* We receive the full CONTENT object as a module-level constant */
+// // // // const CONTENT: Record<string, string> = {
+// // // //   child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><p>Select a subtopic from the left to read a full guide.</p>`,
+// // // //   emotional_development: `<h1>Emotional Development</h1><p>Real emotional development means your child can feel a difficult emotion without it taking over their behaviour — and can say "I am angry" instead of hitting, shutting down, or acting out.</p><p>Select a subtopic to read a full guide.</p>`,
+// // // //   habits_discipline: `<h1>Habits & Discipline</h1><p>Most parents spend years trying to discipline their child. The parents who have an easier time are building habits instead. Because a habit does not need to be enforced — it just happens.</p><p>Select a subtopic to read a full guide.</p>`,
+// // // //   school_life: `<h1>School Life</h1><p>What shapes your child's relationship with school is what happens at home — the conversations after school, the way you respond when they fail, whether they feel safe telling you when something is going wrong.</p><p>Select a subtopic to read a full guide.</p>`,
+// // // //   family_resources: `<h1>Family Resources</h1><p>Practical tools — checklists, trackers, conversation starters, and readiness guides — that give you something concrete to do right now.</p><p>Select a subtopic to read a full guide.</p>`,
+// // // //   cb_01: `<h1>Why Children Lie</h1><p>If your child lies to you and you react with anger or punishment, there is a good chance they will lie to you again tomorrow — only more carefully. Because the lie was never really about dishonesty. It was about fear.</p><h2>The Real Reason Children Lie</h2><p>Children lie for one of four reasons: to avoid a consequence they fear, to protect a feeling (shame, embarrassment, not wanting to disappoint), to test reality (young children often cannot distinguish between what they want to be true and what is true), or to protect someone else.</p><p>If your child lies to you regularly, the question is not "how do I stop the lying?" It is "what is my child afraid of telling me the truth about?"</p><h2>Ages 3–5: The Wishful Thinking Stage</h2><p>At this age, lying is not really lying in the moral sense. When a 4-year-old says "I didn't eat the biscuit" with crumbs on their face, they are expressing a wish. Respond matter-of-factly, not dramatically.</p><h2>Ages 6–9: The Consequence-Avoidance Stage</h2><p>Make truth-telling feel safe. When your child tells you something difficult, your first response should be: "I am glad you told me." Before anything else.</p><h2>Ages 10–13: The Social Protection Stage</h2><p>Stay curious, not suspicious. A parent who interrogates closes conversations. A parent who is genuinely interested opens them.</p>`,
+// // // //   cb_02: `<h1>Why Kids Talk Back</h1><p>Your child answers back and your first instinct is: disrespect. But talking back is almost never about disrespect. It is about a developing brain that has just discovered it can argue — and a child who is testing whether you are someone who can handle disagreement without breaking.</p><h2>Why Talking Back Is a Sign of Development</h2><p>Children who talk back have developed the ability to form an opinion, articulate it, and push back on authority. The goal is not to eliminate the arguing. It is to channel it into respectful disagreement.</p><h2>The Responses That Escalate and the Ones That Don't</h2><ul><li><strong>Escalates:</strong> "Because I said so, that's why."</li><li><strong>De-escalates:</strong> "The reason is this. I am not going to debate it further, but I want you to understand my thinking."</li><li><strong>Escalates:</strong> Matching their volume and emotional intensity.</li><li><strong>De-escalates:</strong> Lowering your voice. A quiet parent is more powerful than a loud one every single time.</li></ul>`,
+// // // //   cb_03: `<h1>Dealing With a Stubborn Child</h1><p>The child everyone calls stubborn is usually the one who knows what they want, refuses to be pushed around, and holds their position under pressure. In twenty years, those are exactly the qualities that will make them successful.</p><h2>The Truth About Stubborn Children</h2><p>Strong-willed children have a particularly intense need for autonomy — to feel that their choices and opinions matter. When that need is met through collaboration and respect, they are capable of extraordinary persistence, leadership, and resilience. When it is met with force, they dig in and everyone loses.</p><p>You will not out-stubborn a stubborn child. The only way through is alongside.</p><h2>What Works</h2><ul><li>Involve them in decisions. A child who participates in the plan is more likely to follow it.</li><li>Give them a face-saving exit. Preserve their sense of control while moving toward the outcome you need.</li><li>Avoid public confrontations. A stubborn child doubled down in front of others cannot back down without losing face.</li></ul>`,
+// // // //   cb_04: `<h1>Discipline Without Punishment</h1><p>Most parents were disciplined through punishment. But punishment and discipline are not the same thing. Punishment makes a child feel bad. Discipline teaches a child to do better.</p><h2>The Four Tools of Discipline Without Punishment</h2><ul><li><strong>Natural Consequences:</strong> Let the situation itself teach the lesson. Forgot the water bottle — goes thirsty.</li><li><strong>Logical Consequences:</strong> Directly connected to the behaviour. Misuses the tablet — loses tablet access.</li><li><strong>Problem-Solving Conversations:</strong> After the emotion has settled, explore what happened together.</li><li><strong>Positive Reinforcement Done Right:</strong> Specific, immediate, and process-focused. "You noticed your cousin wanted a turn and you gave him one without being asked. That was a generous choice."</li></ul>`,
+// // // //   cb_05: `<h1>Handling Aggressive Behaviour</h1><p>When your child hits, throws, shouts, or lashes out — your instinct is to stop it immediately. That instinct is understandable. It is also, in most cases, exactly what makes aggressive behaviour worse.</p><h2>Aggression Is Almost Always a Communication Failure</h2><p>Children become physically or verbally aggressive when they have run out of other ways to express what they are experiencing. The emotion underneath is almost always one of three things: intense frustration, fear, or shame that has converted to anger.</p><h2>Long-Term Strategies</h2><ul><li>Build a daily physical outlet — running, sport, rough-and-tumble play.</li><li>Regulate their sleep. Sleep-deprived children have dramatically reduced emotional regulation capacity.</li><li>Build emotional vocabulary consistently over time.</li><li>Model emotional regulation yourself.</li></ul>`,
+// // // //   cb_06: `<h1>Why Children Refuse to Listen</h1><p>You have said it three times. You are about to say it a fourth. The fourth time, just like the first three, will achieve nothing — except teach your child that your instructions do not actually need to be followed until the fifth.</p><h2>The Instructions That Never Work</h2><ul><li>Shouted instructions from another room: not processed as a real communication.</li><li>Instructions without reasons: children who understand why are significantly more likely to comply.</li><li>Repeated instructions with no consequence: trains them to wait.</li></ul><h2>What Works</h2><p>Say it once. Then act. Get eye contact before giving an instruction. Give transition warnings: "In five minutes we are leaving." Consistency is the entire mechanism.</p>`,
+// // // //   cb_07: `<h1>How to Handle Sibling Fights</h1><p>Sibling conflict is one of the most exhausting things about family life. It is also one of the most valuable developmental experiences your children will ever have — if you stop managing it and start using it.</p><h2>The Most Common Parenting Mistakes</h2><ul><li>Immediately taking sides</li><li>Finding out who started it</li><li>Solving it for them</li><li>Comparing them to each other</li><li>Intervening too early</li></ul><h2>Ages 6–10: Hand the Problem Back</h2><p>"I can see this is a real disagreement. I am going to give you five minutes to figure it out between you. If you cannot, I will make the decision for both of you — and neither of you will like it." Then actually leave the room.</p>`,
+// // // //   cb_08: `<h1>Why Children Throw Tantrums</h1><p>A tantrum is not a manipulation tactic. It is not a test of your authority. It is a neurological event — a young brain overwhelmed by an emotion it does not yet have the infrastructure to manage.</p><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first. Take one slow breath. Lower your shoulders.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words. "I am here. You are safe."</li><li><strong>Step 4:</strong> Wait it out. Do not bribe, threaten, or give in.</li><li><strong>Step 5:</strong> Reconnect after — a hug, a quiet "that was a big feeling."</li></ul>`,
+// // // //   cb_09: `<h1>Teaching Respect to Children</h1><p>Respect cannot be commanded into existence. Every parent who has tried the "you will respect me" approach knows this. Respect is built through relationship, modelled through behaviour, and earned through how you treat your child.</p><h2>Building Respect at Each Age</h2><p>At 3–5: Say please and thank you to everyone — the autorickshaw driver, the vegetable vendor, the delivery person. Your child is watching and learning what these interactions look like.</p><p>At 6–9: When your child speaks disrespectfully to you: "That was rude. I would like you to say that again differently." Then wait.</p><p>At 10–13: Be explicit when you make a mistake. "I spoke to you sharply earlier and you didn't deserve that. I am sorry." This models what respect looks like when it breaks down and is repaired.</p>`,
+// // // //   cb_10: `<h1>Setting Boundaries With Kids</h1><p>Children without clear boundaries are not free. They are anxious. A child who has not been shown where the walls are spends enormous emotional energy testing for them — escalating behaviour until someone finally says "this far and no further."</p><h2>The Characteristics of Boundaries That Work</h2><ul><li><strong>Clear:</strong> "Be home by 5" is a boundary. "Come home at a reasonable time" is not.</li><li><strong>Explained:</strong> Children who understand the reason are significantly more likely to respect it.</li><li><strong>Consistent:</strong> A boundary that shifts based on your mood is not a boundary.</li><li><strong>Followed through:</strong> Every boundary stated and not enforced weakens every future boundary.</li></ul>`,
+// // // //   ed_01: `<h1>Building Emotional Resilience</h1><p>Resilience does not mean toughness. It does not mean bouncing back instantly. It means your child can experience difficulty fully, be genuinely affected by it, and recover — not unchanged, but stronger.</p><h2>The 4 Pillars</h2><ul><li><strong>Secure Attachment:</strong> Be consistently available. Repair ruptures quickly. Make your love unconditional and visible.</li><li><strong>Emotional Competence:</strong> Build the full range of emotional vocabulary. Teach them that emotions are temporary.</li><li><strong>Self-Efficacy:</strong> Allow age-appropriate struggle. Let them fail. Failure is the raw material from which resilience is built.</li><li><strong>Problem-Solving Orientation:</strong> "What do you think you could do about it?" — ask before solving.</li></ul>`,
+// // // //   ed_02: `<h1>Emotional Intelligence in Children</h1><p>Academic success, social confidence, strong friendships, resilience under pressure — the one thing that predicts all of these better than IQ is emotional intelligence. And unlike IQ, emotional intelligence can be taught.</p><h2>The Four Components</h2><ul><li><strong>Self-awareness:</strong> Recognising and naming what you feel.</li><li><strong>Self-regulation:</strong> Managing emotions rather than being controlled by them.</li><li><strong>Empathy:</strong> Recognising and understanding what other people feel.</li><li><strong>Social skills:</strong> Using emotional awareness in relationships.</li></ul><h2>5 Common Mistakes That Undermine EQ</h2><ul><li>Dismissing emotions: "You are fine," "stop crying"</li><li>Fixing instead of feeling</li><li>Punishing emotions</li><li>Modelling emotional suppression</li><li>Labelling children by their emotions</li></ul>`,
+// // // //   ed_03: `<h1>Helping Children Express Emotions</h1><p>Every behaviour problem that baffles a parent has an unexpressed emotion underneath it. A child who can articulate what they feel almost never needs to show it through destructive behaviour.</p><h2>Why Children Struggle</h2><ul><li>They lack the vocabulary</li><li>They have been taught that certain emotions are not acceptable</li><li>They do not feel safe enough</li><li>They have no model</li></ul><h2>What Blocks Emotional Expression — Stop Doing These</h2><ul><li>Interrogating instead of inviting</li><li>Offering solutions before listening</li><li>Making it about you</li><li>Time-pressuring expression: "Just tell me, we don't have all day"</li></ul>`,
+// // // //   ed_04: `<h1>Helping Children Overcome Fear</h1><p>The brave child is not the one who feels no fear. The brave child is the one who feels fear and acts anyway — who has learned that fear is information, not a verdict.</p><h2>The Golden Rule: Validate, Then Approach</h2><p><strong>Step 1:</strong> Validate the fear completely. "I can see that you are really scared. That feeling makes sense." Do not minimise it.<br/><strong>Step 2:</strong> Support gradual approach — never forcing, always supporting. Every time a child avoids what they fear, the fear grows.</p><h2>What Makes Fears Worse</h2><ul><li>Forcing confrontation: creates trauma, not courage</li><li>Ridiculing fear: "Don't be a baby" adds shame to fear</li><li>Reassurance on repeat: one acknowledgment and a plan is more effective than endless "there is nothing to worry about"</li></ul>`,
+// // // //   ed_05: `<h1>Helping Kids Deal with Frustration</h1><p>Frustration is the emotion children feel most frequently. Most children respond in one of three ways: they explode, they give up, or they shut down. What does work is learning to tolerate frustration long enough to push through it.</p><h2>The Frustration Cycle</h2><p><strong>Unhealthy:</strong> Attempt → Failure → Frustration → Emotional reaction → Giving up<br/><strong>Healthy:</strong> Attempt → Failure → Frustration → Pause → Adjusted attempt → Progress</p><h2>The "Stuck" Protocol (Ages 6–9)</h2><ul><li>Try again differently</li><li>Break it into parts</li><li>Take a break</li><li>Ask for help</li></ul>`,
+// // // //   ed_06: `<h1>Helping Kids Handle Disappointment</h1><p>Disappointment is woven into childhood — and most children are never explicitly taught how to handle it. The result is that some children crumble at the first sign of things not going their way.</p><h2>Your Job</h2><p>Your job is not to prevent disappointment. It is to be present while they experience it — and to help them discover that they can survive it.</p><h2>What Makes Disappointment Harder — Stop Doing These</h2><ul><li>Preventing all disappointment: produces fragility, not resilience</li><li>Toxic positivity: "Everything happens for a reason!" dismisses their reality</li><li>Comparing disappointments: "Some children don't even have food to eat"</li><li>Fixing it immediately: teaches that disappointment is something to escape</li></ul>`,
+// // // //   ed_07: `<h1>Managing Tantrums (Age 3–6)</h1><p>A tantrum is not your child being naughty. A tantrum is your child's nervous system hitting a wall it cannot climb over. The screaming, the flailing, the throwing themselves on the floor — these are not choices.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations</li><li>Give warnings before transitions: "In five minutes we are leaving the park"</li><li>Ensure sleep and meals are consistent</li><li>Offer choices within limits</li></ul><h2>During: Step by Step</h2><ul><li>Regulate yourself first</li><li>Get low and close</li><li>Use minimal words: "I am here. You are safe."</li><li>Wait it out</li><li>Reconnect after — before you correct</li></ul>`,
+// // // //   ed_08: `<h1>Raising Emotionally Strong Children</h1><p>The emotionally strong child is not the one who never cries. It is the child who feels deeply, recovers effectively, and grows through difficulty rather than being diminished by it.</p><h2>5 Daily Practices</h2><ul><li>Let them feel everything</li><li>Validate before you redirect: "That sounds really hard." before anything else</li><li>Model your own emotional process openly</li><li>Give them real responsibility — a 4-year-old setting the table, a 12-year-old cooking a simple meal</li><li>Teach constructive self-talk: "I can try again. This is hard but I can handle it."</li></ul>`,
+// // // //   ed_09: `<h1>Teaching Patience to Children</h1><p>Patience is not a personality trait some children are born with. It is a skill that depends on the development of impulse control, emotional regulation, and the ability to tolerate discomfort.</p><h2>Ages 3–5: Tiny Waits With Big Support</h2><ul><li>Use visual timers with a visible end point</li><li>Name the skill: "You waited so patiently while I was on the phone"</li><li>Play waiting games — red light/green light, Simon says</li></ul><h2>What Undermines Patience</h2><ul><li>Instant entertainment at every pause</li><li>Rewarding impatience — if whining accelerates the timeline, you have taught that impatience works</li><li>Being impatient yourself</li></ul>`,
+// // // //   ed_10: `<h1>Why Children Get Angry</h1><p>Your child is not angry because they are bad. They are not angry because you are a bad parent. They are angry because anger is the most accessible emotion — the one that shows up first when something underneath it is not being addressed.</p><h2>What Makes Anger Worse — Stop Doing These</h2><ul><li>Matching their intensity</li><li>Demanding immediate calm: "Calm down right now!" has never once caused a child to calm down</li><li>Dismissing the trigger: "You're angry about THAT?"</li><li>Using anger as a teaching moment during the anger</li><li>Withholding affection as punishment for anger</li></ul>`,
+// // // //   hd_01: `<h1>Building Reading Habits</h1><p>Reading is the single habit that predicts academic success more reliably than any other factor — more than tutoring, more than school quality, more than parental education level.</p><h2>Why Some Children Love Reading and Others Don't</h2><ul><li><strong>Access:</strong> Children surrounded by books read more. If the nearest book requires effort to find, screens will win every time.</li><li><strong>Choice:</strong> Children allowed to choose what they read develop reading habits.</li><li><strong>Association:</strong> If reading is associated with pleasure and warmth, children seek it out. If associated with obligation and testing, they avoid it.</li></ul><h2>What Kills Reading Habits</h2><ul><li>Making reading a punishment or obligation</li><li>Restricting their choices: "That book is too easy for you"</li><li>Testing comprehension after every chapter</li><li>Not reading yourself</li></ul>`,
+// // // //   hd_02: `<h1>Daily Routines for Children</h1><p>A good daily routine is the closest thing to a parenting superpower. When routines are working, mornings are calm, transitions are smooth, homework happens without a fight, and bedtime does not require negotiation.</p><h2>The Three Blocks</h2><ul><li><strong>Morning:</strong> Wake → hygiene → dressed → breakfast → bag → leave. Fewer decisions = smoother mornings.</li><li><strong>After-School:</strong> Arrive → snack and decompression (15–20 min) → homework → free time → dinner.</li><li><strong>Evening:</strong> Dinner → tidy/pack bag → bath → reading or quiet time → lights out.</li></ul>`,
+// // // //   hd_03: `<h1>Helping Kids Stay Organized</h1><p>Organisation is not something children are born with or without. It is a set of learnable systems — and the children who learn these systems early have a significant advantage in school, friendships, and careers.</p><h2>Ages 6–9: Systems and Checklists</h2><ul><li>Help them set up a homework station with all supplies in one place</li><li>Introduce a "landing pad" by the door</li><li>Teach the weekly bag check: every Sunday, empty the bag completely, sort, restock</li><li>Use colour-coding for school subjects</li></ul>`,
+// // // //   hd_04: `<h1>How Children Develop Habits</h1><p>A habit is not a decision. It is a behaviour that has been repeated so many times it becomes automatic. Every habit follows a three-part loop: Cue → Routine → Reward.</p><h2>How Long Does It Take?</h2><ul><li>Simple habits (hanging up a coat): 3–6 weeks</li><li>Moderate habits (brushing teeth without reminding): 6–12 weeks</li><li>Complex habits (full morning routine independently): 3–6 months</li></ul><h2>What Undermines Habit Formation</h2><ul><li>Inconsistency — the single biggest killer</li><li>Too many habits at once</li><li>Nagging instead of cueing</li><li>Expecting willpower: children need environmental support</li></ul>`,
+// // // //   hd_05: `<h1>Morning Routines for Kids</h1><p>If your mornings involve shouting "we are going to be late" while one child cannot find their shoes — you do not have a discipline problem. You have a systems problem.</p><h2>The Night-Before Prep That Makes Mornings Work</h2><ul><li>Clothes laid out or chosen</li><li>Bag packed and by the door</li><li>Breakfast decided</li><li>A consistent bedtime — the number one cause of terrible mornings is insufficient sleep</li></ul><h2>What Sabotages Morning Routines</h2><ul><li>Screens before the routine is complete</li><li>Nagging instead of cueing</li><li>Doing it for them to save time</li><li>Total inconsistency on weekends</li></ul>`,
+// // // //   hd_06: `<h1>Teaching Responsibility at Home</h1><p>Responsibility is not taught through lectures. It is taught through experience — real tasks, real consequences, and the real satisfaction of contributing to something that matters.</p><h2>The Mindset Shift: From Chores to Contribution</h2><p>"Everyone in this family has a role. My role is to cook dinner. Your role is to set the table. We are a team." This framing changes everything.</p><h2>Age-Appropriate Responsibilities</h2><ul><li><strong>Ages 3–5:</strong> Put toys away, carry plate to sink, water a plant</li><li><strong>Ages 6–9:</strong> Make bed, pack school bag, clear table, sort laundry</li><li><strong>Ages 10–13:</strong> Cook a simple meal, do own laundry, manage homework schedule</li></ul>`,
+// // // //   hd_07: `<h1>Teaching Self Discipline</h1><p>There are two kinds of disciplined children. The first behaves well because an adult is watching. The second behaves well because they have internalised the standards and can regulate themselves even when no one is watching.</p><h2>What Self Discipline Actually Is</h2><ul><li><strong>Impulse control:</strong> Pause between desire and action</li><li><strong>Delayed gratification:</strong> Choose a larger later reward over a smaller immediate one</li><li><strong>Self-regulation:</strong> Manage emotions, attention, and behaviour in pursuit of a goal</li></ul>`,
+// // // //   hd_08: `<h1>Teaching Time Management to Kids</h1><p>Every morning chaos scenario has the same root cause: a child who has not yet learned to manage time. Teaching time management is about giving them a sense of control over their own lives.</p><h2>Ages 6–9: Build Estimation and Planning Skills</h2><ul><li>Play the "how long will it take" game — estimate before any task, then time it</li><li>Introduce a simple planner or calendar</li><li>Teach backward planning for projects</li><li>Let them experience the consequences of poor time management</li></ul>`,
+// // // //   hd_09: `<h1>Screen Time Balance for Kids</h1><p>The truth about screen time is nuanced. What matters is how much, what kind, when, and what they are replacing. A child who watches a nature documentary for 30 minutes after a full day of school is in a completely different situation from a child who spends four hours scrolling.</p><h2>The Screen Time Rules That Actually Work</h2><ul><li>Screens come after, not before — after homework, physical activity, reading</li><li>No screens in bedrooms — charge devices in a communal area</li><li>No screens during meals</li><li>Not all screen time is equal — creating is different from consuming</li><li>Model what you expect</li></ul>`,
+// // // //   hd_10: `<h1>Why Routines Help Children</h1><p>Ask any child psychologist what the single most effective non-therapeutic intervention for childhood anxiety is, and most will say the same thing: a consistent daily routine.</p><h2>The Science</h2><ul><li>Routines reduce cortisol — the brain's stress response stays calm when expectations are predictable</li><li>Routines build neural efficiency — the brain automates repeated sequences, freeing resources for learning</li><li>Routines develop executive function — planning, sequencing, and self-monitoring</li><li>Routines support emotional regulation — anchored children handle unpredictable moments better</li></ul>`,
+// // // //   sl_01: `<h1>Bullying in Primary Schools</h1><p>Bullying is more common than most parents realise and more harmful than most schools acknowledge. Research shows that one in four to five children will experience bullying during primary school years.</p><h2>What Bullying Actually Is</h2><p>Bullying is repeated, intentional aggressive behaviour directed at a specific child by someone with more social or physical power. A one-off argument between equal friends is conflict, not bullying.</p><h2>How to Respond</h2><ul><li>Listen without overreacting</li><li>Gather information calmly</li><li>Document everything — dates, times, witnesses</li><li>Contact the school strategically, in writing</li><li>Build your child's resilience alongside school intervention</li></ul>`,
+// // // //   sl_02: `<h1>Encouraging Curiosity in Kids</h1><p>Every child is born curious. The tragedy is that this natural curiosity is often diminished by the time a child reaches middle school. A curious child does not need to be motivated to learn — they are already motivated. Your job is simply to not get in the way.</p><h2>What Kills Curiosity — Stop Doing These</h2><ul><li>Always giving the answer immediately</li><li>Correcting exploration</li><li>Over-scheduling — boredom is where curiosity begins</li><li>Valuing grades over learning</li><li>Dismissing their interests: "That's not useful"</li></ul>`,
+// // // //   sl_03: `<h1>Helping Children Focus on Studies</h1><p>The ability to focus is developmental. A 5-year-old can sustain attention for roughly 10–15 minutes. A 10-year-old can manage 20–30 minutes. Even a 13-year-old will struggle beyond 40 minutes without a break.</p><h2>Practical Strategies (Ages 6–9)</h2><ul><li>Create a dedicated study space — quiet, well-lit, screens removed</li><li>Use the Pomodoro technique: 15–20 minutes focused work, 5-minute break</li><li>Remove screens from the study area completely</li><li>Start with the hardest subject when focus is highest</li></ul>`,
+// // // //   sl_04: `<h1>Helping Kids Deal with Teasing</h1><p>Teasing exists on a spectrum. Light, mutual teasing between friends is normal social bonding. Repeated, targeted teasing that makes a child feel humiliated is verbal bullying.</p><h2>The Toolkit (Ages 6–9)</h2><ul><li><strong>The Shrug Response:</strong> "So?" said with a shrug and walking away. Teasing depends on a reaction.</li><li><strong>The Agree and Deflect:</strong> "Yeah, they help me see better!" Taking ownership removes its power as a weapon.</li><li><strong>The Boundary Statement:</strong> "That's not funny to me. Stop." Direct and non-aggressive.</li></ul>`,
+// // // //   sl_05: `<h1>Helping Kids Develop Reading Habits</h1><p>A child who reads regularly outperforms a child who does not in vocabulary, comprehension, empathy, critical thinking, and academic achievement across every subject.</p><h2>Why School-Age Children Resist Reading</h2><ul><li>Reading has become associated with obligation — book reports and quizzes strip the pleasure</li><li>They have not found the right book</li><li>Screens are more stimulating</li></ul><h2>Ages 8–10: Protect the Pleasure</h2><ul><li>Separate "reading for school" from "reading for fun"</li><li>Let them abandon books they do not enjoy</li><li>Introduce series — once hooked on a character, they will read voluntarily</li></ul>`,
+// // // //   sl_06: `<h1>Helping Kids Make Friends</h1><p>Friendship is a skill, not a gift. Some children learn it naturally. Others need explicit teaching. And the parent's role is not to make friends for their child — it is to teach them the skills to make friends for themselves.</p><h2>Teaching Conversation Skills</h2><p>Ask questions, listen to the answer, find common interests. "What do you like to do?" is a friendship opener that works at every age.</p><h2>What Undermines Friendship Skills</h2><ul><li>Arranging all their social life — they never learn to initiate independently</li><li>Criticising their friends</li><li>Solving all their social problems instead of coaching</li></ul>`,
+// // // //   sl_07: `<h1>Homework Struggles in Children</h1><p>The homework battle is one of the most common and most exhausting conflicts in family life. Homework struggles are rarely about laziness — they are almost always about the work being too hard, the child being too tired, the environment being wrong, or negative emotional associations.</p><h2>The Homework Environment Checklist</h2><ul><li>Quiet, consistent location — same place every day</li><li>Good lighting and a comfortable chair</li><li>All supplies within reach</li><li>No screens within sight</li><li>Parent available nearby but not hovering</li></ul>`,
+// // // //   sl_08: `<h1>Signs Your Child Is Being Bullied</h1><p>Most bullied children do not tell their parents. This means you cannot rely on your child telling you — you need to be able to recognise the signs.</p><h2>Behavioural Signs</h2><ul><li>Avoidance of school — sudden reluctance, frequent complaints of stomach aches on school mornings</li><li>Coming home hungry because lunch was taken</li><li>Sleep disruption — nightmares, difficulty falling asleep</li><li>Coming home with damaged or missing belongings</li></ul><h2>Emotional Signs</h2><ul><li>Increased irritability or emotional outbursts at home</li><li>Low self-esteem or self-critical language: "Nobody likes me"</li><li>Expressions of helplessness: "There's no point"</li></ul>`,
+// // // //   sl_09: `<h1>Reducing School Stress</h1><p>Some school stress is normal and even healthy. But there is a point where it stops being productive and starts being harmful — the child who cannot sleep because of worry, who has stomach aches every Monday, who has lost all joy in learning.</p><h2>The Home as Stress Buffer</h2><p>The most powerful thing you can do is make home the antidote. Home should be where the child is valued for who they are, not what they produce. Where they can rest, play, connect, and be imperfect.</p><h2>What Increases Stress — Stop Doing These</h2><ul><li>Adding your own academic pressure</li><li>Comparing to others</li><li>Over-focusing on grades</li><li>Dismissing their stress</li></ul>`,
+// // // //   sl_10: `<h1>School Anxiety in Children</h1><p>Some children wake up on school mornings with stomach aches that are real. Their chest feels tight. Their legs feel heavy. They are not pretending — they are anxious.</p><h2>How to Help</h2><ul><li><strong>Validate:</strong> "I can see that going to school feels really scary for you right now. That feeling is real."</li><li><strong>Identify the trigger:</strong> Social anxiety? Academic anxiety? A specific teacher? A specific time of day?</li><li><strong>Work with the school</strong></li><li><strong>Gradual exposure, not avoidance:</strong> The brain interprets avoidance as confirmation that school is dangerous</li><li><strong>Build coping strategies:</strong> Breathing exercises, a worry time, a calm morning routine</li></ul>`,
+// // // //   fr_01: `<h1>Age-Wise Behaviour Guide</h1><p>The number one question behind every parenting worry is: "Is this normal?" This guide answers that for every stage from 3 to 13.</p><h2>Ages 3–4: Normal Behaviours</h2><ul><li>Tantrums (daily is normal)</li><li>Difficulty sharing and taking turns</li><li>Physical aggression when frustrated</li><li>Lying (imagination, not deception)</li></ul><h2>Ages 7–9: Normal Behaviours</h2><ul><li>Friendship drama — best friends changing weekly</li><li>Increased arguing and negotiating</li><li>White lies ("I already brushed my teeth")</li></ul><h2>Ages 12–13: Normal Behaviours</h2><ul><li>Argumentative and increasingly skilled at it</li><li>Intense emotional reactions that seem disproportionate</li><li>Oscillating between wanting adult treatment and child-like needs</li></ul>`,
+// // // //   fr_02: `<h1>Emotional Development Chart</h1><p>One of the most common questions parents ask is: "Is this normal?" This chart maps what emotional skills and behaviours are typical at each age — and what to do to support the next stage of growth.</p><h2>Ages 3–4: What Is Developing</h2><ul><li>Basic emotional vocabulary (happy, sad, angry, scared)</li><li>Earliest impulse control (can wait briefly with support)</li><li>Understanding that other people have feelings</li><li>Ability to be soothed by a trusted adult</li></ul><h2>Ages 10–11: What Is Developing</h2><ul><li>Abstract emotional thinking</li><li>Ability to reflect on their own emotional patterns</li><li>Understanding of complex emotions (jealousy, guilt, loyalty)</li><li>Early identity formation — "who am I?"</li></ul>`,
+// // // //   fr_03: `<h1>Habit Tracker for Kids</h1><p>A habit tracker is one of the simplest and most effective parenting tools available. Done well, it transforms abstract goals into concrete, visible, daily actions that a child can own, measure, and feel proud of.</p><h2>Ages 6–9: The Weekly Checklist Tracker</h2><p>Good habits to track: morning routine completed independently, reading for pleasure (any amount), homework started on time, room tidied before bed, one kind action.</p><h2>How to Use Without Battles</h2><ul><li>Start with habits they are already close to doing</li><li>Celebrate the process, not just the product</li><li>Phase it out when the habit is automatic</li><li>Never use the tracker as punishment</li></ul>`,
+// // // //   fr_04: `<h1>Parenting Checklist</h1><p>This parenting checklist covers the four domains that shape your child's development: emotional health, social skills, academic foundations, and physical wellbeing. Use it as a quarterly check-in — not a test, but a way to make sure the important things are getting attention.</p><h2>Ages 3–5 Sample Items</h2><ul><li>My child can name at least 5 emotions</li><li>I validate emotions before correcting behaviour</li><li>My child has regular opportunities to play with other children</li><li>Screen time is limited and high-quality (under 1 hour/day)</li><li>My child gets at least 60 minutes of physical activity daily</li></ul>`,
+// // // //   fr_05: `<h1>Parenting Tools for Modern Parents</h1><p>Modern parents have access to more information than any generation in history. The problem is not lack of resources — it is knowing which ones actually help.</p><h2>The Essential Toolkit</h2><ul><li><strong>A Daily Routine System:</strong> Visual schedule chart, family calendar, morning checklist</li><li><strong>A Habit Tracking System:</strong> Paper-based for young children, bullet journal for pre-teens</li><li><strong>An Emotional Development Resource:</strong> Feelings cards, emotions posters, daily check-in questions</li><li><strong>A Communication Framework:</strong> "I feel _____ because _____" sentence structure</li><li><strong>A Screen Time Management System:</strong> Family media agreement, device charging station outside bedrooms</li></ul>`,
+// // // //   fr_06: `<h1>School Readiness Guide</h1><p>The children who do best in their first year of school are not necessarily the ones who can read earliest. They are the ones who can sit in a group, follow a simple instruction, manage their emotions when frustrated, share materials, and ask for help.</p><h2>The Four Domains</h2><ul><li><strong>Emotional Readiness:</strong> Separate from parents, cope with minor frustrations, express basic needs verbally</li><li><strong>Social Readiness:</strong> Play cooperatively, share and take turns, follow group instructions</li><li><strong>Academic Readiness:</strong> Recognise own name, count to 10, listen to a short story</li><li><strong>Physical Readiness:</strong> Use toilet independently, dress themselves, open lunch box and water bottle</li></ul>`,
+// // // // };
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    TYPES
+// // // // ══════════════════════════════════════════════ */
+// // // // type ViewState =
+// // // //   | { type: "landing" }
+// // // //   | { type: "category"; catId: string }
+// // // //   | { type: "article"; catId: string; artId: string; artLabel: string };
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    MEGA MENU DROPDOWN
+// // // // ══════════════════════════════════════════════ */
+// // // // function MegaMenu({ onSelect }: { onSelect: (v: ViewState) => void }) {
+// // // //   const [open, setOpen] = useState(false);
+// // // //   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+// // // //   return (
+// // // //     <div
+// // // //       className="relative"
+// // // //       onMouseEnter={() => { setOpen(true); setHoveredCat(CATEGORIES[0].id); }}
+// // // //       onMouseLeave={() => { setOpen(false); setHoveredCat(null); }}
+// // // //     >
+// // // //       {/* Trigger button */}
+// // // //       <button
+// // // //         onClick={() => { onSelect({ type: "landing" }); setOpen(false); }}
+// // // //         className="flex items-center gap-1.5 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+// // // //       >
+// // // //         Parenting Guide
+// // // //         <ChevronDown
+// // // //           size={13}
+// // // //           className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+// // // //         />
+// // // //       </button>
+
+// // // //       {/* Dropdown */}
+// // // //       <AnimatePresence>
+// // // //         {open && (
+// // // //           <motion.div
+// // // //             initial={{ opacity: 0, y: 6 }}
+// // // //             animate={{ opacity: 1, y: 0 }}
+// // // //             exit={{ opacity: 0, y: 6 }}
+// // // //             transition={{ duration: 0.18 }}
+// // // //             className="absolute top-full left-0 flex rounded-b-2xl overflow-hidden shadow-2xl z-[200]"
+// // // //             style={{
+// // // //               background: "#ffffff",
+// // // //               border: "1px solid rgba(249,115,22,0.2)",
+// // // //               borderTop: "3px solid #f97316",
+// // // //               minWidth: "580px",
+// // // //               marginTop: "0px",
+// // // //             }}
+// // // //           >
+// // // //             {/* Left: categories */}
+// // // //             <div className="w-[220px] border-r border-gray-100 py-2">
+// // // //               {CATEGORIES.map((cat) => (
+// // // //                 <div
+// // // //                   key={cat.id}
+// // // //                   className="flex items-center justify-between px-5 py-3 cursor-pointer transition-all duration-150"
+// // // //                   style={{
+// // // //                     background: hoveredCat === cat.id ? "#f8f9fb" : "transparent",
+// // // //                     borderLeft: hoveredCat === cat.id ? "3px solid #f97316" : "3px solid transparent",
+// // // //                     color: hoveredCat === cat.id ? "#f97316" : "#374151",
+// // // //                   }}
+// // // //                   onMouseEnter={() => setHoveredCat(cat.id)}
+// // // //                   onClick={() => { onSelect({ type: "category", catId: cat.id }); setOpen(false); }}
+// // // //                 >
+// // // //                   <span className="text-[0.9rem] font-medium">{cat.label}</span>
+// // // //                   <ChevronRight size={13} style={{ color: hoveredCat === cat.id ? "#f97316" : "#9ca3af" }} />
+// // // //                 </div>
+// // // //               ))}
+// // // //             </div>
+
+// // // //             {/* Right: subtopics */}
+// // // //             <div className="flex-1 py-2 px-1">
+// // // //               {hoveredCat && (
+// // // //                 <div className="grid grid-cols-1 gap-0.5">
+// // // //                   {CATEGORIES.find((c) => c.id === hoveredCat)?.subtopics.map((sub) => (
+// // // //                     <div
+// // // //                       key={sub.id}
+// // // //                       className="px-4 py-2 text-[0.85rem] text-gray-600 cursor-pointer rounded-lg transition-all duration-100 hover:text-[#f97316]"
+// // // //                       style={{ fontWeight: 400 }}
+// // // //                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+// // // //                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+// // // //                       onClick={() => {
+// // // //                         onSelect({ type: "article", catId: hoveredCat!, artId: sub.id, artLabel: sub.label });
+// // // //                         setOpen(false);
+// // // //                       }}
+// // // //                     >
+// // // //                       {sub.label}
+// // // //                     </div>
+// // // //                   ))}
+// // // //                 </div>
+// // // //               )}
+// // // //             </div>
+// // // //           </motion.div>
+// // // //         )}
+// // // //       </AnimatePresence>
+// // // //     </div>
+// // // //   );
+// // // // }
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    ARTICLE VIEWER
+// // // // ══════════════════════════════════════════════ */
+// // // // function ArticleView({ view, onNavigate }: { view: ViewState; onNavigate: (v: ViewState) => void }) {
+// // // //   if (view.type === "landing") {
+// // // //     return (
+// // // //       <div className="text-center py-20 px-6">
+// // // //         <div
+// // // //           className="inline-block px-4 py-1.5 rounded-full text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-6"
+// // // //           style={{ background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)" }}
+// // // //         >
+// // // //           Family Playbook
+// // // //         </div>
+// // // //         <h1
+// // // //           className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+// // // //           style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
+// // // //         >
+// // // //           The Parenting Guide Your Family<br />Actually Needs
+// // // //         </h1>
+// // // //         <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+// // // //           Science-backed, psychologist-designed guidance for ages 3–13.
+// // // //           Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+// // // //         </p>
+// // // //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
+// // // //           {CATEGORIES.map((cat) => (
+// // // //             <button
+// // // //               key={cat.id}
+// // // //               onClick={() => onNavigate({ type: "category", catId: cat.id })}
+// // // //               className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+// // // //             >
+// // // //               <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
+// // // //               <p className="text-gray-500 text-[0.8rem] leading-[1.5]">
+// // // //                 {cat.subtopics.length} guides
+// // // //               </p>
+// // // //             </button>
+// // // //           ))}
+// // // //         </div>
+// // // //       </div>
+// // // //     );
+// // // //   }
+
+// // // //   if (view.type === "category") {
+// // // //     const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// // // //     return (
+// // // //       <div className="max-w-[860px] mx-auto px-6 py-10">
+// // // //         {/* breadcrumb */}
+// // // //         <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8">
+// // // //           <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// // // //             Parenting Guide
+// // // //           </button>
+// // // //           <span>›</span>
+// // // //           <span className="text-gray-500">{cat.label}</span>
+// // // //         </div>
+
+// // // //         <h1
+// // // //           className="text-[#1b2a4a] font-bold text-[2rem] leading-[1.25] mb-4"
+// // // //           style={{ fontFamily: "'Rubik', sans-serif" }}
+// // // //         >
+// // // //           {cat.label}
+// // // //         </h1>
+// // // //         <p className="text-gray-500 text-[1rem] leading-[1.7] mb-10 max-w-[600px]">
+// // // //           {CATEGORY_INTRO[cat.id]}
+// // // //         </p>
+
+// // // //         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+// // // //           {cat.subtopics.map((sub) => (
+// // // //             <button
+// // // //               key={sub.id}
+// // // //               onClick={() => onNavigate({ type: "article", catId: cat.id, artId: sub.id, artLabel: sub.label })}
+// // // //               className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-[10px] text-left transition-all duration-200 hover:border-[#f97316] hover:shadow-md group"
+// // // //             >
+// // // //               <span className="text-[#374151] text-[0.9rem] font-medium group-hover:text-[#f97316] transition-colors">
+// // // //                 {sub.label}
+// // // //               </span>
+// // // //               <ChevronRight size={15} className="text-gray-300 group-hover:text-[#f97316] transition-colors" />
+// // // //             </button>
+// // // //           ))}
+// // // //         </div>
+// // // //       </div>
+// // // //     );
+// // // //   }
+
+// // // //   /* article */
+// // // //   const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// // // //   const html = CONTENT[view.artId] ?? `<h1>${view.artLabel}</h1><p>Content coming soon.</p>`;
+
+// // // //   return (
+// // // //     <div className="max-w-[860px] mx-auto px-6 py-10">
+// // // //       {/* breadcrumb */}
+// // // //       <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8 flex-wrap">
+// // // //         <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// // // //           Parenting Guide
+// // // //         </button>
+// // // //         <span>›</span>
+// // // //         <button onClick={() => onNavigate({ type: "category", catId: view.catId })} className="text-[#f97316] font-medium hover:underline">
+// // // //           {cat.label}
+// // // //         </button>
+// // // //         <span>›</span>
+// // // //         <span className="text-gray-500">{view.artLabel}</span>
+// // // //       </div>
+
+// // // //       {/* article body */}
+// // // //       <div
+// // // //         className="article-prose"
+// // // //         dangerouslySetInnerHTML={{ __html: html }}
+// // // //       />
+
+// // // //       {/* back link */}
+// // // //       <button
+// // // //         onClick={() => onNavigate({ type: "category", catId: view.catId })}
+// // // //         className="mt-10 inline-flex items-center gap-2 text-[#f97316] font-medium text-[0.9rem] hover:gap-3 transition-all duration-150"
+// // // //       >
+// // // //         ← Back to {cat.label}
+// // // //       </button>
+// // // //     </div>
+// // // //   );
+// // // // }
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    MAIN EXPORT — the full page
+// // // // ══════════════════════════════════════════════ */
+// // // // export default function ParentingGuidePage() {
+// // // //   const [view, setView] = useState<ViewState>({ type: "landing" });
+
+// // // //   const navigate = (v: ViewState) => {
+// // // //     setView(v);
+// // // //     window.scrollTo({ top: 0, behavior: "smooth" });
+// // // //   };
+
+// // // //   return (
+// // // //     <>
+// // // //       <style>{`
+// // // //         /* article prose styles — light theme */
+// // // //         .article-prose h1 {
+// // // //           font-family: 'Rubik', sans-serif;
+// // // //           font-size: clamp(1.6rem, 3vw, 2.2rem);
+// // // //           font-weight: 700;
+// // // //           color: #1b2a4a;
+// // // //           line-height: 1.25;
+// // // //           margin-bottom: 1.2rem;
+// // // //           padding-bottom: 1rem;
+// // // //           border-bottom: 2px solid #f0f2f5;
+// // // //         }
+// // // //         .article-prose h2 {
+// // // //           font-family: 'Rubik', sans-serif;
+// // // //           font-size: 1.25rem;
+// // // //           font-weight: 700;
+// // // //           color: #1b2a4a;
+// // // //           margin-top: 2rem;
+// // // //           margin-bottom: 0.75rem;
+// // // //         }
+// // // //         .article-prose h3 {
+// // // //           font-size: 1rem;
+// // // //           font-weight: 600;
+// // // //           color: #1e3a5f;
+// // // //           margin-top: 1.5rem;
+// // // //           margin-bottom: 0.5rem;
+// // // //         }
+// // // //         .article-prose p {
+// // // //           font-size: 0.96rem;
+// // // //           color: #3b4258;
+// // // //           line-height: 1.8;
+// // // //           margin-bottom: 0.9rem;
+// // // //         }
+// // // //         .article-prose ul {
+// // // //           margin: 0.5rem 0 1.2rem 1.2rem;
+// // // //           list-style: none;
+// // // //           padding: 0;
+// // // //         }
+// // // //         .article-prose ul li {
+// // // //           position: relative;
+// // // //           padding: 0.3rem 0 0.3rem 1.2rem;
+// // // //           font-size: 0.93rem;
+// // // //           line-height: 1.7;
+// // // //           color: #3b4258;
+// // // //         }
+// // // //         .article-prose ul li::before {
+// // // //           content: '';
+// // // //           position: absolute;
+// // // //           left: 0;
+// // // //           top: 12px;
+// // // //           width: 7px;
+// // // //           height: 7px;
+// // // //           border-radius: 50%;
+// // // //           background: #f97316;
+// // // //           opacity: 0.6;
+// // // //         }
+// // // //         .article-prose strong { color: #1b2a4a; font-weight: 600; }
+// // // //       `}</style>
+
+// // // //       {/*
+// // // //         ┌─────────────────────────────────────────────────────────────────┐
+// // // //         │ HOW TO INTEGRATE INTO YOUR EXISTING NAVBAR                      │
+// // // //         │                                                                 │
+// // // //         │ In your Navbar.tsx, inside the desktop nav links section,       │
+// // // //         │ add this between your existing links:                           │
+// // // //         │                                                                 │
+// // // //         │   <MegaMenu onSelect={handleNavigation} />                     │
+// // // //         │                                                                 │
+// // // //         │ Where handleNavigation opens this page with the chosen view.   │
+// // // //         │ See the "Integration Guide" section below.                      │
+// // // //         └─────────────────────────────────────────────────────────────────┘
+// // // //       */}
+
+// // // //       {/* Page wrapper — light background for article content */}
+// // // //       <div
+// // // //         className="min-h-screen relative z-[1]"
+// // // //         style={{ background: "#f8f9fb" }}
+// // // //       >
+// // // //         <motion.div
+// // // //           key={JSON.stringify(view)}
+// // // //           initial={{ opacity: 0, y: 12 }}
+// // // //           animate={{ opacity: 1, y: 0 }}
+// // // //           transition={{ duration: 0.35 }}
+// // // //         >
+// // // //           <ArticleView view={view} onNavigate={navigate} />
+// // // //         </motion.div>
+// // // //       </div>
+// // // //     </>
+// // // //   );
+// // // // }
+
+// // // // /* ══════════════════════════════════════════════
+// // // //    NAMED EXPORTS for Navbar integration
+// // // // ══════════════════════════════════════════════ */
+// // // // export { MegaMenu };
+// // // // export type { ViewState };
+
+
+
+
+
+
+// // // "use client";
+
+// // // import { useState, useEffect } from "react";
+// // // import { useSearchParams } from "next/navigation";
+// // // import { motion, AnimatePresence } from "framer-motion";
+// // // import { ChevronDown, ChevronRight } from "lucide-react";
+
+// // // /* ══════════════════════════════════════════════
+// // //    DATA
+// // // ══════════════════════════════════════════════ */
+
+// // // const CATEGORIES = [
+// // //   {
+// // //     id: "child_behaviour",
+// // //     label: "Child Behaviour",
+// // //     subtopics: [
+// // //       { id: "cb_01", label: "Why Children Lie" },
+// // //       { id: "cb_02", label: "Why Kids Talk Back" },
+// // //       { id: "cb_03", label: "Stubborn Children" },
+// // //       { id: "cb_04", label: "Discipline Without Punishment" },
+// // //       { id: "cb_05", label: "Aggressive Behaviour" },
+// // //       { id: "cb_06", label: "Why Children Refuse to Listen" },
+// // //       { id: "cb_07", label: "Sibling Fights" },
+// // //       { id: "cb_08", label: "Tantrums" },
+// // //       { id: "cb_09", label: "Teaching Respect" },
+// // //       { id: "cb_10", label: "Setting Boundaries" },
+// // //     ],
+// // //   },
+// // //   {
+// // //     id: "emotional_development",
+// // //     label: "Emotional Development",
+// // //     subtopics: [
+// // //       { id: "ed_01", label: "Building Emotional Resilience" },
+// // //       { id: "ed_02", label: "Emotional Intelligence in Children" },
+// // //       { id: "ed_03", label: "Helping Children Express Emotions" },
+// // //       { id: "ed_04", label: "Helping Children Overcome Fear" },
+// // //       { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+// // //       { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+// // //       { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+// // //       { id: "ed_08", label: "Raising Emotionally Strong Children" },
+// // //       { id: "ed_09", label: "Teaching Patience to Children" },
+// // //       { id: "ed_10", label: "Why Children Get Angry" },
+// // //     ],
+// // //   },
+// // //   {
+// // //     id: "habits_discipline",
+// // //     label: "Habits & Discipline",
+// // //     subtopics: [
+// // //       { id: "hd_01", label: "Building Reading Habits" },
+// // //       { id: "hd_02", label: "Daily Routines for Children" },
+// // //       { id: "hd_03", label: "Helping Kids Stay Organized" },
+// // //       { id: "hd_04", label: "How Children Develop Habits" },
+// // //       { id: "hd_05", label: "Morning Routines for Kids" },
+// // //       { id: "hd_06", label: "Teaching Responsibility at Home" },
+// // //       { id: "hd_07", label: "Teaching Self Discipline" },
+// // //       { id: "hd_08", label: "Teaching Time Management" },
+// // //       { id: "hd_09", label: "Screen Time Balance for Kids" },
+// // //       { id: "hd_10", label: "Why Routines Help Children" },
+// // //     ],
+// // //   },
+// // //   {
+// // //     id: "school_life",
+// // //     label: "School Life",
+// // //     subtopics: [
+// // //       { id: "sl_01", label: "Bullying in Primary Schools" },
+// // //       { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+// // //       { id: "sl_03", label: "Helping Children Focus on Studies" },
+// // //       { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+// // //       { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+// // //       { id: "sl_06", label: "Helping Kids Make Friends" },
+// // //       { id: "sl_07", label: "Homework Struggles in Children" },
+// // //       { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+// // //       { id: "sl_09", label: "Reducing School Stress" },
+// // //       { id: "sl_10", label: "School Anxiety in Children" },
+// // //     ],
+// // //   },
+// // //   {
+// // //     id: "family_resources",
+// // //     label: "Family Resources",
+// // //     subtopics: [
+// // //       { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+// // //       { id: "fr_02", label: "Emotional Development Chart" },
+// // //       { id: "fr_03", label: "Habit Tracker for Kids" },
+// // //       { id: "fr_04", label: "Parenting Checklist" },
+// // //       { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+// // //       { id: "fr_06", label: "School Readiness Guide" },
+// // //     ],
+// // //   },
+// // // ];
+
+// // // const CATEGORY_INTRO: Record<string, string> = {
+// // //   child_behaviour:
+// // //     "Your child is not trying to ruin your evening. Every tantrum, refusal, or moment of aggression is a message — and when you learn to read it, everything changes. Choose a topic below to start.",
+// // //   emotional_development:
+// // //     "Real emotional development means your child can feel a difficult emotion without it taking over their behaviour. Click any topic to explore practical, age-specific guidance.",
+// // //   habits_discipline:
+// // //     "The parents who have an easier time are building habits, not enforcing rules. Because a habit does not need to be enforced — it just happens. Explore the guides below.",
+// // //   school_life:
+// // //     "What shapes your child's relationship with school is what happens at home. The conversations after school. The way you respond when they fail. Explore practical guides for every school challenge.",
+// // //   family_resources:
+// // //     "Practical tools every parent can use today — checklists, trackers, conversation starters, and readiness guides. Use what fits your family.",
+// // // };
+
+// // // const CONTENT: Record<string, string> = {
+// // //   child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><p>Select a subtopic from the left to read a full guide.</p>`,
+// // //   emotional_development: `<h1>Emotional Development</h1><p>Real emotional development means your child can feel a difficult emotion without it taking over their behaviour — and can say "I am angry" instead of hitting, shutting down, or acting out.</p><p>Select a subtopic to read a full guide.</p>`,
+// // //   habits_discipline: `<h1>Habits & Discipline</h1><p>Most parents spend years trying to discipline their child. The parents who have an easier time are building habits instead. Because a habit does not need to be enforced — it just happens.</p><p>Select a subtopic to read a full guide.</p>`,
+// // //   school_life: `<h1>School Life</h1><p>What shapes your child's relationship with school is what happens at home — the conversations after school, the way you respond when they fail, whether they feel safe telling you when something is going wrong.</p><p>Select a subtopic to read a full guide.</p>`,
+// // //   family_resources: `<h1>Family Resources</h1><p>Practical tools — checklists, trackers, conversation starters, and readiness guides — that give you something concrete to do right now.</p><p>Select a subtopic to read a full guide.</p>`,
+// // //   cb_01: `<h1>Why Children Lie</h1><p>If your child lies to you and you react with anger or punishment, there is a good chance they will lie to you again tomorrow — only more carefully. Because the lie was never really about dishonesty. It was about fear.</p><h2>The Real Reason Children Lie</h2><p>Children lie for one of four reasons: to avoid a consequence they fear, to protect a feeling (shame, embarrassment, not wanting to disappoint), to test reality (young children often cannot distinguish between what they want to be true and what is true), or to protect someone else.</p><p>If your child lies to you regularly, the question is not "how do I stop the lying?" It is "what is my child afraid of telling me the truth about?"</p><h2>Ages 3–5: The Wishful Thinking Stage</h2><p>At this age, lying is not really lying in the moral sense. When a 4-year-old says "I didn't eat the biscuit" with crumbs on their face, they are expressing a wish. Respond matter-of-factly, not dramatically.</p><h2>Ages 6–9: The Consequence-Avoidance Stage</h2><p>Make truth-telling feel safe. When your child tells you something difficult, your first response should be: "I am glad you told me." Before anything else.</p><h2>Ages 10–13: The Social Protection Stage</h2><p>Stay curious, not suspicious. A parent who interrogates closes conversations. A parent who is genuinely interested opens them.</p>`,
+// // //   cb_02: `<h1>Why Kids Talk Back</h1><p>Your child answers back and your first instinct is: disrespect. But talking back is almost never about disrespect. It is about a developing brain that has just discovered it can argue — and a child who is testing whether you are someone who can handle disagreement without breaking.</p><h2>Why Talking Back Is a Sign of Development</h2><p>Children who talk back have developed the ability to form an opinion, articulate it, and push back on authority. The goal is not to eliminate the arguing. It is to channel it into respectful disagreement.</p><h2>The Responses That Escalate and the Ones That Don't</h2><ul><li><strong>Escalates:</strong> "Because I said so, that's why."</li><li><strong>De-escalates:</strong> "The reason is this. I am not going to debate it further, but I want you to understand my thinking."</li><li><strong>Escalates:</strong> Matching their volume and emotional intensity.</li><li><strong>De-escalates:</strong> Lowering your voice. A quiet parent is more powerful than a loud one every single time.</li></ul>`,
+// // //   cb_03: `<h1>Dealing With a Stubborn Child</h1><p>The child everyone calls stubborn is usually the one who knows what they want, refuses to be pushed around, and holds their position under pressure. In twenty years, those are exactly the qualities that will make them successful.</p><h2>The Truth About Stubborn Children</h2><p>Strong-willed children have a particularly intense need for autonomy — to feel that their choices and opinions matter. When that need is met through collaboration and respect, they are capable of extraordinary persistence, leadership, and resilience. When it is met with force, they dig in and everyone loses.</p><p>You will not out-stubborn a stubborn child. The only way through is alongside.</p><h2>What Works</h2><ul><li>Involve them in decisions. A child who participates in the plan is more likely to follow it.</li><li>Give them a face-saving exit. Preserve their sense of control while moving toward the outcome you need.</li><li>Avoid public confrontations. A stubborn child doubled down in front of others cannot back down without losing face.</li></ul>`,
+// // //   cb_04: `<h1>Discipline Without Punishment</h1><p>Most parents were disciplined through punishment. But punishment and discipline are not the same thing. Punishment makes a child feel bad. Discipline teaches a child to do better.</p><h2>The Four Tools of Discipline Without Punishment</h2><ul><li><strong>Natural Consequences:</strong> Let the situation itself teach the lesson. Forgot the water bottle — goes thirsty.</li><li><strong>Logical Consequences:</strong> Directly connected to the behaviour. Misuses the tablet — loses tablet access.</li><li><strong>Problem-Solving Conversations:</strong> After the emotion has settled, explore what happened together.</li><li><strong>Positive Reinforcement Done Right:</strong> Specific, immediate, and process-focused. "You noticed your cousin wanted a turn and you gave him one without being asked. That was a generous choice."</li></ul>`,
+// // //   cb_05: `<h1>Handling Aggressive Behaviour</h1><p>When your child hits, throws, shouts, or lashes out — your instinct is to stop it immediately. That instinct is understandable. It is also, in most cases, exactly what makes aggressive behaviour worse.</p><h2>Aggression Is Almost Always a Communication Failure</h2><p>Children become physically or verbally aggressive when they have run out of other ways to express what they are experiencing. The emotion underneath is almost always one of three things: intense frustration, fear, or shame that has converted to anger.</p><h2>Long-Term Strategies</h2><ul><li>Build a daily physical outlet — running, sport, rough-and-tumble play.</li><li>Regulate their sleep. Sleep-deprived children have dramatically reduced emotional regulation capacity.</li><li>Build emotional vocabulary consistently over time.</li><li>Model emotional regulation yourself.</li></ul>`,
+// // //   cb_06: `<h1>Why Children Refuse to Listen</h1><p>You have said it three times. You are about to say it a fourth. The fourth time, just like the first three, will achieve nothing — except teach your child that your instructions do not actually need to be followed until the fifth.</p><h2>The Instructions That Never Work</h2><ul><li>Shouted instructions from another room: not processed as a real communication.</li><li>Instructions without reasons: children who understand why are significantly more likely to comply.</li><li>Repeated instructions with no consequence: trains them to wait.</li></ul><h2>What Works</h2><p>Say it once. Then act. Get eye contact before giving an instruction. Give transition warnings: "In five minutes we are leaving." Consistency is the entire mechanism.</p>`,
+// // //   cb_07: `<h1>How to Handle Sibling Fights</h1><p>Sibling conflict is one of the most exhausting things about family life. It is also one of the most valuable developmental experiences your children will ever have — if you stop managing it and start using it.</p><h2>The Most Common Parenting Mistakes</h2><ul><li>Immediately taking sides</li><li>Finding out who started it</li><li>Solving it for them</li><li>Comparing them to each other</li><li>Intervening too early</li></ul><h2>Ages 6–10: Hand the Problem Back</h2><p>"I can see this is a real disagreement. I am going to give you five minutes to figure it out between you. If you cannot, I will make the decision for both of you — and neither of you will like it." Then actually leave the room.</p>`,
+// // //   cb_08: `<h1>Why Children Throw Tantrums</h1><p>A tantrum is not a manipulation tactic. It is not a test of your authority. It is a neurological event — a young brain overwhelmed by an emotion it does not yet have the infrastructure to manage.</p><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first. Take one slow breath. Lower your shoulders.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words. "I am here. You are safe."</li><li><strong>Step 4:</strong> Wait it out. Do not bribe, threaten, or give in.</li><li><strong>Step 5:</strong> Reconnect after — a hug, a quiet "that was a big feeling."</li></ul>`,
+// // //   cb_09: `<h1>Teaching Respect to Children</h1><p>Respect cannot be commanded into existence. Every parent who has tried the "you will respect me" approach knows this. Respect is built through relationship, modelled through behaviour, and earned through how you treat your child.</p><h2>Building Respect at Each Age</h2><p>At 3–5: Say please and thank you to everyone — the autorickshaw driver, the vegetable vendor, the delivery person. Your child is watching and learning what these interactions look like.</p><p>At 6–9: When your child speaks disrespectfully to you: "That was rude. I would like you to say that again differently." Then wait.</p><p>At 10–13: Be explicit when you make a mistake. "I spoke to you sharply earlier and you didn't deserve that. I am sorry." This models what respect looks like when it breaks down and is repaired.</p>`,
+// // //   cb_10: `<h1>Setting Boundaries With Kids</h1><p>Children without clear boundaries are not free. They are anxious. A child who has not been shown where the walls are spends enormous emotional energy testing for them — escalating behaviour until someone finally says "this far and no further."</p><h2>The Characteristics of Boundaries That Work</h2><ul><li><strong>Clear:</strong> "Be home by 5" is a boundary. "Come home at a reasonable time" is not.</li><li><strong>Explained:</strong> Children who understand the reason are significantly more likely to respect it.</li><li><strong>Consistent:</strong> A boundary that shifts based on your mood is not a boundary.</li><li><strong>Followed through:</strong> Every boundary stated and not enforced weakens every future boundary.</li></ul>`,
+// // //   ed_01: `<h1>Building Emotional Resilience</h1><p>Resilience does not mean toughness. It does not mean bouncing back instantly. It means your child can experience difficulty fully, be genuinely affected by it, and recover — not unchanged, but stronger.</p><h2>The 4 Pillars</h2><ul><li><strong>Secure Attachment:</strong> Be consistently available. Repair ruptures quickly. Make your love unconditional and visible.</li><li><strong>Emotional Competence:</strong> Build the full range of emotional vocabulary. Teach them that emotions are temporary.</li><li><strong>Self-Efficacy:</strong> Allow age-appropriate struggle. Let them fail. Failure is the raw material from which resilience is built.</li><li><strong>Problem-Solving Orientation:</strong> "What do you think you could do about it?" — ask before solving.</li></ul>`,
+// // //   ed_02: `<h1>Emotional Intelligence in Children</h1><p>Academic success, social confidence, strong friendships, resilience under pressure — the one thing that predicts all of these better than IQ is emotional intelligence. And unlike IQ, emotional intelligence can be taught.</p><h2>The Four Components</h2><ul><li><strong>Self-awareness:</strong> Recognising and naming what you feel.</li><li><strong>Self-regulation:</strong> Managing emotions rather than being controlled by them.</li><li><strong>Empathy:</strong> Recognising and understanding what other people feel.</li><li><strong>Social skills:</strong> Using emotional awareness in relationships.</li></ul>`,
+// // //   ed_03: `<h1>Helping Children Express Emotions</h1><p>Every behaviour problem that baffles a parent has an unexpressed emotion underneath it. A child who can articulate what they feel almost never needs to show it through destructive behaviour.</p><h2>Why Children Struggle</h2><ul><li>They lack the vocabulary</li><li>They have been taught that certain emotions are not acceptable</li><li>They do not feel safe enough</li><li>They have no model</li></ul>`,
+// // //   ed_04: `<h1>Helping Children Overcome Fear</h1><p>The brave child is not the one who feels no fear. The brave child is the one who feels fear and acts anyway — who has learned that fear is information, not a verdict.</p><h2>The Golden Rule: Validate, Then Approach</h2><p><strong>Step 1:</strong> Validate the fear completely. "I can see that you are really scared. That feeling makes sense." Do not minimise it.<br/><strong>Step 2:</strong> Support gradual approach — never forcing, always supporting. Every time a child avoids what they fear, the fear grows.</p>`,
+// // //   ed_05: `<h1>Helping Kids Deal with Frustration</h1><p>Frustration is the emotion children feel most frequently. Most children respond in one of three ways: they explode, they give up, or they shut down.</p><h2>The Frustration Cycle</h2><p><strong>Unhealthy:</strong> Attempt → Failure → Frustration → Emotional reaction → Giving up<br/><strong>Healthy:</strong> Attempt → Failure → Frustration → Pause → Adjusted attempt → Progress</p>`,
+// // //   ed_06: `<h1>Helping Kids Handle Disappointment</h1><p>Disappointment is woven into childhood — and most children are never explicitly taught how to handle it.</p><h2>Your Job</h2><p>Your job is not to prevent disappointment. It is to be present while they experience it — and to help them discover that they can survive it.</p>`,
+// // //   ed_07: `<h1>Managing Tantrums (Age 3–6)</h1><p>A tantrum is not your child being naughty. A tantrum is your child's nervous system hitting a wall it cannot climb over.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations</li><li>Give warnings before transitions: "In five minutes we are leaving the park"</li><li>Ensure sleep and meals are consistent</li><li>Offer choices within limits</li></ul>`,
+// // //   ed_08: `<h1>Raising Emotionally Strong Children</h1><p>The emotionally strong child is not the one who never cries. It is the child who feels deeply, recovers effectively, and grows through difficulty.</p><h2>5 Daily Practices</h2><ul><li>Let them feel everything</li><li>Validate before you redirect</li><li>Model your own emotional process openly</li><li>Give them real responsibility</li><li>Teach constructive self-talk</li></ul>`,
+// // //   ed_09: `<h1>Teaching Patience to Children</h1><p>Patience is not a personality trait some children are born with. It is a skill that depends on the development of impulse control, emotional regulation, and the ability to tolerate discomfort.</p><h2>Ages 3–5: Tiny Waits With Big Support</h2><ul><li>Use visual timers with a visible end point</li><li>Name the skill: "You waited so patiently while I was on the phone"</li><li>Play waiting games — red light/green light, Simon says</li></ul>`,
+// // //   ed_10: `<h1>Why Children Get Angry</h1><p>Your child is not angry because they are bad. They are angry because anger is the most accessible emotion — the one that shows up first when something underneath it is not being addressed.</p><h2>What Makes Anger Worse — Stop Doing These</h2><ul><li>Matching their intensity</li><li>Demanding immediate calm</li><li>Dismissing the trigger</li><li>Using anger as a teaching moment during the anger</li><li>Withholding affection as punishment for anger</li></ul>`,
+// // //   hd_01: `<h1>Building Reading Habits</h1><p>Reading is the single habit that predicts academic success more reliably than any other factor.</p>`,
+// // //   hd_02: `<h1>Daily Routines for Children</h1><p>A good daily routine is the closest thing to a parenting superpower.</p>`,
+// // //   hd_03: `<h1>Helping Kids Stay Organized</h1><p>Organisation is not something children are born with or without. It is a set of learnable systems.</p>`,
+// // //   hd_04: `<h1>How Children Develop Habits</h1><p>A habit is not a decision. It is a behaviour that has been repeated so many times it becomes automatic.</p>`,
+// // //   hd_05: `<h1>Morning Routines for Kids</h1><p>If your mornings involve shouting "we are going to be late" — you do not have a discipline problem. You have a systems problem.</p>`,
+// // //   hd_06: `<h1>Teaching Responsibility at Home</h1><p>Responsibility is not taught through lectures. It is taught through experience — real tasks, real consequences, and the real satisfaction of contributing.</p>`,
+// // //   hd_07: `<h1>Teaching Self Discipline</h1><p>There are two kinds of disciplined children. The first behaves well because an adult is watching. The second behaves well because they have internalised the standards.</p>`,
+// // //   hd_08: `<h1>Teaching Time Management to Kids</h1><p>Every morning chaos scenario has the same root cause: a child who has not yet learned to manage time.</p>`,
+// // //   hd_09: `<h1>Screen Time Balance for Kids</h1><p>The truth about screen time is nuanced. What matters is how much, what kind, when, and what they are replacing.</p>`,
+// // //   hd_10: `<h1>Why Routines Help Children</h1><p>Ask any child psychologist what the single most effective non-therapeutic intervention for childhood anxiety is, and most will say the same thing: a consistent daily routine.</p>`,
+// // //   sl_01: `<h1>Bullying in Primary Schools</h1><p>Bullying is more common than most parents realise and more harmful than most schools acknowledge.</p>`,
+// // //   sl_02: `<h1>Encouraging Curiosity in Kids</h1><p>Every child is born curious. The tragedy is that this natural curiosity is often diminished by the time a child reaches middle school.</p>`,
+// // //   sl_03: `<h1>Helping Children Focus on Studies</h1><p>The ability to focus is developmental. A 5-year-old can sustain attention for roughly 10–15 minutes.</p>`,
+// // //   sl_04: `<h1>Helping Kids Deal with Teasing</h1><p>Teasing exists on a spectrum. Light, mutual teasing between friends is normal social bonding.</p>`,
+// // //   sl_05: `<h1>Helping Kids Develop Reading Habits</h1><p>A child who reads regularly outperforms a child who does not in vocabulary, comprehension, empathy, critical thinking, and academic achievement.</p>`,
+// // //   sl_06: `<h1>Helping Kids Make Friends</h1><p>Friendship is a skill, not a gift. Some children learn it naturally. Others need explicit teaching.</p>`,
+// // //   sl_07: `<h1>Homework Struggles in Children</h1><p>The homework battle is one of the most common and most exhausting conflicts in family life.</p>`,
+// // //   sl_08: `<h1>Signs Your Child Is Being Bullied</h1><p>Most bullied children do not tell their parents. This means you cannot rely on your child telling you — you need to be able to recognise the signs.</p>`,
+// // //   sl_09: `<h1>Reducing School Stress</h1><p>Some school stress is normal and even healthy. But there is a point where it stops being productive and starts being harmful.</p>`,
+// // //   sl_10: `<h1>School Anxiety in Children</h1><p>Some children wake up on school mornings with stomach aches that are real. Their chest feels tight. Their legs feel heavy. They are not pretending — they are anxious.</p>`,
+// // //   fr_01: `<h1>Age-Wise Behaviour Guide</h1><p>The number one question behind every parenting worry is: "Is this normal?" This guide answers that for every stage from 3 to 13.</p>`,
+// // //   fr_02: `<h1>Emotional Development Chart</h1><p>One of the most common questions parents ask is: "Is this normal?" This chart maps what emotional skills and behaviours are typical at each age.</p>`,
+// // //   fr_03: `<h1>Habit Tracker for Kids</h1><p>A habit tracker is one of the simplest and most effective parenting tools available.</p>`,
+// // //   fr_04: `<h1>Parenting Checklist</h1><p>This parenting checklist covers the four domains that shape your child's development: emotional health, social skills, academic foundations, and physical wellbeing.</p>`,
+// // //   fr_05: `<h1>Parenting Tools for Modern Parents</h1><p>Modern parents have access to more information than any generation in history. The problem is not lack of resources — it is knowing which ones actually help.</p>`,
+// // //   fr_06: `<h1>School Readiness Guide</h1><p>The children who do best in their first year of school are not necessarily the ones who can read earliest.</p>`,
+// // // };
+
+// // // /* ══════════════════════════════════════════════
+// // //    TYPES
+// // // ══════════════════════════════════════════════ */
+// // // type ViewState =
+// // //   | { type: "landing" }
+// // //   | { type: "category"; catId: string }
+// // //   | { type: "article"; catId: string; artId: string; artLabel: string };
+
+// // // /* ══════════════════════════════════════════════
+// // //    MEGA MENU DROPDOWN
+// // // ══════════════════════════════════════════════ */
+// // // function MegaMenu({ onSelect }: { onSelect: (v: ViewState) => void }) {
+// // //   const [open, setOpen] = useState(false);
+// // //   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+// // //   return (
+// // //     <div
+// // //       className="relative"
+// // //       onMouseEnter={() => { setOpen(true); setHoveredCat(CATEGORIES[0].id); }}
+// // //       onMouseLeave={() => { setOpen(false); setHoveredCat(null); }}
+// // //     >
+// // //       <button
+// // //         onClick={() => { onSelect({ type: "landing" }); setOpen(false); }}
+// // //         className="flex items-center gap-1.5 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+// // //       >
+// // //         Parenting Guide
+// // //         <ChevronDown
+// // //           size={13}
+// // //           className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+// // //         />
+// // //       </button>
+
+// // //       <AnimatePresence>
+// // //         {open && (
+// // //           <motion.div
+// // //             initial={{ opacity: 0, y: 6 }}
+// // //             animate={{ opacity: 1, y: 0 }}
+// // //             exit={{ opacity: 0, y: 6 }}
+// // //             transition={{ duration: 0.18 }}
+// // //             className="absolute top-full left-0 flex rounded-b-2xl overflow-hidden shadow-2xl z-[200]"
+// // //             style={{
+// // //               background: "#ffffff",
+// // //               border: "1px solid rgba(249,115,22,0.2)",
+// // //               borderTop: "3px solid #f97316",
+// // //               minWidth: "580px",
+// // //               marginTop: "0px",
+// // //             }}
+// // //           >
+// // //             {/* Left: categories */}
+// // //             <div className="w-[220px] border-r border-gray-100 py-2">
+// // //               {CATEGORIES.map((cat) => (
+// // //                 <div
+// // //                   key={cat.id}
+// // //                   className="flex items-center justify-between px-5 py-3 cursor-pointer transition-all duration-150"
+// // //                   style={{
+// // //                     background: hoveredCat === cat.id ? "#f8f9fb" : "transparent",
+// // //                     borderLeft: hoveredCat === cat.id ? "3px solid #f97316" : "3px solid transparent",
+// // //                     color: hoveredCat === cat.id ? "#f97316" : "#374151",
+// // //                   }}
+// // //                   onMouseEnter={() => setHoveredCat(cat.id)}
+// // //                   onClick={() => {
+// // //                     onSelect({ type: "category", catId: cat.id });
+// // //                     setOpen(false);
+// // //                   }}
+// // //                 >
+// // //                   <span className="text-[0.9rem] font-medium">{cat.label}</span>
+// // //                   <ChevronRight size={13} style={{ color: hoveredCat === cat.id ? "#f97316" : "#9ca3af" }} />
+// // //                 </div>
+// // //               ))}
+// // //             </div>
+
+// // //             {/* Right: subtopics */}
+// // //             <div className="flex-1 py-2 px-1">
+// // //               {hoveredCat && (
+// // //                 <div className="grid grid-cols-1 gap-0.5">
+// // //                   {CATEGORIES.find((c) => c.id === hoveredCat)?.subtopics.map((sub) => (
+// // //                     <div
+// // //                       key={sub.id}
+// // //                       className="px-4 py-2 text-[0.85rem] text-gray-600 cursor-pointer rounded-lg transition-all duration-100 hover:text-[#f97316]"
+// // //                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+// // //                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+// // //                       onClick={() => {
+// // //                         onSelect({ type: "article", catId: hoveredCat!, artId: sub.id, artLabel: sub.label });
+// // //                         setOpen(false);
+// // //                       }}
+// // //                     >
+// // //                       {sub.label}
+// // //                     </div>
+// // //                   ))}
+// // //                 </div>
+// // //               )}
+// // //             </div>
+// // //           </motion.div>
+// // //         )}
+// // //       </AnimatePresence>
+// // //     </div>
+// // //   );
+// // // }
+
+// // // /* ══════════════════════════════════════════════
+// // //    ARTICLE VIEWER
+// // // ══════════════════════════════════════════════ */
+// // // function ArticleView({ view, onNavigate }: { view: ViewState; onNavigate: (v: ViewState) => void }) {
+// // //   if (view.type === "landing") {
+// // //     return (
+// // //       <div className="text-center py-20 px-6">
+// // //         <div
+// // //           className="inline-block px-4 py-1.5 rounded-full text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-6"
+// // //           style={{ background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)" }}
+// // //         >
+// // //           Family Playbook
+// // //         </div>
+// // //         <h1
+// // //           className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+// // //           style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
+// // //         >
+// // //           The Parenting Guide Your Family<br />Actually Needs
+// // //         </h1>
+// // //         <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+// // //           Science-backed, psychologist-designed guidance for ages 3–13.
+// // //           Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+// // //         </p>
+// // //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
+// // //           {CATEGORIES.map((cat) => (
+// // //             <button
+// // //               key={cat.id}
+// // //               onClick={() => onNavigate({ type: "category", catId: cat.id })}
+// // //               className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+// // //             >
+// // //               <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
+// // //               <p className="text-gray-500 text-[0.8rem] leading-[1.5]">
+// // //                 {cat.subtopics.length} guides
+// // //               </p>
+// // //             </button>
+// // //           ))}
+// // //         </div>
+// // //       </div>
+// // //     );
+// // //   }
+
+// // //   if (view.type === "category") {
+// // //     const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// // //     return (
+// // //       <div className="max-w-[860px] mx-auto px-6 py-10">
+// // //         <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8">
+// // //           <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// // //             Parenting Guide
+// // //           </button>
+// // //           <span>›</span>
+// // //           <span className="text-gray-500">{cat.label}</span>
+// // //         </div>
+
+// // //         <h1
+// // //           className="text-[#1b2a4a] font-bold text-[2rem] leading-[1.25] mb-4"
+// // //           style={{ fontFamily: "'Rubik', sans-serif" }}
+// // //         >
+// // //           {cat.label}
+// // //         </h1>
+// // //         <p className="text-gray-500 text-[1rem] leading-[1.7] mb-10 max-w-[600px]">
+// // //           {CATEGORY_INTRO[cat.id]}
+// // //         </p>
+
+// // //         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+// // //           {cat.subtopics.map((sub) => (
+// // //             <button
+// // //               key={sub.id}
+// // //               onClick={() => onNavigate({ type: "article", catId: cat.id, artId: sub.id, artLabel: sub.label })}
+// // //               className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-[10px] text-left transition-all duration-200 hover:border-[#f97316] hover:shadow-md group"
+// // //             >
+// // //               <span className="text-[#374151] text-[0.9rem] font-medium group-hover:text-[#f97316] transition-colors">
+// // //                 {sub.label}
+// // //               </span>
+// // //               <ChevronRight size={15} className="text-gray-300 group-hover:text-[#f97316] transition-colors" />
+// // //             </button>
+// // //           ))}
+// // //         </div>
+// // //       </div>
+// // //     );
+// // //   }
+
+// // //   /* article */
+// // //   const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// // //   const html = CONTENT[view.artId] ?? `<h1>${view.artLabel}</h1><p>Content coming soon.</p>`;
+
+// // //   return (
+// // //     <div className="max-w-[860px] mx-auto px-6 py-10">
+// // //       <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8 flex-wrap">
+// // //         <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// // //           Parenting Guide
+// // //         </button>
+// // //         <span>›</span>
+// // //         <button onClick={() => onNavigate({ type: "category", catId: view.catId })} className="text-[#f97316] font-medium hover:underline">
+// // //           {cat.label}
+// // //         </button>
+// // //         <span>›</span>
+// // //         <span className="text-gray-500">{view.artLabel}</span>
+// // //       </div>
+
+// // //       <div
+// // //         className="article-prose"
+// // //         dangerouslySetInnerHTML={{ __html: html }}
+// // //       />
+
+// // //       <button
+// // //         onClick={() => onNavigate({ type: "category", catId: view.catId })}
+// // //         className="mt-10 inline-flex items-center gap-2 text-[#f97316] font-medium text-[0.9rem] hover:gap-3 transition-all duration-150"
+// // //       >
+// // //         ← Back to {cat.label}
+// // //       </button>
+// // //     </div>
+// // //   );
+// // // }
+
+// // // /* ══════════════════════════════════════════════
+// // //    MAIN EXPORT
+// // // ══════════════════════════════════════════════ */
+// // // export default function ParentingGuidePage() {
+// // //   const searchParams = useSearchParams();
+// // //   const [view, setView] = useState<ViewState>({ type: "landing" });
+
+// // //   // ✅ KEY CHANGE: Read URL params and set the correct view
+// // //   useEffect(() => {
+// // //     const cat = searchParams.get("cat");
+// // //     const topic = searchParams.get("topic");
+
+// // //     if (cat && topic) {
+// // //       const foundCat = CATEGORIES.find((c) => c.id === cat);
+// // //       const foundSub = foundCat?.subtopics.find(
+// // //         (s) => s.label === decodeURIComponent(topic)
+// // //       );
+// // //       if (foundCat && foundSub) {
+// // //         setView({
+// // //           type: "article",
+// // //           catId: cat,
+// // //           artId: foundSub.id,
+// // //           artLabel: foundSub.label,
+// // //         });
+// // //       }
+// // //     } else if (cat) {
+// // //       setView({ type: "category", catId: cat });
+// // //     } else {
+// // //       setView({ type: "landing" });
+// // //     }
+// // //   }, [searchParams]);
+
+// // //   const navigate = (v: ViewState) => {
+// // //     setView(v);
+// // //     window.scrollTo({ top: 0, behavior: "smooth" });
+// // //   };
+
+// // //   return (
+// // //     <>
+// // //       <style>{`
+// // //         .article-prose h1 {
+// // //           font-family: 'Rubik', sans-serif;
+// // //           font-size: clamp(1.6rem, 3vw, 2.2rem);
+// // //           font-weight: 700;
+// // //           color: #1b2a4a;
+// // //           line-height: 1.25;
+// // //           margin-bottom: 1.2rem;
+// // //           padding-bottom: 1rem;
+// // //           border-bottom: 2px solid #f0f2f5;
+// // //         }
+// // //         .article-prose h2 {
+// // //           font-family: 'Rubik', sans-serif;
+// // //           font-size: 1.25rem;
+// // //           font-weight: 700;
+// // //           color: #1b2a4a;
+// // //           margin-top: 2rem;
+// // //           margin-bottom: 0.75rem;
+// // //         }
+// // //         .article-prose p {
+// // //           font-size: 0.96rem;
+// // //           color: #3b4258;
+// // //           line-height: 1.8;
+// // //           margin-bottom: 0.9rem;
+// // //         }
+// // //         .article-prose ul {
+// // //           margin: 0.5rem 0 1.2rem 1.2rem;
+// // //           list-style: none;
+// // //           padding: 0;
+// // //         }
+// // //         .article-prose ul li {
+// // //           position: relative;
+// // //           padding: 0.3rem 0 0.3rem 1.2rem;
+// // //           font-size: 0.93rem;
+// // //           line-height: 1.7;
+// // //           color: #3b4258;
+// // //         }
+// // //         .article-prose ul li::before {
+// // //           content: '';
+// // //           position: absolute;
+// // //           left: 0;
+// // //           top: 12px;
+// // //           width: 7px;
+// // //           height: 7px;
+// // //           border-radius: 50%;
+// // //           background: #f97316;
+// // //           opacity: 0.6;
+// // //         }
+// // //         .article-prose strong { color: #1b2a4a; font-weight: 600; }
+// // //       `}</style>
+
+// // //       <div className="min-h-screen relative z-[1]" style={{ background: "#f8f9fb" }}>
+// // //         <motion.div
+// // //           key={JSON.stringify(view)}
+// // //           initial={{ opacity: 0, y: 12 }}
+// // //           animate={{ opacity: 1, y: 0 }}
+// // //           transition={{ duration: 0.35 }}
+// // //         >
+// // //           <ArticleView view={view} onNavigate={navigate} />
+// // //         </motion.div>
+// // //       </div>
+// // //     </>
+// // //   );
+// // // }
+
+// // // export { MegaMenu };
+// // // export type { ViewState };
+
+
+
+
+// // "use client";
+
+// // import { useState, useEffect } from "react";
+// // import { useSearchParams } from "next/navigation";
+// // import { motion, AnimatePresence } from "framer-motion";
+// // import { ChevronDown, ChevronRight } from "lucide-react";
+
+// // /* ══════════════════════════════════════════════
+// //    DATA
+// // ══════════════════════════════════════════════ */
+
+// // const CATEGORIES = [
+// //   {
+// //     id: "child_behaviour",
+// //     label: "Child Behaviour",
+// //     subtopics: [
+// //       { id: "cb_01", label: "Why Children Lie" },
+// //       { id: "cb_02", label: "Why Kids Talk Back" },
+// //       { id: "cb_03", label: "Stubborn Children" },
+// //       { id: "cb_04", label: "Discipline Without Punishment" },
+// //       { id: "cb_05", label: "Aggressive Behaviour" },
+// //       { id: "cb_06", label: "Why Children Refuse to Listen" },
+// //       { id: "cb_07", label: "Sibling Fights" },
+// //       { id: "cb_08", label: "Tantrums" },
+// //       { id: "cb_09", label: "Teaching Respect" },
+// //       { id: "cb_10", label: "Setting Boundaries" },
+// //     ],
+// //   },
+// //   {
+// //     id: "emotional_development",
+// //     label: "Emotional Development",
+// //     subtopics: [
+// //       { id: "ed_01", label: "Building Emotional Resilience" },
+// //       { id: "ed_02", label: "Emotional Intelligence in Children" },
+// //       { id: "ed_03", label: "Helping Children Express Emotions" },
+// //       { id: "ed_04", label: "Helping Children Overcome Fear" },
+// //       { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+// //       { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+// //       { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+// //       { id: "ed_08", label: "Raising Emotionally Strong Children" },
+// //       { id: "ed_09", label: "Teaching Patience to Children" },
+// //       { id: "ed_10", label: "Why Children Get Angry" },
+// //     ],
+// //   },
+// //   {
+// //     id: "habits_discipline",
+// //     label: "Habits & Discipline",
+// //     subtopics: [
+// //       { id: "hd_01", label: "Building Reading Habits" },
+// //       { id: "hd_02", label: "Daily Routines for Children" },
+// //       { id: "hd_03", label: "Helping Kids Stay Organized" },
+// //       { id: "hd_04", label: "How Children Develop Habits" },
+// //       { id: "hd_05", label: "Morning Routines for Kids" },
+// //       { id: "hd_06", label: "Teaching Responsibility at Home" },
+// //       { id: "hd_07", label: "Teaching Self Discipline" },
+// //       { id: "hd_08", label: "Teaching Time Management" },
+// //       { id: "hd_09", label: "Screen Time Balance for Kids" },
+// //       { id: "hd_10", label: "Why Routines Help Children" },
+// //     ],
+// //   },
+// //   {
+// //     id: "school_life",
+// //     label: "School Life",
+// //     subtopics: [
+// //       { id: "sl_01", label: "Bullying in Primary Schools" },
+// //       { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+// //       { id: "sl_03", label: "Helping Children Focus on Studies" },
+// //       { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+// //       { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+// //       { id: "sl_06", label: "Helping Kids Make Friends" },
+// //       { id: "sl_07", label: "Homework Struggles in Children" },
+// //       { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+// //       { id: "sl_09", label: "Reducing School Stress" },
+// //       { id: "sl_10", label: "School Anxiety in Children" },
+// //     ],
+// //   },
+// //   {
+// //     id: "family_resources",
+// //     label: "Family Resources",
+// //     subtopics: [
+// //       { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+// //       { id: "fr_02", label: "Emotional Development Chart" },
+// //       { id: "fr_03", label: "Habit Tracker for Kids" },
+// //       { id: "fr_04", label: "Parenting Checklist" },
+// //       { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+// //       { id: "fr_06", label: "School Readiness Guide" },
+// //     ],
+// //   },
+// // ];
+
+// // const CATEGORY_INTRO: Record<string, string> = {
+// //   child_behaviour:
+// //     "Your child is not trying to ruin your evening. Every tantrum, refusal, or moment of aggression is a message — and when you learn to read it, everything changes. Choose a topic below to start.",
+// //   emotional_development:
+// //     "Real emotional development means your child can feel a difficult emotion without it taking over their behaviour. Click any topic to explore practical, age-specific guidance.",
+// //   habits_discipline:
+// //     "The parents who have an easier time are building habits, not enforcing rules. Because a habit does not need to be enforced — it just happens. Explore the guides below.",
+// //   school_life:
+// //     "What shapes your child's relationship with school is what happens at home. The conversations after school. The way you respond when they fail. Explore practical guides for every school challenge.",
+// //   family_resources:
+// //     "Practical tools every parent can use today — checklists, trackers, conversation starters, and readiness guides. Use what fits your family.",
+// // };
+
+// // const CONTENT: Record<string, string> = {
+// //   child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><p>This page is not about making your child behave. It is about understanding why they behave the way they do — and what to actually do in those moments when you are about to lose your mind.</p><h2>The One Shift That Changes Everything</h2><p>Most parents respond to what their child does. The parents who have an easier time are responding to why their child does it.</p><p>Difficult behaviour is almost never defiance. It is almost always one of four things:</p><ul><li>An unmet need — hunger, tiredness, overwhelm, attention</li><li>An emotion they cannot name yet — frustration, shame, jealousy, fear</li><li>A skill they have not built yet — patience, empathy, impulse control</li><li>A test — not of your authority, but of whether you are safe to be real around</li></ul><p>When you ask 'what are you trying to tell me?' instead of 'why are you doing this?', the conversation that follows is completely different.</p><h2>What Behaviour Looks Like at Each Age</h2><h3>Ages 3–5: Big Emotions, Tiny Vocabulary</h3><p>Tantrums at this age are not manipulation. They are a neurological overflow — the emotional brain firing faster than the rational brain can catch up. Your child is not choosing to fall apart. They literally cannot stop themselves yet.</p><ul><li>Do not match the energy. Speak slowly and quietly. Get low — physically kneel down to their level.</li><li>Name the emotion out loud: 'You are really angry right now because we had to stop playing.' You are not rewarding the tantrum — you are teaching them to recognise what they feel.</li><li>Wait it out without leaving and without giving in. Your calm, consistent presence is the lesson.</li><li>After it passes — not during — briefly name what happened and what you can do next time.</li></ul><h3>Ages 6–9: Testing Rules, Seeking Fairness</h3><p>At this age your child has entered the social world of school. They are navigating fairness, comparison, and what it means to belong. Behaviour at home often reflects what is happening in the social world outside.</p><ul><li>When they refuse to follow a rule, explain the reason behind it once — briefly.</li><li>When they come home grumpy, give them 20 minutes before engaging.</li><li>If there is a conflict with a sibling or friend, resist the urge to solve it. Ask both children: 'What would be fair here?'</li><li>Catch them doing the right thing and name it specifically.</li></ul><h3>Ages 10–13: Independence Is Not Disrespect</h3><p>This is the stage where parents most often feel shut out, argued with, or simply ignored. What is actually happening is healthy — your child is building an identity separate from you.</p><ul><li>Pick your battles deliberately. If you fight about everything, you win nothing and lose the relationship.</li><li>When they argue back, pause before responding.</li><li>Give them increasing autonomy in low-stakes areas.</li><li>Never mock, dismiss, or minimise what they care about — even if it seems trivial to you.</li></ul>`,
+
+// //   emotional_development: `<h1>Emotional Development in Children</h1><p>Here is a question worth sitting with: if your child broke something valuable by accident, would they come and tell you immediately — or would they hide it and hope you would not notice?</p><p>The answer to that question tells you more about your child's emotional development than any assessment or report card. Emotional development is not about how well your child names feelings on a poster. It is about whether they feel safe enough to be honest with you when it is inconvenient for them.</p><h2>What Emotional Development Actually Means</h2><p>Most people think emotional development means teaching children to be calm, polite, and not cry in public. That is emotional suppression — not emotional development.</p><p>Real emotional development means your child can:</p><ul><li>Feel a difficult emotion without it taking over their behaviour</li><li>Say 'I am angry' instead of hitting, shutting down, or acting out</li><li>Recognise when someone else is struggling and respond with care</li><li>Come to you when something is wrong — not just when it is easy</li><li>Recover from disappointment without falling apart or giving up</li></ul><h2>Building Emotional Strength at Each Stage</h2><h3>Ages 3–5: Name It to Tame It</h3><p>At this age your child is experiencing the full force of human emotion with almost none of the brain infrastructure to manage it. The single most valuable thing you can do is put a name to every emotion you observe — out loud, consistently, without judgment.</p><ul><li>During a meltdown, narrate the emotion without trying to stop it: 'You are so frustrated right now because we had to leave the park. That makes sense. I am right here.'</li><li>Name your own emotions too: 'I am feeling a bit stressed right now, so I am going to take a few deep breaths.'</li><li>After a difficult moment has passed, revisit it briefly: 'Earlier you were really upset. What were you feeling?'</li><li>Read stories with emotional complexity and pause at key moments: 'How do you think he is feeling right now?'</li></ul><h3>Ages 6–9: Teach the Space Between Feeling and Action</h3><p>Now the work shifts to the gap between feeling something and doing something about it. The child who can pause two seconds between 'I am furious' and 'I hit my classmate' has the most important life skill there is.</p><ul><li>Introduce the concept of 'what do you do with big feelings?' — build a short personal list together.</li><li>When they handle a hard moment well, name it immediately: 'You were really upset with your friend and you walked away instead of saying something you'd regret.'</li><li>Teach empathy through real situations, not hypotheticals.</li><li>Let them experience disappointment without rescuing.</li></ul><h3>Ages 10–13: Respect the Privacy, Keep the Channel Open</h3><p>At this stage children start to internalise emotions more. Your job is not to get inside the private world. It is to be so consistently warm, non-reactive, and trustworthy that when something goes seriously wrong, your child's first instinct is to come to you.</p><ul><li>Stop asking 'what is wrong?' when they are quiet. Say instead: 'You seem like you have something on your mind. I am here when you want to talk.'</li><li>Never mock, dismiss, or minimise what they feel — even when it seems disproportionate.</li><li>Share your own emotional struggles — age-appropriately.</li><li>When they do open up, fight every instinct to immediately fix, advise, or lecture.</li></ul>`,
+
+// //   habits_discipline: `<h1>Habits and Discipline</h1><p>Most parents spend years trying to discipline their child. The parents who have an easier time are building habits instead. Because a habit does not need to be enforced — it just happens. And a child who has been raised with the right habits does not need discipline half as often.</p><h2>How Habits Actually Form in Children</h2><p>Every habit has three parts: a cue that triggers the behaviour, the routine itself, and a reward that makes the brain want to repeat it. When you understand this loop, you stop fighting your child's behaviour and start designing better defaults instead.</p><p>The three things that make habits stick in children:</p><ul><li>Attach it to something that already happens. 'After dinner, we read' requires no new slot in the day.</li><li>Make it small enough to be impossible to fail. A child who reads for 5 minutes every night builds a reader.</li><li>Do it yourself first. Children do not adopt habits you talk about — they adopt habits they see.</li></ul><h2>The Habits Worth Building at Each Age</h2><h3>Ages 3–5: Build the Four Non-Negotiables</h3><ul><li><strong>Sleep:</strong> A fixed bedtime, every night, within 30 minutes of the same time. Non-negotiable.</li><li><strong>Tidying up:</strong> After every play session, everything goes back.</li><li><strong>Please and thank you:</strong> Not as a rule imposed — as a behaviour modelled.</li><li><strong>A daily reading moment:</strong> Even five minutes of a story — every day, at the same time.</li></ul><h3>Ages 6–9: Transfer Responsibility</h3><ul><li><strong>School bag:</strong> Your child packs it. You check it once at the start — then stop checking.</li><li><strong>Homework timing:</strong> Set the window and then leave them to it.</li><li><strong>One household contribution:</strong> Something real, not manufactured busywork.</li><li><strong>Physical activity:</strong> Daily, outside, unstructured if possible.</li></ul><h3>Ages 10–13: Build Systems, Not Rules</h3><ul><li>Sit down together once a week and plan the week ahead. Let them write it.</li><li>Negotiate screen time boundaries together rather than imposing them.</li><li>Let them experience the consequences of their own planning failures.</li><li>Introduce a personal goal — something they want for themselves, not something you want for them.</li></ul>`,
+
+// //   school_life: `<h1>School Life</h1><p>Most parents think their job in their child's school life is academic — check the homework, attend the PTM, follow up on marks. That is the smallest part of what actually matters.</p><p>What shapes your child's relationship with school — and with learning for the rest of their life — is what happens at home. The conversations after school. The way you respond when they fail a test. Whether they feel safe telling you when something is going wrong.</p><h2>Stop Asking 'How Was School?' — Ask This Instead</h2><p>'How was school?' gets you 'fine' every time. Replace it with specific, low-pressure questions:</p><ul><li>'What was the most annoying thing that happened today?'</li><li>'Did anything surprise you today?'</li><li>'Who made you laugh today?'</li><li>'Was there anything today where you felt really stuck?'</li><li>'If you could change one thing about school, what would it be?'</li></ul><h2>What Your Child Needs From You at Each School Stage</h2><h3>Ages 3–5: Make School Feel Like an Adventure</h3><ul><li>Never say 'school is boring' or 'I hated maths too' in front of your child.</li><li>When they come home excited about something they learned, stop what you are doing and let them teach you.</li><li>Keep morning routines calm and consistent.</li><li>If they are reluctant to go, do not dismiss it and do not indulge it.</li></ul><h3>Ages 6–9: Be Interested in Their Work, Not Just Their Grades</h3><ul><li>When they get a bad mark: ask 'what do you think went wrong?' before offering your view.</li><li>When they get a good mark: ask 'what did you do differently that worked?'</li><li>Show genuine interest in a subject they enjoy.</li><li>Help them build a homework habit — same time, same place, no negotiation.</li></ul><h3>Ages 10–13: Back Off the Academics — Stay Close to the Person</h3><ul><li>Resist the urge to increase tuitions as the default response to falling grades.</li><li>Keep the conversation about school balanced.</li><li>Let them have at least one non-academic interest they pursue seriously.</li><li>If they are struggling with a teacher relationship, take their side first.</li></ul>`,
+
+// //   family_resources: `<h1>Family Resources</h1><p>Every parent has had the experience of reading something helpful, nodding along, and then doing absolutely nothing differently the next morning. Good intentions without a practical system change nothing.</p><p>This page is different. Everything here is a tool — something you can pick up, use today, and come back to.</p><h2>Resource 1: 30 Conversation Starters That Go Beyond 'How Was School?'</h2><h3>For Ages 3–6</h3><ul><li>What made you laugh today?</li><li>What was the hardest part of your day?</li><li>Did anything make you feel sad or upset today?</li><li>If you could change one thing about today, what would it be?</li><li>Who was the kindest person at school today and what did they do?</li><li>What is something you wish I knew about your day?</li><li>What are you looking forward to tomorrow?</li></ul><h3>For Ages 7–10</h3><ul><li>What was the most unfair thing that happened this week?</li><li>Did you do anything today that you are proud of, even a little?</li><li>Is there anything you are worried about right now?</li><li>What is something you tried this week that was hard?</li><li>If your best friend could describe you in three words, what would they say?</li><li>What do you think I worry about as a parent?</li><li>If you could teach the class something tomorrow, what would you teach?</li></ul><h3>For Ages 11–13</h3><ul><li>What is something you wish adults understood better about being your age?</li><li>Is there anything you have been thinking about a lot lately that you have not talked to anyone about?</li><li>What do you think you are genuinely good at — not just at school but as a person?</li><li>If you could change one rule in our house, what would it be and why?</li><li>What do you think I do not fully understand about your life right now?</li><li>What is something you have changed your mind about in the last year?</li><li>What is one thing you want to be better at — in life, not just in school?</li></ul><h2>Resource 2: The Quick-Reference Age-Wise Behaviour Guide</h2><h3>Ages 3–5</h3><ul><li><strong>Tantrums:</strong> Normal and expected. Stay calm, name the emotion, wait it out without giving in or leaving.</li><li><strong>Lying:</strong> Normal at this age — it is often wishful thinking rather than deception.</li><li><strong>Not sharing:</strong> Normal. True sharing requires empathy which is still developing.</li><li><strong>Refusing to do things:</strong> Normal — they are discovering autonomy. Offer controlled choices.</li></ul><h3>Ages 6–9</h3><ul><li><strong>Arguing back:</strong> Normal — they are developing reasoning skills. Engage the argument briefly, explain your reasoning, and hold the line.</li><li><strong>Comparing themselves to others:</strong> Normal and developmental. Redirect to personal progress.</li><li><strong>Friendship conflicts:</strong> Normal and frequent. Resist solving them.</li><li><strong>Losing focus during homework:</strong> Normal at this age. Attention spans are still building.</li></ul><h3>Ages 10–13</h3><ul><li><strong>Withdrawal and privacy:</strong> Normal — they are building an identity. Respect it.</li><li><strong>Mood swings:</strong> Normal — hormones and social pressure are both ramping up.</li><li><strong>Peer influence increasing:</strong> Normal and healthy.</li><li><strong>Questioning rules:</strong> Normal and developmentally appropriate.</li></ul>`,
+
+// //   cb_01: `<h1>Why Children Lie</h1><p>If your child lies to you and you react with anger or punishment, there is a good chance they will lie to you again tomorrow — only more carefully. Because the lie was never really about dishonesty. It was about fear. And increasing the fear increases the lying.</p><h2>The Real Reason Children Lie</h2><p>Children lie for one of four reasons: to avoid a consequence they fear, to protect a feeling (shame, embarrassment, not wanting to disappoint), to test reality, or to protect someone else.</p><p>If your child lies to you regularly, the question is not 'how do I stop the lying?' It is 'what is my child afraid of telling me the truth about?'</p><h2>Ages 3–5: The Wishful Thinking Stage</h2><p>At this age, lying is not really lying in the moral sense. Young children have a limited ability to separate what they want to be true from what is actually true. When a 4-year-old says 'I didn't eat the biscuit' with crumbs on their face, they are expressing a wish.</p><ul><li>Do not treat it as a moral failure. Respond matter-of-factly: 'I can see the biscuit is gone. Next time, ask me first.'</li><li>Name the emotion underneath: 'I think you were worried I would be upset. You can always tell me things, even the tricky ones.'</li><li>Use stories and role play to explore honesty.</li><li>Never set a trap. If you already know what happened, do not ask 'did you do this?' Ask 'tell me what happened.'</li></ul><h2>Ages 6–9: The Consequence-Avoidance Stage</h2><p>By now your child fully understands the difference between truth and lie — and they are calculating. The lie is almost always a risk assessment: is telling the truth going to hurt me more than this lie?</p><ul><li>Make truth-telling feel safe. When your child tells you something difficult, your first response should be: 'I am glad you told me.' Before anything else.</li><li>Separate the behaviour from the lie. Address what they did, and separately acknowledge that they told the truth.</li><li>Reduce the stakes of small confessions.</li><li>Stop interrogating. If you already know what happened, say what you know.</li></ul><h2>Ages 10–13: The Social Protection Stage</h2><p>At this age, lying often has a social dimension. Your child is protecting a friendship, hiding something they are embarrassed about, or managing a double life between the values of home and the values of their peer group.</p><ul><li>Stay curious, not suspicious. A parent who interrogates closes conversations. A parent who is genuinely interested opens them.</li><li>When you catch a lie at this age, stay calm. Your reaction in this moment teaches them whether future honesty is worth the risk.</li><li>Share your own experiences of lying as a young person — honestly. Not as a lesson, but as a story.</li><li>Be honest yourself about mistakes, about feelings, about not knowing.</li></ul><h2>How to Respond When You Catch a Lie</h2><ul><li><strong>Step 1 — Pause:</strong> Take a breath before you respond. Your first reaction sets the tone for everything that follows.</li><li><strong>Step 2 — State what you know:</strong> 'I know what actually happened. I am not going to ask you to confirm it.'</li><li><strong>Step 3 — Address the underlying behaviour:</strong> Not the lie — the thing that caused the lie.</li><li><strong>Step 4 — Name the cost of lying:</strong> 'When you lie to me it makes it harder for me to trust you, and that affects how much freedom I can give you.'</li><li><strong>Step 5 — Leave the door open:</strong> 'I want you to know that you can always tell me things. Even hard things.'</li></ul>`,
+
+// //   cb_02: `<h1>Why Kids Talk Back</h1><p>Your child answers back and your first instinct is: disrespect. But talking back is almost never about disrespect. It is about a developing brain that has just discovered it can argue — and a child who is testing whether you are someone who can handle disagreement without breaking.</p><h2>Why Talking Back Is Actually a Sign of Development</h2><p>Children who talk back have developed something important: the ability to form an opinion, articulate it, and push back on authority. The goal is not to eliminate the arguing. It is to channel it into respectful disagreement.</p><h2>What Talking Back Looks Like at Each Age</h2><h3>Ages 3–5: The 'No' Stage</h3><p>At this age talking back is mostly 'no', 'I don't want to', and the occasional dramatic 'you're so mean'. This is healthy autonomy development.</p><ul><li>Pick your battles. Not every 'no' needs a confrontation.</li><li>Offer controlled choices: 'You need to put your shoes on. Do you want to do it yourself or do you want my help?'</li><li>Avoid power struggles over small things.</li><li>Name what you observe: 'You really don't want to stop playing. I understand. We still need to go.'</li></ul><h3>Ages 6–9: The 'That's Not Fair' Stage</h3><p>At this age talking back often sounds like arguing about fairness — 'that's not fair', 'you never let me', 'my friend is allowed to'. Children this age have developed a strong sense of justice and they apply it loudly.</p><ul><li>Explain your reasoning once, briefly.</li><li>Acknowledge their perspective before holding your position: 'I hear that it feels unfair. The answer is still no.'</li><li>Do not match their emotional intensity.</li><li>Tell them when they have made a fair point: 'Actually that is a reasonable argument. Let me think about it.'</li></ul><h3>Ages 10–13: The Full Argument Stage</h3><p>At this age the talking back can be sophisticated, sharp, and sometimes genuinely hurtful. Your child is now capable of identifying inconsistencies in your reasoning.</p><ul><li>Pause before responding. The sharpness of their argument is designed — consciously or not — to provoke a reaction.</li><li>Engage the substance, not the tone.</li><li>Be willing to change your mind when they are right.</li><li>Hold the line on how they speak to you, separately from what they are saying.</li></ul><h2>The Responses That Escalate and the Ones That Don't</h2><ul><li><strong>Escalates:</strong> 'Don't speak to me like that or you will be sorry.'</li><li><strong>De-escalates:</strong> 'I can hear you are frustrated. I am going to give us both a moment and then we will talk about this.'</li><li><strong>Escalates:</strong> 'Because I said so, that's why.'</li><li><strong>De-escalates:</strong> 'The reason is this. I am not going to debate it further, but I want you to understand my thinking.'</li><li><strong>Escalates:</strong> Matching their volume and emotional intensity.</li><li><strong>De-escalates:</strong> Lowering your voice. A quiet parent is more powerful than a loud one every single time.</li></ul>`,
+
+// //   cb_03: `<h1>Dealing With a Stubborn Child</h1><p>The child everyone calls stubborn is usually the one who knows what they want, refuses to be pushed around, and holds their position under pressure. In twenty years, those are exactly the qualities that will make them successful. Right now, they are making your evenings very difficult.</p><h2>The Truth About Stubborn Children</h2><p>Strong-willed children are not broken. They are not defiant for the sake of it. They have a particularly intense need for autonomy — to feel that their choices and opinions matter. When that need is met through collaboration and respect, they are capable of extraordinary persistence, leadership, and resilience. When it is met with force, they dig in and everyone loses.</p><p>You will not out-stubborn a stubborn child. The only way through is alongside.</p><h2>Ages 3–5: The 'I Do It Myself' Stage</h2><ul><li>Give them the genuine experience of doing it themselves wherever possible.</li><li>Build in extra time. Battles over speed are the most pointless ones.</li><li>Use 'when-then': 'When your shoes are on, then we can go.' State it once and walk toward the door.</li><li>Avoid direct commands wherever you can. 'It's time to put shoes on' works better than 'put your shoes on now.'</li></ul><h2>Ages 6–9: The 'I Won't and You Can't Make Me' Stage</h2><ul><li>Involve them in decisions. 'We need to leave by 5. How do you think we should manage the time between now and then?'</li><li>Explain the real reason, not just the rule.</li><li>Give them a face-saving exit. 'I know you don't want to stop the game. You can choose to stop now, or we can set a 5-minute timer. Either way.'</li><li>Avoid public confrontations.</li></ul><h2>Ages 10–13: The 'I Have a Point and I'm Not Moving' Stage</h2><ul><li>Genuinely consider their argument before dismissing it. If their position has merit, say so.</li><li>Be extremely clear about what is non-negotiable and keep that list short.</li><li>For the truly non-negotiable things: state it once, clearly, with the reason. Then do not engage with the argument.</li><li>Let natural consequences do the teaching for anything that is not a safety issue.</li></ul>`,
+
+// //   cb_04: `<h1>Discipline Without Punishment</h1><p>Most parents were disciplined through punishment. But punishment and discipline are not the same thing. Punishment makes a child feel bad. Discipline teaches a child to do better.</p><h2>The Difference Between Punishment and Discipline</h2><p>Punishment is about consequences that hurt. Its goal is to make the behaviour stop. Discipline is about teaching — helping a child understand what went wrong, why it matters, and what to do differently. Its goal is to change the internal wiring, not just the external behaviour.</p><h2>The Four Tools of Discipline Without Punishment</h2><h3>Tool 1: Natural Consequences</h3><p>A natural consequence is what happens when you let the situation itself teach the lesson. Forgot the water bottle — goes thirsty. Did not finish the project in time — faces the teacher.</p><ul><li>When the natural consequence is proportionate to the behaviour</li><li>When it is safe</li><li>When you can stay genuinely out of the way and resist rescuing</li></ul><h3>Tool 2: Logical Consequences</h3><p>A logical consequence is directly connected to the behaviour. Misuses the tablet — loses tablet access. Aggressive with a sibling — loses time with that sibling.</p><h3>Tool 3: Problem-Solving Conversations</h3><p>After the emotion has settled — not during the incident — sit down with your child and explore what happened.</p><ul><li>'Tell me what happened from your perspective.'</li><li>'What were you feeling just before that?'</li><li>'What did you want to happen?'</li><li>'What actually happened?'</li><li>'What would you do differently?'</li></ul><h3>Tool 4: Positive Reinforcement Done Right</h3><p>Effective positive reinforcement is specific, immediate, and process-focused.</p><ul><li><strong>Wrong:</strong> 'Good boy for sharing.'</li><li><strong>Right:</strong> 'You noticed your cousin wanted a turn and you gave him one without being asked. That was a generous choice.'</li></ul>`,
+
+// //   cb_05: `<h1>Handling Aggressive Behaviour</h1><p>When your child hits, throws, shouts, or lashes out — your instinct is to stop it immediately with whatever force of authority you have. That instinct is understandable. It is also, in most cases, exactly what makes aggressive behaviour worse.</p><h2>Aggression Is Almost Always a Communication Failure</h2><p>Children become physically or verbally aggressive when they have run out of other ways to express what they are experiencing. The emotion underneath aggression is almost always one of three things: intense frustration at something that feels impossible, fear of something that feels threatening, or shame that has become so unbearable it has converted to anger.</p><h2>Ages 3–5: Physical Overflow</h2><ul><li>Ensure safety first — physically separate children if needed, calmly.</li><li>Do not match the energy. Get low, speak slowly and quietly.</li><li>Name the emotion without judgement: 'You are really furious right now. It is not okay to hit. I am staying here with you.'</li><li>Wait. Do not try to teach during the storm.</li></ul><h2>Ages 6–9: Reactive Aggression</h2><ul><li>Address the aggression and the trigger separately.</li><li>Teach a pause strategy when they are calm — not in the moment.</li><li>Role-play difficult situations: 'Let's practise what you could do if someone takes your thing at school.'</li><li>Examine whether there is an environmental trigger — hunger, tiredness, overstimulation.</li></ul><h2>Ages 10–13: Verbal Aggression</h2><ul><li>Stay calm and lower your voice. Responding to shouting with shouting escalates always.</li><li>Name the behaviour without attacking the character: 'What you just said was unkind. That is not how we speak in this family.'</li><li>Exit the immediate conflict to prevent escalation.</li><li>Explore what is underneath it when things are calm.</li></ul><h2>Long-Term Strategies</h2><ul><li>Build a daily physical outlet — running, sport, rough-and-tumble play.</li><li>Regulate their sleep. Sleep-deprived children have dramatically reduced emotional regulation capacity.</li><li>Build emotional vocabulary consistently over time.</li><li>Model emotional regulation yourself.</li></ul>`,
+
+// //   cb_06: `<h1>Why Children Refuse to Listen</h1><p>You have said it three times. You are about to say it a fourth. And the fourth time, just like the first three, will achieve nothing — except teach your child that your instructions do not actually need to be followed until the fifth.</p><h2>The Parent Is Usually Part of the Problem</h2><p>The most uncomfortable truth about children who do not listen is that the pattern is almost always co-created. Children learn, through consistent experience, exactly how many times they need to wait before compliance is actually required.</p><h2>Ages 3–5: Developmental Capacity, Not Defiance</h2><ul><li>Get physical proximity first. An instruction shouted from another room is rarely processed.</li><li>Give a transition warning: 'In five minutes we are going to put the toys away.'</li><li>Use 'when-then' framing: 'When the toys are away, then we can have dinner.'</li><li>Follow through every time.</li></ul><h2>Ages 6–9: Strategic Non-Listening</h2><ul><li>Say it once. Then act. Not 'I told you three times.'</li><li>Get confirmation: 'Can you tell me what I just asked you to do?'</li><li>Remove distractions before instructing.</li><li>Make the consequence logical and immediate.</li></ul><h2>Ages 10–13: Selective Processing</h2><ul><li>Lower your expectations of compliance through instruction alone and increase your expectations of compliance through agreement.</li><li>Name what you observe without drama: 'I notice that when I ask you to do something, it rarely happens without me asking again.'</li><li>Pick a calm moment to have the conversation.</li><li>Be genuinely willing to hear what they say.</li></ul><h2>The Instructions That Never Work</h2><ul><li>Shouted instructions from another room</li><li>Instructions buried in a conversation</li><li>Instructions without reasons</li><li>Instructions delivered in a questioning tone: 'Can you clean your room?' gives your child the option of saying no.</li><li>Repeated instructions with no consequence</li></ul>`,
+
+// //   cb_07: `<h1>How to Handle Sibling Fights</h1><p>Sibling conflict is one of the most exhausting things about family life. It is also one of the most valuable developmental experiences your children will ever have — if you stop managing it and start using it.</p><h2>Why Sibling Conflict Is Actually Valuable</h2><p>Siblings are the only relationship in a child's life where they cannot leave, must share resources, have similar but not identical needs, and are watched by a powerful authority figure who they both want on their side. This combination creates an unparalleled training ground for negotiation, empathy, fairness, and conflict resolution.</p><h2>The Most Common Parenting Mistakes</h2><ul><li>Immediately taking sides</li><li>Finding out who started it</li><li>Solving it for them</li><li>Comparing them to each other</li><li>Intervening too early</li></ul><h2>Ages 3–6: Narrate and Separate</h2><ul><li>Separate them physically without drama: 'You two need a break from each other.'</li><li>Narrate both perspectives: 'Arjun wanted the car. Priya was using it. You both felt frustrated.'</li><li>Name the rule: 'In this house we do not hurt each other.'</li><li>Redirect to the solution: 'How long does Priya need? Can Arjun choose something else for now?'</li></ul><h2>Ages 6–10: Hand the Problem Back</h2><p>'I can see this is a real disagreement. I am going to give you five minutes to figure it out between you. If you cannot, I will make the decision for both of you — and neither of you will like it.' Then actually leave the room.</p><h2>Ages 10–13: Facilitate, Don't Adjudicate</h2><ul><li>Have a family conversation — not during a fight — about what fair conflict resolution looks like in your home.</li><li>When a fight happens, invite both children to describe their experience — not to build a case, but to be heard.</li><li>Ask what they each need rather than what they want.</li><li>Name what you see in the relationship beyond the conflict.</li></ul>`,
+
+// //   cb_08: `<h1>Why Children Throw Tantrums</h1><p>A tantrum is not a manipulation tactic. It is not a test of your authority. It is not a sign that you are doing something wrong. It is a neurological event — a young brain overwhelmed by an emotion it does not yet have the infrastructure to manage.</p><h2>What Is Actually Happening During a Tantrum</h2><p>When a child is in the middle of a full tantrum, their prefrontal cortex — the part of the brain responsible for reasoning, impulse control, and language — is effectively offline. This is why reasoning with a child mid-tantrum is useless. There is no one home to reason with.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Ensure sleep and meals are consistent.</li><li>Offer choices within limits.</li><li>Use 'when-then' framing.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first. Take one slow breath. Lower your shoulders.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words. 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out. Do not bribe, threaten, or give in.</li><li><strong>Step 5:</strong> Reconnect after — a hug, a quiet 'that was a big feeling.'</li></ul><h2>What Makes Tantrums More Frequent</h2><ul><li><strong>Tiredness:</strong> The single biggest predictor of tantrum frequency in young children.</li><li><strong>Hunger:</strong> Blood sugar drops are a major tantrum trigger.</li><li><strong>Overscheduling:</strong> Young children who are moved between activities without sufficient downtime are chronically overstimulated.</li><li><strong>Inconsistency:</strong> Children who do not know what to expect experience more anxiety and more tantrums.</li><li><strong>Too many transitions:</strong> Each transition requires emotional regulation effort.</li></ul>`,
+
+// //   cb_09: `<h1>Teaching Respect to Children</h1><p>Respect cannot be commanded into existence. Every parent who has tried the 'you will respect me' approach knows this — because the louder it is demanded, the further away it gets. Respect is built through relationship, modelled through behaviour, and earned through how you treat your child.</p><h2>The Difference Between Compliance and Respect</h2><p>Many parents confuse compliance with respect. A child who says 'yes' and does what they are told is compliant. A child who considers how their actions affect others, listens with genuine attention, and treats people with dignity is respectful. These are very different things.</p><h2>Ages 3–5: Mirror What You Want to See</h2><ul><li>Say please and thank you to everyone — the autorickshaw driver, the vegetable vendor, the delivery person.</li><li>Introduce the idea that other people have feelings: 'The didi worked really hard to clean the house today. How do you think she would feel if we left a mess?'</li><li>When your child is rude, address it without shame: 'That was not kind. Let's try that again.'</li><li>Speak to your child with the same courtesy you want them to show others.</li></ul><h2>Ages 6–9: Name Respect in Everyday Moments</h2><ul><li>When you see disrespectful behaviour in public, name it: 'Did you notice how that person spoke to the waiter? What do you think about that?'</li><li>Teach the difference between agreeing with someone and respecting them.</li><li>When your child speaks disrespectfully to you: 'That was rude. I would like you to say that again differently.' Then wait.</li><li>Acknowledge respectful behaviour specifically.</li></ul><h2>Ages 10–13: Discuss, Don't Dictate</h2><ul><li>Have a conversation — not a lecture — about what respect means to your family.</li><li>Be explicit when you make a mistake: 'I spoke to you sharply earlier and you didn't deserve that. I am sorry.'</li><li>Let them call you out respectfully when you are being disrespectful.</li><li>Discuss real-world situations where respect or disrespect had consequences.</li></ul>`,
+
+// //   cb_10: `<h1>Setting Boundaries With Kids</h1><p>Children without clear boundaries are not free. They are anxious. A child who has not been shown where the walls are spends enormous emotional energy testing for them — escalating behaviour until someone finally says 'this far and no further.' That moment of a firm, loving limit is experienced by most children as profound relief.</p><h2>Why Boundaries Are an Act of Love, Not Control</h2><p>Boundaries are the structure within which children feel safe. The goal of a boundary is not to control a child's behaviour. It is to give them the reliable external structure that eventually becomes internal self-discipline.</p><h2>The Characteristics of Boundaries That Work</h2><ul><li><strong>Clear:</strong> 'Be home by 5' is a boundary. 'Come home at a reasonable time' is not.</li><li><strong>Explained:</strong> Children who understand the reason behind a boundary are significantly more likely to respect it.</li><li><strong>Consistent:</strong> A boundary that shifts based on your mood is not a boundary. It is a guideline with exceptions.</li><li><strong>Followed through:</strong> Every boundary that is stated and then not enforced weakens every future boundary.</li><li><strong>Proportionate:</strong> The consequence for crossing a boundary should fit the boundary.</li></ul><h2>Ages 3–5: Simple, Physical, Immediate</h2><ul><li>Choose two or three genuinely non-negotiable boundaries and hold only those firmly.</li><li>State the boundary at a neutral moment, not in the middle of a conflict.</li><li>When the boundary is crossed: calm, immediate, consistent.</li><li>Do not over-explain in the moment. One sentence. The conversation happens when things are calm.</li></ul><h2>Ages 6–9: Negotiate Within the Framework</h2><ul><li>Have a family conversation about house rules — not as a lecture but as a genuine discussion.</li><li>Let them propose rules and consequences.</li><li>When a boundary is pushed: acknowledge the push before holding the line.</li><li>When a boundary is crossed: follow through without anger.</li></ul><h2>Ages 10–13: Negotiate the Boundary Itself</h2><ul><li>Identify your true non-negotiables. There are probably fewer than you think.</li><li>Have an explicit conversation about what can and cannot be negotiated.</li><li>When they argue against a boundary: engage the argument.</li><li>Increase autonomy explicitly as trust is demonstrated.</li></ul>`,
+
+// //   ed_01: `<h1>Building Emotional Resilience</h1><p>Resilience does not mean toughness. It does not mean bouncing back instantly. It means your child can experience difficulty fully, be genuinely affected by it, and recover — not unchanged, but stronger.</p><p>A resilient child is not one who never falls down. It is the child who falls down, feels the pain, and gets back up knowing that getting back up is something they can do — because they have done it before.</p><h2>The 4 Pillars of Emotional Resilience</h2><h3>Pillar 1: Secure Attachment</h3><p>A child who knows deeply — without question — that they are loved and that their parents are a safe base to return to. This is the foundation of all resilience.</p><ul><li>Be consistently available — not perfect, but predictable.</li><li>Repair ruptures quickly. 'I was short with you earlier and that was not okay. I'm sorry.'</li><li>Make your love unconditional and visible.</li></ul><h3>Pillar 2: Emotional Competence</h3><ul><li>Create a home where all emotions are welcome.</li><li>Help them develop a nuanced emotional vocabulary.</li><li>Teach them that emotions are temporary. 'This feeling is real and big. And it will pass.'</li></ul><h3>Pillar 3: Self-Efficacy</h3><ul><li>Allow age-appropriate struggle.</li><li>Highlight their track record. 'Remember when you thought you couldn't? And you did.'</li><li>Let them fail. Failure is the raw material from which resilience is built.</li></ul><h3>Pillar 4: Problem-Solving Orientation</h3><ul><li>When your child comes with a problem, ask: 'What do you think you could do about it?'</li><li>Model problem-solving thinking aloud.</li><li>After difficulty, build the habit of debrief: 'What happened? What worked? What would you do differently?'</li></ul><h2>What Undermines Resilience — Stop Doing These</h2><ul><li><strong>Eliminating all difficulty:</strong> A friction-free childhood produces a fragile adult.</li><li><strong>Rescuing from consequences:</strong> Bailing them out steals the learning.</li><li><strong>Catastrophising:</strong> If you respond with more panic than they feel, you teach them that problems are catastrophes.</li><li><strong>Teaching helplessness:</strong> 'You can't do that, let me do it for you' repeated enough becomes a belief.</li></ul>`,
+
+// //   ed_02: `<h1>Emotional Intelligence in Children</h1><p>Academic success, social confidence, strong friendships, resilience under pressure — the one thing that predicts all of these better than IQ is emotional intelligence. And unlike IQ, emotional intelligence can be taught, practised, and strengthened at every age.</p><h2>What Is Emotional Intelligence in Children?</h2><p>Emotional intelligence has four core components:</p><ul><li><strong>Self-awareness:</strong> The ability to recognise and name what you are feeling. This is the foundation of all emotional intelligence.</li><li><strong>Self-regulation:</strong> The ability to manage emotions rather than being controlled by them.</li><li><strong>Empathy:</strong> The ability to recognise and understand what other people are feeling.</li><li><strong>Social skills:</strong> The ability to use emotional awareness in relationships.</li></ul><h2>Ages 3–5: Building the Emotional Vocabulary</h2><ul><li>Name their emotions for them, specifically and without judgment.</li><li>Use a feelings vocabulary that goes beyond happy, sad, and angry.</li><li>Read stories together and pause to ask what the character might be feeling.</li><li>When they see someone else upset, gently narrate: 'Look, Aarav is crying. I think he might be sad because he lost his turn.'</li></ul><h2>Ages 6–9: Developing Self-Regulation Strategies</h2><ul><li>Teach the gap between feeling and action explicitly.</li><li>Help them build a personal emotional toolkit.</li><li>Practise perspective-taking actively.</li><li>Model your own emotional intelligence openly.</li></ul><h2>Ages 10–13: Sophisticated Emotional Intelligence</h2><ul><li>Have real conversations about emotional complexity.</li><li>Discuss emotional intelligence as a skill and a strength.</li><li>Help them read social situations.</li><li>Respect their growing emotional privacy while staying available.</li></ul><h2>5 Common Mistakes That Undermine Emotional Intelligence</h2><ul><li><strong>Dismissing emotions:</strong> 'You are fine,' 'stop crying,' 'there is nothing to be scared of.'</li><li><strong>Fixing instead of feeling:</strong> Rushing to solve the problem skips the emotional processing.</li><li><strong>Punishing emotions:</strong> A child who is punished for being angry learns to suppress anger, not manage it.</li><li><strong>Modelling emotional suppression:</strong> If you never show your own emotions, your child learns that emotions are something to hide.</li><li><strong>Labelling children by their emotions:</strong> 'You are so sensitive' turns a temporary state into an identity.</li></ul>`,
+
+// //   ed_03: `<h1>Helping Children Express Emotions</h1><p>Every behaviour problem that baffles a parent has an unexpressed emotion underneath it. The child who hits is the child who cannot say 'I am overwhelmed.' The child who withdraws is the child who cannot say 'I am hurt.' A child who can articulate what they feel almost never needs to show it through destructive behaviour.</p><h2>Why Children Struggle to Express Emotions</h2><ul><li>They lack the vocabulary.</li><li>They have been taught — often unintentionally — that certain emotions are not acceptable.</li><li>They do not feel safe enough.</li><li>They do not have a model.</li></ul><h2>Ages 3–5: Give Them the Words</h2><ul><li>Narrate what you observe. 'Your face looks scrunched up and your fists are tight. I think you might be feeling really frustrated.'</li><li>Use emotion check-ins at calm moments, not just during meltdowns.</li><li>Offer physical expression channels alongside verbal ones.</li><li>Never correct their emotion. If they say they are angry and you think they are actually sad, do not argue.</li></ul><h2>Ages 6–9: Build the Habit of Emotional Communication</h2><ul><li>Create a regular, low-pressure space for emotional expression.</li><li>Use third-person conversations.</li><li>Introduce 'I feel _____ because _____' as a sentence structure.</li><li>When they do express something difficult, respond with acknowledgment before anything else.</li></ul><h2>Ages 10–13: Respect the Complexity</h2><ul><li>Use side-by-side activities. Cooking together, walking, driving — these create natural conversation without the intensity of sitting face to face.</li><li>Write if talking is too hard.</li><li>Validate the complexity. 'It sounds like you are dealing with a lot of feelings about this all at once.'</li><li>Share your own emotional experiences appropriately.</li></ul><h2>What Blocks Emotional Expression — Stop Doing These</h2><ul><li>Interrogating instead of inviting</li><li>Offering solutions before listening</li><li>Making it about you</li><li>Time-pressuring expression: 'Just tell me what's wrong, we don't have all day.'</li></ul>`,
+
+// //   ed_04: `<h1>Helping Children Overcome Fear</h1><p>Every child is afraid of something. The dark, dogs, thunderstorms, being alone, new situations, failing in front of others. Fear is not a flaw — it is one of the most important emotions a human being has. The brave child is not the one who feels no fear. The brave child is the one who feels fear and acts anyway.</p><h2>Common Childhood Fears by Age</h2><ul><li><strong>Ages 3–5:</strong> Imaginative fears — the dark, monsters, loud noises, separation from parents.</li><li><strong>Ages 6–9:</strong> Concrete fears — injury, natural disasters, bad people, death.</li><li><strong>Ages 10–13:</strong> Social fears — embarrassment, rejection, failure, not fitting in.</li></ul><h2>The Golden Rule: Validate, Then Approach</h2><p><strong>Step 1:</strong> Validate the fear completely. 'I can see that you are really scared. That feeling makes sense.' Do not minimise it.</p><p><strong>Step 2:</strong> Support gradual approach — never forcing, always supporting. Every time a child avoids what they fear, the fear grows. The brain interprets avoidance as confirmation that the threat is real.</p><h2>Ages 3–5: Make Fear Safe to Talk About</h2><ul><li>Take their fears seriously, even irrational ones. 'Let us check under the bed together' works. 'There is no monster, don't be silly' does not.</li><li>Use stories and play to process fears.</li><li>Create a fear hierarchy together — small fears first.</li><li>Never force confrontation.</li></ul><h2>Ages 6–9: Build the Courage Muscle</h2><ul><li>Teach them about the fight-or-flight response.</li><li>Create a 'brave steps' plan together.</li><li>Celebrate every brave step. 'You were scared but you did it. That is real courage.'</li></ul><h2>Ages 10–13: Address Social Fears and Anxiety</h2><ul><li>Normalise the fear. 'Being afraid of what people think is one of the most common feelings in the world.'</li><li>Help them reality-test fears. 'What is the worst that could actually happen?'</li><li>Build their 'evidence file' of times they faced fear and survived.</li></ul><h2>What Makes Childhood Fears Worse — Stop Doing These</h2><ul><li><strong>Forcing confrontation:</strong> Creates trauma, not courage.</li><li><strong>Accommodating completely:</strong> Never exposing them to anything uncomfortable allows fear to grow unchecked.</li><li><strong>Ridiculing fear:</strong> 'Don't be a baby' adds shame to fear.</li><li><strong>Transferring your own fears:</strong> Children are tuned to parental anxiety.</li><li><strong>Reassurance on repeat:</strong> One acknowledgment and a plan is more effective than endless 'there is nothing to worry about.'</li></ul>`,
+
+// //   ed_05: `<h1>Helping Kids Deal with Frustration</h1><p>Frustration is the emotion children feel most frequently — and the one parents understand least. Every single day, your child runs into the gap between what they want to do and what they can do. That gap is frustration.</p><p>Most children respond in one of three ways: they explode, they give up, or they shut down. What does work is learning to tolerate frustration long enough to push through it — because on the other side of frustration is growth.</p><h2>Why Frustration Is Actually Good — In the Right Dose</h2><p>Frustration is the feeling that accompanies learning. If something is easy, your child is practising what they already know. If something is frustrating, they are working at the edge of their ability — exactly where growth happens.</p><h2>The Frustration Cycle</h2><p><strong>Unhealthy:</strong> Attempt → Failure → Frustration → Emotional reaction → Giving up</p><p><strong>Healthy:</strong> Attempt → Failure → Frustration → Pause → Adjusted attempt → Progress</p><h2>Ages 3–5: Keep It Small and Supported</h2><ul><li>Sit with them in the frustration. 'This is really hard. That's so frustrating.' Your presence is regulating.</li><li>Resist the urge to do it for them. Guide rather than rescue.</li><li>Break tasks into smaller steps.</li><li>Celebrate the persistence, not just the result.</li></ul><h2>Ages 6–9: Build the Frustration Toolkit</h2><ul><li>Teach the 'pause and breathe' technique explicitly.</li><li>Introduce the 'stuck' protocol: (1) Try again differently. (2) Break it into parts. (3) Take a break. (4) Ask for help.</li><li>Normalise frustration by sharing your own experiences.</li></ul><h2>Ages 10–13: Reframe Frustration as Information</h2><ul><li>Introduce 'productive struggle.' 'That frustration is actually the feeling of learning happening.'</li><li>Help them identify their frustration patterns.</li><li>Distinguish between productive and unproductive frustration.</li></ul><h2>What Makes Frustration Worse — Stop Doing These</h2><ul><li>Saying 'it's easy': If it were easy, they would not be frustrated.</li><li>Rescuing immediately: Every rescue teaches them frustration is a signal to stop.</li><li>Adding pressure: 'Come on, you know this!' adds shame to an already difficult experience.</li><li>Comparing to others: 'Your classmate can do this' communicates something is wrong with them.</li></ul>`,
+
+// //   ed_06: `<h1>Helping Kids Handle Disappointment</h1><p>The birthday party that got cancelled. The team they did not make. The friend who chose someone else. The grade that fell short. Disappointment is woven into childhood — and yet most children are never explicitly taught how to handle it.</p><h2>Why Disappointment Feels So Big to Children</h2><ul><li>They live in the present. An adult can put disappointment in context. A 5-year-old cannot.</li><li>They have less experience with recovery.</li><li>Their expectations are absolute.</li></ul><p>Your job is not to prevent disappointment. It is to be present while they experience it — and to help them discover that they can survive it.</p><h2>Ages 3–5: Name It and Stay Close</h2><ul><li>Name the feeling specifically. 'You are really disappointed that we can't go to the park today.'</li><li>Do not rush to fix it. Let them feel the disappointment first.</li><li>Avoid minimising. 'It's not a big deal' is factually incorrect from the child's perspective.</li><li>Share simple stories of your own disappointment and recovery.</li></ul><h2>Ages 6–9: Build the Recovery Muscle</h2><ul><li>Validate first, coach second. 'I know you really wanted to win that game. It hurts when you work hard and it doesn't go the way you wanted.' Pause. Then: 'What do you think you might do differently next time?'</li><li>Help them separate effort from outcome.</li><li>Introduce 'Plan B thinking.'</li><li>Let them see you handle your own disappointments constructively.</li></ul><h2>Ages 10–13: Develop Perspective Without Dismissing</h2><ul><li>Listen more than you advise. A 12-year-old who has just been cut from a team does not want to hear 'there are other teams.' They want someone to sit in the disappointment with them.</li><li>Help them distinguish between disappointment and failure.</li><li>Do not over-protect. Allow age-appropriate disappointments to happen and support the recovery.</li></ul><h2>What Makes Disappointment Harder — Stop Doing These</h2><ul><li><strong>Preventing all disappointment:</strong> Children who are shielded from every loss develop fragility, not resilience.</li><li><strong>Toxic positivity:</strong> 'Everything happens for a reason!' dismisses the child's current emotional reality.</li><li><strong>Comparing disappointments:</strong> 'Some children don't even have food to eat' invalidates their feelings.</li><li><strong>Fixing it immediately:</strong> This teaches that disappointment is something to escape rather than move through.</li></ul>`,
+
+// //   ed_07: `<h1>Managing Tantrums (Age 3–6)</h1><p>A tantrum is not your child being naughty. A tantrum is your child's nervous system hitting a wall it cannot climb over. The screaming, the flailing, the throwing themselves on the floor — these are not choices. They are the result of an immature brain being overwhelmed by an emotion it does not yet have the tools to manage.</p><h2>What Is Actually Happening in Your Child's Brain</h2><p>When a young child's emotional system is overwhelmed, the amygdala — the brain's alarm centre — takes control. The prefrontal cortex, which handles reasoning, language, and impulse control, goes offline. This is why you cannot reason with a child mid-tantrum.</p><p>A tantrum typically has three phases:</p><ul><li><strong>The escalation:</strong> The child is becoming overwhelmed. This is your window for prevention.</li><li><strong>The peak:</strong> Full tantrum. Your only job is to keep them safe and stay calm yourself.</li><li><strong>The recovery:</strong> The storm passes. This is the moment for connection — not for lectures.</li></ul><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Address the basics first: a well-rested, well-fed child has dramatically fewer tantrums.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Offer choices within limits.</li><li>Use 'when-then' framing.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words: 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out.</li><li><strong>Step 5:</strong> Reconnect after — before you correct.</li></ul><h2>What Makes Tantrums Worse — Stop Doing These</h2><ul><li>Saying 'stop crying': This demands something the child cannot do.</li><li>Giving in to end it: If you say no and then change to yes when they tantrum, you have taught them that tantrums work.</li><li>Punishing tantrums: This teaches that having big emotions leads to rejection.</li><li>Ignoring completely: There is a difference between not giving in and not giving attention.</li><li>Threatening: Threats during a tantrum are not processed by the child's brain.</li></ul>`,
+
+// //   ed_08: `<h1>Raising Emotionally Strong Children</h1><p>The emotionally strong child is not the one who never cries. It is the child who feels deeply, recovers effectively, and grows through difficulty rather than being diminished by it.</p><p>Emotional strength is not about suppression. It is about capacity — the capacity to experience the full range of human emotions, to tolerate discomfort, and to bounce back after hard experiences.</p><h2>What Does Emotional Strength Look Like?</h2><ul><li><strong>Emotional range:</strong> The ability to experience uncomfortable emotions without being overwhelmed.</li><li><strong>Recovery speed:</strong> The ability to return to baseline after emotional disruption.</li><li><strong>Emotional honesty:</strong> The willingness to be truthful about feelings rather than performing expected emotions.</li><li><strong>Internal stability:</strong> A core sense of self not dependent on external validation.</li></ul><h2>5 Daily Practices That Build Emotional Strength</h2><ul><li><strong>Let them feel everything:</strong> Every time you allow your child to feel sad, frustrated, or anxious and support them through it without rushing to fix it, you are building their emotional capacity.</li><li><strong>Validate before you redirect:</strong> 'That sounds really hard.' before anything else.</li><li><strong>Model your own emotional process:</strong> 'I made a mistake and I feel bad about it. I'm going to apologise.'</li><li><strong>Give them real responsibility:</strong> A 4-year-old setting the table, a 7-year-old managing homework, a 12-year-old cooking a simple meal.</li><li><strong>Teach constructive self-talk:</strong> 'I can try again.' 'This is hard but I can handle it.'</li></ul><h2>What Weakens Emotional Strength — Stop Doing These</h2><ul><li><strong>Over-protecting:</strong> A child shielded from every difficulty never builds evidence they can cope.</li><li><strong>Equating emotion with weakness:</strong> 'Stop crying — be strong' teaches that strength and emotion are opposites. They are not.</li><li><strong>Fixing everything for them:</strong> Every problem you solve is a problem they did not get to solve.</li><li><strong>Praising only outcomes:</strong> 'You won — great job!' ties self-worth to external results. Praise effort instead.</li></ul>`,
+
+// //   ed_09: `<h1>Teaching Patience to Children</h1><p>We live in an instant world — instant streaming, instant messaging, instant delivery. And then we ask our children to wait, and we are surprised when they cannot. Patience is not a personality trait some children are born with. It is a skill that depends on the development of impulse control, emotional regulation, and the ability to tolerate discomfort.</p><h2>Why Is Patience So Hard for Children?</h2><p>Patience requires the prefrontal cortex — the part of the brain responsible for impulse control, planning, and delaying gratification. In young children, this part of the brain is the least developed. But the prefrontal cortex develops through practice. Every time a child practises waiting — with support, not in distress — they are literally strengthening the neural pathways that make patience possible.</p><h2>Ages 3–5: Tiny Waits With Big Support</h2><ul><li>Start with waits that have a visible end point — an hourglass timer, a visual countdown.</li><li>Name the skill. 'You waited so patiently while I was on the phone. That was really hard and you did it.'</li><li>Play waiting games — red light/green light, Simon says.</li><li>Do not eliminate all waiting. Some boredom is a feature, not a bug.</li></ul><h2>Ages 6–9: Stretching the Patience Muscle</h2><ul><li>Introduce delayed rewards. 'One sweet now, or two after dinner.'</li><li>Help them develop personal waiting strategies.</li><li>Use cooking and gardening as patience teachers.</li><li>Narrate your own patience.</li></ul><h2>Ages 10–13: Patience as Strategic Thinking</h2><ul><li>Connect patience to goals they care about.</li><li>Discuss the cost of impatience with real examples.</li><li>Introduce long-term projects.</li></ul><h2>What Undermines Patience — Stop Doing These</h2><ul><li>Instant entertainment at every pause: Every screen you hand over during a two-minute wait removes a practice opportunity.</li><li>Rewarding impatience: If whining accelerates the timeline, you have taught that impatience works.</li><li>Breaking promises about timing: 'Five more minutes' that turns into twenty erodes trust.</li><li>Being impatient yourself: Children learn more from what you do than what you say.</li></ul>`,
+
+// //   ed_10: `<h1>Why Children Get Angry</h1><p>Your child is not angry because they are bad. They are not angry because you are a bad parent. They are angry because anger is the most accessible emotion — the one that shows up first when something underneath it is not being addressed.</p><p>Anger in children is almost never really about anger. It is about frustration, injustice, fear, embarrassment, powerlessness, or hurt that the child cannot process or express any other way.</p><h2>The Science Behind Anger in Children</h2><p>When a child feels threatened — physically, emotionally, or socially — their brain releases stress hormones that prepare them for fight or flight. In children, the prefrontal cortex is still developing. This means that when anger is triggered, the emotional brain takes over and the thinking brain goes offline. This is not a discipline problem. It is a developmental reality.</p><h2>Ages 3–5: Big Feelings in Small Bodies</h2><ul><li>Acknowledge the frustration before addressing the behaviour. 'You are SO frustrated that it won't stay up.'</li><li>Reduce the triggers where possible.</li><li>Stay physically close and calm. Your regulated presence is the most powerful tool you have.</li></ul><h2>Ages 6–9: The Growing Sense of Justice</h2><ul><li>Take their sense of fairness seriously, even when you disagree.</li><li>Look for the hurt underneath the anger.</li><li>Give them a voice in family decisions where appropriate.</li></ul><h2>Ages 10–13: Complex Anger in Pre-Teens</h2><ul><li>Do not take the anger personally, even when it is directed at you.</li><li>Offer physical outlets. Running, sport, even hitting a pillow.</li><li>Distinguish between the anger and the issue.</li></ul><h2>What Makes Children's Anger Worse — Stop Doing These</h2><ul><li>Matching their intensity</li><li>Demanding immediate calm: 'Calm down right now!' has never once caused a child to calm down.</li><li>Dismissing the trigger: 'You're angry about THAT?'</li><li>Using anger as a teaching moment during the anger</li><li>Withholding affection as punishment for anger</li></ul>`,
+
+// //   hd_01: `<h1>Building Reading Habits</h1><p>Reading is the single habit that predicts academic success more reliably than any other factor — more than tutoring, more than school quality, more than parental education level. A child who reads regularly develops a larger vocabulary, stronger comprehension, deeper empathy, and better critical thinking skills than a child who does not.</p><h2>Why Some Children Love Reading and Others Don't</h2><ul><li><strong>Access:</strong> Children surrounded by books read more. If the nearest book requires effort to find, screens will win every time.</li><li><strong>Choice:</strong> Children who are allowed to choose what they read develop reading habits. Children who are told what to read develop reading resistance.</li><li><strong>Association:</strong> If reading is associated with pleasure and warmth, children seek it out. If associated with obligation and testing, they avoid it.</li></ul><h2>Ages 3–5: Make Books Part of the Furniture</h2><ul><li>Read aloud every single day, ideally at the same time. Bedtime is the most powerful anchor.</li><li>Let them choose the book, even if it is the same book for the fourteenth consecutive night.</li><li>Have books everywhere — not just on a shelf, but on the coffee table, in the car, in the bathroom.</li><li>Do not turn reading into a lesson. Let the story be the experience.</li></ul><h2>Ages 6–9: Protect the Pleasure</h2><ul><li>Maintain a daily reading time that is separate from school reading.</li><li>Let them abandon books they do not enjoy.</li><li>Introduce them to series. Once a child is hooked on a series character, they will read the next book voluntarily.</li><li>Read alongside them.</li></ul><h2>Ages 10–13: Respect Their Taste</h2><ul><li>Respect their genre preferences absolutely. Fantasy, horror, graphic novels, manga — all of it counts.</li><li>Connect reading to their interests.</li><li>Create physical reading spaces.</li><li>Discuss books as equals, not as teacher and student.</li></ul><h2>What Kills Reading Habits — Stop Doing These</h2><ul><li>Making reading a punishment or obligation</li><li>Restricting their choices: 'That book is too easy for you'</li><li>Competing with screens at reading time</li><li>Testing comprehension after every chapter</li><li>Not reading yourself</li></ul>`,
+
+// //   hd_02: `<h1>Daily Routines for Children</h1><p>A good daily routine is the closest thing to a parenting superpower. When routines are working, mornings are calm, transitions are smooth, homework happens without a fight, and bedtime does not require negotiation.</p><h2>Why Daily Routines Matter</h2><p>Routines provide three things every child needs: predictability, autonomy, and reduced conflict. The routine becomes the authority, not you. 'It is not me telling you to brush your teeth — it is the routine.'</p><h2>The Three Blocks</h2><h3>The Morning Block</h3><p>Core elements: Wake up → hygiene → get dressed → eat breakfast → pack bag → leave. The fewer decisions within this block, the smoother it runs.</p><h3>The After-School Block</h3><p>A structure that works: Arrive home → snack and decompression (15–20 minutes) → homework → free time → dinner. The key is that decompression comes first.</p><h3>The Evening Block</h3><p>Core elements: Dinner → tidy up/pack bag for tomorrow → bath/shower → reading or quiet time → lights out.</p><h2>Building Routines by Age</h2><h3>Ages 3–5: Visual and Simple</h3><ul><li>Use a picture chart they can follow.</li><li>Keep the routine to 4–6 steps.</li><li>Do the routine together initially, then gradually step back.</li></ul><h3>Ages 6–9: Collaborative and Growing</h3><ul><li>Build the routine together.</li><li>Introduce a checklist they can tick off themselves.</li><li>Add one new element at a time.</li></ul><h3>Ages 10–13: Owned and Flexible</h3><ul><li>Let them design their own routine within your non-negotiable framework.</li><li>Allow them to adjust and iterate.</li><li>Respect their growing need for autonomy.</li></ul><h2>What Breaks Daily Routines — Stop Doing These</h2><ul><li>Perfectionism: The routine will not work perfectly every day. Aim for 80% consistency.</li><li>Too rigid: A routine should be a framework, not a prison.</li><li>No weekend version: Weekends need a routine too — just a looser one.</li><li>Not modelling it: If you have no routines of your own, your expectation that your child follows one feels arbitrary.</li></ul>`,
+
+// //   hd_03: `<h1>Helping Kids Stay Organized</h1><p>Organisation is not something children are born with or without. It is a set of learnable systems — and the children who learn these systems early have a significant advantage in school, in friendships, and eventually in their careers.</p><h2>Why Some Children Seem Naturally Disorganized</h2><ul><li>Their working memory is still developing.</li><li>They have never been taught a system. Most parents tell children to 'be more organised' without showing them how.</li><li>Their environment is working against them.</li></ul><h2>Ages 3–5: Everything Has a Home</h2><ul><li>Label storage with pictures.</li><li>Teach 'one out, one back' — before getting a new toy out, put the current one away.</li><li>Use the same spot for essentials every single day.</li></ul><h2>Ages 6–9: Systems and Checklists</h2><ul><li>Help them set up a homework station with all supplies in one place.</li><li>Introduce a 'landing pad' by the door — a hook for the bag, a tray for papers that need signing.</li><li>Teach the weekly bag check: every Sunday, empty the bag completely, sort, restock.</li><li>Use colour-coding for school subjects.</li></ul><h2>Ages 10–13: Self-Managing Systems</h2><ul><li>Help them set up a planner or digital calendar for assignments and deadlines.</li><li>Teach inbox-zero for papers: every paper that comes home gets sorted immediately.</li><li>Introduce the 5-minute tidy at the end of each day.</li><li>Let them design their own workspace.</li></ul><h2>What Undermines Organisation — Stop Doing These</h2><ul><li>Organising for them: A child whose parent sorts, packs, and tidies everything never builds the skill.</li><li>Expecting perfection.</li><li>Overwhelming overhauls: Do not reorganise their entire room in one day.</li><li>No maintenance routine.</li><li>Criticising their system: If their method works for them, leave it alone.</li></ul>`,
+
+// //   hd_04: `<h1>How Children Develop Habits</h1><p>A habit is not a decision. It is a behaviour that has been repeated so many times it becomes automatic — the brain's way of conserving energy by putting routine actions on autopilot.</p><h2>The Science of Habit Formation</h2><p>Every habit follows a three-part loop:</p><ul><li><strong>Cue:</strong> Something that triggers the behaviour — a time of day, a location, an event.</li><li><strong>Routine:</strong> The behaviour itself.</li><li><strong>Reward:</strong> Something that makes the brain want to repeat the loop.</li></ul><p>The critical insight: children's habit loops are more dependent on cues and rewards than adult habits. They need strong, consistent cues and meaningful rewards, especially in the early stages.</p><h2>How Long Does It Take?</h2><ul><li>Simple habits (hanging up a coat): 3–6 weeks with consistent cueing.</li><li>Moderate habits (brushing teeth without reminding): 6–12 weeks.</li><li>Complex habits (managing a full morning routine independently): 3–6 months.</li></ul><h2>Ages 3–5: Habits Through Routine and Repetition</h2><ul><li>Attach new habits to existing anchors. 'After we come inside, we take off shoes and put them on the rack.'</li><li>Make the habit physical and visible.</li><li>Use immediate, specific praise as the reward.</li></ul><h2>Ages 6–9: Habits Through Understanding and Ownership</h2><ul><li>Involve them in the decision. 'We need a system for getting ready. What do you think should happen first?'</li><li>Introduce habit stacking. 'After you brush your teeth, you put your clothes out for tomorrow.'</li><li>Shift from external rewards to internal ones gradually.</li></ul><h2>Ages 10–13: Habits Through Identity and Goals</h2><ul><li>Connect habits to their goals, not yours.</li><li>Introduce habit tracking.</li><li>Discuss habits as identity. 'You are someone who follows through on commitments.'</li></ul><h2>What Undermines Habit Formation — Stop Doing These</h2><ul><li>Inconsistency: The single biggest killer of habit formation.</li><li>Too many habits at once.</li><li>Nagging instead of cueing.</li><li>Expecting willpower: Children need environmental support.</li><li>Punishing failure instead of re-cueing.</li></ul>`,
+
+// //   hd_05: `<h1>Morning Routines for Kids</h1><p>If your mornings involve shouting 'we are going to be late' while one child cannot find their shoes, another has not eaten breakfast, and you are simultaneously making lunch and questioning your life choices — you do not have a discipline problem. You have a systems problem.</p><h2>Why Mornings Are So Hard</h2><ul><li>Time pressure amplifies everything. The margin for error is zero.</li><li>Children's brains are not at peak executive function in the morning.</li><li>Too many decisions. What to wear, what to eat, where is the bag — each decision is a friction point.</li></ul><h2>Ages 3–5: The Picture Chart System</h2><p>A routine that works: 1. Wake up 2. Use the toilet and wash hands 3. Get dressed (clothes laid out the night before) 4. Eat breakfast 5. Brush teeth 6. Shoes and bag on 7. Ready to leave</p><ul><li>A picture chart on the wall at their height showing each step.</li><li>Lay out clothes the night before.</li><li>Keep breakfast simple and consistent.</li><li>Build in 10–15 minutes of buffer time.</li></ul><h2>Ages 6–9: The Checklist System</h2><ul><li>A written checklist they can tick off.</li><li>Teach them to pack their bag the night before and check it in the morning.</li><li>Do not hover. Let them work through the checklist independently.</li></ul><h2>Ages 10–13: The Self-Managed System</h2><ul><li>They set their own alarm and are responsible for getting themselves up.</li><li>The only parental role is a time check: 'We leave in 15 minutes' stated once, neutrally.</li><li>Natural consequences apply.</li></ul><h2>The Night-Before Prep That Makes Mornings Work</h2><ul><li>Clothes laid out or chosen.</li><li>Bag packed and by the door.</li><li>Breakfast decided.</li><li>A consistent bedtime. The number one cause of terrible mornings is insufficient sleep.</li></ul><h2>What Sabotages Morning Routines — Stop Doing These</h2><ul><li>Screens before the routine is complete.</li><li>Nagging instead of cueing. A checklist on the wall works better than 'have you brushed your teeth?' repeated three times.</li><li>Doing it for them to save time.</li><li>Inconsistency on weekends.</li><li>Not building in buffer time.</li></ul>`,
+
+// //   hd_06: `<h1>Teaching Responsibility at Home</h1><p>Responsibility is not taught through lectures. It is taught through experience — real tasks, real consequences, and the real satisfaction of contributing to something that matters. A child who is responsible at home becomes an adult who is reliable at work, dependable in relationships, and capable of managing their own life.</p><h2>The Mindset Shift: From Chores to Contribution</h2><p>'Everyone in this family has a role. My role is to cook dinner. Your role is to set the table. We are a team.' This framing changes everything.</p><h2>Age-Appropriate Responsibilities</h2><h3>Ages 3–5</h3><ul><li>Put toys away after playing</li><li>Carry their plate to the sink</li><li>Help feed a pet</li><li>Put dirty clothes in the laundry basket</li><li>Water a plant</li><li>Help set the table</li></ul><h3>Ages 6–9</h3><ul><li>Make their own bed</li><li>Pack their school bag</li><li>Clear and wipe the table after meals</li><li>Sort laundry by colour</li><li>Help prepare simple food</li><li>Keep their room tidy</li></ul><h3>Ages 10–13</h3><ul><li>Cook a simple meal independently</li><li>Do their own laundry</li><li>Clean a bathroom</li><li>Manage their homework schedule without reminders</li><li>Care for a pet independently</li><li>Help with grocery shopping</li></ul><h2>How to Teach Responsibility Without Nagging</h2><ul><li>Teach the task once, thoroughly. Do it together, then watch them do it, then let them do it alone.</li><li>Set clear expectations.</li><li>Use natural consequences, not punishment.</li><li>Accept imperfection. A 6-year-old's made bed will not look like yours.</li><li>Express genuine gratitude.</li></ul><h2>What Undermines Responsibility — Stop Doing These</h2><ul><li>Doing it yourself because it is faster</li><li>Tying chores to allowance exclusively</li><li>Redoing their work in front of them</li><li>Inconsistency</li><li>Gender-based task assignment</li></ul>`,
+
+// //   hd_07: `<h1>Teaching Self Discipline</h1><p>There are two kinds of disciplined children. The first behaves well because an adult is watching. The second behaves well because they have internalised the standards and can regulate themselves even when no one is watching. The first has been disciplined. The second has self-discipline.</p><h2>What Self Discipline Actually Is</h2><ul><li><strong>Impulse control:</strong> The ability to pause between a desire and an action.</li><li><strong>Delayed gratification:</strong> The ability to choose a larger later reward over a smaller immediate one.</li><li><strong>Self-regulation:</strong> The ability to manage emotions, attention, and behaviour in pursuit of a goal.</li></ul><h2>Ages 3–5: The Foundations of Impulse Control</h2><ul><li>Play games that require impulse control. Simon says, red light/green light, freeze dance.</li><li>Use 'when-then' consistently.</li><li>Praise self-regulation when you see it.</li><li>Keep expectations developmentally appropriate.</li></ul><h2>Ages 6–9: Building the Muscle</h2><ul><li>Introduce the concept of 'hard now, easy later' versus 'easy now, hard later.'</li><li>Give them increasing autonomy with clear expectations.</li><li>Let them set and pursue their own goals.</li><li>Do not rescue them from the consequences of poor self-discipline.</li></ul><h2>Ages 10–13: From External to Internal</h2><ul><li>Have explicit conversations about self discipline as a competitive advantage.</li><li>Help them identify their own self-discipline weaknesses without judgment.</li><li>Reduce external controls gradually.</li><li>Model your own self-discipline openly.</li></ul><h2>What Undermines Self Discipline — Stop Doing These</h2><ul><li>Over-controlling: A child who is micromanaged never develops self-management.</li><li>Inconsistent consequences.</li><li>Rewarding everything externally.</li><li>Modelling poor self-discipline.</li><li>Expecting perfection.</li></ul>`,
+
+// //   hd_08: `<h1>Teaching Time Management to Kids</h1><p>The morning rush where everyone is shouting. The homework that starts at 9 PM because the afternoon disappeared. The project due tomorrow that was assigned two weeks ago. Every one of these scenarios has the same root cause: a child who has not yet learned to manage time.</p><h2>Why Time Management Is So Hard for Children</h2><ul><li>Time perception is developmental. A 4-year-old has no concept of 'five minutes' versus 'an hour.'</li><li>The prefrontal cortex is still developing.</li><li>The present is always more compelling than the future.</li></ul><h2>Ages 3–5: Make Time Visible</h2><ul><li>Use visual timers — an hourglass or kitchen timer makes time something the child can see passing.</li><li>Create visual schedules.</li><li>Use 'first-then' language.</li><li>Build time awareness through daily conversation.</li></ul><h2>Ages 6–9: Build Estimation and Planning Skills</h2><ul><li>Play the 'how long will it take' game.</li><li>Introduce a simple planner or calendar.</li><li>Teach backward planning for projects.</li><li>Let them experience the consequences of poor time management.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them design their own weekly schedule.</li><li>Introduce the concept of prioritisation.</li><li>Discuss time wasters honestly.</li><li>Model your own time management.</li></ul><h2>What Undermines Time Management — Stop Doing These</h2><ul><li>Managing all their time for them.</li><li>Rescuing them from time-related consequences.</li><li>Over-scheduling: A child with no unstructured time never learns to manage time.</li><li>Vague time references: 'We're leaving soon' means nothing. 'We're leaving in 10 minutes' gives them information they can work with.</li></ul>`,
+
+// //   hd_09: `<h1>Screen Time Balance for Kids</h1><p>The truth about screen time is nuanced. Screens are not inherently good or bad. What matters is how much, what kind, when, and what they are replacing. A child who watches a nature documentary for 30 minutes after a full day of school and family time is in a completely different situation from a child who spends four hours scrolling.</p><h2>What the Research Actually Says</h2><ul><li>The dose matters. Moderate screen use is not associated with significant negative outcomes. Heavy use (4+ hours daily) is consistently linked to poorer sleep, reduced physical activity, and lower academic performance.</li><li>The content matters more than the time.</li><li>What screens replace matters most. Every hour on a screen is an hour not spent playing, reading, exercising, or connecting with people.</li><li>Sleep is the most vulnerable area. Screens before bed disrupt melatonin production and sleep quality.</li></ul><h2>The Screen Time Rules That Actually Work</h2><ul><li><strong>Screens come after, not before.</strong> After homework, after physical activity, after reading, after responsibilities.</li><li><strong>No screens in bedrooms.</strong> Devices charge in a communal area overnight.</li><li><strong>No screens during meals.</strong> This applies to parents too.</li><li><strong>Not all screen time is equal.</strong> Creating content is fundamentally different from consuming content.</li><li><strong>Model what you expect.</strong></li></ul><h2>Guidelines by Age</h2><ul><li><strong>Ages 3–5:</strong> 30 minutes to 1 hour per day of high-quality content. No screens in the hour before bedtime.</li><li><strong>Ages 6–9:</strong> 1–1.5 hours of recreational screen time per day, after routines are complete.</li><li><strong>Ages 10–13:</strong> 1.5–2 hours, with the child increasingly managing their own limits.</li></ul><h2>What Makes Screen Time Problems Worse</h2><ul><li>Using screens as the default babysitter</li><li>No clear rules</li><li>Screens as emotional regulation</li><li>Parental hypocrisy</li></ul>`,
+
+// //   hd_10: `<h1>Why Routines Help Children</h1><p>Ask any child psychologist what the single most effective non-therapeutic intervention for childhood anxiety is, and most will say the same thing: a consistent daily routine.</p><p>Routines help children because they answer the question every child is unconsciously asking throughout the day: 'What happens next?' When that question has a reliable answer, the child's nervous system can relax.</p><h2>The Science: How Routines Affect the Developing Brain</h2><ul><li><strong>Routines reduce cortisol.</strong> When a child knows what to expect, the brain's stress response system stays calm.</li><li><strong>Routines build neural efficiency.</strong> When a sequence of actions is repeated consistently, the brain automates it, freeing up cognitive resources for higher-order thinking.</li><li><strong>Routines develop executive function.</strong> Following a multi-step routine exercises planning, sequencing, and self-monitoring.</li><li><strong>Routines support emotional regulation.</strong> A child anchored by a predictable day has more emotional capacity to handle the unpredictable things within it.</li></ul><h2>The Specific Ways Routines Help</h2><ul><li><strong>Reduce anxiety and behavioural problems:</strong> Research consistently shows that children with consistent routines display fewer behavioural problems and less defiance.</li><li><strong>Build independence and confidence:</strong> A child who knows the routine can follow it without being told.</li><li><strong>Improve sleep:</strong> A consistent bedtime routine is one of the most well-researched interventions for childhood sleep problems.</li><li><strong>Reduce family conflict:</strong> When the routine is the authority — not the parent — arguments decrease.</li><li><strong>Help children through transitions:</strong> During family disruptions, routines provide the stability that everything else has lost.</li></ul><h2>What Undermines Routines — Stop Doing These</h2><ul><li>Total inconsistency: A routine that is followed three days a week is not a routine — it is a suggestion.</li><li>Over-complexity: A 15-step morning routine for a 5-year-old will fail.</li><li>No transition support: Warnings help: 'In five minutes, it will be bath time.'</li><li>Abandoning routine during holidays.</li><li>Making it punitive: If the routine feels like a punishment, it will be resisted.</li></ul>`,
+
+// //   sl_01: `<h1>Bullying in Primary Schools</h1><p>Bullying in primary schools is more common than most parents realise and more harmful than most schools acknowledge. Research consistently shows that one in four to five children will experience bullying during their primary school years — and the effects are not limited to the playground.</p><h2>What Bullying Actually Is — And What It Is Not</h2><p>Bullying is repeated, intentional aggressive behaviour directed at a specific child by someone with more social or physical power. The three defining features are: repetition, intent, and power imbalance.</p><p>A one-off argument between equal friends is conflict, not bullying. A child being unkind once is rudeness, not bullying. These distinctions matter because the responses are different.</p><h2>Types of Bullying in Primary Schools</h2><ul><li><strong>Physical bullying:</strong> Hitting, pushing, kicking, taking or damaging belongings.</li><li><strong>Verbal bullying:</strong> Name-calling, insults, threats, taunting.</li><li><strong>Social bullying:</strong> Deliberate exclusion, spreading rumours, public humiliation.</li><li><strong>Cyberbullying:</strong> Hurtful messages, social media exclusion, sharing embarrassing content.</li></ul><h2>How to Respond When Your Child Is Being Bullied</h2><ul><li><strong>Step 1:</strong> Listen without overreacting. 'Thank you for telling me. That must be really hard. I am going to help you with this.'</li><li><strong>Step 2:</strong> Gather information calmly.</li><li><strong>Step 3:</strong> Document everything — dates, times, locations, witnesses.</li><li><strong>Step 4:</strong> Contact the school strategically, in writing.</li><li><strong>Step 5:</strong> Build your child's resilience and coping skills alongside school intervention.</li></ul><h2>What to Tell Your Child — And What Not To</h2><p><strong>Do say:</strong> 'This is not your fault.' / 'You did the right thing telling me.' / 'We are going to deal with this together.'</p><p><strong>Do not say:</strong> 'Just ignore them.' / 'Hit them back.' / 'What did you do to make them pick on you?'</p>`,
+
+// //   sl_02: `<h1>Encouraging Curiosity in Kids</h1><p>Every child is born curious. The tragedy is that this natural curiosity is often diminished by the time a child reaches middle school — not through malice, but through systems and habits that prioritise answers over questions, correctness over exploration, and efficiency over wonder.</p><p>A curious child does not need to be motivated to learn. They are already motivated. Your job is simply to not get in the way.</p><h2>Why Curiosity Matters More Than You Think</h2><p>Curious children learn more, learn faster, and retain information longer. Research shows that when curiosity is activated, the brain releases dopamine — the same neurotransmitter associated with reward and motivation. Curiosity also predicts academic success more reliably than IQ.</p><h2>Ages 3–5: Follow Their Lead</h2><ul><li>When they ask 'why?' answer. Then ask them back: 'Why do YOU think?'</li><li>Let them explore freely within safety boundaries.</li><li>Provide open-ended materials: blocks, sand, water, art supplies.</li><li>Wonder aloud. 'I wonder why the sky turns orange at sunset. What do you think?'</li></ul><h2>Ages 6–9: Deepen and Broaden</h2><ul><li>When they show interest in something, invest in it.</li><li>Visit museums, nature reserves, workshops, and exhibitions.</li><li>Encourage questions over answers. Reward great questions: 'That is a brilliant question. Let us find out together.'</li><li>Let them go deep into a topic they love.</li></ul><h2>Ages 10–13: Connect Curiosity to Identity</h2><ul><li>Connect curiosity to people they admire.</li><li>Give them real problems to solve.</li><li>Support independent research.</li><li>Do not shut down challenging questions.</li></ul><h2>What Kills Curiosity — Stop Doing These</h2><ul><li>Always giving the answer immediately</li><li>Correcting exploration</li><li>Over-scheduling: Boredom is where curiosity begins.</li><li>Valuing grades over learning</li><li>Dismissing their interests: 'That's not useful'</li></ul>`,
+
+// //   sl_03: `<h1>Helping Children Focus on Studies</h1><p>'Focus!' 'Concentrate!' 'Stop daydreaming!' — if these words are on constant rotation in your household, you are not alone. The ability to focus is developmental. A 5-year-old can sustain attention for roughly 10–15 minutes. A 10-year-old can manage 20–30 minutes. Even a 13-year-old will struggle beyond 40 minutes without a break.</p><h2>Why Children Struggle to Focus</h2><ul><li>The task is too hard or too easy.</li><li>The environment is competing for attention.</li><li>They are tired, hungry, or stressed.</li><li>They have no sense of purpose.</li><li>Screen habits have shortened their attention span.</li></ul><h2>Ages 6–9: Structure the Environment</h2><ul><li>Create a dedicated study space: quiet, well-lit, clear of distractions, with all materials within reach.</li><li>Use the Pomodoro technique adapted for kids: 15–20 minutes of focused work, followed by a 5-minute break.</li><li>Remove screens from the study area completely.</li><li>Start with the hardest subject — willpower and focus are highest at the beginning.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them identify their peak focus times.</li><li>Introduce active study techniques — summarising, teaching the material to someone else, creating mind maps.</li><li>Discuss phone management honestly.</li><li>Connect the work to their goals.</li></ul><h2>What Destroys Focus — Stop Doing These</h2><ul><li>Hovering during study time</li><li>Marathon study sessions without breaks</li><li>Multitasking myths: studying while watching TV reduces quality of everything</li><li>Comparing to siblings or peers</li><li>Making study time a punishment</li></ul>`,
+
+// //   sl_04: `<h1>Helping Kids Deal with Teasing</h1><p>Teasing is one of the most universal childhood experiences — and one of the hardest for parents to help with. The tricky thing about teasing is that it exists on a spectrum. Light, mutual teasing between friends is a normal part of social bonding. Repeated, targeted teasing that makes a child feel humiliated is a form of bullying.</p><h2>Teasing vs Bullying: How to Tell the Difference</h2><p>Friendly teasing is mutual, playful, and stops when someone says 'that's enough.' Hurtful teasing is one-directional, targets something personal, continues despite the child's distress, and is designed to gain social power at the child's expense.</p><h2>Ages 6–9: Build the Toolkit</h2><ul><li><strong>The Shrug Response:</strong> 'So?' said with a shrug and walking away. Teasing depends on a reaction. A non-reaction deflates it.</li><li><strong>The Agree and Deflect:</strong> If teased about glasses: 'Yeah, they help me see better!' Taking ownership removes its power as a weapon.</li><li><strong>The Humour Redirect:</strong> 'Good one!' and then changing the subject.</li><li><strong>The Boundary Statement:</strong> 'That's not funny to me. Stop.' Direct, clear, and non-aggressive.</li></ul><h2>Ages 10–13: Social Intelligence</h2><ul><li>Help them understand the motivation behind teasing.</li><li>Discuss the difference between ignoring (which can look like weakness) and being unbothered (which communicates strength).</li><li>If teasing becomes persistent, involve the school.</li></ul><h2>What Not to Do</h2><ul><li>'Just ignore it' without teaching them how.</li><li>'Tease them back' — this escalates the situation.</li><li>Over-protecting — intervening in every social interaction prevents your child from building coping skills.</li><li>Dismissing their pain — 'It's just teasing' invalidates a genuine emotional experience.</li></ul>`,
+
+// //   sl_05: `<h1>Helping Kids Develop Reading Habits</h1><p>A child who reads regularly outperforms a child who does not in vocabulary, comprehension, empathy, critical thinking, and academic achievement across every subject. Reading is not just a language skill. It is the foundational skill that makes all other learning possible.</p><h2>Why Some School-Age Children Resist Reading</h2><ul><li>Reading has become associated with obligation. School reading requirements can strip the pleasure from reading entirely.</li><li>They have not found the right book.</li><li>Screens are more stimulating.</li><li>They struggle with reading itself.</li></ul><h2>Ages 5–7: Make Reading a Warm Experience</h2><ul><li>Read aloud to them every day, even after they can read independently.</li><li>Let them choose any book. Comic books, picture books, books 'below their level' — all count.</li><li>Visit libraries and bookshops regularly.</li></ul><h2>Ages 8–10: Protect the Pleasure</h2><ul><li>Separate 'reading for school' from 'reading for fun.'</li><li>Let them abandon books they do not enjoy.</li><li>Introduce series — once hooked on a character, they will read the next book voluntarily.</li><li>Create a cosy reading space in the home.</li></ul><h2>Ages 11–13: Respect Their Autonomy</h2><ul><li>Never criticise their reading choices. Graphic novels, fan fiction, manga — all build reading skills.</li><li>Connect reading to their interests.</li><li>Read alongside them.</li><li>Do not quiz them on what they read.</li></ul>`,
+
+// //   sl_06: `<h1>Helping Kids Make Friends</h1><p>Few things cause parents more heartache than watching their child struggle socially. But friendship is a skill, not a gift. Some children learn it naturally. Others need explicit teaching. And the parent's role is not to make friends for their child — it is to teach them the skills to make friends for themselves.</p><h2>Why Some Children Struggle to Make Friends</h2><ul><li>They lack specific social skills.</li><li>They are shy or anxious.</li><li>They have intense interests that peers do not share.</li><li>They are going through a transition.</li></ul><h2>Ages 3–5: Teach the Basics</h2><ul><li>Teach them to walk up, make eye contact, and say: 'Can I play with you?'</li><li>Arrange playdates with one child (not groups). Short, activity-based playdates work best.</li><li>Teach sharing and turn-taking through games, not lectures.</li></ul><h2>Ages 6–9: Develop Friendship Skills</h2><ul><li>Help them find their people — activities outside school expand the pool of potential friends.</li><li>Teach conversation skills. Ask questions, listen to the answer, find common interests.</li><li>Coach them through conflict.</li><li>Invite peers over.</li></ul><h2>Ages 10–13: Navigate Social Complexity</h2><ul><li>Respect their social world.</li><li>Help them understand social dynamics without controlling them.</li><li>Support their interests — a pre-teen who is passionate about something will eventually find others who share that passion.</li><li>Teach them that quality matters more than quantity.</li></ul><h2>What Undermines Friendship Skills — Stop Doing These</h2><ul><li>Arranging all their social life</li><li>Criticising their friends</li><li>Forcing them to be social</li><li>Solving all their social problems</li></ul>`,
+
+// //   sl_07: `<h1>Homework Struggles in Children</h1><p>The homework battle is one of the most common and most exhausting conflicts in family life. Homework struggles in children are rarely about laziness. They are about one or more of these: the work is too hard, the child is too tired, the environment is wrong, or the emotional associations with homework have become so negative that the child cannot get started without dread.</p><h2>The Real Reasons Children Struggle with Homework</h2><ul><li>It is genuinely too difficult.</li><li>They are exhausted.</li><li>The environment is wrong.</li><li>They have a negative association with homework.</li><li>They lack the organizational skills.</li></ul><h2>The Homework Environment Checklist</h2><ul><li>Quiet, consistent location — same place every day</li><li>Good lighting and a comfortable chair</li><li>All supplies within reach</li><li>No screens within sight (phones in another room)</li><li>A timer visible to the child</li><li>Parent available nearby but not hovering</li></ul><h2>Ages 5–7: Keep It Light</h2><ul><li>Homework at this age should take 10–20 minutes maximum.</li><li>Sit nearby but do not do the work.</li><li>Make it part of the routine — same time, same place, every day.</li></ul><h2>Ages 8–10: Build Independence</h2><ul><li>Introduce a 'homework launch' routine: snack, then 10 minutes of free time, then homework.</li><li>Help them plan the session.</li><li>Check the work after, not during.</li></ul><h2>Ages 11–13: Hand Over Responsibility</h2><ul><li>The homework is theirs, not yours.</li><li>If they do not do homework and there are consequences at school, let the consequences happen.</li><li>If they ask for help, guide rather than give answers.</li></ul><h2>What Makes Homework Struggles Worse — Stop Doing These</h2><ul><li>Doing the work for them</li><li>Turning homework into a control battle</li><li>Criticising during homework</li><li>Making homework take over the evening</li><li>Bribing or threatening</li></ul>`,
+
+// //   sl_08: `<h1>Signs Your Child Is Being Bullied</h1><p>Most bullied children do not tell their parents. They stay silent out of shame, fear of making things worse, or belief that adults cannot help. This means you cannot rely on your child telling you — you need to be able to recognise the signs.</p><h2>Behavioural Signs</h2><ul><li><strong>Avoidance of school:</strong> Sudden reluctance, frequent complaints of stomach aches on school mornings (that disappear on weekends).</li><li><strong>Coming home hungry</strong> because lunch was taken or they ate alone and left early.</li><li><strong>Sleep disruption:</strong> Difficulty falling asleep, nightmares, waking during the night.</li><li><strong>Loss of interest in activities</strong> they previously enjoyed.</li><li><strong>Coming home with damaged or missing belongings.</strong></li><li><strong>Becoming secretive about online activity</strong> — can indicate cyberbullying.</li></ul><h2>Emotional Signs</h2><ul><li>Increased irritability or emotional outbursts at home</li><li>Withdrawal from family and friends</li><li>Low self-esteem or self-critical language: 'Nobody likes me.' 'I'm stupid.'</li><li>Sadness or tearfulness, especially after school or on Sunday evenings</li><li>Expressions of helplessness: 'There's no point.' 'Nothing will change.'</li></ul><h2>Academic Signs</h2><ul><li>Declining grades</li><li>Loss of interest in schoolwork</li><li>Reluctance to participate in class</li></ul><h2>What to Do if You Recognise These Signs</h2><ul><li><strong>Step 1:</strong> Create a safe opening. 'I have noticed you seem a bit different lately. Is anything happening at school that is making things hard?'</li><li><strong>Step 2:</strong> Observe more closely for a few weeks.</li><li><strong>Step 3:</strong> Talk to the school.</li><li><strong>Step 4:</strong> Strengthen their support network.</li></ul>`,
+
+// //   sl_09: `<h1>Reducing School Stress</h1><p>Some school stress is normal and even healthy. The mild anxiety before a test that motivates preparation, the nervousness before a performance that sharpens focus — these are forms of stress that help children grow. But there is a point where school stress stops being productive and starts being harmful.</p><h2>Common Sources of School Stress by Age</h2><h3>Ages 5–7</h3><ul><li>Separation from parents</li><li>Navigating new social environments</li><li>Learning to read and the pressure of keeping up with peers</li><li>Fear of getting things wrong</li></ul><h3>Ages 8–10</h3><ul><li>Increasing academic expectations</li><li>Standardised testing</li><li>Complex social dynamics</li><li>Comparing themselves to peers</li></ul><h3>Ages 11–13</h3><ul><li>Academic pressure intensifying</li><li>Social media and peer comparison</li><li>Puberty and body image</li><li>Future anxiety ('What if I don't get into a good school?')</li></ul><h2>The Home as Stress Buffer</h2><p>The most powerful thing you can do to reduce school stress is make home the antidote. Home should be where the child is valued for who they are, not what they produce. Where they can rest, play, connect, and be imperfect.</p><h2>What Increases School Stress — Stop Doing These</h2><ul><li>Adding your own academic pressure</li><li>Comparing to others</li><li>Over-focusing on grades</li><li>Dismissing their stress</li><li>Over-scheduling</li></ul>`,
+
+// //   sl_10: `<h1>School Anxiety in Children</h1><p>Some children wake up on school mornings with stomach aches that are real. Their chest feels tight. Their legs feel heavy. They are not pretending — they are anxious. School anxiety in children is more common than most parents realise, and it ranges from mild nervousness before a test to full-blown school refusal.</p><h2>Common Causes of School Anxiety</h2><ul><li><strong>Social anxiety:</strong> Fear of being judged, embarrassed, or rejected by peers.</li><li><strong>Academic anxiety:</strong> Fear of failing, not understanding, or being called on.</li><li><strong>Separation anxiety:</strong> Particularly in younger children.</li><li><strong>Bullying:</strong> A child who is being bullied may develop school anxiety even after the bullying has stopped.</li><li><strong>A specific traumatic event at school:</strong> Being publicly humiliated or having a panic attack in class.</li></ul><h2>How to Help</h2><ul><li><strong>Step 1 — Validate:</strong> 'I can see that going to school feels really scary for you right now. That feeling is real.'</li><li><strong>Step 2 — Identify the specific trigger:</strong> 'What part of the day is hardest? If you could skip one thing at school, what would it be?'</li><li><strong>Step 3 — Work with the school.</strong></li><li><strong>Step 4 — Gradual exposure, not avoidance:</strong> The brain interprets avoidance as confirmation that school is dangerous.</li><li><strong>Step 5 — Build coping strategies:</strong> Breathing exercises, a worry time, a calm morning routine.</li></ul><h2>What Makes School Anxiety Worse — Stop Doing These</h2><ul><li>Allowing indefinite school avoidance</li><li>Providing excessive reassurance: 'Everything will be fine' repeated 20 times does not reassure</li><li>Interrogating after school: 'Was anyone mean to you?'</li><li>Showing your own anxiety</li><li>Punishing the anxiety</li></ul><h2>When to Seek Professional Help</h2><p>School anxiety warrants professional support when the child is missing significant amounts of school, physical symptoms are persistent, the anxiety is not improving despite support, or the child expresses hopelessness. Early intervention is key.</p>`,
+
+// //   fr_01: `<h1>Age-Wise Behaviour Guide</h1><p>The number one question behind every parenting worry is: 'Is this normal?' The tantrums, the defiance, the mood swings, the sudden fears, the social drama — are these signs that something is wrong, or are they exactly what a child of this age is supposed to be doing?</p><h2>Ages 3–4: The 'I Want It My Way' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tantrums (daily is normal at this age)</li><li>Saying 'no' to everything — testing boundaries</li><li>Difficulty sharing and taking turns</li><li>Imaginative fears (monsters, dark, loud noises)</li><li>Physical aggression when frustrated</li><li>Lying (inventing stories — this is imagination, not deception)</li></ul><h3>When to Worry</h3><ul><li>Aggression that is causing injury and is not decreasing</li><li>Complete inability to be soothed by any adult</li><li>Significant language delay alongside behavioural challenges</li></ul><h2>Ages 5–6: The 'Rules and Fairness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tattling — they have discovered rules and want everyone to follow them</li><li>Bossiness with peers — experimenting with social power</li><li>Sensitivity to criticism and a need for praise</li><li>Some separation anxiety around school transitions</li></ul><h2>Ages 7–9: The 'Social Awareness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Friendship drama — best friends changing weekly</li><li>Comparing themselves to peers</li><li>Increased arguing and negotiating</li><li>White lies ('I already brushed my teeth')</li></ul><h2>Ages 10–11: The 'Pre-Teen Shift' Stage</h2><h3>Normal Behaviours</h3><ul><li>Mood swings</li><li>Pulling away from parents while still wanting connection</li><li>Strong opinions and willingness to challenge authority</li><li>Increased interest in privacy</li></ul><h2>Ages 12–13: The 'Full Pre-Teen' Stage</h2><h3>Normal Behaviours</h3><ul><li>Argumentative and increasingly skilled at it</li><li>Intense emotional reactions that seem disproportionate</li><li>Testing boundaries more deliberately than ever</li><li>Oscillating between wanting adult treatment and child-like needs</li></ul><h3>When to Worry (Any Age)</h3><ul><li>Any mention of self-harm or suicidal thoughts — take it seriously immediately</li><li>Behaviour that is significantly more extreme than peers and persists despite consistent support</li><li>Getting worse rather than better over several weeks</li></ul>`,
+
+// //   fr_02: `<h1>Emotional Development Chart</h1><p>One of the most common questions parents ask is: 'Is this normal?' This chart maps what emotional skills and behaviours are typical at each age — and what to do to support the next stage of growth. Use this as a compass, not a ruler.</p><h2>Ages 3–4: What Is Developing</h2><ul><li>Basic emotional vocabulary (happy, sad, angry, scared)</li><li>Earliest impulse control (can wait briefly with support)</li><li>Understanding that other people have feelings</li><li>Ability to be soothed by a trusted adult</li></ul><h3>How to Support This Stage</h3><ul><li>Name emotions constantly — yours and theirs</li><li>Keep routines predictable</li><li>Do not punish emotional outbursts — co-regulate instead</li></ul><h2>Ages 5–6: What Is Developing</h2><ul><li>Expanded emotional vocabulary (frustrated, embarrassed, proud, worried)</li><li>Early self-regulation — can calm down with strategies</li><li>Growing capacity for empathy and perspective-taking</li></ul><h3>How to Support</h3><ul><li>Celebrate effort, not just results</li><li>Teach simple calming strategies (deep breaths, counting)</li><li>Let them experience natural consequences for minor mistakes</li></ul><h2>Ages 7–9: What Is Developing</h2><ul><li>Self-regulation becoming more independent</li><li>Ability to see situations from another person's perspective</li><li>Understanding that people can feel two things at once</li><li>Growing capacity for delayed gratification</li></ul><h2>Ages 10–11: What Is Developing</h2><ul><li>Abstract emotional thinking ('I feel anxious about the future')</li><li>Ability to reflect on their own emotional patterns</li><li>Understanding of complex emotions (jealousy, guilt, loyalty)</li><li>Early identity formation — 'who am I?'</li></ul><h2>Ages 12–13: What Is Developing</h2><ul><li>Sophisticated emotional reasoning and self-awareness</li><li>Identity consolidation — values, beliefs, and self-concept forming</li><li>Capacity for long-term goal-setting and self-motivation</li><li>Understanding of nuanced moral and ethical questions</li></ul><h2>When to Be Concerned</h2><p>Seek professional guidance if your child is significantly behind peers in multiple emotional areas, emotional development seems to be regressing, or challenges are significantly impacting daily functioning. Early support is always more effective than waiting.</p>`,
+
+// //   fr_03: `<h1>Habit Tracker for Kids</h1><p>A habit tracker is one of the simplest and most effective parenting tools available — and most families either do not use one or use it incorrectly. Done well, a habit tracker transforms abstract goals ('be more responsible') into concrete, visible, daily actions that a child can own, measure, and feel proud of.</p><h2>Habit Tracker vs Reward Chart</h2><p>Reward charts focus on earning something — a prize, a treat. The motivation is external. Habit trackers focus on building consistency — the visual record of daily completion is itself the reward. The motivation shifts to internal: 'I do this because I am someone who does this.'</p><h2>Ages 3–5: The Visual Picture Tracker</h2><p>Format: A simple chart with pictures representing each habit. The child places a sticker when the habit is complete.</p><p>Good starter habits: brush teeth, put shoes by the door, put dirty clothes in the basket, help set the table.</p><h2>Ages 6–9: The Weekly Checklist Tracker</h2><p>Format: A weekly grid with habits listed down the side and days of the week across the top.</p><p>Good habits to track: morning routine completed independently, reading for pleasure, homework started on time, room tidied before bed, one kind action.</p><h2>Ages 10–13: The Self-Directed Tracker</h2><p>Format: A journal-style tracker or simple app the child manages independently.</p><p>Good habits to track: exercise, reading, homework session, screen-free time before bed, journaling, skill practice.</p><h2>How to Use Without Battles</h2><ul><li>Start with habits they are already close to doing.</li><li>Celebrate the process, not just the product.</li><li>Phase it out when the habit is automatic — typically after 6–12 weeks.</li><li>Never use the tracker as punishment.</li><li>Keep it simple. A tracker that takes 10 minutes to fill in will be abandoned.</li></ul>`,
+
+// //   fr_04: `<h1>Parenting Checklist</h1><p>Parenting does not come with a manual — but it should at least come with a checklist. Not a list of things to worry about, but a clear, practical reference that tells you: at this age, these are the things that matter most.</p><p>Use it as a quarterly check-in. Not a test. Not a judgment. Just a way to make sure the important things are getting attention amidst the chaos of daily life.</p><h2>Ages 3–5</h2><h3>Emotional Development</h3><ul><li>My child can name at least 5 emotions</li><li>I name my child's emotions for them when they cannot</li><li>I validate emotions before correcting behaviour</li><li>My child has a consistent bedtime routine that includes connection time</li><li>I read to my child daily</li></ul><h3>Social Skills</h3><ul><li>My child has regular opportunities to play with other children</li><li>My child can use basic social language ('please', 'thank you', 'can I play?')</li><li>My child has at least one friendship that involves regular interaction</li></ul><h3>Physical Wellbeing</h3><ul><li>My child gets at least 60 minutes of physical activity daily</li><li>Bedtime is consistent and my child gets 10–13 hours of sleep</li><li>Screen time is limited and high-quality (under 1 hour/day)</li></ul><h2>Ages 6–9</h2><h3>Emotional Development</h3><ul><li>My child has at least one strategy for calming down when upset</li><li>I allow my child to experience frustration and disappointment without immediately fixing it</li><li>I praise effort and persistence, not just outcomes</li><li>My child knows it is safe to make mistakes in our home</li></ul><h3>Habits and Independence</h3><ul><li>My child has age-appropriate responsibilities at home</li><li>My child can manage a morning routine with minimal reminders</li><li>My child can pack their own school bag</li><li>Screen time is structured and balanced with other activities</li></ul><h2>Ages 10–13</h2><h3>Emotional Development</h3><ul><li>I listen more than I advise — especially about social and emotional matters</li><li>My child has healthy coping strategies for stress</li><li>My child knows I love them unconditionally, independent of their achievements</li></ul><h3>Academic and Life Skills</h3><ul><li>My child manages their own homework with minimal parental oversight</li><li>My child can cook a simple meal, do laundry, and manage basic household tasks</li><li>My child has interests and activities that are theirs, not mine</li></ul>`,
+
+// //   fr_05: `<h1>Parenting Tools for Modern Parents</h1><p>Modern parents have access to more information than any generation in history. The problem is not lack of resources — it is knowing which ones actually help and which ones add noise.</p><h2>The Essential Toolkit</h2><h3>1. A Daily Routine System</h3><p>Tools that help: a visual schedule chart (for ages 3–7), a family calendar, a consistent morning and evening routine checklist. The best routine tool takes less than a minute to use and is visible where it matters.</p><h3>2. A Habit Tracking System</h3><p>Tools that help: a paper-based habit tracker for younger children, a bullet journal or printed monthly grid for pre-teens. Look for something child-owned, simple to complete, and visually rewarding.</p><h3>3. An Emotional Development Resource</h3><p>Tools that help: an emotional development chart, feelings cards or emotions posters for younger children, books about emotions for children and parents. Look for something age-appropriate, evidence-based, and integrated into daily life.</p><h3>4. A Communication Framework</h3><p>Frameworks that help: 'I feel _____ because _____' sentence structure, the 'validate, then redirect' approach, active listening practice, daily check-in questions.</p><h3>5. A Screen Time Management System</h3><p>Tools that help: a family media agreement, a device charging station outside bedrooms, a daily routine where screens have a defined place. Look for a system that gives children increasing self-management as they age.</p><h2>How to Choose Parenting Tools That Actually Help</h2><ul><li>Does it fit into your existing life?</li><li>Is it evidence-based?</li><li>Does it empower the child, not just the parent?</li><li>Is it sustainable?</li><li>Does it reduce your stress, not add to it?</li></ul>`,
+
+// //   fr_06: `<h1>School Readiness Guide</h1><p>When parents think about school readiness, they think about letters, numbers, and colours. But the children who do best in their first year of school are not necessarily the ones who can read earliest. They are the ones who can sit in a group, follow a simple instruction, manage their emotions when frustrated, share materials, and ask for help.</p><h2>The Four Domains of School Readiness</h2><h3>1. Emotional Readiness</h3><ul><li>Can separate from you without prolonged distress</li><li>Can cope with minor frustrations without a complete meltdown</li><li>Can express basic needs verbally ('I need help', 'I feel sad')</li><li>Can manage transitions</li><li>Can recover from upsets within a reasonable time</li></ul><h3>2. Social Readiness</h3><ul><li>Can play cooperatively with other children</li><li>Can share and take turns (with support)</li><li>Can follow simple group instructions</li><li>Can communicate needs to an adult who is not their parent</li></ul><h3>3. Academic Readiness</h3><ul><li>Recognises their own name in print</li><li>Can hold a pencil or crayon</li><li>Can count objects to at least 10</li><li>Can listen to a short story and answer simple questions</li><li>Shows curiosity and asks questions</li></ul><h3>4. Physical Readiness and Self-Care</h3><ul><li>Can use the toilet independently</li><li>Can dress themselves</li><li>Can open their lunch box and water bottle</li><li>Can sit for 10–15 minutes</li></ul><h2>How to Prepare Your Child</h2><ul><li>Talk positively about school — honestly. 'School is where you will learn new things and make new friends. Some days will be easy and some will be hard, and that's okay.'</li><li>Visit the school if possible — familiarity reduces anxiety.</li><li>Practise the morning routine.</li><li>Build independence in self-care tasks.</li></ul><h2>The First Week</h2><ul><li>Keep mornings calm and unhurried.</li><li>Be positive at drop-off — confident, warm, brief. Lingering makes separation harder.</li><li>Have a consistent after-school routine.</li><li>Do not interrogate: 'What did you do today?' often gets 'nothing.' Try: 'What was the best part of today?'</li></ul>`,
+// // };
+
+
+// // /* ══════════════════════════════════════════════
+// //    TYPES
+// // ══════════════════════════════════════════════ */
+// // type ViewState =
+// //   | { type: "landing" }
+// //   | { type: "category"; catId: string }
+// //   | { type: "article"; catId: string; artId: string; artLabel: string };
+
+// // /* ══════════════════════════════════════════════
+// //    MEGA MENU DROPDOWN (exported for Navbar use)
+// // ══════════════════════════════════════════════ */
+// // function MegaMenu({ onSelect }: { onSelect: (v: ViewState) => void }) {
+// //   const [open, setOpen] = useState(false);
+// //   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+// //   return (
+// //     <div
+// //       className="relative"
+// //       onMouseEnter={() => { setOpen(true); setHoveredCat(CATEGORIES[0].id); }}
+// //       onMouseLeave={() => { setOpen(false); setHoveredCat(null); }}
+// //     >
+// //       <button
+// //         onClick={() => { onSelect({ type: "landing" }); setOpen(false); }}
+// //         className="flex items-center gap-1.5 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+// //       >
+// //         Parenting Guide
+// //         <ChevronDown
+// //           size={13}
+// //           className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+// //         />
+// //       </button>
+
+// //       <AnimatePresence>
+// //         {open && (
+// //           <motion.div
+// //             initial={{ opacity: 0, y: 6 }}
+// //             animate={{ opacity: 1, y: 0 }}
+// //             exit={{ opacity: 0, y: 6 }}
+// //             transition={{ duration: 0.18 }}
+// //             className="absolute top-full left-0 flex rounded-b-2xl overflow-hidden shadow-2xl z-[200]"
+// //             style={{
+// //               background: "#ffffff",
+// //               border: "1px solid rgba(249,115,22,0.2)",
+// //               borderTop: "3px solid #f97316",
+// //               minWidth: "580px",
+// //               marginTop: "0px",
+// //             }}
+// //           >
+// //             {/* Left: categories */}
+// //             <div className="w-[220px] border-r border-gray-100 py-2">
+// //               {CATEGORIES.map((cat) => (
+// //                 <div
+// //                   key={cat.id}
+// //                   className="flex items-center justify-between px-5 py-3 cursor-pointer transition-all duration-150"
+// //                   style={{
+// //                     background: hoveredCat === cat.id ? "#f8f9fb" : "transparent",
+// //                     borderLeft: hoveredCat === cat.id ? "3px solid #f97316" : "3px solid transparent",
+// //                     color: hoveredCat === cat.id ? "#f97316" : "#374151",
+// //                   }}
+// //                   onMouseEnter={() => setHoveredCat(cat.id)}
+// //                   onClick={() => {
+// //                     onSelect({ type: "category", catId: cat.id });
+// //                     setOpen(false);
+// //                   }}
+// //                 >
+// //                   <span className="text-[0.9rem] font-medium">{cat.label}</span>
+// //                   <ChevronRight size={13} style={{ color: hoveredCat === cat.id ? "#f97316" : "#9ca3af" }} />
+// //                 </div>
+// //               ))}
+// //             </div>
+
+// //             {/* Right: subtopics for hovered category */}
+// //             <div className="flex-1 py-2 px-1">
+// //               {hoveredCat && (
+// //                 <div className="grid grid-cols-1 gap-0.5">
+// //                   {CATEGORIES.find((c) => c.id === hoveredCat)?.subtopics.map((sub) => (
+// //                     <div
+// //                       key={sub.id}
+// //                       className="px-4 py-2 text-[0.85rem] text-gray-600 cursor-pointer rounded-lg transition-all duration-100 hover:text-[#f97316]"
+// //                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+// //                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+// //                       onClick={() => {
+// //                         onSelect({ type: "article", catId: hoveredCat!, artId: sub.id, artLabel: sub.label });
+// //                         setOpen(false);
+// //                       }}
+// //                     >
+// //                       {sub.label}
+// //                     </div>
+// //                   ))}
+// //                 </div>
+// //               )}
+// //             </div>
+// //           </motion.div>
+// //         )}
+// //       </AnimatePresence>
+// //     </div>
+// //   );
+// // }
+
+// // /* ══════════════════════════════════════════════
+// //    ARTICLE VIEWER
+// // ══════════════════════════════════════════════ */
+// // function ArticleView({ view, onNavigate }: { view: ViewState; onNavigate: (v: ViewState) => void }) {
+// //   if (view.type === "landing") {
+// //     return (
+// //       <div className="text-center py-20 px-6">
+// //         <div
+// //           className="inline-block px-4 py-1.5 rounded-full text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-6"
+// //           style={{ background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)" }}
+// //         >
+// //           Family Playbook
+// //         </div>
+// //         <h1
+// //           className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+// //           style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
+// //         >
+// //           The Parenting Guide Your Family<br />Actually Needs
+// //         </h1>
+// //         <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+// //           Science-backed, psychologist-designed guidance for ages 3–13.
+// //           Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+// //         </p>
+// //         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
+// //           {CATEGORIES.map((cat) => (
+// //             <button
+// //               key={cat.id}
+// //               onClick={() => onNavigate({ type: "category", catId: cat.id })}
+// //               className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+// //             >
+// //               <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
+// //               <p className="text-gray-500 text-[0.8rem] leading-[1.5]">
+// //                 {cat.subtopics.length} guides
+// //               </p>
+// //             </button>
+// //           ))}
+// //         </div>
+// //       </div>
+// //     );
+// //   }
+
+// //   if (view.type === "category") {
+// //     const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// //     return (
+// //       <div className="max-w-[860px] mx-auto px-6 py-10">
+// //         <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8">
+// //           <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// //             Parenting Guide
+// //           </button>
+// //           <span>›</span>
+// //           <span className="text-gray-500">{cat.label}</span>
+// //         </div>
+
+// //         <h1
+// //           className="text-[#1b2a4a] font-bold text-[2rem] leading-[1.25] mb-4"
+// //           style={{ fontFamily: "'Rubik', sans-serif" }}
+// //         >
+// //           {cat.label}
+// //         </h1>
+// //         <p className="text-gray-500 text-[1rem] leading-[1.7] mb-10 max-w-[600px]">
+// //           {CATEGORY_INTRO[cat.id]}
+// //         </p>
+
+// //         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+// //           {cat.subtopics.map((sub) => (
+// //             <button
+// //               key={sub.id}
+// //               onClick={() => onNavigate({ type: "article", catId: cat.id, artId: sub.id, artLabel: sub.label })}
+// //               className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-[10px] text-left transition-all duration-200 hover:border-[#f97316] hover:shadow-md group"
+// //             >
+// //               <span className="text-[#374151] text-[0.9rem] font-medium group-hover:text-[#f97316] transition-colors">
+// //                 {sub.label}
+// //               </span>
+// //               <ChevronRight size={15} className="text-gray-300 group-hover:text-[#f97316] transition-colors" />
+// //             </button>
+// //           ))}
+// //         </div>
+// //       </div>
+// //     );
+// //   }
+
+// //   /* article view */
+// //   const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+// //   const html = CONTENT[view.artId] ?? `<h1>${view.artLabel}</h1><p>Content coming soon.</p>`;
+
+// //   return (
+// //     <div className="max-w-[860px] mx-auto px-6 py-10">
+// //       <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8 flex-wrap">
+// //         <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+// //           Parenting Guide
+// //         </button>
+// //         <span>›</span>
+// //         <button onClick={() => onNavigate({ type: "category", catId: view.catId })} className="text-[#f97316] font-medium hover:underline">
+// //           {cat.label}
+// //         </button>
+// //         <span>›</span>
+// //         <span className="text-gray-500">{view.artLabel}</span>
+// //       </div>
+
+// //       <div
+// //         className="article-prose"
+// //         dangerouslySetInnerHTML={{ __html: html }}
+// //       />
+
+// //       <button
+// //         onClick={() => onNavigate({ type: "category", catId: view.catId })}
+// //         className="mt-10 inline-flex items-center gap-2 text-[#f97316] font-medium text-[0.9rem] hover:gap-3 transition-all duration-150"
+// //       >
+// //         ← Back to {cat.label}
+// //       </button>
+// //     </div>
+// //   );
+// // }
+
+// // /* ══════════════════════════════════════════════
+// //    MAIN EXPORT
+// // ══════════════════════════════════════════════ */
+// // export default function ParentingGuidePage() {
+// //   const searchParams = useSearchParams();
+// //   const [view, setView] = useState<ViewState>({ type: "landing" });
+
+// //   useEffect(() => {
+// //     const cat = searchParams.get("cat");
+// //     const topic = searchParams.get("topic");
+
+// //     if (cat && topic) {
+// //       const foundCat = CATEGORIES.find((c) => c.id === cat);
+// //       const foundSub = foundCat?.subtopics.find(
+// //         (s) => s.label === decodeURIComponent(topic)
+// //       );
+// //       if (foundCat && foundSub) {
+// //         setView({
+// //           type: "article",
+// //           catId: cat,
+// //           artId: foundSub.id,
+// //           artLabel: foundSub.label,
+// //         });
+// //       }
+// //     } else if (cat) {
+// //       setView({ type: "category", catId: cat });
+// //     } else {
+// //       setView({ type: "landing" });
+// //     }
+// //   }, [searchParams]);
+
+// //   const navigate = (v: ViewState) => {
+// //     setView(v);
+// //     window.scrollTo({ top: 0, behavior: "smooth" });
+// //   };
+
+// //   return (
+// //     <>
+// //       <style>{`
+// //         .article-prose h1 {
+// //           font-family: 'Rubik', sans-serif;
+// //           font-size: clamp(1.6rem, 3vw, 2.2rem);
+// //           font-weight: 700;
+// //           color: #1b2a4a;
+// //           line-height: 1.25;
+// //           margin-bottom: 1.2rem;
+// //           padding-bottom: 1rem;
+// //           border-bottom: 2px solid #f0f2f5;
+// //         }
+// //         .article-prose h2 {
+// //           font-family: 'Rubik', sans-serif;
+// //           font-size: 1.25rem;
+// //           font-weight: 700;
+// //           color: #1b2a4a;
+// //           margin-top: 2rem;
+// //           margin-bottom: 0.75rem;
+// //         }
+// //         .article-prose h3 {
+// //           font-size: 1rem;
+// //           font-weight: 600;
+// //           color: #1e3a5f;
+// //           margin-top: 1.5rem;
+// //           margin-bottom: 0.5rem;
+// //         }
+// //         .article-prose p {
+// //           font-size: 0.96rem;
+// //           color: #3b4258;
+// //           line-height: 1.8;
+// //           margin-bottom: 0.9rem;
+// //         }
+// //         .article-prose ul {
+// //           margin: 0.5rem 0 1.2rem 1.2rem;
+// //           list-style: none;
+// //           padding: 0;
+// //         }
+// //         .article-prose ul li {
+// //           position: relative;
+// //           padding: 0.3rem 0 0.3rem 1.2rem;
+// //           font-size: 0.93rem;
+// //           line-height: 1.7;
+// //           color: #3b4258;
+// //         }
+// //         .article-prose ul li::before {
+// //           content: '';
+// //           position: absolute;
+// //           left: 0;
+// //           top: 12px;
+// //           width: 7px;
+// //           height: 7px;
+// //           border-radius: 50%;
+// //           background: #f97316;
+// //           opacity: 0.6;
+// //         }
+// //         .article-prose strong { color: #1b2a4a; font-weight: 600; }
+// //       `}</style>
+
+// //       <div className="min-h-screen relative z-[1]" style={{ background: "#f8f9fb" }}>
+// //         <motion.div
+// //           key={JSON.stringify(view)}
+// //           initial={{ opacity: 0, y: 12 }}
+// //           animate={{ opacity: 1, y: 0 }}
+// //           transition={{ duration: 0.35 }}
+// //         >
+// //           <ArticleView view={view} onNavigate={navigate} />
+// //         </motion.div>
+// //       </div>
+// //     </>
+// //   );
+// // }
+
+// // export { MegaMenu };
+// // export type { ViewState };
+
+
+
+// "use client";
+
+// import { useState, useEffect } from "react";
+// import { useSearchParams } from "next/navigation";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { ChevronDown, ChevronRight } from "lucide-react";
+
+// const CATEGORIES = [
+//   {
+//     id: "child_behaviour",
+//     label: "Child Behaviour",
+//     subtopics: [
+//       { id: "cb_01", label: "Why Children Lie" },
+//       { id: "cb_02", label: "Why Kids Talk Back" },
+//       { id: "cb_03", label: "Stubborn Children" },
+//       { id: "cb_04", label: "Discipline Without Punishment" },
+//       { id: "cb_05", label: "Aggressive Behaviour" },
+//       { id: "cb_06", label: "Why Children Refuse to Listen" },
+//       { id: "cb_07", label: "Sibling Fights" },
+//       { id: "cb_08", label: "Tantrums" },
+//       { id: "cb_09", label: "Teaching Respect" },
+//       { id: "cb_10", label: "Setting Boundaries" },
+//     ],
+//   },
+//   {
+//     id: "emotional_development",
+//     label: "Emotional Development",
+//     subtopics: [
+//       { id: "ed_01", label: "Building Emotional Resilience" },
+//       { id: "ed_02", label: "Emotional Intelligence in Children" },
+//       { id: "ed_03", label: "Helping Children Express Emotions" },
+//       { id: "ed_04", label: "Helping Children Overcome Fear" },
+//       { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+//       { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+//       { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+//       { id: "ed_08", label: "Raising Emotionally Strong Children" },
+//       { id: "ed_09", label: "Teaching Patience to Children" },
+//       { id: "ed_10", label: "Why Children Get Angry" },
+//     ],
+//   },
+//   {
+//     id: "habits_discipline",
+//     label: "Habits & Discipline",
+//     subtopics: [
+//       { id: "hd_01", label: "Building Reading Habits" },
+//       { id: "hd_02", label: "Daily Routines for Children" },
+//       { id: "hd_03", label: "Helping Kids Stay Organized" },
+//       { id: "hd_04", label: "How Children Develop Habits" },
+//       { id: "hd_05", label: "Morning Routines for Kids" },
+//       { id: "hd_06", label: "Teaching Responsibility at Home" },
+//       { id: "hd_07", label: "Teaching Self Discipline" },
+//       { id: "hd_08", label: "Teaching Time Management" },
+//       { id: "hd_09", label: "Screen Time Balance for Kids" },
+//       { id: "hd_10", label: "Why Routines Help Children" },
+//     ],
+//   },
+//   {
+//     id: "school_life",
+//     label: "School Life",
+//     subtopics: [
+//       { id: "sl_01", label: "Bullying in Primary Schools" },
+//       { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+//       { id: "sl_03", label: "Helping Children Focus on Studies" },
+//       { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+//       { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+//       { id: "sl_06", label: "Helping Kids Make Friends" },
+//       { id: "sl_07", label: "Homework Struggles in Children" },
+//       { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+//       { id: "sl_09", label: "Reducing School Stress" },
+//       { id: "sl_10", label: "School Anxiety in Children" },
+//     ],
+//   },
+//   {
+//     id: "family_resources",
+//     label: "Family Resources",
+//     subtopics: [
+//       { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+//       { id: "fr_02", label: "Emotional Development Chart" },
+//       { id: "fr_03", label: "Habit Tracker for Kids" },
+//       { id: "fr_04", label: "Parenting Checklist" },
+//       { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+//       { id: "fr_06", label: "School Readiness Guide" },
+//     ],
+//   },
+// ];
+
+// const CATEGORY_INTRO: Record<string, string> = {
+//   child_behaviour:
+//     "Your child is not trying to ruin your evening. Every tantrum, refusal, or moment of aggression is a message — and when you learn to read it, everything changes. Choose a topic below to start.",
+//   emotional_development:
+//     "Real emotional development means your child can feel a difficult emotion without it taking over their behaviour. Click any topic to explore practical, age-specific guidance.",
+//   habits_discipline:
+//     "The parents who have an easier time are building habits, not enforcing rules. Because a habit does not need to be enforced — it just happens. Explore the guides below.",
+//   school_life:
+//     "What shapes your child's relationship with school is what happens at home. The conversations after school. The way you respond when they fail. Explore practical guides for every school challenge.",
+//   family_resources:
+//     "Practical tools every parent can use today — checklists, trackers, conversation starters, and readiness guides. Use what fits your family.",
+// };
+
+// const CONTENT: Record<string, string> = {
+//   child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><h2>The One Shift That Changes Everything</h2><p>Most parents respond to what their child does. The parents who have an easier time are responding to why their child does it. Difficult behaviour is almost never defiance. It is almost always one of four things:</p><ul><li>An unmet need — hunger, tiredness, overwhelm, attention</li><li>An emotion they cannot name yet — frustration, shame, jealousy, fear</li><li>A skill they have not built yet — patience, empathy, impulse control</li><li>A test — not of your authority, but of whether you are safe to be real around</li></ul><h2>Ages 3–5: Big Emotions, Tiny Vocabulary</h2><p>Tantrums at this age are not manipulation. They are a neurological overflow — the emotional brain firing faster than the rational brain can catch up.</p><ul><li>Do not match the energy. Speak slowly and quietly. Get low — physically kneel down to their level.</li><li>Name the emotion out loud: 'You are really angry right now because we had to stop playing.'</li><li>Wait it out without leaving and without giving in. Your calm, consistent presence is the lesson.</li><li>After it passes — not during — briefly name what happened and what you can do next time.</li></ul><h2>Ages 6–9: Testing Rules, Seeking Fairness</h2><ul><li>When they refuse to follow a rule, explain the reason behind it once — briefly.</li><li>When they come home grumpy, give them 20 minutes before engaging.</li><li>If there is a conflict with a sibling or friend, resist the urge to solve it.</li><li>Catch them doing the right thing and name it specifically.</li></ul><h2>Ages 10–13: Independence Is Not Disrespect</h2><ul><li>Pick your battles deliberately. If you fight about everything, you win nothing and lose the relationship.</li><li>When they argue back, pause before responding.</li><li>Give them increasing autonomy in low-stakes areas.</li><li>Never mock, dismiss, or minimise what they care about.</li></ul>`,
+
+//   emotional_development: `<h1>Emotional Development in Children</h1><p>Emotional development is not about how well your child names feelings on a poster. It is about whether they feel safe enough to be honest with you when it is inconvenient for them.</p><h2>What Emotional Development Actually Means</h2><p>Real emotional development means your child can:</p><ul><li>Feel a difficult emotion without it taking over their behaviour</li><li>Say 'I am angry' instead of hitting, shutting down, or acting out</li><li>Recognise when someone else is struggling and respond with care</li><li>Come to you when something is wrong — not just when it is easy</li><li>Recover from disappointment without falling apart or giving up</li></ul><h2>Ages 3–5: Name It to Tame It</h2><ul><li>During a meltdown, narrate the emotion without trying to stop it: 'You are so frustrated right now. That makes sense. I am right here.'</li><li>Name your own emotions too: 'I am feeling a bit stressed right now, so I am going to take a few deep breaths.'</li><li>After a difficult moment has passed, revisit it briefly.</li><li>Read stories with emotional complexity and pause at key moments.</li></ul><h2>Ages 6–9: Teach the Space Between Feeling and Action</h2><ul><li>Introduce the concept of 'what do you do with big feelings?' — build a short personal list together.</li><li>When they handle a hard moment well, name it immediately.</li><li>Teach empathy through real situations, not hypotheticals.</li><li>Let them experience disappointment without rescuing.</li></ul><h2>Ages 10–13: Respect the Privacy, Keep the Channel Open</h2><ul><li>Stop asking 'what is wrong?' when they are quiet. Say instead: 'You seem like you have something on your mind. I am here when you want to talk.'</li><li>Never mock, dismiss, or minimise what they feel.</li><li>Share your own emotional struggles — age-appropriately.</li><li>When they do open up, fight every instinct to immediately fix, advise, or lecture.</li></ul>`,
+
+//   habits_discipline: `<h1>Habits and Discipline</h1><p>Most parents spend years trying to discipline their child. The parents who have an easier time are building habits instead. Because a habit does not need to be enforced — it just happens.</p><h2>How Habits Actually Form in Children</h2><p>Every habit has three parts: a cue that triggers the behaviour, the routine itself, and a reward that makes the brain want to repeat it.</p><ul><li>Attach it to something that already happens. 'After dinner, we read' requires no new slot in the day.</li><li>Make it small enough to be impossible to fail.</li><li>Do it yourself first. Children do not adopt habits you talk about — they adopt habits they see.</li></ul><h2>Ages 3–5: Build the Four Non-Negotiables</h2><ul><li><strong>Sleep:</strong> A fixed bedtime, every night. Non-negotiable.</li><li><strong>Tidying up:</strong> After every play session, everything goes back.</li><li><strong>Please and thank you:</strong> Not as a rule imposed — as a behaviour modelled.</li><li><strong>A daily reading moment:</strong> Even five minutes of a story — every day, at the same time.</li></ul><h2>Ages 6–9: Transfer Responsibility</h2><ul><li><strong>School bag:</strong> Your child packs it. You check it once at the start — then stop checking.</li><li><strong>Homework timing:</strong> Set the window and then leave them to it.</li><li><strong>One household contribution:</strong> Something real, not manufactured busywork.</li><li><strong>Physical activity:</strong> Daily, outside, unstructured if possible.</li></ul><h2>Ages 10–13: Build Systems, Not Rules</h2><ul><li>Sit down together once a week and plan the week ahead. Let them write it.</li><li>Negotiate screen time boundaries together rather than imposing them.</li><li>Let them experience the consequences of their own planning failures.</li><li>Introduce a personal goal — something they want for themselves.</li></ul>`,
+
+//   school_life: `<h1>School Life</h1><p>What shapes your child's relationship with school — and with learning for the rest of their life — is what happens at home. The conversations after school. The way you respond when they fail a test. Whether they feel safe telling you when something is going wrong.</p><h2>Stop Asking 'How Was School?' — Ask This Instead</h2><ul><li>'What was the most annoying thing that happened today?'</li><li>'Did anything surprise you today?'</li><li>'Who made you laugh today?'</li><li>'Was there anything today where you felt really stuck?'</li><li>'If you could change one thing about school, what would it be?'</li></ul><h2>Ages 3–5: Make School Feel Like an Adventure</h2><ul><li>Never say 'school is boring' or 'I hated maths too' in front of your child.</li><li>When they come home excited about something they learned, stop what you are doing and let them teach you.</li><li>Keep morning routines calm and consistent.</li></ul><h2>Ages 6–9: Be Interested in Their Work, Not Just Their Grades</h2><ul><li>When they get a bad mark: ask 'what do you think went wrong?' before offering your view.</li><li>When they get a good mark: ask 'what did you do differently that worked?'</li><li>Show genuine interest in a subject they enjoy.</li><li>Help them build a homework habit — same time, same place, no negotiation.</li></ul><h2>Ages 10–13: Back Off the Academics — Stay Close to the Person</h2><ul><li>Resist the urge to increase tuitions as the default response to falling grades.</li><li>Keep the conversation about school balanced — for every question about homework, ask one about their social life.</li><li>Let them have at least one non-academic interest they pursue seriously.</li></ul>`,
+
+//   family_resources: `<h1>Family Resources</h1><p>Everything here is a tool — something you can pick up, use today, and come back to. Not philosophies to agree with. Actual frameworks, conversation starters, trackers, and guides that give you something concrete to do.</p><h2>30 Conversation Starters That Go Beyond 'How Was School?'</h2><h3>For Ages 3–6</h3><ul><li>What made you laugh today?</li><li>What was the hardest part of your day?</li><li>Did anything make you feel sad or upset today?</li><li>If you could change one thing about today, what would it be?</li><li>Who was the kindest person at school today and what did they do?</li><li>What is something you wish I knew about your day?</li><li>What are you looking forward to tomorrow?</li></ul><h3>For Ages 7–10</h3><ul><li>What was the most unfair thing that happened this week?</li><li>Did you do anything today that you are proud of, even a little?</li><li>Is there anything you are worried about right now?</li><li>What is something you tried this week that was hard?</li><li>If your best friend could describe you in three words, what would they say?</li><li>What do you think I worry about as a parent?</li><li>If you could teach the class something tomorrow, what would you teach?</li></ul><h3>For Ages 11–13</h3><ul><li>What is something you wish adults understood better about being your age?</li><li>Is there anything you have been thinking about a lot lately that you have not talked to anyone about?</li><li>What do you think you are genuinely good at — not just at school but as a person?</li><li>If you could change one rule in our house, what would it be and why?</li><li>What do you think I do not fully understand about your life right now?</li><li>What is something you have changed your mind about in the last year?</li><li>What is one thing you want to be better at — in life, not just in school?</li></ul>`,
+
+//   cb_01: `<h1>Why Children Lie</h1><p>If your child lies to you and you react with anger or punishment, there is a good chance they will lie to you again tomorrow — only more carefully. Because the lie was never really about dishonesty. It was about fear. And increasing the fear increases the lying.</p><h2>The Real Reason Children Lie</h2><p>Children lie for one of four reasons: to avoid a consequence they fear, to protect a feeling (shame, embarrassment, not wanting to disappoint), to test reality, or to protect someone else. If your child lies to you regularly, the question is not 'how do I stop the lying?' It is 'what is my child afraid of telling me the truth about?'</p><h2>Ages 3–5: The Wishful Thinking Stage</h2><p>At this age, lying is not really lying in the moral sense. When a 4-year-old says 'I didn't eat the biscuit' with crumbs on their face, they are expressing a wish — not strategically deceiving you.</p><ul><li>Do not treat it as a moral failure. Respond matter-of-factly: 'I can see the biscuit is gone. Next time, ask me first.'</li><li>Name the emotion underneath: 'I think you were worried I would be upset. You can always tell me things, even the tricky ones.'</li><li>Use stories and role play to explore honesty.</li><li>Never set a trap. If you already know what happened, do not ask 'did you do this?' — ask 'tell me what happened.'</li></ul><h2>Ages 6–9: The Consequence-Avoidance Stage</h2><p>By now your child fully understands the difference between truth and lie — and they are calculating. The lie is almost always a risk assessment: is telling the truth going to hurt me more than this lie?</p><ul><li>Make truth-telling feel safe. When your child tells you something difficult, your first response should be: 'I am glad you told me.' Before anything else.</li><li>Separate the behaviour from the lie. Address what they did, and separately acknowledge that they told the truth.</li><li>Stop interrogating. If you already know what happened, say what you know: 'I know you didn't finish your homework. Tell me what got in the way.'</li></ul><h2>Ages 10–13: The Social Protection Stage</h2><p>At this age, lying often has a social dimension — protecting a friendship, hiding something embarrassing, or managing a double life between the values of home and the values of their peer group.</p><ul><li>Stay curious, not suspicious. A parent who interrogates closes conversations. A parent who is genuinely interested opens them.</li><li>When you catch a lie at this age, stay calm. Your reaction teaches them whether future honesty is worth the risk.</li><li>Share your own experiences of lying as a young person — honestly. Not as a lesson, but as a story.</li></ul><h2>How to Respond When You Catch a Lie</h2><ul><li><strong>Step 1 — Pause:</strong> Take a breath before you respond.</li><li><strong>Step 2 — State what you know:</strong> 'I know what actually happened. I am not going to ask you to confirm it.'</li><li><strong>Step 3 — Address the underlying behaviour:</strong> Not the lie — the thing that caused the lie.</li><li><strong>Step 4 — Name the cost of lying:</strong> 'When you lie to me it makes it harder for me to trust you, and that affects how much freedom I can give you.'</li><li><strong>Step 5 — Leave the door open:</strong> 'I want you to know that you can always tell me things. Even hard things.'</li></ul>`,
+
+//   cb_02: `<h1>Why Kids Talk Back</h1><p>Your child answers back and your first instinct is: disrespect. But talking back is almost never about disrespect. It is about a developing brain that has just discovered it can argue — and a child who is testing whether you are someone who can handle disagreement without breaking.</p><h2>Why Talking Back Is Actually a Sign of Development</h2><p>Children who talk back have developed the ability to form an opinion, articulate it, and push back on authority. The goal is not to eliminate the arguing. It is to channel it into respectful disagreement.</p><h2>Ages 3–5: The 'No' Stage</h2><ul><li>Pick your battles. Not every 'no' needs a confrontation.</li><li>Offer controlled choices: 'You need to put your shoes on. Do you want to do it yourself or do you want my help?'</li><li>Avoid power struggles over small things.</li><li>Name what you observe: 'You really don't want to stop playing. I understand. We still need to go.'</li></ul><h2>Ages 6–9: The 'That's Not Fair' Stage</h2><ul><li>Explain your reasoning once, briefly. Children this age respond much better to 'because it is not safe' than 'because I said so.'</li><li>Acknowledge their perspective before holding your position: 'I hear that it feels unfair. The answer is still no.'</li><li>Do not match their emotional intensity.</li><li>Tell them when they have made a fair point: 'Actually that is a reasonable argument. Let me think about it.'</li></ul><h2>Ages 10–13: The Full Argument Stage</h2><ul><li>Pause before responding. The sharpness of their argument is designed to provoke a reaction.</li><li>Engage the substance, not the tone.</li><li>Be willing to change your mind when they are right.</li><li>Hold the line on how they speak to you, separately from what they are saying: 'You are allowed to disagree with me. You are not allowed to speak to me like that. Try again.'</li></ul><h2>The Responses That Escalate and the Ones That Don't</h2><ul><li><strong>Escalates:</strong> 'Because I said so, that's why.'</li><li><strong>De-escalates:</strong> 'The reason is this. I am not going to debate it further, but I want you to understand my thinking.'</li><li><strong>Escalates:</strong> Matching their volume and emotional intensity.</li><li><strong>De-escalates:</strong> Lowering your voice. A quiet parent is more powerful than a loud one every single time.</li></ul>`,
+
+//   cb_03: `<h1>Dealing With a Stubborn Child</h1><p>The child everyone calls stubborn is usually the one who knows what they want, refuses to be pushed around, and holds their position under pressure. In twenty years, those are exactly the qualities that will make them successful. Right now, they are making your evenings very difficult.</p><h2>The Truth About Stubborn Children</h2><p>Strong-willed children have a particularly intense need for autonomy — to feel that their choices and opinions matter. When that need is met through collaboration and respect, they are capable of extraordinary persistence, leadership, and resilience. When it is met with force, they dig in and everyone loses. You will not out-stubborn a stubborn child. The only way through is alongside.</p><h2>Ages 3–5: The 'I Do It Myself' Stage</h2><ul><li>Give them the genuine experience of doing it themselves wherever possible.</li><li>Build in extra time. Battles over speed are the most pointless ones.</li><li>Use 'when-then': 'When your shoes are on, then we can go.' State it once and walk toward the door.</li><li>Avoid direct commands wherever you can. 'It's time to put shoes on' works better than 'put your shoes on now.'</li></ul><h2>Ages 6–9: The 'I Won't and You Can't Make Me' Stage</h2><ul><li>Involve them in decisions. 'We need to leave by 5. How do you think we should manage the time between now and then?'</li><li>Explain the real reason, not just the rule.</li><li>Give them a face-saving exit. Preserve their sense of control while moving toward the outcome you need.</li><li>Avoid public confrontations. A stubborn child doubled down in front of others cannot back down without losing face.</li></ul><h2>Ages 10–13: The 'I Have a Point and I'm Not Moving' Stage</h2><ul><li>Genuinely consider their argument before dismissing it. If their position has merit, say so.</li><li>Be extremely clear about what is non-negotiable and keep that list short.</li><li>For the truly non-negotiable things: state it once, clearly, with the reason. Then do not engage with the argument.</li><li>Let natural consequences do the teaching for anything that is not a safety issue.</li></ul>`,
+
+//   cb_04: `<h1>Discipline Without Punishment</h1><p>Most parents were disciplined through punishment. But punishment and discipline are not the same thing. Punishment makes a child feel bad. Discipline teaches a child to do better.</p><h2>The Four Tools of Discipline Without Punishment</h2><h3>Tool 1: Natural Consequences</h3><p>Let the situation itself teach the lesson. Forgot the water bottle — goes thirsty. Did not finish the project in time — faces the teacher.</p><h3>Tool 2: Logical Consequences</h3><p>A logical consequence is directly connected to the behaviour. Misuses the tablet — loses tablet access. Aggressive with a sibling — loses time with that sibling.</p><h3>Tool 3: Problem-Solving Conversations</h3><p>After the emotion has settled, sit down with your child and explore what happened.</p><ul><li>'Tell me what happened from your perspective.'</li><li>'What were you feeling just before that?'</li><li>'What did you want to happen?'</li><li>'What actually happened?'</li><li>'What would you do differently?'</li></ul><h3>Tool 4: Positive Reinforcement Done Right</h3><p>Effective positive reinforcement is specific, immediate, and process-focused.</p><ul><li><strong>Wrong:</strong> 'Good boy for sharing.'</li><li><strong>Right:</strong> 'You noticed your cousin wanted a turn and you gave him one without being asked. That was a generous choice.'</li></ul><h2>Age-Specific Application</h2><h3>Ages 3–5: Simple, Immediate, Consistent</h3><ul><li>Redirect rather than punish: 'We don't throw blocks. Blocks are for building. Show me what you can build.'</li><li>Use do-overs: 'That wasn't kind. Let's try that again.'</li></ul><h3>Ages 6–9: Involve Them in the Solution</h3><ul><li>'What do you think should happen as a result of what you did?'</li><li>'What would make this right?'</li></ul><h3>Ages 10–13: Negotiate and Trust</h3><ul><li>Have a family conversation about house rules as a genuine negotiation.</li><li>When they break an agreement: 'We agreed on this together. What happened?'</li><li>Trust them with increasing autonomy as they demonstrate responsibility.</li></ul>`,
+
+//   cb_05: `<h1>Handling Aggressive Behaviour</h1><p>When your child hits, throws, shouts, or lashes out — your instinct is to stop it immediately. That instinct is understandable. It is also, in most cases, exactly what makes aggressive behaviour worse.</p><h2>Aggression Is Almost Always a Communication Failure</h2><p>Children become physically or verbally aggressive when they have run out of other ways to express what they are experiencing. The emotion underneath aggression is almost always one of three things: intense frustration, fear of something that feels threatening, or shame that has converted to anger.</p><h2>Ages 3–5: Physical Overflow</h2><ul><li>Ensure safety first — physically separate children if needed, calmly.</li><li>Do not match the energy. Get low, speak slowly and quietly.</li><li>Name the emotion without judgement: 'You are really furious right now. It is not okay to hit. I am staying here with you.'</li><li>Wait. Do not try to teach during the storm. The brain cannot learn when it is flooded.</li></ul><h2>Ages 6–9: Reactive Aggression</h2><ul><li>Address the aggression and the trigger separately.</li><li>Teach a pause strategy when they are calm — not in the moment.</li><li>Role-play difficult situations: 'Let's practise what you could do if someone takes your thing at school.'</li><li>Examine whether there is an environmental trigger — hunger, tiredness, overstimulation.</li></ul><h2>Ages 10–13: Verbal Aggression</h2><ul><li>Stay calm and lower your voice. Responding to shouting with shouting escalates always.</li><li>Name the behaviour without attacking the character: 'What you just said was unkind. That is not how we speak in this family.'</li><li>Exit the immediate conflict to prevent escalation.</li><li>Explore what is underneath it when things are calm.</li></ul><h2>Long-Term Strategies</h2><ul><li>Build a daily physical outlet — running, sport, rough-and-tumble play.</li><li>Regulate their sleep. Sleep-deprived children have dramatically reduced emotional regulation capacity.</li><li>Build emotional vocabulary consistently over time.</li><li>Model emotional regulation yourself.</li></ul>`,
+
+//   cb_06: `<h1>Why Children Refuse to Listen</h1><p>You have said it three times. You are about to say it a fourth. And the fourth time, just like the first three, will achieve nothing — except teach your child that your instructions do not actually need to be followed until the fifth.</p><h2>The Parent Is Usually Part of the Problem</h2><p>Children learn, through consistent experience, exactly how many times they need to wait before compliance is actually required. Every repeated instruction that does not lead to a consequence trains a child to wait.</p><h2>Ages 3–5: Developmental Capacity, Not Defiance</h2><ul><li>Get physical proximity first. An instruction shouted from another room is rarely processed.</li><li>Give a transition warning: 'In five minutes we are going to put the toys away.'</li><li>Use 'when-then' framing: 'When the toys are away, then we can have dinner.'</li><li>Follow through every time.</li></ul><h2>Ages 6–9: Strategic Non-Listening</h2><ul><li>Say it once. Then act.</li><li>Get confirmation: 'Can you tell me what I just asked you to do?'</li><li>Remove distractions before instructing.</li><li>Make the consequence logical and immediate.</li></ul><h2>Ages 10–13: Selective Processing</h2><ul><li>Lower your expectations of compliance through instruction alone and increase your expectations through agreement.</li><li>Name what you observe without drama: 'I notice that when I ask you to do something, it rarely happens without me asking again. I would like us to talk about how we change that.'</li><li>Be genuinely willing to hear what they say.</li></ul><h2>The Instructions That Never Work</h2><ul><li>Shouted instructions from another room</li><li>Instructions buried in a conversation</li><li>Instructions without reasons</li><li>Instructions delivered in a questioning tone: 'Can you clean your room?' gives your child the option of saying no.</li><li>Repeated instructions with no consequence</li></ul>`,
+
+//   cb_07: `<h1>How to Handle Sibling Fights</h1><p>Sibling conflict is one of the most exhausting things about family life. It is also one of the most valuable developmental experiences your children will ever have — if you stop managing it and start using it.</p><h2>Why Sibling Conflict Is Actually Valuable</h2><p>Siblings cannot leave, must share resources, have similar but not identical needs, and are watched by a powerful authority figure who they both want on their side. This combination creates an unparalleled training ground for negotiation, empathy, fairness, and conflict resolution.</p><h2>The Most Common Parenting Mistakes</h2><ul><li>Immediately taking sides</li><li>Finding out who started it</li><li>Solving it for them</li><li>Comparing them to each other</li><li>Intervening too early</li></ul><h2>Ages 3–6: Narrate and Separate</h2><ul><li>Separate them physically without drama: 'You two need a break from each other.'</li><li>Narrate both perspectives: 'Arjun wanted the car. Priya was using it. You both felt frustrated.'</li><li>Name the rule: 'In this house we do not hurt each other. That is not negotiable.'</li><li>Redirect to the solution: 'How long does Priya need? Can Arjun choose something else for now?'</li></ul><h2>Ages 6–10: Hand the Problem Back</h2><p>'I can see this is a real disagreement. I am going to give you five minutes to figure it out between you. If you cannot, I will make the decision for both of you — and neither of you will like it.' Then actually leave the room.</p><h2>Ages 10–13: Facilitate, Don't Adjudicate</h2><ul><li>Have a family conversation — not during a fight — about what fair conflict resolution looks like in your home.</li><li>Invite both children to describe their experience — not to build a case, but to be heard.</li><li>Ask what they each need rather than what they want.</li></ul>`,
+
+//   cb_08: `<h1>Why Children Throw Tantrums</h1><p>A tantrum is not a manipulation tactic. It is not a test of your authority. It is a neurological event — a young brain overwhelmed by an emotion it does not yet have the infrastructure to manage.</p><h2>What Is Actually Happening During a Tantrum</h2><p>When a child is in the middle of a full tantrum, their prefrontal cortex — the part of the brain responsible for reasoning, impulse control, and language — is effectively offline. This is why reasoning with a child mid-tantrum is useless. There is no one home to reason with. The tantrum ends when the emotional brain exhausts itself and the regulatory brain slowly comes back online.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Ensure sleep and meals are consistent.</li><li>Offer choices within limits.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first. Take one slow breath. Lower your shoulders.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words. 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out. Do not bribe, threaten, or give in.</li><li><strong>Step 5:</strong> Reconnect after — a hug, a quiet 'that was a big feeling.'</li></ul><h2>What Makes Tantrums More Frequent — Check These First</h2><ul><li><strong>Tiredness:</strong> The single biggest predictor of tantrum frequency. A well-rested child has significantly fewer tantrums.</li><li><strong>Hunger:</strong> Blood sugar drops are a major tantrum trigger. Predictable meal and snack times reduce tantrum frequency measurably.</li><li><strong>Overscheduling:</strong> Young children who are moved between activities without sufficient downtime are chronically overstimulated.</li><li><strong>Inconsistency:</strong> Children who do not know what to expect experience more anxiety and more tantrums.</li></ul>`,
+
+//   cb_09: `<h1>Teaching Respect to Children</h1><p>Respect cannot be commanded into existence. Every parent who has tried the 'you will respect me' approach knows this. Respect is built through relationship, modelled through behaviour, and earned through how you treat your child — not through how much authority you claim.</p><h2>The Difference Between Compliance and Respect</h2><p>A child who says 'yes' and does what they are told is compliant. A child who considers how their actions affect others, listens with genuine attention, and treats people with dignity — including people who have no authority over them — is respectful. These require very different approaches to build.</p><h2>Ages 3–5: Mirror What You Want to See</h2><ul><li>Say please and thank you to everyone — the autorickshaw driver, the vegetable vendor, the delivery person. Your child is watching.</li><li>Introduce the idea that other people have feelings: 'The didi worked really hard to clean the house today. How do you think she would feel if we left a mess?'</li><li>When your child is rude, address it without shame: 'That was not kind. Let's try that again.'</li><li>Speak to your child with the same courtesy you want them to show others.</li></ul><h2>Ages 6–9: Name Respect in Everyday Moments</h2><ul><li>When you see disrespectful behaviour, name it: 'Did you notice how that person spoke to the waiter? What do you think about that?'</li><li>Teach the difference between agreeing with someone and respecting them.</li><li>When your child speaks disrespectfully to you: 'That was rude. I would like you to say that again differently.' Then wait.</li><li>Acknowledge respectful behaviour specifically.</li></ul><h2>Ages 10–13: Discuss, Don't Dictate</h2><ul><li>Have a conversation — not a lecture — about what respect means to your family. Ask your child's view first.</li><li>Be explicit when you make a mistake: 'I spoke to you sharply earlier and you didn't deserve that. I am sorry.'</li><li>Let them call you out respectfully when you are being disrespectful.</li></ul>`,
+
+//   cb_10: `<h1>Setting Boundaries With Kids</h1><p>Children without clear boundaries are not free. They are anxious. A child who has not been shown where the walls are spends enormous emotional energy testing for them — escalating behaviour until someone finally says 'this far and no further.' That moment of a firm, loving limit is experienced by most children as profound relief.</p><h2>The Characteristics of Boundaries That Work</h2><ul><li><strong>Clear:</strong> 'Be home by 5' is a boundary. 'Come home at a reasonable time' is not.</li><li><strong>Explained:</strong> Children who understand the reason are significantly more likely to respect it.</li><li><strong>Consistent:</strong> A boundary that shifts based on your mood is not a boundary. It is a guideline with exceptions.</li><li><strong>Followed through:</strong> Every boundary that is stated and then not enforced weakens every future boundary.</li><li><strong>Proportionate:</strong> The consequence for crossing a boundary should fit the boundary.</li></ul><h2>Ages 3–5: Simple, Physical, Immediate</h2><ul><li>Choose two or three genuinely non-negotiable boundaries and hold only those firmly.</li><li>State the boundary at a neutral moment, not in the middle of a conflict.</li><li>When the boundary is crossed: calm, immediate, consistent. The same response every time.</li></ul><h2>Ages 6–9: Negotiate Within the Framework</h2><ul><li>Have a family conversation about house rules — as a genuine discussion, not a lecture.</li><li>Let them propose rules and consequences. They are often harder on themselves than you would have been.</li><li>When a boundary is pushed: acknowledge the push before holding the line.</li></ul><h2>Ages 10–13: Negotiate the Boundary Itself</h2><ul><li>Identify your true non-negotiables. There are probably fewer than you think.</li><li>Have an explicit conversation: 'I have some things I am not willing to move on. But there is also a lot we can work out together if you bring your reasoning.'</li><li>Increase autonomy explicitly as trust is demonstrated: 'You have been reliable about coming home when you said you would. I am going to extend your time by 30 minutes.'</li></ul>`,
+
+//   ed_01: `<h1>Building Emotional Resilience</h1><p>Resilience does not mean toughness. It does not mean bouncing back instantly as if nothing happened. It means your child can experience difficulty fully, be genuinely affected by it, and recover — not unchanged, but stronger.</p><h2>The 4 Pillars of Emotional Resilience</h2><h3>Pillar 1: Secure Attachment</h3><ul><li>Be consistently available — not perfect, but predictable.</li><li>Repair ruptures quickly. 'I was short with you earlier and that was not okay. I'm sorry.'</li><li>Make your love unconditional and visible.</li></ul><h3>Pillar 2: Emotional Competence</h3><ul><li>Create a home where all emotions are welcome.</li><li>Help them develop a nuanced emotional vocabulary.</li><li>Teach them that emotions are temporary. 'This feeling is real and big. And it will pass.'</li></ul><h3>Pillar 3: Self-Efficacy</h3><ul><li>Allow age-appropriate struggle.</li><li>Highlight their track record. 'Remember when you thought you couldn't? And you did.'</li><li>Let them fail. Failure is the raw material from which resilience is built.</li></ul><h3>Pillar 4: Problem-Solving Orientation</h3><ul><li>When your child comes with a problem, ask: 'What do you think you could do about it?'</li><li>Model problem-solving thinking aloud.</li><li>After difficulty, build the habit of debrief: 'What happened? What worked? What would you do differently?'</li></ul><h2>What Undermines Resilience — Stop Doing These</h2><ul><li><strong>Eliminating all difficulty:</strong> A friction-free childhood produces a fragile adult.</li><li><strong>Rescuing from consequences:</strong> Bailing them out steals the learning.</li><li><strong>Catastrophising:</strong> If you respond with more panic than they feel, you teach them that problems are catastrophes.</li><li><strong>Teaching helplessness:</strong> 'You can't do that, let me do it for you' repeated enough becomes a belief.</li><li><strong>Inconsistent emotional availability:</strong> A parent who is available on good days and withdrawn on bad days creates anxiety, not security.</li></ul>`,
+
+//   ed_02: `<h1>Emotional Intelligence in Children</h1><p>Academic success, social confidence, strong friendships, resilience under pressure — the one thing that predicts all of these better than IQ is emotional intelligence. And unlike IQ, emotional intelligence can be taught, practised, and strengthened at every age.</p><h2>The Four Components</h2><ul><li><strong>Self-awareness:</strong> The ability to recognise and name what you are feeling. This is the foundation of all emotional intelligence.</li><li><strong>Self-regulation:</strong> The ability to manage emotions rather than being controlled by them.</li><li><strong>Empathy:</strong> The ability to recognise and understand what other people are feeling.</li><li><strong>Social skills:</strong> The ability to use emotional awareness in relationships.</li></ul><h2>Ages 3–5: Building the Emotional Vocabulary</h2><ul><li>Name their emotions for them, specifically and without judgment. 'You look really frustrated that the tower fell down' does more than 'don't cry.'</li><li>Use a feelings vocabulary that goes beyond happy, sad, and angry.</li><li>Read stories together and pause to ask what the character might be feeling.</li></ul><h2>Ages 6–9: Developing Self-Regulation Strategies</h2><ul><li>Teach the gap between feeling and action explicitly. 'It is completely okay to feel angry. It is not okay to hit.'</li><li>Help them build a personal emotional toolkit.</li><li>Practise perspective-taking actively.</li><li>Model your own emotional intelligence openly.</li></ul><h2>Ages 10–13: Sophisticated Emotional Intelligence</h2><ul><li>Have real conversations about emotional complexity. 'It is possible to be excited about the new school and also scared about leaving your friends. Both feelings are true at the same time.'</li><li>Discuss emotional intelligence as a skill and a strength.</li><li>Help them read social situations.</li></ul><h2>5 Common Mistakes That Undermine Emotional Intelligence</h2><ul><li><strong>Dismissing emotions:</strong> 'You are fine,' 'stop crying,' 'there is nothing to be scared of.'</li><li><strong>Fixing instead of feeling:</strong> Rushing to solve the problem skips the emotional processing.</li><li><strong>Punishing emotions:</strong> A child who is punished for being angry learns to suppress anger, not manage it.</li><li><strong>Modelling emotional suppression:</strong> If you never show your own emotions, your child learns that emotions are something to hide.</li><li><strong>Labelling children by their emotions:</strong> 'You are so sensitive' turns a temporary state into an identity.</li></ul>`,
+
+//   ed_03: `<h1>Helping Children Express Emotions</h1><p>Every behaviour problem that baffles a parent has an unexpressed emotion underneath it. The child who hits is the child who cannot say 'I am overwhelmed.' The child who withdraws is the child who cannot say 'I am hurt.' A child who can articulate what they feel almost never needs to show it through destructive behaviour.</p><h2>Why Children Struggle to Express Emotions</h2><ul><li>They lack the vocabulary.</li><li>They have been taught — often unintentionally — that certain emotions are not acceptable.</li><li>They do not feel safe enough.</li><li>They do not have a model.</li></ul><h2>Ages 3–5: Give Them the Words</h2><ul><li>Narrate what you observe. 'Your face looks scrunched up and your fists are tight. I think you might be feeling really frustrated.'</li><li>Use emotion check-ins at calm moments, not just during meltdowns. At dinner: 'What was the best part of your day? What was the hardest part?'</li><li>Offer physical expression channels alongside verbal ones.</li><li>Never correct their emotion. If they say they are angry and you think they are actually sad, do not argue.</li></ul><h2>Ages 6–9: Build the Habit of Emotional Communication</h2><ul><li>Create a regular, low-pressure space for emotional expression.</li><li>Introduce 'I feel _____ because _____' as a sentence structure. Practise it yourself first.</li><li>When they do express something difficult, respond with acknowledgment before anything else: 'Thank you for telling me that. That took courage.'</li></ul><h2>Ages 10–13: Respect the Complexity</h2><ul><li>Use side-by-side activities. Cooking together, walking, driving — these create natural conversation without the intensity of sitting face to face.</li><li>Validate the complexity. 'It sounds like you are dealing with a lot of feelings about this all at once. That is completely normal and really hard.'</li><li>Share your own emotional experiences appropriately.</li></ul><h2>What Blocks Emotional Expression — Stop Doing These</h2><ul><li>Interrogating instead of inviting</li><li>Offering solutions before listening</li><li>Making it about you</li><li>Time-pressuring expression: 'Just tell me what's wrong, we don't have all day.'</li></ul>`,
+
+//   ed_04: `<h1>Helping Children Overcome Fear</h1><p>Every child is afraid of something. Fear is not a flaw — it is one of the most important emotions a human being has. The brave child is not the one who feels no fear. The brave child is the one who feels fear and acts anyway — who has learned that fear is information, not a verdict.</p><h2>Common Childhood Fears by Age</h2><ul><li><strong>Ages 3–5:</strong> Imaginative fears — the dark, monsters, loud noises, separation from parents.</li><li><strong>Ages 6–9:</strong> Concrete fears — injury, natural disasters, bad people, death.</li><li><strong>Ages 10–13:</strong> Social fears — embarrassment, rejection, failure, not fitting in.</li></ul><h2>The Golden Rule: Validate, Then Approach</h2><p><strong>Step 1:</strong> Validate the fear completely. 'I can see that you are really scared. That feeling makes sense.' Do not minimise it.</p><p><strong>Step 2:</strong> Support gradual approach — never forcing, always supporting. Every time a child avoids what they fear, the fear grows.</p><h2>Ages 3–5: Make Fear Safe to Talk About</h2><ul><li>Take their fears seriously, even irrational ones. 'Let us check under the bed together' works. 'There is no monster, don't be silly' does not.</li><li>Use stories and play to process fears.</li><li>Never force confrontation.</li></ul><h2>Ages 6–9: Build the Courage Muscle</h2><ul><li>Teach them about the fight-or-flight response. Understanding the physiology reduces fear of the fear itself.</li><li>Create a 'brave steps' plan together — step-by-step, voluntary approach.</li><li>Celebrate every brave step. 'You were scared but you did it. That is real courage.'</li></ul><h2>Ages 10–13: Address Social Fears</h2><ul><li>Normalise the fear. 'Being afraid of what people think is one of the most common feelings in the world.'</li><li>Help them reality-test fears. 'What is the worst that could actually happen?'</li><li>Build their 'evidence file' of times they faced fear and survived.</li></ul><h2>What Makes Childhood Fears Worse — Stop Doing These</h2><ul><li>Forcing confrontation — creates trauma, not courage</li><li>Ridiculing fear: 'Don't be a baby' adds shame to fear</li><li>Transferring your own fears — children are tuned to parental anxiety</li><li>Reassurance on repeat — one acknowledgment and a plan is more effective than endless 'there is nothing to worry about'</li></ul>`,
+
+//   ed_05: `<h1>Helping Kids Deal with Frustration</h1><p>Frustration is the emotion children feel most frequently. Every single day, your child runs into the gap between what they want to do and what they can do. Most children respond in one of three ways: they explode, they give up, or they shut down. What does work is learning to tolerate frustration long enough to push through it — because on the other side of frustration is growth.</p><h2>Why Frustration Is Actually Good — In the Right Dose</h2><p>Frustration is the feeling that accompanies learning. If something is easy, your child is practising what they already know. If something is frustrating, they are working at the edge of their ability — exactly where growth happens.</p><h2>The Frustration Cycle</h2><p><strong>Unhealthy:</strong> Attempt → Failure → Frustration → Emotional reaction → Giving up</p><p><strong>Healthy:</strong> Attempt → Failure → Frustration → Pause → Adjusted attempt → Progress</p><h2>Ages 3–5: Keep It Small and Supported</h2><ul><li>Sit with them in the frustration. 'This is really hard. That's so frustrating.' Your presence is regulating.</li><li>Resist the urge to do it for them. Guide rather than rescue.</li><li>Break tasks into smaller steps.</li><li>Celebrate the persistence, not just the result.</li></ul><h2>Ages 6–9: Build the Frustration Toolkit</h2><ul><li>Teach the 'pause and breathe' technique explicitly.</li><li>Introduce the 'stuck' protocol: (1) Try again differently. (2) Break it into parts. (3) Take a break. (4) Ask for help.</li><li>Normalise frustration by sharing your own experiences.</li></ul><h2>Ages 10–13: Reframe Frustration as Information</h2><ul><li>Introduce 'productive struggle.' 'That frustration is actually the feeling of learning happening.'</li><li>Help them identify their frustration patterns.</li><li>Distinguish between productive and unproductive frustration.</li></ul><h2>What Makes Frustration Worse — Stop Doing These</h2><ul><li>Saying 'it's easy': If it were easy, they would not be frustrated.</li><li>Rescuing immediately: Every rescue teaches them frustration is a signal to stop.</li><li>Adding pressure: 'Come on, you know this!' adds shame to an already difficult experience.</li><li>Comparing to others: 'Your classmate can do this' communicates something is wrong with them.</li></ul>`,
+
+//   ed_06: `<h1>Helping Kids Handle Disappointment</h1><p>The birthday party that got cancelled. The team they did not make. The friend who chose someone else. The grade that fell short. Disappointment is woven into childhood — and yet most children are never explicitly taught how to handle it. Your job is not to prevent disappointment. It is to be present while they experience it — and to help them discover that they can survive it.</p><h2>Why Disappointment Feels So Big to Children</h2><ul><li>They live in the present. An adult can put disappointment in context. A 5-year-old cannot.</li><li>They have less experience with recovery. Each disappointment feels like it might be the one they cannot come back from.</li><li>Their expectations are absolute. When reality diverges from expectation, the gap is enormous.</li></ul><h2>Ages 3–5: Name It and Stay Close</h2><ul><li>Name the feeling specifically. 'You are really disappointed that we can't go to the park today.'</li><li>Do not rush to fix it. Let them feel the disappointment first.</li><li>Avoid minimising. 'It's not a big deal' is factually incorrect from the child's perspective.</li></ul><h2>Ages 6–9: Build the Recovery Muscle</h2><ul><li>Validate first, coach second. 'I know you really wanted to win that game. It hurts when you work hard and it doesn't go the way you wanted.' Then: 'What do you think you might do differently next time?'</li><li>Help them separate effort from outcome. 'You can control how hard you try. You can't always control what happens.'</li><li>Introduce 'Plan B thinking.' 'Okay, that did not work out. What is another way we could approach this?'</li></ul><h2>Ages 10–13: Develop Perspective Without Dismissing</h2><ul><li>Listen more than you advise. A 12-year-old who has just been cut from a team does not want to hear 'there are other teams.' They want someone to sit in the disappointment with them.</li><li>Help them distinguish between disappointment and failure. 'Not making the team is a disappointment. It is not a statement about who you are as a person.'</li></ul><h2>What Makes Disappointment Harder — Stop Doing These</h2><ul><li>Preventing all disappointment — produces fragility, not resilience</li><li>Toxic positivity: 'Everything happens for a reason!'</li><li>Comparing disappointments: 'Some children don't even have food to eat'</li><li>Fixing it immediately — teaches that disappointment is something to escape</li></ul>`,
+
+//   ed_07: `<h1>Managing Tantrums (Age 3–6)</h1><p>A tantrum is not your child being naughty. A tantrum is your child's nervous system hitting a wall it cannot climb over. The screaming, the flailing, the throwing themselves on the floor — these are not choices. They are the result of an immature brain being overwhelmed by an emotion it does not yet have the tools to manage.</p><h2>What Is Actually Happening in Your Child's Brain</h2><p>When a young child's emotional system is overwhelmed, the amygdala — the brain's alarm centre — takes control. The prefrontal cortex, which handles reasoning, language, and impulse control, goes offline. This is why you cannot reason with a child mid-tantrum.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Address the basics first: a well-rested, well-fed child has dramatically fewer tantrums.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Offer choices within limits.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words: 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out.</li><li><strong>Step 5:</strong> Reconnect after — before you correct.</li></ul><h2>What Makes Tantrums Worse — Stop Doing These</h2><ul><li>Saying 'stop crying': This demands something the child cannot do.</li><li>Giving in to end it: If you say no and then change to yes when they tantrum, you have taught them that tantrums work.</li><li>Punishing tantrums: This teaches that having big emotions leads to rejection.</li><li>Ignoring completely: There is a difference between not giving in and not giving attention.</li><li>Threatening: Threats during a tantrum are not processed by the child's brain.</li></ul>`,
+
+//   ed_08: `<h1>Raising Emotionally Strong Children</h1><p>The emotionally strong child is not the one who never cries. It is the child who feels deeply, recovers effectively, and grows through difficulty rather than being diminished by it. Emotional strength is not about suppression. It is about capacity — the capacity to experience the full range of human emotions, to tolerate discomfort, and to bounce back after hard experiences.</p><h2>What Emotional Strength Looks Like</h2><ul><li><strong>Emotional range:</strong> The ability to experience uncomfortable emotions without being overwhelmed.</li><li><strong>Recovery speed:</strong> The ability to return to baseline after emotional disruption.</li><li><strong>Emotional honesty:</strong> The willingness to be truthful about feelings rather than performing expected emotions.</li><li><strong>Internal stability:</strong> A core sense of self not dependent on external validation.</li></ul><h2>5 Daily Practices That Build Emotional Strength</h2><ul><li><strong>Let them feel everything:</strong> Every time you allow your child to feel sad, frustrated, or anxious and support them through it without rushing to fix it, you are building their emotional capacity.</li><li><strong>Validate before you redirect:</strong> 'That sounds really hard.' before anything else.</li><li><strong>Model your own emotional process:</strong> 'I made a mistake and I feel bad about it. I'm going to apologise.'</li><li><strong>Give them real responsibility:</strong> A 4-year-old setting the table, a 7-year-old managing homework, a 12-year-old cooking a simple meal.</li><li><strong>Teach constructive self-talk:</strong> 'I can try again.' 'This is hard but I can handle it.'</li></ul><h2>What Weakens Emotional Strength — Stop Doing These</h2><ul><li>Over-protecting: A child shielded from every difficulty never builds evidence they can cope.</li><li>Equating emotion with weakness: 'Stop crying — be strong' teaches that strength and emotion are opposites. They are not.</li><li>Fixing everything for them: Every problem you solve is a problem they did not get to solve.</li><li>Praising only outcomes: Praise effort instead.</li></ul>`,
+
+//   ed_09: `<h1>Teaching Patience to Children</h1><p>We live in an instant world — instant streaming, instant messaging, instant delivery. And then we ask our children to wait, and we are surprised when they cannot. Patience is not a personality trait some children are born with. It is a skill that depends on the development of impulse control, emotional regulation, and the ability to tolerate discomfort.</p><h2>Why Is Patience So Hard for Children?</h2><p>Patience requires the prefrontal cortex — the part of the brain responsible for impulse control, planning, and delaying gratification. In young children, this part of the brain is the least developed. But it develops through practice. Every time a child practises waiting — with support, not in distress — they are literally strengthening the neural pathways that make patience possible.</p><h2>Ages 3–5: Tiny Waits With Big Support</h2><ul><li>Start with waits that have a visible end point — an hourglass timer, a visual countdown.</li><li>Name the skill. 'You waited so patiently while I was on the phone. That was really hard and you did it.'</li><li>Play waiting games — red light/green light, Simon says.</li><li>Do not eliminate all waiting. Some boredom is a feature, not a bug.</li></ul><h2>Ages 6–9: Stretching the Patience Muscle</h2><ul><li>Introduce delayed rewards. 'One sweet now, or two after dinner.'</li><li>Help them develop personal waiting strategies.</li><li>Use cooking and gardening as patience teachers.</li><li>Narrate your own patience.</li></ul><h2>Ages 10–13: Patience as Strategic Thinking</h2><ul><li>Connect patience to goals they care about.</li><li>Discuss the cost of impatience with real examples.</li><li>Introduce long-term projects.</li></ul><h2>What Undermines Patience — Stop Doing These</h2><ul><li>Instant entertainment at every pause — removes practice opportunities</li><li>Rewarding impatience — if whining accelerates the timeline, you have taught that impatience works</li><li>Breaking promises about timing — 'five more minutes' that turns into twenty erodes trust</li><li>Being impatient yourself — children learn more from what you do than what you say</li></ul>`,
+
+//   ed_10: `<h1>Why Children Get Angry</h1><p>Your child is not angry because they are bad. They are not angry because you are a bad parent. They are angry because anger is the most accessible emotion — the one that shows up first when something underneath it is not being addressed. Anger in children is almost never really about anger. It is about frustration, injustice, fear, embarrassment, powerlessness, or hurt that the child cannot process or express any other way.</p><h2>The Science Behind Anger in Children</h2><p>When a child feels threatened — physically, emotionally, or socially — their brain releases stress hormones that prepare them for fight or flight. In children, the prefrontal cortex is still developing. This means that when anger is triggered, the emotional brain takes over and the thinking brain goes offline. This is not a discipline problem. It is a developmental reality.</p><h2>Ages 3–5: Big Feelings in Small Bodies</h2><ul><li>Acknowledge the frustration before addressing the behaviour. 'You are SO frustrated that it won't stay up. That is really hard.'</li><li>Reduce the triggers where possible. If your child melts down every evening at 5:30, they are probably tired and hungry.</li><li>Stay physically close and calm. Your regulated presence is the most powerful tool you have.</li></ul><h2>Ages 6–9: The Growing Sense of Justice</h2><ul><li>Take their sense of fairness seriously, even when you disagree.</li><li>Look for the hurt underneath the anger. 'You seem really angry about what happened at school. I wonder if something hurt your feelings?'</li><li>Give them a voice in family decisions where appropriate.</li></ul><h2>Ages 10–13: Complex Anger in Pre-Teens</h2><ul><li>Do not take the anger personally, even when it is directed at you.</li><li>Offer physical outlets. Running, sport, even hitting a pillow.</li><li>Distinguish between the anger and the issue. 'I can see you are furious. Let us deal with the anger first, and then we will figure out the problem together.'</li></ul><h2>What Makes Children's Anger Worse — Stop Doing These</h2><ul><li>Matching their intensity</li><li>Demanding immediate calm: 'Calm down right now!' has never once caused a child to calm down</li><li>Dismissing the trigger: 'You're angry about THAT?'</li><li>Using anger as a teaching moment during the anger</li><li>Withholding affection as punishment for anger</li></ul>`,
+
+//   hd_01: `<h1>Building Reading Habits</h1><p>Reading is the single habit that predicts academic success more reliably than any other factor — more than tutoring, more than school quality, more than parental education level. A child who reads regularly develops a larger vocabulary, stronger comprehension, deeper empathy, and better critical thinking skills than a child who does not. And the gap compounds over time.</p><h2>Why Some Children Love Reading and Others Don't</h2><ul><li><strong>Access:</strong> Children surrounded by books read more. If the nearest book requires effort to find, screens will win every time.</li><li><strong>Choice:</strong> Children who are allowed to choose what they read develop reading habits. Children who are told what to read develop reading resistance.</li><li><strong>Association:</strong> If reading is associated with pleasure and warmth, children seek it out. If associated with obligation and testing, they avoid it.</li></ul><h2>Ages 3–5: Make Books Part of the Furniture</h2><ul><li>Read aloud every single day, ideally at the same time. Bedtime is the most powerful anchor.</li><li>Let them choose the book, even if it is the same book for the fourteenth consecutive night.</li><li>Have books everywhere — not just on a shelf, but on the coffee table, in the car, in the bathroom.</li><li>Do not turn reading into a lesson. Let the story be the experience.</li></ul><h2>Ages 6–9: Protect the Pleasure</h2><ul><li>Maintain a daily reading time that is separate from school reading.</li><li>Let them abandon books they do not enjoy.</li><li>Introduce them to series. Once a child is hooked on a series character, they will read the next book voluntarily.</li><li>Read alongside them.</li></ul><h2>Ages 10–13: Respect Their Taste</h2><ul><li>Respect their genre preferences absolutely. Fantasy, horror, graphic novels, manga — all of it counts.</li><li>Connect reading to their interests.</li><li>Create physical reading spaces.</li><li>Discuss books as equals, not as teacher and student.</li></ul><h2>What Kills Reading Habits — Stop Doing These</h2><ul><li>Making reading a punishment or obligation</li><li>Restricting their choices: 'That book is too easy for you'</li><li>Competing with screens at reading time</li><li>Testing comprehension after every chapter</li><li>Not reading yourself</li></ul>`,
+
+//   hd_02: `<h1>Daily Routines for Children</h1><p>A good daily routine is the closest thing to a parenting superpower. When routines are working, mornings are calm, transitions are smooth, homework happens without a fight, and bedtime does not require negotiation. When routines are absent, every single transition becomes a decision — and decisions create conflict.</p><h2>Why Daily Routines Matter</h2><p>Routines provide three things every child needs: predictability, autonomy, and reduced conflict. The routine becomes the authority, not you. 'It is not me telling you to brush your teeth — it is the routine.'</p><h2>The Three Blocks</h2><h3>The Morning Block</h3><p>Core elements: Wake up → hygiene → get dressed → eat breakfast → pack bag → leave. The fewer decisions within this block, the smoother it runs.</p><h3>The After-School Block</h3><p>Arrive home → snack and decompression (15–20 minutes) → homework → free time → dinner. The key is that decompression comes first.</p><h3>The Evening Block</h3><p>Core elements: Dinner → tidy up/pack bag for tomorrow → bath/shower → reading or quiet time → lights out.</p><h2>Building Routines by Age</h2><h3>Ages 3–5: Visual and Simple</h3><ul><li>Use a picture chart they can follow.</li><li>Keep the routine to 4–6 steps.</li><li>Do the routine together initially, then gradually step back.</li></ul><h3>Ages 6–9: Collaborative and Growing</h3><ul><li>Build the routine together. Let them choose the order where flexibility exists.</li><li>Introduce a checklist they can tick off themselves.</li><li>Add one new element at a time.</li></ul><h3>Ages 10–13: Owned and Flexible</h3><ul><li>Let them design their own routine within your non-negotiable framework.</li><li>Allow them to adjust and iterate.</li><li>Respect their growing need for autonomy.</li></ul><h2>What Breaks Daily Routines — Stop Doing These</h2><ul><li>Perfectionism: Aim for 80% consistency — that is enough for the habit to form.</li><li>Too rigid: A routine should be a framework, not a prison.</li><li>No weekend version: Weekends need a routine too — just a looser one.</li><li>Not modelling it: If you have no routines of your own, your expectation feels arbitrary.</li></ul>`,
+
+//   hd_03: `<h1>Helping Kids Stay Organized</h1><p>Organisation is not something children are born with or without. It is a set of learnable systems — and the children who learn these systems early have a significant advantage in school, in friendships, and eventually in their careers.</p><h2>Why Some Children Seem Naturally Disorganized</h2><ul><li>Their working memory is still developing.</li><li>They have never been taught a system. Most parents tell children to 'be more organised' without showing them how.</li><li>Their environment is working against them.</li></ul><h2>Ages 3–5: Everything Has a Home</h2><ul><li>Label storage with pictures.</li><li>Teach 'one out, one back' — before getting a new toy out, put the current one away.</li><li>Use the same spot for essentials every single day.</li></ul><h2>Ages 6–9: Systems and Checklists</h2><ul><li>Help them set up a homework station with all supplies in one place.</li><li>Introduce a 'landing pad' by the door — a hook for the bag, a tray for papers that need signing.</li><li>Teach the weekly bag check: every Sunday, empty the bag completely, sort, restock.</li><li>Use colour-coding for school subjects.</li></ul><h2>Ages 10–13: Self-Managing Systems</h2><ul><li>Help them set up a planner or digital calendar for assignments and deadlines.</li><li>Teach inbox-zero for papers: every paper that comes home gets sorted immediately.</li><li>Introduce the 5-minute tidy at the end of each day.</li><li>Let them design their own workspace — ownership increases maintenance.</li></ul><h2>What Undermines Organisation — Stop Doing These</h2><ul><li>Organising for them — a child whose parent sorts, packs, and tidies everything never builds the skill</li><li>Expecting perfection</li><li>Overwhelming overhauls — do not reorganise their entire room in one day</li><li>No maintenance routine</li><li>Criticising their system — if their method works for them, leave it alone</li></ul>`,
+
+//   hd_04: `<h1>How Children Develop Habits</h1><p>A habit is not a decision. It is a behaviour that has been repeated so many times it becomes automatic — the brain's way of conserving energy by putting routine actions on autopilot.</p><h2>The Science of Habit Formation</h2><p>Every habit follows a three-part loop:</p><ul><li><strong>Cue:</strong> Something that triggers the behaviour — a time of day, a location, an event.</li><li><strong>Routine:</strong> The behaviour itself.</li><li><strong>Reward:</strong> Something that makes the brain want to repeat the loop.</li></ul><p>The critical insight: children's habit loops are more dependent on cues and rewards than adult habits. They need strong, consistent cues and meaningful rewards, especially in the early stages.</p><h2>How Long Does It Take?</h2><ul><li>Simple habits (hanging up a coat): 3–6 weeks with consistent cueing.</li><li>Moderate habits (brushing teeth without reminding): 6–12 weeks.</li><li>Complex habits (managing a full morning routine independently): 3–6 months.</li></ul><h2>Ages 3–5: Habits Through Routine and Repetition</h2><ul><li>Attach new habits to existing anchors. 'After we come inside, we take off shoes and put them on the rack.'</li><li>Make the habit physical and visible.</li><li>Use immediate, specific praise as the reward.</li></ul><h2>Ages 6–9: Habits Through Understanding and Ownership</h2><ul><li>Involve them in the decision. 'We need a system for getting ready. What do you think should happen first?'</li><li>Introduce habit stacking. 'After you brush your teeth, you put your clothes out for tomorrow.'</li><li>Shift from external rewards to internal ones gradually.</li></ul><h2>Ages 10–13: Habits Through Identity and Goals</h2><ul><li>Connect habits to their goals, not yours.</li><li>Introduce habit tracking.</li><li>Discuss habits as identity. 'You are someone who follows through on commitments.'</li></ul><h2>What Undermines Habit Formation — Stop Doing These</h2><ul><li>Inconsistency — the single biggest killer of habit formation</li><li>Too many habits at once</li><li>Nagging instead of cueing</li><li>Expecting willpower — children need environmental support</li><li>Punishing failure instead of re-cueing</li></ul>`,
+
+//   hd_05: `<h1>Morning Routines for Kids</h1><p>If your mornings involve shouting 'we are going to be late' while one child cannot find their shoes and another has not eaten breakfast — you do not have a discipline problem. You have a systems problem. Morning routines for kids are the single most impactful system you can build in your household.</p><h2>Why Mornings Are So Hard</h2><ul><li>Time pressure amplifies everything. The margin for error is zero.</li><li>Children's brains are not at peak executive function in the morning.</li><li>Too many decisions. What to wear, what to eat, where is the bag — each decision is a friction point.</li></ul><h2>Ages 3–5: The Picture Chart System</h2><p>A routine that works: 1. Wake up 2. Use the toilet and wash hands 3. Get dressed (clothes laid out the night before) 4. Eat breakfast 5. Brush teeth 6. Shoes and bag on 7. Ready to leave</p><ul><li>A picture chart on the wall at their height showing each step.</li><li>Lay out clothes the night before.</li><li>Build in 10–15 minutes of buffer time.</li></ul><h2>Ages 6–9: The Checklist System</h2><ul><li>A written checklist they can tick off — the ticking is its own reward.</li><li>Teach them to pack their bag the night before and check it in the morning.</li><li>Do not hover. Let them work through the checklist independently.</li></ul><h2>Ages 10–13: The Self-Managed System</h2><ul><li>They set their own alarm and are responsible for getting themselves up.</li><li>The only parental role is a time check: 'We leave in 15 minutes' stated once, neutrally.</li><li>Natural consequences apply.</li></ul><h2>The Night-Before Prep That Makes Mornings Work</h2><ul><li>Clothes laid out or chosen.</li><li>Bag packed and by the door.</li><li>Breakfast decided.</li><li>A consistent bedtime — the number one cause of terrible mornings is insufficient sleep.</li></ul><h2>What Sabotages Morning Routines — Stop Doing These</h2><ul><li>Screens before the routine is complete</li><li>Nagging instead of cueing — a checklist on the wall works better than repeated questions</li><li>Doing it for them to save time</li><li>Inconsistency on weekends</li><li>Not building in buffer time</li></ul>`,
+
+//   hd_06: `<h1>Teaching Responsibility at Home</h1><p>Responsibility is not taught through lectures. It is taught through experience — real tasks, real consequences, and the real satisfaction of contributing to something that matters.</p><h2>The Mindset Shift: From Chores to Contribution</h2><p>'Everyone in this family has a role. My role is to cook dinner. Your role is to set the table. We are a team.' This framing changes everything.</p><h2>Age-Appropriate Responsibilities</h2><h3>Ages 3–5</h3><ul><li>Put toys away after playing</li><li>Carry their plate to the sink</li><li>Help feed a pet</li><li>Put dirty clothes in the laundry basket</li><li>Water a plant</li><li>Help set the table</li></ul><h3>Ages 6–9</h3><ul><li>Make their own bed</li><li>Pack their school bag</li><li>Clear and wipe the table after meals</li><li>Sort laundry by colour</li><li>Help prepare simple food</li><li>Keep their room tidy</li></ul><h3>Ages 10–13</h3><ul><li>Cook a simple meal independently</li><li>Do their own laundry</li><li>Clean a bathroom</li><li>Manage their homework schedule without reminders</li><li>Care for a pet independently</li><li>Help with grocery shopping</li></ul><h2>How to Teach Responsibility Without Nagging</h2><ul><li>Teach the task once, thoroughly. Do it together, then watch them, then let them do it alone.</li><li>Set clear expectations.</li><li>Use natural consequences, not punishment.</li><li>Accept imperfection. A 6-year-old's made bed will not look like yours.</li><li>Express genuine gratitude.</li></ul><h2>What Undermines Responsibility — Stop Doing These</h2><ul><li>Doing it yourself because it is faster</li><li>Redoing their work in front of them</li><li>Inconsistency</li><li>Gender-based task assignment — all children should learn to cook, clean, and manage a household</li></ul>`,
+
+//   hd_07: `<h1>Teaching Self Discipline</h1><p>There are two kinds of disciplined children. The first behaves well because an adult is watching. The second behaves well because they have internalised the standards and can regulate themselves even when no one is watching. The first has been disciplined. The second has self-discipline.</p><h2>What Self Discipline Actually Is</h2><ul><li><strong>Impulse control:</strong> The ability to pause between a desire and an action.</li><li><strong>Delayed gratification:</strong> The ability to choose a larger later reward over a smaller immediate one.</li><li><strong>Self-regulation:</strong> The ability to manage emotions, attention, and behaviour in pursuit of a goal.</li></ul><h2>Ages 3–5: The Foundations of Impulse Control</h2><ul><li>Play games that require impulse control. Simon says, red light/green light, freeze dance.</li><li>Use 'when-then' consistently.</li><li>Praise self-regulation when you see it. 'You wanted to grab that toy from Riya, but you waited for your turn. That was really hard and you did it.'</li></ul><h2>Ages 6–9: Building the Muscle</h2><ul><li>Introduce the concept of 'hard now, easy later' versus 'easy now, hard later.'</li><li>Give them increasing autonomy with clear expectations.</li><li>Let them set and pursue their own goals.</li><li>Do not rescue them from the consequences of poor self-discipline.</li></ul><h2>Ages 10–13: From External to Internal</h2><ul><li>Have explicit conversations about self discipline as a competitive advantage.</li><li>Help them identify their own self-discipline weaknesses without judgment.</li><li>Reduce external controls gradually.</li><li>Model your own self-discipline openly. 'I do not feel like going for a run this morning, but I know I will feel better after. So I am going.'</li></ul><h2>What Undermines Self Discipline — Stop Doing These</h2><ul><li>Over-controlling — a child who is micromanaged never develops self-management</li><li>Inconsistent consequences</li><li>Rewarding everything externally</li><li>Modelling poor self-discipline</li><li>Expecting perfection — self-discipline develops through practice, including failure</li></ul>`,
+
+//   hd_08: `<h1>Teaching Time Management to Kids</h1><p>The morning rush where everyone is shouting. The homework that starts at 9 PM because the afternoon disappeared. The project due tomorrow that was assigned two weeks ago. Every one of these scenarios has the same root cause: a child who has not yet learned to manage time.</p><h2>Why Time Management Is So Hard for Children</h2><ul><li>Time perception is developmental. A 4-year-old has no concept of 'five minutes' versus 'an hour.'</li><li>The prefrontal cortex is still developing.</li><li>The present is always more compelling than the future.</li></ul><h2>Ages 3–5: Make Time Visible</h2><ul><li>Use visual timers — an hourglass or kitchen timer makes time something the child can see passing.</li><li>Create visual schedules.</li><li>Use 'first-then' language. 'First we eat dinner, then we play.'</li><li>Build time awareness through daily conversation.</li></ul><h2>Ages 6–9: Build Estimation and Planning Skills</h2><ul><li>Play the 'how long will it take' game. Before any task, ask them to estimate. Then time it and see.</li><li>Introduce a simple planner or calendar.</li><li>Teach backward planning for projects. 'Your science project is due Friday. Today is Monday. Let's work backward.'</li><li>Let them experience the consequences of poor time management.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them design their own weekly schedule.</li><li>Introduce the concept of prioritisation. 'You have three things to do tonight. Which one is most urgent? Which is most important? Are they the same thing?'</li><li>Discuss time wasters honestly.</li><li>Model your own time management.</li></ul><h2>What Undermines Time Management — Stop Doing These</h2><ul><li>Managing all their time for them</li><li>Rescuing them from time-related consequences</li><li>Over-scheduling — a child with no unstructured time never learns to manage time</li><li>Vague time references: 'We're leaving soon' means nothing. 'We're leaving in 10 minutes' gives them something to work with.</li></ul>`,
+
+//   hd_09: `<h1>Screen Time Balance for Kids</h1><p>The truth about screen time is nuanced. Screens are not inherently good or bad. What matters is how much, what kind, when, and what they are replacing. A child who watches a nature documentary for 30 minutes after a full day of school is in a completely different situation from a child who spends four hours scrolling.</p><h2>What the Research Actually Says</h2><ul><li>The dose matters. Moderate screen use is not associated with significant negative outcomes. Heavy use (4+ hours daily) is consistently linked to poorer sleep, reduced physical activity, and lower academic performance.</li><li>The content matters more than the time.</li><li>What screens replace matters most — every hour on a screen is an hour not spent playing, reading, or connecting.</li><li>Sleep is the most vulnerable area. Screens before bed disrupt melatonin production and sleep quality.</li></ul><h2>Guidelines by Age</h2><ul><li><strong>Ages 3–5:</strong> 30 minutes to 1 hour per day of high-quality content. No screens in the hour before bedtime.</li><li><strong>Ages 6–9:</strong> 1–1.5 hours of recreational screen time per day, after homework, physical activity, and responsibilities are complete.</li><li><strong>Ages 10–13:</strong> 1.5–2 hours, with the child increasingly managing their own limits.</li></ul><h2>The Screen Time Rules That Actually Work</h2><ul><li>Screens come after, not before — after homework, after physical activity, after responsibilities.</li><li>No screens in bedrooms — devices charge in a communal area overnight.</li><li>No screens during meals — this applies to parents too.</li><li>Not all screen time is equal — creating content is different from consuming it.</li><li>Model what you expect.</li></ul><h2>What Makes Screen Time Problems Worse — Stop Doing These</h2><ul><li>Using screens as the default babysitter</li><li>No clear rules</li><li>Screens as emotional regulation — handing a child a screen every time they are bored teaches that screens are how you manage feelings</li><li>Parental hypocrisy</li></ul>`,
+
+//   hd_10: `<h1>Why Routines Help Children</h1><p>Ask any child psychologist what the single most effective non-therapeutic intervention for childhood anxiety is, and most will say the same thing: a consistent daily routine. Routines help children because they answer the question every child is unconsciously asking throughout the day: 'What happens next?' When that question has a reliable answer, the child's nervous system can relax.</p><h2>The Science: How Routines Affect the Developing Brain</h2><ul><li><strong>Routines reduce cortisol.</strong> When a child knows what to expect, the brain's stress response system stays calm.</li><li><strong>Routines build neural efficiency.</strong> When a sequence of actions is repeated consistently, the brain automates it, freeing up cognitive resources for higher-order thinking.</li><li><strong>Routines develop executive function.</strong> Following a multi-step routine exercises planning, sequencing, and self-monitoring.</li><li><strong>Routines support emotional regulation.</strong> A child anchored by a predictable day has more emotional capacity to handle the unpredictable things within it.</li></ul><h2>The Specific Ways Routines Help</h2><ul><li><strong>Reduce anxiety and behavioural problems:</strong> Children with consistent routines display fewer behavioural problems and less defiance.</li><li><strong>Build independence and confidence:</strong> A child who knows the routine can follow it without being told.</li><li><strong>Improve sleep:</strong> A consistent bedtime routine is one of the most well-researched interventions for childhood sleep problems.</li><li><strong>Reduce family conflict:</strong> When the routine is the authority — not the parent — arguments decrease.</li><li><strong>Help children through transitions:</strong> During family disruptions, routines provide the stability that everything else has lost.</li></ul><h2>What Undermines Routines — Stop Doing These</h2><ul><li>Total inconsistency — a routine that is followed three days a week is not a routine</li><li>Over-complexity — a 15-step morning routine for a 5-year-old will fail</li><li>No transition support — warnings help: 'In five minutes, it will be bath time.'</li><li>Abandoning routine during holidays</li><li>Making it punitive — if the routine feels like a punishment, it will be resisted</li></ul>`,
+
+//   sl_01: `<h1>Bullying in Primary Schools</h1><p>Bullying in primary schools is more common than most parents realise and more harmful than most schools acknowledge. Research consistently shows that one in four to five children will experience bullying during their primary school years.</p><h2>What Bullying Actually Is — And What It Is Not</h2><p>Bullying is repeated, intentional aggressive behaviour directed at a specific child by someone with more social or physical power. The three defining features are: repetition, intent, and power imbalance. A one-off argument between equal friends is conflict, not bullying. Conflict needs mediation. Rudeness needs correction. Bullying needs intervention.</p><h2>Types of Bullying</h2><ul><li><strong>Physical bullying:</strong> Hitting, pushing, kicking, taking or damaging belongings.</li><li><strong>Verbal bullying:</strong> Name-calling, insults, threats, taunting.</li><li><strong>Social bullying:</strong> Deliberate exclusion, spreading rumours, public humiliation.</li><li><strong>Cyberbullying:</strong> Hurtful messages, social media exclusion, sharing embarrassing content.</li></ul><h2>How to Respond When Your Child Is Being Bullied</h2><ul><li><strong>Step 1 — Listen without overreacting:</strong> 'Thank you for telling me. That must be really hard. I am going to help you with this, and we are going to figure it out together.'</li><li><strong>Step 2 — Gather information calmly.</strong></li><li><strong>Step 3 — Document everything</strong> — dates, times, locations, witnesses.</li><li><strong>Step 4 — Contact the school strategically,</strong> in writing.</li><li><strong>Step 5 — Build your child's resilience</strong> alongside school intervention.</li></ul><h2>What to Tell Your Child</h2><p><strong>Do say:</strong> 'This is not your fault.' / 'You did the right thing telling me.' / 'We are going to deal with this together.'</p><p><strong>Do not say:</strong> 'Just ignore them.' / 'Hit them back.' / 'What did you do to make them pick on you?'</p>`,
+
+//   sl_02: `<h1>Encouraging Curiosity in Kids</h1><p>Every child is born curious. The tragedy is that this natural curiosity is often diminished by the time a child reaches middle school — not through malice, but through systems and habits that prioritise answers over questions, correctness over exploration, and efficiency over wonder. A curious child does not need to be motivated to learn. They are already motivated. Your job is simply to not get in the way.</p><h2>Why Curiosity Matters More Than You Think</h2><p>Curious children learn more, learn faster, and retain information longer. Research shows that when curiosity is activated, the brain releases dopamine — the same neurotransmitter associated with reward and motivation. Curiosity also predicts academic success more reliably than IQ.</p><h2>Ages 3–5: Follow Their Lead</h2><ul><li>When they ask 'why?' answer. Then ask them back: 'Why do YOU think?'</li><li>Let them explore freely within safety boundaries.</li><li>Provide open-ended materials: blocks, sand, water, art supplies.</li><li>Wonder aloud. 'I wonder why the sky turns orange at sunset. What do you think?'</li></ul><h2>Ages 6–9: Deepen and Broaden</h2><ul><li>When they show interest in something, invest in it.</li><li>Visit museums, nature reserves, workshops, and exhibitions.</li><li>Encourage questions over answers. 'That is a brilliant question. Let us find out together.'</li><li>Let them go deep into a topic they love.</li></ul><h2>Ages 10–13: Connect Curiosity to Identity</h2><ul><li>Connect curiosity to people they admire.</li><li>Give them real problems to solve.</li><li>Support independent research.</li><li>Do not shut down challenging questions.</li></ul><h2>What Kills Curiosity — Stop Doing These</h2><ul><li>Always giving the answer immediately</li><li>Correcting exploration</li><li>Over-scheduling — boredom is where curiosity begins</li><li>Valuing grades over learning</li><li>Dismissing their interests: 'That's not useful'</li></ul>`,
+
+//   sl_03: `<h1>Helping Children Focus on Studies</h1><p>'Focus!' 'Concentrate!' 'Stop daydreaming!' — if these words are on constant rotation in your household, you are not alone. The ability to focus is developmental. A 5-year-old can sustain attention for roughly 10–15 minutes. A 10-year-old can manage 20–30 minutes. Even a 13-year-old will struggle beyond 40 minutes without a break. These are not character flaws — they are brain facts.</p><h2>Why Children Struggle to Focus</h2><ul><li>The task is too hard or too easy.</li><li>The environment is competing for attention.</li><li>They are tired, hungry, or stressed.</li><li>They have no sense of purpose.</li><li>Screen habits have shortened their attention span.</li></ul><h2>Ages 6–9: Structure the Environment</h2><ul><li>Create a dedicated study space — quiet, well-lit, clear of distractions, with all materials within reach.</li><li>Use the Pomodoro technique adapted for kids: 15–20 minutes of focused work, followed by a 5-minute break.</li><li>Remove screens from the study area completely — not just turned off, physically removed.</li><li>Start with the hardest subject — willpower and focus are highest at the beginning.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them identify their peak focus times.</li><li>Introduce active study techniques — summarising in their own words, teaching the material to someone else, creating mind maps.</li><li>Discuss phone management honestly.</li><li>Connect the work to their goals.</li></ul><h2>What Destroys Focus — Stop Doing These</h2><ul><li>Hovering during study time — adds pressure, not focus</li><li>Marathon study sessions without breaks</li><li>Multitasking myths — studying while watching TV reduces the quality of everything</li><li>Comparing to siblings or peers</li><li>Making study time a punishment</li></ul>`,
+
+//   sl_04: `<h1>Helping Kids Deal with Teasing</h1><p>Teasing is one of the most universal childhood experiences — and one of the hardest for parents to help with. Teasing exists on a spectrum. Light, mutual teasing between friends is a normal part of social bonding. Repeated, targeted teasing that makes a child feel humiliated is a form of bullying.</p><h2>Teasing vs Bullying: How to Tell the Difference</h2><p>Friendly teasing is mutual, playful, and stops when someone says 'that's enough.' Hurtful teasing is one-directional, targets something personal, continues despite the child's distress, and is designed to gain social power at the child's expense.</p><h2>Ages 3–5: Keep It Simple</h2><ul><li>Teach one response: 'Stop. I don't like that.' Practise it until it is automatic.</li><li>Role-play teasing scenarios at home.</li><li>Tell them to walk away and find a trusted adult if the teasing continues.</li></ul><h2>Ages 6–9: Build the Toolkit</h2><ul><li><strong>The Shrug Response:</strong> 'So?' said with a shrug and walking away. Teasing depends on a reaction. A non-reaction deflates it.</li><li><strong>The Agree and Deflect:</strong> If teased about glasses: 'Yeah, they help me see better!' Taking ownership removes its power as a weapon.</li><li><strong>The Humour Redirect:</strong> 'Good one!' and then changing the subject.</li><li><strong>The Boundary Statement:</strong> 'That's not funny to me. Stop.' Direct, clear, and non-aggressive.</li></ul><h2>Ages 10–13: Social Intelligence</h2><ul><li>Help them understand the motivation behind teasing.</li><li>Discuss the difference between ignoring (which can look like weakness) and being unbothered (which communicates strength).</li><li>If teasing becomes persistent, involve the school.</li></ul><h2>What Not to Do</h2><ul><li>'Just ignore it' without teaching them how</li><li>'Tease them back' — this escalates the situation</li><li>Over-protecting — intervening in every social interaction prevents coping skills from developing</li><li>Dismissing their pain: 'It's just teasing'</li></ul>`,
+
+//   sl_05: `<h1>Helping Kids Develop Reading Habits</h1><p>A child who reads regularly outperforms a child who does not in vocabulary, comprehension, empathy, critical thinking, and academic achievement across every subject. Reading is not just a language skill. It is the foundational skill that makes all other learning possible. But you cannot force a child to love reading — you can only create the conditions where reading becomes something they choose.</p><h2>Why Some School-Age Children Resist Reading</h2><ul><li>Reading has become associated with obligation — school reading requirements can strip the pleasure from reading entirely.</li><li>They have not found the right book.</li><li>Screens are more stimulating.</li><li>They struggle with reading itself — if decoding is effortful, reading is exhausting rather than enjoyable.</li></ul><h2>Ages 5–7: Make Reading a Warm Experience</h2><ul><li>Read aloud to them every day, even after they can read independently.</li><li>Let them choose any book. Comic books, picture books, books 'below their level' — all count.</li><li>Visit libraries and bookshops regularly. Let them browse without pressure.</li></ul><h2>Ages 8–10: Protect the Pleasure</h2><ul><li>Separate 'reading for school' from 'reading for fun.' Fun reading has zero requirements.</li><li>Let them abandon books they do not enjoy — forced completion kills habits.</li><li>Introduce series — once hooked on a character, they will read the next book voluntarily.</li><li>Create a cosy reading space in the home.</li></ul><h2>Ages 11–13: Respect Their Autonomy</h2><ul><li>Never criticise their reading choices. Graphic novels, fan fiction, manga — all build reading skills.</li><li>Connect reading to their interests.</li><li>Read alongside them — the most powerful model is a parent who reads for pleasure.</li><li>Do not quiz them on what they read.</li></ul>`,
+
+//   sl_06: `<h1>Helping Kids Make Friends</h1><p>Few things cause parents more heartache than watching their child struggle socially. But friendship is a skill, not a gift. Some children learn it naturally. Others need explicit teaching. The parent's role is not to make friends for their child — it is to teach them the skills to make friends for themselves.</p><h2>Why Some Children Struggle to Make Friends</h2><ul><li>They lack specific social skills.</li><li>They are shy or anxious.</li><li>They have intense interests that peers do not share.</li><li>They are going through a transition.</li></ul><h2>Ages 3–5: Teach the Basics</h2><ul><li>Teach them to walk up, make eye contact, and say: 'Can I play with you?'</li><li>Arrange playdates with one child — not groups. Short, activity-based playdates work best.</li><li>Teach sharing and turn-taking through games, not lectures.</li></ul><h2>Ages 6–9: Develop Friendship Skills</h2><ul><li>Help them find their people — activities outside school expand the pool of potential friends.</li><li>Teach conversation skills. Ask questions, listen to the answer, find common interests. 'What do you like to do?' is a friendship opener that works at every age.</li><li>Coach them through conflict — teach them to repair rather than abandon friendships.</li><li>Invite peers over — a child who is struggling socially at school may do better in a home environment where they feel more confident.</li></ul><h2>Ages 10–13: Navigate Social Complexity</h2><ul><li>Respect their social world — do not dismiss pre-teen social dynamics as trivial.</li><li>Help them understand social dynamics without controlling them.</li><li>Support their interests — a pre-teen who is passionate about something will eventually find others who share that passion.</li><li>Teach them that quality matters more than quantity. One genuine friendship is worth more than ten surface-level ones.</li></ul><h2>What Undermines Friendship Skills — Stop Doing These</h2><ul><li>Arranging all their social life — they never learn to initiate independently</li><li>Criticising their friends</li><li>Forcing them to be social</li><li>Solving all their social problems instead of coaching</li></ul>`,
+
+//   sl_07: `<h1>Homework Struggles in Children</h1><p>The homework battle is one of the most common and most exhausting conflicts in family life. Homework struggles in children are rarely about laziness. They are about one or more of these: the work is too hard, the child is too tired, the environment is wrong, or the emotional associations with homework have become so negative that the child cannot get started without dread.</p><h2>The Real Reasons Children Struggle with Homework</h2><ul><li>It is genuinely too difficult.</li><li>They are exhausted after a full day of school.</li><li>The environment is wrong.</li><li>They have a negative association with homework.</li><li>They lack the organizational skills.</li></ul><h2>The Homework Environment Checklist</h2><ul><li>Quiet, consistent location — same place every day</li><li>Good lighting and a comfortable chair</li><li>All supplies within reach</li><li>No screens within sight — phones in another room</li><li>A timer visible to the child</li><li>Parent available nearby but not hovering</li></ul><h2>Ages 5–7: Keep It Light</h2><ul><li>Homework at this age should take 10–20 minutes maximum. If it consistently takes longer, talk to the teacher.</li><li>Sit nearby but do not do the work.</li><li>Make it part of the routine — same time, same place, every day.</li></ul><h2>Ages 8–10: Build Independence</h2><ul><li>Introduce a 'homework launch' routine: snack, then 10 minutes of free time, then homework.</li><li>Help them plan the session. 'What do you have tonight? What do you want to start with?'</li><li>Check the work after, not during. Let them make mistakes.</li></ul><h2>Ages 11–13: Hand Over Responsibility</h2><ul><li>The homework is theirs, not yours.</li><li>If they do not do homework and there are consequences at school, let the consequences happen.</li><li>If they ask for help, guide rather than give answers. 'What do you think the first step is?'</li></ul><h2>What Makes Homework Struggles Worse — Stop Doing These</h2><ul><li>Doing the work for them</li><li>Turning homework into a control battle</li><li>Criticising during homework</li><li>Making homework take over the evening — if it is taking more than the recommended time, talk to the teacher</li><li>Bribing or threatening</li></ul>`,
+
+//   sl_08: `<h1>Signs Your Child Is Being Bullied</h1><p>Most bullied children do not tell their parents. They stay silent out of shame, fear of making things worse, or belief that adults cannot help. This means you cannot rely on your child telling you — you need to be able to recognise the signs.</p><h2>Behavioural Signs</h2><ul><li><strong>Avoidance of school:</strong> Sudden reluctance, frequent complaints of stomach aches on school mornings that disappear on weekends.</li><li><strong>Coming home hungry</strong> because lunch was taken or they ate alone and left early.</li><li><strong>Sleep disruption:</strong> Difficulty falling asleep, nightmares, waking during the night.</li><li><strong>Loss of interest in activities</strong> they previously enjoyed.</li><li><strong>Coming home with damaged or missing belongings.</strong></li><li><strong>Becoming secretive about online activity</strong> — can indicate cyberbullying.</li></ul><h2>Emotional Signs</h2><ul><li>Increased irritability or emotional outbursts at home</li><li>Withdrawal from family and friends</li><li>Low self-esteem or self-critical language: 'Nobody likes me.' 'I'm stupid.'</li><li>Sadness or tearfulness, especially after school or on Sunday evenings</li><li>Expressions of helplessness: 'There's no point.' 'Nothing will change.'</li></ul><h2>Academic Signs</h2><ul><li>Declining grades</li><li>Loss of interest in schoolwork</li><li>Reluctance to participate in class</li></ul><h2>What to Do if You Recognise These Signs</h2><ul><li><strong>Step 1 — Create a safe opening:</strong> 'I have noticed you seem a bit different lately. Is anything happening at school that is making things hard?'</li><li><strong>Step 2 — Observe more closely</strong> for a few weeks.</li><li><strong>Step 3 — Talk to the school</strong> even if your child has not confirmed bullying.</li><li><strong>Step 4 — Strengthen their support network</strong> outside the school environment.</li></ul>`,
+
+//   sl_09: `<h1>Reducing School Stress</h1><p>Some school stress is normal and even healthy. The mild anxiety before a test that motivates preparation, the nervousness before a performance that sharpens focus — these are forms of stress that help children grow. But there is a point where school stress stops being productive and starts being harmful.</p><h2>Common Sources of School Stress by Age</h2><h3>Ages 5–7</h3><ul><li>Separation from parents</li><li>Navigating new social environments</li><li>Learning to read and the pressure of keeping up with peers</li><li>Fear of getting things wrong</li></ul><h3>Ages 8–10</h3><ul><li>Increasing academic expectations</li><li>Standardised testing</li><li>Complex social dynamics</li><li>Comparing themselves to peers</li></ul><h3>Ages 11–13</h3><ul><li>Academic pressure intensifying</li><li>Social media and peer comparison</li><li>Puberty and body image</li><li>Future anxiety: 'What if I don't get into a good school?'</li></ul><h2>The Home as Stress Buffer</h2><p>The most powerful thing you can do to reduce school stress is make home the antidote. Home should be where the child is valued for who they are, not what they produce. Where they can rest, play, connect, and be imperfect.</p><h2>What Increases School Stress — Stop Doing These</h2><ul><li>Adding your own academic pressure: 'You need to get into a good school'</li><li>Comparing to others</li><li>Over-focusing on grades</li><li>Dismissing their stress</li><li>Over-scheduling — every hour filled with structured activity is an hour not available for rest and recovery</li></ul>`,
+
+//   sl_10: `<h1>School Anxiety in Children</h1><p>Some children wake up on school mornings with stomach aches that are real. Their chest feels tight. Their legs feel heavy. They are not pretending — they are anxious. School anxiety in children is more common than most parents realise, and it ranges from mild nervousness before a test to full-blown school refusal.</p><h2>Common Causes of School Anxiety</h2><ul><li><strong>Social anxiety:</strong> Fear of being judged, embarrassed, or rejected by peers.</li><li><strong>Academic anxiety:</strong> Fear of failing, not understanding, or being called on.</li><li><strong>Separation anxiety:</strong> Particularly in younger children.</li><li><strong>Bullying:</strong> A child who is being bullied may develop school anxiety even after the bullying has stopped.</li><li><strong>A specific traumatic event at school:</strong> Being publicly humiliated or having a panic attack in class.</li></ul><h2>How to Help</h2><ul><li><strong>Step 1 — Validate:</strong> 'I can see that going to school feels really scary for you right now. That feeling is real.'</li><li><strong>Step 2 — Identify the specific trigger:</strong> 'What part of the day is hardest? If you could skip one thing at school, what would it be?'</li><li><strong>Step 3 — Work with the school.</strong></li><li><strong>Step 4 — Gradual exposure, not avoidance:</strong> The brain interprets avoidance as confirmation that school is dangerous. Every day away from school makes the return harder.</li><li><strong>Step 5 — Build coping strategies:</strong> Breathing exercises, a worry time, a calm morning routine.</li></ul><h2>What Makes School Anxiety Worse — Stop Doing These</h2><ul><li>Allowing indefinite school avoidance</li><li>Providing excessive reassurance: 'Everything will be fine' repeated 20 times does not reassure</li><li>Interrogating after school: 'Was anyone mean to you?'</li><li>Showing your own anxiety</li><li>Punishing the anxiety</li></ul><h2>When to Seek Professional Help</h2><p>School anxiety warrants professional support when the child is missing significant amounts of school, physical symptoms are persistent and disabling, the anxiety is not improving despite consistent home and school support, or the child expresses hopelessness. Early intervention is key — school anxiety that is addressed quickly has a much better outcome than anxiety that is allowed to solidify into a pattern.</p>`,
+
+//   fr_01: `<h1>Age-Wise Behaviour Guide</h1><p>The number one question behind every parenting worry is: 'Is this normal?' The tantrums, the defiance, the mood swings, the sudden fears, the social drama — are these signs that something is wrong, or are they exactly what a child of this age is supposed to be doing?</p><h2>Ages 3–4: The 'I Want It My Way' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tantrums (daily is normal at this age)</li><li>Saying 'no' to everything — testing boundaries</li><li>Difficulty sharing and taking turns</li><li>Imaginative fears (monsters, dark, loud noises)</li><li>Physical aggression when frustrated</li><li>Lying (inventing stories — this is imagination, not deception)</li></ul><h3>When to Worry</h3><ul><li>Aggression that is causing injury and is not decreasing</li><li>Complete inability to be soothed by any adult</li><li>Significant language delay alongside behavioural challenges</li></ul><h2>Ages 5–6: The 'Rules and Fairness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tattling — they have discovered rules and want everyone to follow them</li><li>Bossiness with peers — experimenting with social power</li><li>Sensitivity to criticism and a need for praise</li><li>Some separation anxiety around school transitions</li></ul><h2>Ages 7–9: The 'Social Awareness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Friendship drama — best friends changing weekly</li><li>Comparing themselves to peers</li><li>Increased arguing and negotiating</li><li>White lies ('I already brushed my teeth')</li></ul><h2>Ages 10–11: The 'Pre-Teen Shift' Stage</h2><h3>Normal Behaviours</h3><ul><li>Mood swings</li><li>Pulling away from parents while still wanting connection</li><li>Strong opinions and willingness to challenge authority</li><li>Increased interest in privacy</li></ul><h2>Ages 12–13: The 'Full Pre-Teen' Stage</h2><h3>Normal Behaviours</h3><ul><li>Argumentative and increasingly skilled at it</li><li>Intense emotional reactions that seem disproportionate</li><li>Testing boundaries more deliberately than ever</li><li>Oscillating between wanting adult treatment and child-like needs</li></ul><h2>The Golden Rule Across All Ages</h2><p>If you are asking 'is this normal?' the answer is almost always yes. The time to worry is when behaviour is significantly more extreme than peers, persists despite consistent support, or is getting worse rather than better. Any mention of self-harm or suicidal thoughts — take it seriously immediately.</p>`,
+
+//   fr_02: `<h1>Emotional Development Chart</h1><p>One of the most common questions parents ask is: 'Is this normal?' This chart maps what emotional skills and behaviours are typical at each age — and what to do to support the next stage of growth. Use this as a compass, not a ruler.</p><h2>Ages 3–4: What Is Developing</h2><ul><li>Basic emotional vocabulary (happy, sad, angry, scared)</li><li>Earliest impulse control (can wait briefly with support)</li><li>Understanding that other people have feelings</li><li>Ability to be soothed by a trusted adult</li></ul><h3>How to Support This Stage</h3><ul><li>Name emotions constantly — yours and theirs</li><li>Keep routines predictable</li><li>Do not punish emotional outbursts — co-regulate instead</li></ul><h2>Ages 5–6: What Is Developing</h2><ul><li>Expanded emotional vocabulary (frustrated, embarrassed, proud, worried)</li><li>Early self-regulation — can calm down with strategies (not yet independently)</li><li>Growing capacity for empathy and perspective-taking</li></ul><h2>Ages 7–9: What Is Developing</h2><ul><li>Self-regulation becoming more independent</li><li>Ability to see situations from another person's perspective</li><li>Understanding that people can feel two things at once</li><li>Growing capacity for delayed gratification</li></ul><h2>Ages 10–11: What Is Developing</h2><ul><li>Abstract emotional thinking ('I feel anxious about the future')</li><li>Ability to reflect on their own emotional patterns</li><li>Understanding of complex emotions (jealousy, guilt, loyalty)</li><li>Early identity formation — 'who am I?'</li></ul><h2>Ages 12–13: What Is Developing</h2><ul><li>Sophisticated emotional reasoning and self-awareness</li><li>Identity consolidation — values, beliefs, and self-concept forming</li><li>Capacity for long-term goal-setting and self-motivation</li><li>Understanding of nuanced moral and ethical questions</li></ul><h2>When to Be Concerned</h2><p>Seek professional guidance if your child is significantly behind peers in multiple emotional areas, emotional development seems to be regressing, or challenges are significantly impacting daily functioning. Early support is always more effective than waiting.</p>`,
+
+//   fr_03: `<h1>Habit Tracker for Kids</h1><p>A habit tracker is one of the simplest and most effective parenting tools available — and most families either do not use one or use it incorrectly. Done well, a habit tracker transforms abstract goals ('be more responsible') into concrete, visible, daily actions that a child can own, measure, and feel proud of.</p><h2>Habit Tracker vs Reward Chart</h2><p>Reward charts focus on earning something external. Habit trackers focus on building consistency — the visual record of daily completion is itself the reward. The motivation shifts to internal: 'I do this because I am someone who does this.'</p><h2>Ages 3–5: The Visual Picture Tracker</h2><p>Format: A simple chart with pictures representing each habit. The child places a sticker when the habit is complete.</p><p>Good starter habits: brush teeth, put shoes by the door, put dirty clothes in the basket, help set the table.</p><h2>Ages 6–9: The Weekly Checklist Tracker</h2><p>Format: A weekly grid with habits listed down the side and days of the week across the top.</p><p>Good habits to track: morning routine completed independently, reading for pleasure, homework started on time, room tidied before bed, one kind action.</p><h2>Ages 10–13: The Self-Directed Tracker</h2><p>Format: A journal-style tracker or simple app the child manages independently.</p><p>Good habits to track: exercise, reading, homework session, screen-free time before bed, journaling, skill practice.</p><h2>How to Use Without Battles</h2><ul><li>Start with habits they are already close to doing.</li><li>Celebrate the process, not just the product.</li><li>Phase it out when the habit is automatic — typically after 6–12 weeks.</li><li>Never use the tracker as punishment.</li><li>Keep it simple — a tracker that takes 10 minutes to fill in will be abandoned in a week.</li></ul>`,
+
+//   fr_04: `<h1>Parenting Checklist</h1><p>Parenting does not come with a manual — but it should at least come with a checklist. Not a list of things to worry about, but a clear, practical reference that tells you: at this age, these are the things that matter most. Use it as a quarterly check-in. Not a test. Not a judgment. Just a way to make sure the important things are getting attention.</p><h2>Ages 3–5</h2><h3>Emotional Development</h3><ul><li>My child can name at least 5 emotions</li><li>I name my child's emotions for them when they cannot</li><li>I validate emotions before correcting behaviour</li><li>My child has a consistent bedtime routine that includes connection time</li><li>I read to my child daily</li><li>I model emotional expression openly</li></ul><h3>Social Skills</h3><ul><li>My child has regular opportunities to play with other children</li><li>My child can use basic social language ('please', 'thank you', 'can I play?')</li><li>My child has at least one friendship that involves regular interaction</li></ul><h3>Physical Wellbeing</h3><ul><li>My child gets at least 60 minutes of physical activity daily</li><li>Bedtime is consistent and my child gets 10–13 hours of sleep</li><li>Screen time is limited and high-quality (under 1 hour/day)</li></ul><h2>Ages 6–9</h2><h3>Emotional Development</h3><ul><li>My child has at least one strategy for calming down when upset</li><li>I allow my child to experience frustration and disappointment without immediately fixing it</li><li>I praise effort and persistence, not just outcomes</li><li>My child knows it is safe to make mistakes in our home</li></ul><h3>Habits and Independence</h3><ul><li>My child has age-appropriate responsibilities at home</li><li>My child can manage a morning routine with minimal reminders</li><li>My child can pack their own school bag</li><li>Screen time is structured and balanced with other activities</li></ul><h2>Ages 10–13</h2><h3>Emotional Development</h3><ul><li>I listen more than I advise — especially about social and emotional matters</li><li>My child has healthy coping strategies for stress</li><li>My child knows I love them unconditionally, independent of their achievements</li></ul><h3>Academic and Life Skills</h3><ul><li>My child manages their own homework with minimal parental oversight</li><li>My child can cook a simple meal, do laundry, and manage basic household tasks</li><li>My child has interests and activities that are theirs, not mine</li><li>My child has unstructured free time — not every hour is scheduled</li></ul>`,
+
+//   fr_05: `<h1>Parenting Tools for Modern Parents</h1><p>Modern parents have access to more information than any generation in history. The problem is not lack of resources — it is knowing which ones actually help and which ones add noise.</p><h2>The Essential Toolkit</h2><h3>1. A Daily Routine System</h3><p>Tools that help: a visual schedule chart for ages 3–7, a family calendar, a consistent morning and evening routine checklist. The best routine tool takes less than a minute to use and is visible where it matters — kitchen, hallway, child's bedroom.</p><h3>2. A Habit Tracking System</h3><p>Tools that help: a paper-based habit tracker for younger children, a bullet journal or printed monthly grid for pre-teens. Look for something child-owned, simple to complete, and visually rewarding.</p><h3>3. An Emotional Development Resource</h3><p>Tools that help: an emotional development chart to understand age-appropriate milestones, feelings cards or emotions posters for younger children, books about emotions. Look for something age-appropriate, evidence-based, and integrated into daily life rather than requiring separate sessions.</p><h3>4. A Communication Framework</h3><p>Frameworks that help: 'I feel _____ because _____' sentence structure, the 'validate, then redirect' approach, active listening practice, daily check-in questions ('What was the best part of your day? What was the hardest?').</p><h3>5. A Screen Time Management System</h3><p>Tools that help: a family media agreement, a device charging station outside bedrooms, a daily routine where screens have a defined place. Look for a system that gives children increasing self-management as they age, rather than one that relies entirely on parental control.</p><h2>How to Choose Parenting Tools That Actually Help</h2><ul><li>Does it fit into your existing life?</li><li>Is it evidence-based?</li><li>Does it empower the child, not just the parent?</li><li>Is it sustainable?</li><li>Does it reduce your stress, not add to it?</li></ul>`,
+
+//   fr_06: `<h1>School Readiness Guide</h1><p>When parents think about school readiness, they think about letters, numbers, and colours. But the children who do best in their first year of school are not necessarily the ones who can read earliest. They are the ones who can sit in a group, follow a simple instruction, manage their emotions when frustrated, share materials, and ask for help when they need it.</p><h2>The Four Domains of School Readiness</h2><h3>1. Emotional Readiness</h3><ul><li>Can separate from you without prolonged distress</li><li>Can cope with minor frustrations without a complete meltdown</li><li>Can express basic needs verbally ('I need help', 'I feel sad', 'I need the toilet')</li><li>Can manage transitions</li><li>Can recover from upsets within a reasonable time</li></ul><h3>2. Social Readiness</h3><ul><li>Can play cooperatively with other children</li><li>Can share and take turns (with support)</li><li>Can follow simple group instructions</li><li>Can communicate needs to an adult who is not their parent</li></ul><h3>3. Academic Readiness</h3><ul><li>Recognises their own name in print</li><li>Can hold a pencil or crayon (grip does not need to be perfect)</li><li>Can count objects to at least 10</li><li>Can listen to a short story and answer simple questions about it</li><li>Shows curiosity and asks questions</li></ul><h3>4. Physical Readiness and Self-Care</h3><ul><li>Can use the toilet independently</li><li>Can dress themselves (buttons and laces may still need help)</li><li>Can open their lunch box and water bottle</li><li>Can sit for 10–15 minutes</li></ul><h2>How to Prepare Your Child</h2><ul><li>Talk positively about school — but honestly. 'School is where you will learn new things and make new friends. Some days will be easy and some will be hard, and that's okay.'</li><li>Visit the school if possible — familiarity reduces anxiety.</li><li>Practise the morning routine.</li><li>Build independence in self-care tasks.</li></ul><h2>The First Week</h2><ul><li>Keep mornings calm and unhurried.</li><li>Be positive at drop-off — confident, warm, brief. Lingering makes separation harder.</li><li>Have a consistent after-school routine.</li><li>Do not interrogate: 'What did you do today?' often gets 'nothing.' Try: 'What was the best part of today?'</li></ul><h2>What Makes School Transition Harder — Stop Doing These</h2><ul><li>Building excessive anxiety: 'You HAVE to be good at school'</li><li>Over-preparing academically</li><li>Ignoring emotional preparation — the child who can read but cannot manage their feelings in a group will struggle more than the child who cannot read but can self-regulate</li><li>Expecting immediate adjustment — most children take 4–8 weeks to fully adjust</li></ul>`,
+// };
+
+
+// type ViewState =
+//   | { type: "landing" }
+//   | { type: "category"; catId: string }
+//   | { type: "article"; catId: string; artId: string; artLabel: string };
+
+// function MegaMenu({ onSelect }: { onSelect: (v: ViewState) => void }) {
+//   const [open, setOpen] = useState(false);
+//   const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+//   return (
+//     <div
+//       className="relative"
+//       onMouseEnter={() => { setOpen(true); setHoveredCat(CATEGORIES[0].id); }}
+//       onMouseLeave={() => { setOpen(false); setHoveredCat(null); }}
+//     >
+//       <button
+//         onClick={() => { onSelect({ type: "landing" }); setOpen(false); }}
+//         className="flex items-center gap-1.5 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+//       >
+//         Parenting Guide
+//         <ChevronDown
+//           size={13}
+//           className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+//         />
+//       </button>
+
+//       <AnimatePresence>
+//         {open && (
+//           <motion.div
+//             initial={{ opacity: 0, y: 6 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             exit={{ opacity: 0, y: 6 }}
+//             transition={{ duration: 0.18 }}
+//             className="absolute top-full left-0 flex rounded-b-2xl overflow-hidden shadow-2xl z-[200]"
+//             style={{
+//               background: "#ffffff",
+//               border: "1px solid rgba(249,115,22,0.2)",
+//               borderTop: "3px solid #f97316",
+//               minWidth: "580px",
+//               marginTop: "0px",
+//             }}
+//           >
+//             <div className="w-[220px] border-r border-gray-100 py-2">
+//               {CATEGORIES.map((cat) => (
+//                 <div
+//                   key={cat.id}
+//                   className="flex items-center justify-between px-5 py-3 cursor-pointer transition-all duration-150"
+//                   style={{
+//                     background: hoveredCat === cat.id ? "#f8f9fb" : "transparent",
+//                     borderLeft: hoveredCat === cat.id ? "3px solid #f97316" : "3px solid transparent",
+//                     color: hoveredCat === cat.id ? "#f97316" : "#374151",
+//                   }}
+//                   onMouseEnter={() => setHoveredCat(cat.id)}
+//                   onClick={() => {
+//                     onSelect({ type: "category", catId: cat.id });
+//                     setOpen(false);
+//                   }}
+//                 >
+//                   <span className="text-[0.9rem] font-medium">{cat.label}</span>
+//                   <ChevronRight size={13} style={{ color: hoveredCat === cat.id ? "#f97316" : "#9ca3af" }} />
+//                 </div>
+//               ))}
+//             </div>
+
+//             <div className="flex-1 py-2 px-1">
+//               {hoveredCat && (
+//                 <div className="grid grid-cols-1 gap-0.5">
+//                   {CATEGORIES.find((c) => c.id === hoveredCat)?.subtopics.map((sub) => (
+//                     <div
+//                       key={sub.id}
+//                       className="px-4 py-2 text-[0.85rem] text-gray-600 cursor-pointer rounded-lg transition-all duration-100 hover:text-[#f97316]"
+//                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+//                       onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+//                       onClick={() => {
+//                         onSelect({ type: "article", catId: hoveredCat!, artId: sub.id, artLabel: sub.label });
+//                         setOpen(false);
+//                       }}
+//                     >
+//                       {sub.label}
+//                     </div>
+//                   ))}
+//                 </div>
+//               )}
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </div>
+//   );
+// }
+
+// function ArticleView({ view, onNavigate }: { view: ViewState; onNavigate: (v: ViewState) => void }) {
+//   if (view.type === "landing") {
+//     return (
+//       <div className="text-center py-20 px-6">
+//         <div
+//           className="inline-block px-4 py-1.5 rounded-full text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-6"
+//           style={{ background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)" }}
+//         >
+//           Family Playbook
+//         </div>
+//         <h1
+//           className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+//           style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
+//         >
+//           The Parenting Guide Your Family<br />Actually Needs
+//         </h1>
+//         <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+//           Science-backed, psychologist-designed guidance for ages 3–13.
+//           Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+//         </p>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
+//           {CATEGORIES.map((cat) => (
+//             <button
+//               key={cat.id}
+//               onClick={() => onNavigate({ type: "category", catId: cat.id })}
+//               className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+//             >
+//               <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
+//               <p className="text-gray-500 text-[0.8rem] leading-[1.5]">{cat.subtopics.length} guides</p>
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   if (view.type === "category") {
+//     const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+//     return (
+//       <div className="max-w-[860px] mx-auto px-6 py-10">
+//         <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8">
+//           <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+//             Parenting Guide
+//           </button>
+//           <span>›</span>
+//           <span className="text-gray-500">{cat.label}</span>
+//         </div>
+//         <h1 className="text-[#1b2a4a] font-bold text-[2rem] leading-[1.25] mb-4" style={{ fontFamily: "'Rubik', sans-serif" }}>
+//           {cat.label}
+//         </h1>
+//         <p className="text-gray-500 text-[1rem] leading-[1.7] mb-10 max-w-[600px]">
+//           {CATEGORY_INTRO[cat.id]}
+//         </p>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+//           {cat.subtopics.map((sub) => (
+//             <button
+//               key={sub.id}
+//               onClick={() => onNavigate({ type: "article", catId: cat.id, artId: sub.id, artLabel: sub.label })}
+//               className="flex items-center justify-between px-5 py-4 bg-white border border-gray-200 rounded-[10px] text-left transition-all duration-200 hover:border-[#f97316] hover:shadow-md group"
+//             >
+//               <span className="text-[#374151] text-[0.9rem] font-medium group-hover:text-[#f97316] transition-colors">
+//                 {sub.label}
+//               </span>
+//               <ChevronRight size={15} className="text-gray-300 group-hover:text-[#f97316] transition-colors" />
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+//     );
+//   }
+
+//   const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+//   const html = CONTENT[view.artId] ?? `<h1>${view.artLabel}</h1><p>Content coming soon.</p>`;
+
+//   return (
+//     <div className="max-w-[860px] mx-auto px-6 py-10">
+//       <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8 flex-wrap">
+//         <button onClick={() => onNavigate({ type: "landing" })} className="text-[#f97316] font-medium hover:underline">
+//           Parenting Guide
+//         </button>
+//         <span>›</span>
+//         <button onClick={() => onNavigate({ type: "category", catId: view.catId })} className="text-[#f97316] font-medium hover:underline">
+//           {cat.label}
+//         </button>
+//         <span>›</span>
+//         <span className="text-gray-500">{view.artLabel}</span>
+//       </div>
+//       <div className="article-prose" dangerouslySetInnerHTML={{ __html: html }} />
+//       <button
+//         onClick={() => onNavigate({ type: "category", catId: view.catId })}
+//         className="mt-10 inline-flex items-center gap-2 text-[#f97316] font-medium text-[0.9rem] hover:gap-3 transition-all duration-150"
+//       >
+//         ← Back to {cat.label}
+//       </button>
+//     </div>
+//   );
+// }
+
+// export default function ParentingGuidePage() {
+//   const searchParams = useSearchParams();
+//   const [view, setView] = useState<ViewState>({ type: "landing" });
+
+//   useEffect(() => {
+//     const cat = searchParams.get("cat");
+//     const artId = searchParams.get("artId");
+
+//     if (cat && artId) {
+//       // Direct article by ID — most reliable
+//       const foundCat = CATEGORIES.find((c) => c.id === cat);
+//       const foundSub = foundCat?.subtopics.find((s) => s.id === artId);
+//       if (foundCat && foundSub) {
+//         setView({ type: "article", catId: cat, artId: foundSub.id, artLabel: foundSub.label });
+//       }
+//     } else if (cat) {
+//       // Category page — shows list of subtopics only, no article content
+//       setView({ type: "category", catId: cat });
+//     } else {
+//       setView({ type: "landing" });
+//     }
+//   }, [searchParams]);
+
+//   const navigate = (v: ViewState) => {
+//     setView(v);
+//     window.scrollTo({ top: 0, behavior: "smooth" });
+//   };
+
+//   return (
+//     <>
+//       <style>{`
+//         .article-prose h1 {
+//           font-family: 'Rubik', sans-serif;
+//           font-size: clamp(1.6rem, 3vw, 2.2rem);
+//           font-weight: 700;
+//           color: #1b2a4a;
+//           line-height: 1.25;
+//           margin-bottom: 1.2rem;
+//           padding-bottom: 1rem;
+//           border-bottom: 2px solid #f0f2f5;
+//         }
+//         .article-prose h2 {
+//           font-family: 'Rubik', sans-serif;
+//           font-size: 1.25rem;
+//           font-weight: 700;
+//           color: #1b2a4a;
+//           margin-top: 2rem;
+//           margin-bottom: 0.75rem;
+//         }
+//         .article-prose h3 {
+//           font-size: 1rem;
+//           font-weight: 600;
+//           color: #1e3a5f;
+//           margin-top: 1.5rem;
+//           margin-bottom: 0.5rem;
+//         }
+//         .article-prose p {
+//           font-size: 0.96rem;
+//           color: #3b4258;
+//           line-height: 1.8;
+//           margin-bottom: 0.9rem;
+//         }
+//         .article-prose ul {
+//           margin: 0.5rem 0 1.2rem 1.2rem;
+//           list-style: none;
+//           padding: 0;
+//         }
+//         .article-prose ul li {
+//           position: relative;
+//           padding: 0.3rem 0 0.3rem 1.2rem;
+//           font-size: 0.93rem;
+//           line-height: 1.7;
+//           color: #3b4258;
+//         }
+//         .article-prose ul li::before {
+//           content: '';
+//           position: absolute;
+//           left: 0;
+//           top: 12px;
+//           width: 7px;
+//           height: 7px;
+//           border-radius: 50%;
+//           background: #f97316;
+//           opacity: 0.6;
+//         }
+//         .article-prose strong { color: #1b2a4a; font-weight: 600; }
+//       `}</style>
+
+//       <div className="min-h-screen relative z-[1]" style={{ background: "#f8f9fb" }}>
+//         <motion.div
+//           key={JSON.stringify(view)}
+//           initial={{ opacity: 0, y: 12 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.35 }}
+//         >
+//           <ArticleView view={view} onNavigate={navigate} />
+//         </motion.div>
+//       </div>
+//     </>
+//   );
+// }
+
+// export { MegaMenu };
+// export type { ViewState };
+
+
+
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ChevronRight } from "lucide-react";
+
+const CATEGORIES = [
+  {
+    id: "child_behaviour",
+    label: "Child Behaviour",
+    subtopics: [
+      { id: "cb_01", label: "Why Children Lie" },
+      { id: "cb_02", label: "Why Kids Talk Back" },
+      { id: "cb_03", label: "Stubborn Children" },
+      { id: "cb_04", label: "Discipline Without Punishment" },
+      { id: "cb_05", label: "Aggressive Behaviour" },
+      { id: "cb_06", label: "Why Children Refuse to Listen" },
+      { id: "cb_07", label: "Sibling Fights" },
+      { id: "cb_08", label: "Tantrums" },
+      { id: "cb_09", label: "Teaching Respect" },
+      { id: "cb_10", label: "Setting Boundaries" },
+    ],
+  },
+  {
+    id: "emotional_development",
+    label: "Emotional Development",
+    subtopics: [
+      { id: "ed_01", label: "Building Emotional Resilience" },
+      { id: "ed_02", label: "Emotional Intelligence in Children" },
+      { id: "ed_03", label: "Helping Children Express Emotions" },
+      { id: "ed_04", label: "Helping Children Overcome Fear" },
+      { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+      { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+      { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+      { id: "ed_08", label: "Raising Emotionally Strong Children" },
+      { id: "ed_09", label: "Teaching Patience to Children" },
+      { id: "ed_10", label: "Why Children Get Angry" },
+    ],
+  },
+  {
+    id: "habits_discipline",
+    label: "Habits & Discipline",
+    subtopics: [
+      { id: "hd_01", label: "Building Reading Habits" },
+      { id: "hd_02", label: "Daily Routines for Children" },
+      { id: "hd_03", label: "Helping Kids Stay Organized" },
+      { id: "hd_04", label: "How Children Develop Habits" },
+      { id: "hd_05", label: "Morning Routines for Kids" },
+      { id: "hd_06", label: "Teaching Responsibility at Home" },
+      { id: "hd_07", label: "Teaching Self Discipline" },
+      { id: "hd_08", label: "Teaching Time Management" },
+      { id: "hd_09", label: "Screen Time Balance for Kids" },
+      { id: "hd_10", label: "Why Routines Help Children" },
+    ],
+  },
+  {
+    id: "school_life",
+    label: "School Life",
+    subtopics: [
+      { id: "sl_01", label: "Bullying in Primary Schools" },
+      { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+      { id: "sl_03", label: "Helping Children Focus on Studies" },
+      { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+      { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+      { id: "sl_06", label: "Helping Kids Make Friends" },
+      { id: "sl_07", label: "Homework Struggles in Children" },
+      { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+      { id: "sl_09", label: "Reducing School Stress" },
+      { id: "sl_10", label: "School Anxiety in Children" },
+    ],
+  },
+  {
+    id: "family_resources",
+    label: "Family Resources",
+    subtopics: [
+      { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+      { id: "fr_02", label: "Emotional Development Chart" },
+      { id: "fr_03", label: "Habit Tracker for Kids" },
+      { id: "fr_04", label: "Parenting Checklist" },
+      { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+      { id: "fr_06", label: "School Readiness Guide" },
+    ],
+  },
+];
+
+const CONTENT: Record<string, string> = {
+  child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><h2>The One Shift That Changes Everything</h2><p>Most parents respond to what their child does. The parents who have an easier time are responding to why their child does it. Difficult behaviour is almost never defiance. It is almost always one of four things:</p><ul><li>An unmet need — hunger, tiredness, overwhelm, attention</li><li>An emotion they cannot name yet — frustration, shame, jealousy, fear</li><li>A skill they have not built yet — patience, empathy, impulse control</li><li>A test — not of your authority, but of whether you are safe to be real around</li></ul><h2>Ages 3–5: Big Emotions, Tiny Vocabulary</h2><p>Tantrums at this age are not manipulation. They are a neurological overflow — the emotional brain firing faster than the rational brain can catch up.</p><ul><li>Do not match the energy. Speak slowly and quietly. Get low — physically kneel down to their level.</li><li>Name the emotion out loud: 'You are really angry right now because we had to stop playing.'</li><li>Wait it out without leaving and without giving in. Your calm, consistent presence is the lesson.</li><li>After it passes — not during — briefly name what happened and what you can do next time.</li></ul><h2>Ages 6–9: Testing Rules, Seeking Fairness</h2><ul><li>When they refuse to follow a rule, explain the reason behind it once — briefly.</li><li>When they come home grumpy, give them 20 minutes before engaging.</li><li>If there is a conflict with a sibling or friend, resist the urge to solve it.</li><li>Catch them doing the right thing and name it specifically.</li></ul><h2>Ages 10–13: Independence Is Not Disrespect</h2><ul><li>Pick your battles deliberately. If you fight about everything, you win nothing and lose the relationship.</li><li>When they argue back, pause before responding.</li><li>Give them increasing autonomy in low-stakes areas.</li><li>Never mock, dismiss, or minimise what they care about.</li></ul>`,
+
+  emotional_development: `<h1>Emotional Development in Children</h1><p>Emotional development is not about how well your child names feelings on a poster. It is about whether they feel safe enough to be honest with you when it is inconvenient for them.</p><h2>What Emotional Development Actually Means</h2><p>Real emotional development means your child can:</p><ul><li>Feel a difficult emotion without it taking over their behaviour</li><li>Say 'I am angry' instead of hitting, shutting down, or acting out</li><li>Recognise when someone else is struggling and respond with care</li><li>Come to you when something is wrong — not just when it is easy</li><li>Recover from disappointment without falling apart or giving up</li></ul><h2>Ages 3–5: Name It to Tame It</h2><ul><li>During a meltdown, narrate the emotion without trying to stop it: 'You are so frustrated right now. That makes sense. I am right here.'</li><li>Name your own emotions too: 'I am feeling a bit stressed right now, so I am going to take a few deep breaths.'</li><li>After a difficult moment has passed, revisit it briefly.</li><li>Read stories with emotional complexity and pause at key moments.</li></ul><h2>Ages 6–9: Teach the Space Between Feeling and Action</h2><ul><li>Introduce the concept of 'what do you do with big feelings?' — build a short personal list together.</li><li>When they handle a hard moment well, name it immediately.</li><li>Teach empathy through real situations, not hypotheticals.</li><li>Let them experience disappointment without rescuing.</li></ul><h2>Ages 10–13: Respect the Privacy, Keep the Channel Open</h2><ul><li>Stop asking 'what is wrong?' when they are quiet. Say instead: 'You seem like you have something on your mind. I am here when you want to talk.'</li><li>Never mock, dismiss, or minimise what they feel.</li><li>Share your own emotional struggles — age-appropriately.</li><li>When they do open up, fight every instinct to immediately fix, advise, or lecture.</li></ul>`,
+
+  habits_discipline: `<h1>Habits and Discipline</h1><p>Most parents spend years trying to discipline their child. The parents who have an easier time are building habits instead. Because a habit does not need to be enforced — it just happens.</p><h2>How Habits Actually Form in Children</h2><p>Every habit has three parts: a cue that triggers the behaviour, the routine itself, and a reward that makes the brain want to repeat it.</p><ul><li>Attach it to something that already happens. 'After dinner, we read' requires no new slot in the day.</li><li>Make it small enough to be impossible to fail.</li><li>Do it yourself first. Children do not adopt habits you talk about — they adopt habits they see.</li></ul><h2>Ages 3–5: Build the Four Non-Negotiables</h2><ul><li><strong>Sleep:</strong> A fixed bedtime, every night. Non-negotiable.</li><li><strong>Tidying up:</strong> After every play session, everything goes back.</li><li><strong>Please and thank you:</strong> Not as a rule imposed — as a behaviour modelled.</li><li><strong>A daily reading moment:</strong> Even five minutes of a story — every day, at the same time.</li></ul><h2>Ages 6–9: Transfer Responsibility</h2><ul><li><strong>School bag:</strong> Your child packs it. You check it once at the start — then stop checking.</li><li><strong>Homework timing:</strong> Set the window and then leave them to it.</li><li><strong>One household contribution:</strong> Something real, not manufactured busywork.</li><li><strong>Physical activity:</strong> Daily, outside, unstructured if possible.</li></ul><h2>Ages 10–13: Build Systems, Not Rules</h2><ul><li>Sit down together once a week and plan the week ahead. Let them write it.</li><li>Negotiate screen time boundaries together rather than imposing them.</li><li>Let them experience the consequences of their own planning failures.</li><li>Introduce a personal goal — something they want for themselves.</li></ul>`,
+
+  school_life: `<h1>School Life</h1><p>What shapes your child's relationship with school — and with learning for the rest of their life — is what happens at home. The conversations after school. The way you respond when they fail a test. Whether they feel safe telling you when something is going wrong.</p><h2>Stop Asking 'How Was School?' — Ask This Instead</h2><ul><li>'What was the most annoying thing that happened today?'</li><li>'Did anything surprise you today?'</li><li>'Who made you laugh today?'</li><li>'Was there anything today where you felt really stuck?'</li><li>'If you could change one thing about school, what would it be?'</li></ul><h2>Ages 3–5: Make School Feel Like an Adventure</h2><ul><li>Never say 'school is boring' or 'I hated maths too' in front of your child.</li><li>When they come home excited about something they learned, stop what you are doing and let them teach you.</li><li>Keep morning routines calm and consistent.</li></ul><h2>Ages 6–9: Be Interested in Their Work, Not Just Their Grades</h2><ul><li>When they get a bad mark: ask 'what do you think went wrong?' before offering your view.</li><li>When they get a good mark: ask 'what did you do differently that worked?'</li><li>Show genuine interest in a subject they enjoy.</li><li>Help them build a homework habit — same time, same place, no negotiation.</li></ul><h2>Ages 10–13: Back Off the Academics — Stay Close to the Person</h2><ul><li>Resist the urge to increase tuitions as the default response to falling grades.</li><li>Keep the conversation about school balanced — for every question about homework, ask one about their social life.</li><li>Let them have at least one non-academic interest they pursue seriously.</li></ul>`,
+
+  family_resources: `<h1>Family Resources</h1><p>Everything here is a tool — something you can pick up, use today, and come back to. Not philosophies to agree with. Actual frameworks, conversation starters, trackers, and guides that give you something concrete to do.</p><h2>30 Conversation Starters That Go Beyond 'How Was School?'</h2><h3>For Ages 3–6</h3><ul><li>What made you laugh today?</li><li>What was the hardest part of your day?</li><li>Did anything make you feel sad or upset today?</li><li>If you could change one thing about today, what would it be?</li><li>Who was the kindest person at school today and what did they do?</li><li>What is something you wish I knew about your day?</li><li>What are you looking forward to tomorrow?</li></ul><h3>For Ages 7–10</h3><ul><li>What was the most unfair thing that happened this week?</li><li>Did you do anything today that you are proud of, even a little?</li><li>Is there anything you are worried about right now?</li><li>What is something you tried this week that was hard?</li><li>If your best friend could describe you in three words, what would they say?</li><li>What do you think I worry about as a parent?</li><li>If you could teach the class something tomorrow, what would you teach?</li></ul><h3>For Ages 11–13</h3><ul><li>What is something you wish adults understood better about being your age?</li><li>Is there anything you have been thinking about a lot lately that you have not talked to anyone about?</li><li>What do you think you are genuinely good at — not just at school but as a person?</li><li>If you could change one rule in our house, what would it be and why?</li><li>What do you think I do not fully understand about your life right now?</li><li>What is something you have changed your mind about in the last year?</li><li>What is one thing you want to be better at — in life, not just in school?</li></ul>`,
+
+  cb_01: `<h1>Why Children Lie</h1><p>If your child lies to you and you react with anger or punishment, there is a good chance they will lie to you again tomorrow — only more carefully. Because the lie was never really about dishonesty. It was about fear. And increasing the fear increases the lying.</p><h2>The Real Reason Children Lie</h2><p>Children lie for one of four reasons: to avoid a consequence they fear, to protect a feeling (shame, embarrassment, not wanting to disappoint), to test reality, or to protect someone else. If your child lies to you regularly, the question is not 'how do I stop the lying?' It is 'what is my child afraid of telling me the truth about?'</p><h2>Ages 3–5: The Wishful Thinking Stage</h2><p>At this age, lying is not really lying in the moral sense. When a 4-year-old says 'I didn't eat the biscuit' with crumbs on their face, they are expressing a wish — not strategically deceiving you.</p><ul><li>Do not treat it as a moral failure. Respond matter-of-factly: 'I can see the biscuit is gone. Next time, ask me first.'</li><li>Name the emotion underneath: 'I think you were worried I would be upset. You can always tell me things, even the tricky ones.'</li><li>Use stories and role play to explore honesty.</li><li>Never set a trap. If you already know what happened, do not ask 'did you do this?' — ask 'tell me what happened.'</li></ul><h2>Ages 6–9: The Consequence-Avoidance Stage</h2><p>By now your child fully understands the difference between truth and lie — and they are calculating. The lie is almost always a risk assessment: is telling the truth going to hurt me more than this lie?</p><ul><li>Make truth-telling feel safe. When your child tells you something difficult, your first response should be: 'I am glad you told me.' Before anything else.</li><li>Separate the behaviour from the lie. Address what they did, and separately acknowledge that they told the truth.</li><li>Stop interrogating. If you already know what happened, say what you know: 'I know you didn't finish your homework. Tell me what got in the way.'</li></ul><h2>Ages 10–13: The Social Protection Stage</h2><p>At this age, lying often has a social dimension — protecting a friendship, hiding something embarrassing, or managing a double life between the values of home and the values of their peer group.</p><ul><li>Stay curious, not suspicious. A parent who interrogates closes conversations. A parent who is genuinely interested opens them.</li><li>When you catch a lie at this age, stay calm. Your reaction teaches them whether future honesty is worth the risk.</li><li>Share your own experiences of lying as a young person — honestly. Not as a lesson, but as a story.</li></ul><h2>How to Respond When You Catch a Lie</h2><ul><li><strong>Step 1 — Pause:</strong> Take a breath before you respond.</li><li><strong>Step 2 — State what you know:</strong> 'I know what actually happened. I am not going to ask you to confirm it.'</li><li><strong>Step 3 — Address the underlying behaviour:</strong> Not the lie — the thing that caused the lie.</li><li><strong>Step 4 — Name the cost of lying:</strong> 'When you lie to me it makes it harder for me to trust you, and that affects how much freedom I can give you.'</li><li><strong>Step 5 — Leave the door open:</strong> 'I want you to know that you can always tell me things. Even hard things.'</li></ul>`,
+
+  cb_02: `<h1>Why Kids Talk Back</h1><p>Your child answers back and your first instinct is: disrespect. But talking back is almost never about disrespect. It is about a developing brain that has just discovered it can argue — and a child who is testing whether you are someone who can handle disagreement without breaking.</p><h2>Why Talking Back Is Actually a Sign of Development</h2><p>Children who talk back have developed the ability to form an opinion, articulate it, and push back on authority. The goal is not to eliminate the arguing. It is to channel it into respectful disagreement.</p><h2>Ages 3–5: The 'No' Stage</h2><ul><li>Pick your battles. Not every 'no' needs a confrontation.</li><li>Offer controlled choices: 'You need to put your shoes on. Do you want to do it yourself or do you want my help?'</li><li>Avoid power struggles over small things.</li><li>Name what you observe: 'You really don't want to stop playing. I understand. We still need to go.'</li></ul><h2>Ages 6–9: The 'That's Not Fair' Stage</h2><ul><li>Explain your reasoning once, briefly. Children this age respond much better to 'because it is not safe' than 'because I said so.'</li><li>Acknowledge their perspective before holding your position: 'I hear that it feels unfair. The answer is still no.'</li><li>Do not match their emotional intensity.</li><li>Tell them when they have made a fair point: 'Actually that is a reasonable argument. Let me think about it.'</li></ul><h2>Ages 10–13: The Full Argument Stage</h2><ul><li>Pause before responding. The sharpness of their argument is designed to provoke a reaction.</li><li>Engage the substance, not the tone.</li><li>Be willing to change your mind when they are right.</li><li>Hold the line on how they speak to you: 'You are allowed to disagree with me. You are not allowed to speak to me like that. Try again.'</li></ul><h2>The Responses That Escalate and the Ones That Don't</h2><ul><li><strong>Escalates:</strong> 'Because I said so, that's why.'</li><li><strong>De-escalates:</strong> 'The reason is this. I am not going to debate it further, but I want you to understand my thinking.'</li><li><strong>Escalates:</strong> Matching their volume and emotional intensity.</li><li><strong>De-escalates:</strong> Lowering your voice. A quiet parent is more powerful than a loud one every single time.</li></ul>`,
+
+  cb_03: `<h1>Dealing With a Stubborn Child</h1><p>The child everyone calls stubborn is usually the one who knows what they want, refuses to be pushed around, and holds their position under pressure. In twenty years, those are exactly the qualities that will make them successful. Right now, they are making your evenings very difficult.</p><h2>The Truth About Stubborn Children</h2><p>Strong-willed children have a particularly intense need for autonomy — to feel that their choices and opinions matter. When that need is met through collaboration and respect, they are capable of extraordinary persistence, leadership, and resilience. When it is met with force, they dig in and everyone loses. You will not out-stubborn a stubborn child. The only way through is alongside.</p><h2>Ages 3–5: The 'I Do It Myself' Stage</h2><ul><li>Give them the genuine experience of doing it themselves wherever possible.</li><li>Build in extra time. Battles over speed are the most pointless ones.</li><li>Use 'when-then': 'When your shoes are on, then we can go.' State it once and walk toward the door.</li><li>Avoid direct commands wherever you can. 'It's time to put shoes on' works better than 'put your shoes on now.'</li></ul><h2>Ages 6–9: The 'I Won't and You Can't Make Me' Stage</h2><ul><li>Involve them in decisions. 'We need to leave by 5. How do you think we should manage the time between now and then?'</li><li>Explain the real reason, not just the rule.</li><li>Give them a face-saving exit. Preserve their sense of control while moving toward the outcome you need.</li><li>Avoid public confrontations. A stubborn child doubled down in front of others cannot back down without losing face.</li></ul><h2>Ages 10–13: The 'I Have a Point and I'm Not Moving' Stage</h2><ul><li>Genuinely consider their argument before dismissing it. If their position has merit, say so.</li><li>Be extremely clear about what is non-negotiable and keep that list short.</li><li>For the truly non-negotiable things: state it once, clearly, with the reason. Then do not engage with the argument.</li><li>Let natural consequences do the teaching for anything that is not a safety issue.</li></ul>`,
+
+  cb_04: `<h1>Discipline Without Punishment</h1><p>Most parents were disciplined through punishment. But punishment and discipline are not the same thing. Punishment makes a child feel bad. Discipline teaches a child to do better.</p><h2>The Four Tools of Discipline Without Punishment</h2><h3>Tool 1: Natural Consequences</h3><p>Let the situation itself teach the lesson. Forgot the water bottle — goes thirsty. Did not finish the project in time — faces the teacher.</p><h3>Tool 2: Logical Consequences</h3><p>A logical consequence is directly connected to the behaviour. Misuses the tablet — loses tablet access. Aggressive with a sibling — loses time with that sibling.</p><h3>Tool 3: Problem-Solving Conversations</h3><p>After the emotion has settled, sit down with your child and explore what happened.</p><ul><li>'Tell me what happened from your perspective.'</li><li>'What were you feeling just before that?'</li><li>'What did you want to happen?'</li><li>'What actually happened?'</li><li>'What would you do differently?'</li></ul><h3>Tool 4: Positive Reinforcement Done Right</h3><p>Effective positive reinforcement is specific, immediate, and process-focused.</p><ul><li><strong>Wrong:</strong> 'Good boy for sharing.'</li><li><strong>Right:</strong> 'You noticed your cousin wanted a turn and you gave him one without being asked. That was a generous choice.'</li></ul><h2>Ages 3–5: Simple, Immediate, Consistent</h2><ul><li>Redirect rather than punish: 'We don't throw blocks. Blocks are for building. Show me what you can build.'</li><li>Use do-overs: 'That wasn't kind. Let's try that again.'</li></ul><h2>Ages 6–9: Involve Them in the Solution</h2><ul><li>'What do you think should happen as a result of what you did?'</li><li>'What would make this right?'</li></ul><h2>Ages 10–13: Negotiate and Trust</h2><ul><li>Have a family conversation about house rules as a genuine negotiation.</li><li>When they break an agreement: 'We agreed on this together. What happened?'</li><li>Trust them with increasing autonomy as they demonstrate responsibility.</li></ul>`,
+
+  cb_05: `<h1>Handling Aggressive Behaviour</h1><p>When your child hits, throws, shouts, or lashes out — your instinct is to stop it immediately. That instinct is understandable. It is also, in most cases, exactly what makes aggressive behaviour worse.</p><h2>Aggression Is Almost Always a Communication Failure</h2><p>Children become physically or verbally aggressive when they have run out of other ways to express what they are experiencing. The emotion underneath aggression is almost always one of three things: intense frustration, fear of something that feels threatening, or shame that has converted to anger.</p><h2>Ages 3–5: Physical Overflow</h2><ul><li>Ensure safety first — physically separate children if needed, calmly.</li><li>Do not match the energy. Get low, speak slowly and quietly.</li><li>Name the emotion without judgement: 'You are really furious right now. It is not okay to hit. I am staying here with you.'</li><li>Wait. Do not try to teach during the storm. The brain cannot learn when it is flooded.</li></ul><h2>Ages 6–9: Reactive Aggression</h2><ul><li>Address the aggression and the trigger separately.</li><li>Teach a pause strategy when they are calm — not in the moment.</li><li>Role-play difficult situations: 'Let's practise what you could do if someone takes your thing at school.'</li><li>Examine whether there is an environmental trigger — hunger, tiredness, overstimulation.</li></ul><h2>Ages 10–13: Verbal Aggression</h2><ul><li>Stay calm and lower your voice. Responding to shouting with shouting escalates always.</li><li>Name the behaviour without attacking the character: 'What you just said was unkind. That is not how we speak in this family.'</li><li>Exit the immediate conflict to prevent escalation.</li><li>Explore what is underneath it when things are calm.</li></ul><h2>Long-Term Strategies</h2><ul><li>Build a daily physical outlet — running, sport, rough-and-tumble play.</li><li>Regulate their sleep. Sleep-deprived children have dramatically reduced emotional regulation capacity.</li><li>Build emotional vocabulary consistently over time.</li><li>Model emotional regulation yourself.</li></ul>`,
+
+  cb_06: `<h1>Why Children Refuse to Listen</h1><p>You have said it three times. You are about to say it a fourth. And the fourth time, just like the first three, will achieve nothing — except teach your child that your instructions do not actually need to be followed until the fifth.</p><h2>The Parent Is Usually Part of the Problem</h2><p>Children learn, through consistent experience, exactly how many times they need to wait before compliance is actually required. Every repeated instruction that does not lead to a consequence trains a child to wait.</p><h2>Ages 3–5: Developmental Capacity, Not Defiance</h2><ul><li>Get physical proximity first. An instruction shouted from another room is rarely processed.</li><li>Give a transition warning: 'In five minutes we are going to put the toys away.'</li><li>Use 'when-then' framing: 'When the toys are away, then we can have dinner.'</li><li>Follow through every time.</li></ul><h2>Ages 6–9: Strategic Non-Listening</h2><ul><li>Say it once. Then act.</li><li>Get confirmation: 'Can you tell me what I just asked you to do?'</li><li>Remove distractions before instructing.</li><li>Make the consequence logical and immediate.</li></ul><h2>Ages 10–13: Selective Processing</h2><ul><li>Lower your expectations of compliance through instruction alone and increase your expectations through agreement.</li><li>Name what you observe without drama: 'I notice that when I ask you to do something, it rarely happens without me asking again. I would like us to talk about how we change that.'</li><li>Be genuinely willing to hear what they say.</li></ul><h2>The Instructions That Never Work</h2><ul><li>Shouted instructions from another room</li><li>Instructions buried in a conversation</li><li>Instructions without reasons</li><li>Instructions delivered in a questioning tone: 'Can you clean your room?' gives your child the option of saying no.</li><li>Repeated instructions with no consequence</li></ul>`,
+
+  cb_07: `<h1>How to Handle Sibling Fights</h1><p>Sibling conflict is one of the most exhausting things about family life. It is also one of the most valuable developmental experiences your children will ever have — if you stop managing it and start using it.</p><h2>Why Sibling Conflict Is Actually Valuable</h2><p>Siblings cannot leave, must share resources, have similar but not identical needs, and are watched by a powerful authority figure who they both want on their side. This combination creates an unparalleled training ground for negotiation, empathy, fairness, and conflict resolution.</p><h2>The Most Common Parenting Mistakes</h2><ul><li>Immediately taking sides</li><li>Finding out who started it</li><li>Solving it for them</li><li>Comparing them to each other</li><li>Intervening too early</li></ul><h2>Ages 3–6: Narrate and Separate</h2><ul><li>Separate them physically without drama: 'You two need a break from each other.'</li><li>Narrate both perspectives: 'Arjun wanted the car. Priya was using it. You both felt frustrated.'</li><li>Name the rule: 'In this house we do not hurt each other. That is not negotiable.'</li><li>Redirect to the solution: 'How long does Priya need? Can Arjun choose something else for now?'</li></ul><h2>Ages 6–10: Hand the Problem Back</h2><p>'I can see this is a real disagreement. I am going to give you five minutes to figure it out between you. If you cannot, I will make the decision for both of you — and neither of you will like it.' Then actually leave the room.</p><h2>Ages 10–13: Facilitate, Don't Adjudicate</h2><ul><li>Have a family conversation — not during a fight — about what fair conflict resolution looks like in your home.</li><li>Invite both children to describe their experience — not to build a case, but to be heard.</li><li>Ask what they each need rather than what they want.</li></ul>`,
+
+  cb_08: `<h1>Why Children Throw Tantrums</h1><p>A tantrum is not a manipulation tactic. It is not a test of your authority. It is a neurological event — a young brain overwhelmed by an emotion it does not yet have the infrastructure to manage.</p><h2>What Is Actually Happening During a Tantrum</h2><p>When a child is in the middle of a full tantrum, their prefrontal cortex — the part of the brain responsible for reasoning, impulse control, and language — is effectively offline. This is why reasoning with a child mid-tantrum is useless. There is no one home to reason with. The tantrum ends when the emotional brain exhausts itself and the regulatory brain slowly comes back online.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Ensure sleep and meals are consistent.</li><li>Offer choices within limits.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first. Take one slow breath. Lower your shoulders.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words. 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out. Do not bribe, threaten, or give in.</li><li><strong>Step 5:</strong> Reconnect after — a hug, a quiet 'that was a big feeling.'</li></ul><h2>What Makes Tantrums More Frequent — Check These First</h2><ul><li><strong>Tiredness:</strong> The single biggest predictor of tantrum frequency.</li><li><strong>Hunger:</strong> Blood sugar drops are a major tantrum trigger.</li><li><strong>Overscheduling:</strong> Young children who are moved between activities without sufficient downtime are chronically overstimulated.</li><li><strong>Inconsistency:</strong> Children who do not know what to expect experience more anxiety and more tantrums.</li></ul>`,
+
+  cb_09: `<h1>Teaching Respect to Children</h1><p>Respect cannot be commanded into existence. Every parent who has tried the 'you will respect me' approach knows this. Respect is built through relationship, modelled through behaviour, and earned through how you treat your child — not through how much authority you claim.</p><h2>Ages 3–5: Mirror What You Want to See</h2><ul><li>Say please and thank you to everyone — the autorickshaw driver, the vegetable vendor, the delivery person. Your child is watching.</li><li>Introduce the idea that other people have feelings: 'The didi worked really hard to clean the house today. How do you think she would feel if we left a mess?'</li><li>When your child is rude, address it without shame: 'That was not kind. Let's try that again.'</li><li>Speak to your child with the same courtesy you want them to show others.</li></ul><h2>Ages 6–9: Name Respect in Everyday Moments</h2><ul><li>When you see disrespectful behaviour, name it: 'Did you notice how that person spoke to the waiter? What do you think about that?'</li><li>Teach the difference between agreeing with someone and respecting them.</li><li>When your child speaks disrespectfully to you: 'That was rude. I would like you to say that again differently.' Then wait.</li><li>Acknowledge respectful behaviour specifically.</li></ul><h2>Ages 10–13: Discuss, Don't Dictate</h2><ul><li>Have a conversation — not a lecture — about what respect means to your family. Ask your child's view first.</li><li>Be explicit when you make a mistake: 'I spoke to you sharply earlier and you didn't deserve that. I am sorry.'</li><li>Let them call you out respectfully when you are being disrespectful.</li></ul>`,
+
+  cb_10: `<h1>Setting Boundaries With Kids</h1><p>Children without clear boundaries are not free. They are anxious. A child who has not been shown where the walls are spends enormous emotional energy testing for them — escalating behaviour until someone finally says 'this far and no further.' That moment of a firm, loving limit is experienced by most children as profound relief.</p><h2>The Characteristics of Boundaries That Work</h2><ul><li><strong>Clear:</strong> 'Be home by 5' is a boundary. 'Come home at a reasonable time' is not.</li><li><strong>Explained:</strong> Children who understand the reason are significantly more likely to respect it.</li><li><strong>Consistent:</strong> A boundary that shifts based on your mood is not a boundary. It is a guideline with exceptions.</li><li><strong>Followed through:</strong> Every boundary that is stated and then not enforced weakens every future boundary.</li><li><strong>Proportionate:</strong> The consequence for crossing a boundary should fit the boundary.</li></ul><h2>Ages 3–5: Simple, Physical, Immediate</h2><ul><li>Choose two or three genuinely non-negotiable boundaries and hold only those firmly.</li><li>State the boundary at a neutral moment, not in the middle of a conflict.</li><li>When the boundary is crossed: calm, immediate, consistent. The same response every time.</li></ul><h2>Ages 6–9: Negotiate Within the Framework</h2><ul><li>Have a family conversation about house rules — as a genuine discussion, not a lecture.</li><li>Let them propose rules and consequences. They are often harder on themselves than you would have been.</li><li>When a boundary is pushed: acknowledge the push before holding the line.</li></ul><h2>Ages 10–13: Negotiate the Boundary Itself</h2><ul><li>Identify your true non-negotiables. There are probably fewer than you think.</li><li>Have an explicit conversation: 'I have some things I am not willing to move on. But there is also a lot we can work out together if you bring your reasoning.'</li><li>Increase autonomy explicitly as trust is demonstrated: 'You have been reliable about coming home when you said you would. I am going to extend your time by 30 minutes.'</li></ul>`,
+
+  ed_01: `<h1>Building Emotional Resilience</h1><p>Resilience does not mean toughness. It does not mean bouncing back instantly as if nothing happened. It means your child can experience difficulty fully, be genuinely affected by it, and recover — not unchanged, but stronger.</p><h2>The 4 Pillars of Emotional Resilience</h2><h3>Pillar 1: Secure Attachment</h3><ul><li>Be consistently available — not perfect, but predictable.</li><li>Repair ruptures quickly. 'I was short with you earlier and that was not okay. I'm sorry.'</li><li>Make your love unconditional and visible.</li></ul><h3>Pillar 2: Emotional Competence</h3><ul><li>Create a home where all emotions are welcome.</li><li>Help them develop a nuanced emotional vocabulary.</li><li>Teach them that emotions are temporary. 'This feeling is real and big. And it will pass.'</li></ul><h3>Pillar 3: Self-Efficacy</h3><ul><li>Allow age-appropriate struggle.</li><li>Highlight their track record. 'Remember when you thought you couldn't? And you did.'</li><li>Let them fail. Failure is the raw material from which resilience is built.</li></ul><h3>Pillar 4: Problem-Solving Orientation</h3><ul><li>When your child comes with a problem, ask: 'What do you think you could do about it?'</li><li>Model problem-solving thinking aloud.</li><li>After difficulty, build the habit of debrief: 'What happened? What worked? What would you do differently?'</li></ul><h2>What Undermines Resilience — Stop Doing These</h2><ul><li><strong>Eliminating all difficulty:</strong> A friction-free childhood produces a fragile adult.</li><li><strong>Rescuing from consequences:</strong> Bailing them out steals the learning.</li><li><strong>Catastrophising:</strong> If you respond with more panic than they feel, you teach them that problems are catastrophes.</li><li><strong>Teaching helplessness:</strong> 'You can't do that, let me do it for you' repeated enough becomes a belief.</li><li><strong>Inconsistent emotional availability:</strong> A parent who is available on good days and withdrawn on bad days creates anxiety, not security.</li></ul>`,
+
+  ed_02: `<h1>Emotional Intelligence in Children</h1><p>Academic success, social confidence, strong friendships, resilience under pressure — the one thing that predicts all of these better than IQ is emotional intelligence. And unlike IQ, emotional intelligence can be taught, practised, and strengthened at every age.</p><h2>The Four Components</h2><ul><li><strong>Self-awareness:</strong> The ability to recognise and name what you are feeling. This is the foundation of all emotional intelligence.</li><li><strong>Self-regulation:</strong> The ability to manage emotions rather than being controlled by them.</li><li><strong>Empathy:</strong> The ability to recognise and understand what other people are feeling.</li><li><strong>Social skills:</strong> The ability to use emotional awareness in relationships.</li></ul><h2>Ages 3–5: Building the Emotional Vocabulary</h2><ul><li>Name their emotions for them, specifically and without judgment. 'You look really frustrated that the tower fell down' does more than 'don't cry.'</li><li>Use a feelings vocabulary that goes beyond happy, sad, and angry.</li><li>Read stories together and pause to ask what the character might be feeling.</li></ul><h2>Ages 6–9: Developing Self-Regulation Strategies</h2><ul><li>Teach the gap between feeling and action explicitly. 'It is completely okay to feel angry. It is not okay to hit.'</li><li>Help them build a personal emotional toolkit.</li><li>Practise perspective-taking actively.</li><li>Model your own emotional intelligence openly.</li></ul><h2>Ages 10–13: Sophisticated Emotional Intelligence</h2><ul><li>Have real conversations about emotional complexity. 'It is possible to be excited about the new school and also scared about leaving your friends. Both feelings are true at the same time.'</li><li>Discuss emotional intelligence as a skill and a strength.</li><li>Help them read social situations.</li></ul><h2>5 Common Mistakes That Undermine Emotional Intelligence</h2><ul><li><strong>Dismissing emotions:</strong> 'You are fine,' 'stop crying,' 'there is nothing to be scared of.'</li><li><strong>Fixing instead of feeling:</strong> Rushing to solve the problem skips the emotional processing.</li><li><strong>Punishing emotions:</strong> A child who is punished for being angry learns to suppress anger, not manage it.</li><li><strong>Modelling emotional suppression:</strong> If you never show your own emotions, your child learns that emotions are something to hide.</li><li><strong>Labelling children by their emotions:</strong> 'You are so sensitive' turns a temporary state into an identity.</li></ul>`,
+
+  ed_03: `<h1>Helping Children Express Emotions</h1><p>Every behaviour problem that baffles a parent has an unexpressed emotion underneath it. The child who hits is the child who cannot say 'I am overwhelmed.' The child who withdraws is the child who cannot say 'I am hurt.' A child who can articulate what they feel almost never needs to show it through destructive behaviour.</p><h2>Why Children Struggle to Express Emotions</h2><ul><li>They lack the vocabulary.</li><li>They have been taught — often unintentionally — that certain emotions are not acceptable.</li><li>They do not feel safe enough.</li><li>They do not have a model.</li></ul><h2>Ages 3–5: Give Them the Words</h2><ul><li>Narrate what you observe. 'Your face looks scrunched up and your fists are tight. I think you might be feeling really frustrated.'</li><li>Use emotion check-ins at calm moments, not just during meltdowns.</li><li>Offer physical expression channels alongside verbal ones.</li><li>Never correct their emotion. If they say they are angry and you think they are actually sad, do not argue.</li></ul><h2>Ages 6–9: Build the Habit of Emotional Communication</h2><ul><li>Create a regular, low-pressure space for emotional expression.</li><li>Introduce 'I feel _____ because _____' as a sentence structure. Practise it yourself first.</li><li>When they do express something difficult, respond with acknowledgment before anything else: 'Thank you for telling me that. That took courage.'</li></ul><h2>Ages 10–13: Respect the Complexity</h2><ul><li>Use side-by-side activities. Cooking together, walking, driving — these create natural conversation without the intensity of sitting face to face.</li><li>Validate the complexity. 'It sounds like you are dealing with a lot of feelings about this all at once. That is completely normal and really hard.'</li><li>Share your own emotional experiences appropriately.</li></ul><h2>What Blocks Emotional Expression — Stop Doing These</h2><ul><li>Interrogating instead of inviting</li><li>Offering solutions before listening</li><li>Making it about you</li><li>Time-pressuring expression: 'Just tell me what's wrong, we don't have all day.'</li></ul>`,
+
+  ed_04: `<h1>Helping Children Overcome Fear</h1><p>Every child is afraid of something. Fear is not a flaw — it is one of the most important emotions a human being has. The brave child is not the one who feels no fear. The brave child is the one who feels fear and acts anyway — who has learned that fear is information, not a verdict.</p><h2>Common Childhood Fears by Age</h2><ul><li><strong>Ages 3–5:</strong> Imaginative fears — the dark, monsters, loud noises, separation from parents.</li><li><strong>Ages 6–9:</strong> Concrete fears — injury, natural disasters, bad people, death.</li><li><strong>Ages 10–13:</strong> Social fears — embarrassment, rejection, failure, not fitting in.</li></ul><h2>The Golden Rule: Validate, Then Approach</h2><p><strong>Step 1:</strong> Validate the fear completely. 'I can see that you are really scared. That feeling makes sense.' Do not minimise it.</p><p><strong>Step 2:</strong> Support gradual approach — never forcing, always supporting. Every time a child avoids what they fear, the fear grows.</p><h2>Ages 3–5: Make Fear Safe to Talk About</h2><ul><li>Take their fears seriously, even irrational ones. 'Let us check under the bed together' works. 'There is no monster, don't be silly' does not.</li><li>Use stories and play to process fears.</li><li>Never force confrontation.</li></ul><h2>Ages 6–9: Build the Courage Muscle</h2><ul><li>Teach them about the fight-or-flight response. Understanding the physiology reduces fear of the fear itself.</li><li>Create a 'brave steps' plan together — step-by-step, voluntary approach.</li><li>Celebrate every brave step. 'You were scared but you did it. That is real courage.'</li></ul><h2>Ages 10–13: Address Social Fears</h2><ul><li>Normalise the fear. 'Being afraid of what people think is one of the most common feelings in the world.'</li><li>Help them reality-test fears. 'What is the worst that could actually happen?'</li><li>Build their 'evidence file' of times they faced fear and survived.</li></ul><h2>What Makes Childhood Fears Worse — Stop Doing These</h2><ul><li>Forcing confrontation — creates trauma, not courage</li><li>Ridiculing fear: 'Don't be a baby' adds shame to fear</li><li>Transferring your own fears — children are tuned to parental anxiety</li><li>Reassurance on repeat — one acknowledgment and a plan is more effective than endless 'there is nothing to worry about'</li></ul>`,
+
+  ed_05: `<h1>Helping Kids Deal with Frustration</h1><p>Frustration is the emotion children feel most frequently. Every single day, your child runs into the gap between what they want to do and what they can do. Most children respond in one of three ways: they explode, they give up, or they shut down. What does work is learning to tolerate frustration long enough to push through it — because on the other side of frustration is growth.</p><h2>The Frustration Cycle</h2><p><strong>Unhealthy:</strong> Attempt → Failure → Frustration → Emotional reaction → Giving up</p><p><strong>Healthy:</strong> Attempt → Failure → Frustration → Pause → Adjusted attempt → Progress</p><h2>Ages 3–5: Keep It Small and Supported</h2><ul><li>Sit with them in the frustration. 'This is really hard. That's so frustrating.' Your presence is regulating.</li><li>Resist the urge to do it for them. Guide rather than rescue.</li><li>Break tasks into smaller steps.</li><li>Celebrate the persistence, not just the result.</li></ul><h2>Ages 6–9: Build the Frustration Toolkit</h2><ul><li>Teach the 'pause and breathe' technique explicitly.</li><li>Introduce the 'stuck' protocol: (1) Try again differently. (2) Break it into parts. (3) Take a break. (4) Ask for help.</li><li>Normalise frustration by sharing your own experiences.</li></ul><h2>Ages 10–13: Reframe Frustration as Information</h2><ul><li>Introduce 'productive struggle.' 'That frustration is actually the feeling of learning happening.'</li><li>Help them identify their frustration patterns.</li><li>Distinguish between productive and unproductive frustration.</li></ul><h2>What Makes Frustration Worse — Stop Doing These</h2><ul><li>Saying 'it's easy': If it were easy, they would not be frustrated.</li><li>Rescuing immediately: Every rescue teaches them frustration is a signal to stop.</li><li>Adding pressure: 'Come on, you know this!' adds shame to an already difficult experience.</li><li>Comparing to others: 'Your classmate can do this' communicates something is wrong with them.</li></ul>`,
+
+  ed_06: `<h1>Helping Kids Handle Disappointment</h1><p>The birthday party that got cancelled. The team they did not make. The friend who chose someone else. The grade that fell short. Disappointment is woven into childhood — and yet most children are never explicitly taught how to handle it. Your job is not to prevent disappointment. It is to be present while they experience it — and to help them discover that they can survive it.</p><h2>Ages 3–5: Name It and Stay Close</h2><ul><li>Name the feeling specifically. 'You are really disappointed that we can't go to the park today.'</li><li>Do not rush to fix it. Let them feel the disappointment first.</li><li>Avoid minimising. 'It's not a big deal' is factually incorrect from the child's perspective.</li></ul><h2>Ages 6–9: Build the Recovery Muscle</h2><ul><li>Validate first, coach second. 'I know you really wanted to win that game. It hurts when you work hard and it doesn't go the way you wanted.' Then: 'What do you think you might do differently next time?'</li><li>Help them separate effort from outcome. 'You can control how hard you try. You can't always control what happens.'</li><li>Introduce 'Plan B thinking.' 'Okay, that did not work out. What is another way we could approach this?'</li></ul><h2>Ages 10–13: Develop Perspective Without Dismissing</h2><ul><li>Listen more than you advise. A 12-year-old who has just been cut from a team does not want to hear 'there are other teams.' They want someone to sit in the disappointment with them.</li><li>Help them distinguish between disappointment and failure. 'Not making the team is a disappointment. It is not a statement about who you are as a person.'</li></ul><h2>What Makes Disappointment Harder — Stop Doing These</h2><ul><li>Preventing all disappointment — produces fragility, not resilience</li><li>Toxic positivity: 'Everything happens for a reason!'</li><li>Comparing disappointments: 'Some children don't even have food to eat'</li><li>Fixing it immediately — teaches that disappointment is something to escape</li></ul>`,
+
+  ed_07: `<h1>Managing Tantrums (Age 3–6)</h1><p>A tantrum is not your child being naughty. A tantrum is your child's nervous system hitting a wall it cannot climb over. The screaming, the flailing, the throwing themselves on the floor — these are not choices. They are the result of an immature brain being overwhelmed by an emotion it does not yet have the tools to manage.</p><h2>What Is Actually Happening in Your Child's Brain</h2><p>When a young child's emotional system is overwhelmed, the amygdala — the brain's alarm centre — takes control. The prefrontal cortex, which handles reasoning, language, and impulse control, goes offline. This is why you cannot reason with a child mid-tantrum.</p><h2>Before the Tantrum: Prevention</h2><ul><li>Track the triggers — most cluster around the same handful of situations.</li><li>Address the basics first: a well-rested, well-fed child has dramatically fewer tantrums.</li><li>Give warnings before transitions: 'In five minutes we are leaving the park.'</li><li>Offer choices within limits.</li></ul><h2>During the Tantrum: Step by Step</h2><ul><li><strong>Step 1:</strong> Regulate yourself first.</li><li><strong>Step 2:</strong> Get low and close — kneel to their level.</li><li><strong>Step 3:</strong> Use minimal words: 'I am here. You are safe.'</li><li><strong>Step 4:</strong> Wait it out.</li><li><strong>Step 5:</strong> Reconnect after — before you correct.</li></ul><h2>What Makes Tantrums Worse — Stop Doing These</h2><ul><li>Saying 'stop crying': This demands something the child cannot do.</li><li>Giving in to end it: If you say no and then change to yes when they tantrum, you have taught them that tantrums work.</li><li>Punishing tantrums: This teaches that having big emotions leads to rejection.</li><li>Ignoring completely: There is a difference between not giving in and not giving attention.</li><li>Threatening: Threats during a tantrum are not processed by the child's brain.</li></ul>`,
+
+  ed_08: `<h1>Raising Emotionally Strong Children</h1><p>The emotionally strong child is not the one who never cries. It is the child who feels deeply, recovers effectively, and grows through difficulty rather than being diminished by it. Emotional strength is not about suppression. It is about capacity — the capacity to experience the full range of human emotions, to tolerate discomfort, and to bounce back after hard experiences.</p><h2>What Emotional Strength Looks Like</h2><ul><li><strong>Emotional range:</strong> The ability to experience uncomfortable emotions without being overwhelmed.</li><li><strong>Recovery speed:</strong> The ability to return to baseline after emotional disruption.</li><li><strong>Emotional honesty:</strong> The willingness to be truthful about feelings rather than performing expected emotions.</li><li><strong>Internal stability:</strong> A core sense of self not dependent on external validation.</li></ul><h2>5 Daily Practices That Build Emotional Strength</h2><ul><li><strong>Let them feel everything:</strong> Every time you allow your child to feel sad, frustrated, or anxious and support them through it without rushing to fix it, you are building their emotional capacity.</li><li><strong>Validate before you redirect:</strong> 'That sounds really hard.' before anything else.</li><li><strong>Model your own emotional process:</strong> 'I made a mistake and I feel bad about it. I'm going to apologise.'</li><li><strong>Give them real responsibility:</strong> A 4-year-old setting the table, a 7-year-old managing homework, a 12-year-old cooking a simple meal.</li><li><strong>Teach constructive self-talk:</strong> 'I can try again.' 'This is hard but I can handle it.'</li></ul><h2>What Weakens Emotional Strength — Stop Doing These</h2><ul><li>Over-protecting: A child shielded from every difficulty never builds evidence they can cope.</li><li>Equating emotion with weakness: 'Stop crying — be strong' teaches that strength and emotion are opposites. They are not.</li><li>Fixing everything for them: Every problem you solve is a problem they did not get to solve.</li><li>Praising only outcomes: Praise effort instead.</li></ul>`,
+
+  ed_09: `<h1>Teaching Patience to Children</h1><p>We live in an instant world — instant streaming, instant messaging, instant delivery. And then we ask our children to wait, and we are surprised when they cannot. Patience is not a personality trait some children are born with. It is a skill that depends on the development of impulse control, emotional regulation, and the ability to tolerate discomfort.</p><h2>Ages 3–5: Tiny Waits With Big Support</h2><ul><li>Start with waits that have a visible end point — an hourglass timer, a visual countdown.</li><li>Name the skill. 'You waited so patiently while I was on the phone. That was really hard and you did it.'</li><li>Play waiting games — red light/green light, Simon says.</li><li>Do not eliminate all waiting. Some boredom is a feature, not a bug.</li></ul><h2>Ages 6–9: Stretching the Patience Muscle</h2><ul><li>Introduce delayed rewards. 'One sweet now, or two after dinner.'</li><li>Help them develop personal waiting strategies.</li><li>Use cooking and gardening as patience teachers.</li><li>Narrate your own patience.</li></ul><h2>Ages 10–13: Patience as Strategic Thinking</h2><ul><li>Connect patience to goals they care about.</li><li>Discuss the cost of impatience with real examples.</li><li>Introduce long-term projects.</li></ul><h2>What Undermines Patience — Stop Doing These</h2><ul><li>Instant entertainment at every pause — removes practice opportunities</li><li>Rewarding impatience — if whining accelerates the timeline, you have taught that impatience works</li><li>Breaking promises about timing — 'five more minutes' that turns into twenty erodes trust</li><li>Being impatient yourself — children learn more from what you do than what you say</li></ul>`,
+
+  ed_10: `<h1>Why Children Get Angry</h1><p>Your child is not angry because they are bad. They are not angry because you are a bad parent. They are angry because anger is the most accessible emotion — the one that shows up first when something underneath it is not being addressed. Anger in children is almost never really about anger. It is about frustration, injustice, fear, embarrassment, powerlessness, or hurt that the child cannot process or express any other way.</p><h2>The Science Behind Anger in Children</h2><p>When a child feels threatened — physically, emotionally, or socially — their brain releases stress hormones that prepare them for fight or flight. In children, the prefrontal cortex is still developing. This means that when anger is triggered, the emotional brain takes over and the thinking brain goes offline. This is not a discipline problem. It is a developmental reality.</p><h2>Ages 3–5: Big Feelings in Small Bodies</h2><ul><li>Acknowledge the frustration before addressing the behaviour. 'You are SO frustrated that it won't stay up. That is really hard.'</li><li>Reduce the triggers where possible.</li><li>Stay physically close and calm. Your regulated presence is the most powerful tool you have.</li></ul><h2>Ages 6–9: The Growing Sense of Justice</h2><ul><li>Take their sense of fairness seriously, even when you disagree.</li><li>Look for the hurt underneath the anger. 'You seem really angry about what happened at school. I wonder if something hurt your feelings?'</li><li>Give them a voice in family decisions where appropriate.</li></ul><h2>Ages 10–13: Complex Anger in Pre-Teens</h2><ul><li>Do not take the anger personally, even when it is directed at you.</li><li>Offer physical outlets. Running, sport, even hitting a pillow.</li><li>Distinguish between the anger and the issue.</li></ul><h2>What Makes Children's Anger Worse — Stop Doing These</h2><ul><li>Matching their intensity</li><li>Demanding immediate calm: 'Calm down right now!' has never once caused a child to calm down</li><li>Dismissing the trigger: 'You're angry about THAT?'</li><li>Using anger as a teaching moment during the anger</li><li>Withholding affection as punishment for anger</li></ul>`,
+
+  hd_01: `<h1>Building Reading Habits</h1><p>Reading is the single habit that predicts academic success more reliably than any other factor — more than tutoring, more than school quality, more than parental education level. A child who reads regularly develops a larger vocabulary, stronger comprehension, deeper empathy, and better critical thinking skills than a child who does not. And the gap compounds over time.</p><h2>Ages 3–5: Make Books Part of the Furniture</h2><ul><li>Read aloud every single day, ideally at the same time. Bedtime is the most powerful anchor.</li><li>Let them choose the book, even if it is the same book for the fourteenth consecutive night.</li><li>Have books everywhere — not just on a shelf, but on the coffee table, in the car, in the bathroom.</li><li>Do not turn reading into a lesson. Let the story be the experience.</li></ul><h2>Ages 6–9: Protect the Pleasure</h2><ul><li>Maintain a daily reading time that is separate from school reading.</li><li>Let them abandon books they do not enjoy.</li><li>Introduce them to series. Once a child is hooked on a series character, they will read the next book voluntarily.</li><li>Read alongside them.</li></ul><h2>Ages 10–13: Respect Their Taste</h2><ul><li>Respect their genre preferences absolutely. Fantasy, horror, graphic novels, manga — all of it counts.</li><li>Connect reading to their interests.</li><li>Create physical reading spaces.</li><li>Discuss books as equals, not as teacher and student.</li></ul><h2>What Kills Reading Habits — Stop Doing These</h2><ul><li>Making reading a punishment or obligation</li><li>Restricting their choices: 'That book is too easy for you'</li><li>Competing with screens at reading time</li><li>Testing comprehension after every chapter</li><li>Not reading yourself</li></ul>`,
+
+  hd_02: `<h1>Daily Routines for Children</h1><p>A good daily routine is the closest thing to a parenting superpower. When routines are working, mornings are calm, transitions are smooth, homework happens without a fight, and bedtime does not require negotiation. When routines are absent, every single transition becomes a decision — and decisions create conflict.</p><h2>The Three Blocks</h2><h3>The Morning Block</h3><p>Core elements: Wake up → hygiene → get dressed → eat breakfast → pack bag → leave. The fewer decisions within this block, the smoother it runs.</p><h3>The After-School Block</h3><p>Arrive home → snack and decompression (15–20 minutes) → homework → free time → dinner. The key is that decompression comes first.</p><h3>The Evening Block</h3><p>Core elements: Dinner → tidy up/pack bag for tomorrow → bath/shower → reading or quiet time → lights out.</p><h2>Building Routines by Age</h2><h3>Ages 3–5: Visual and Simple</h3><ul><li>Use a picture chart they can follow.</li><li>Keep the routine to 4–6 steps.</li><li>Do the routine together initially, then gradually step back.</li></ul><h3>Ages 6–9: Collaborative and Growing</h3><ul><li>Build the routine together. Let them choose the order where flexibility exists.</li><li>Introduce a checklist they can tick off themselves.</li><li>Add one new element at a time.</li></ul><h3>Ages 10–13: Owned and Flexible</h3><ul><li>Let them design their own routine within your non-negotiable framework.</li><li>Allow them to adjust and iterate.</li><li>Respect their growing need for autonomy.</li></ul><h2>What Breaks Daily Routines — Stop Doing These</h2><ul><li>Perfectionism: Aim for 80% consistency — that is enough for the habit to form.</li><li>Too rigid: A routine should be a framework, not a prison.</li><li>No weekend version: Weekends need a routine too — just a looser one.</li><li>Not modelling it: If you have no routines of your own, your expectation feels arbitrary.</li></ul>`,
+
+  hd_03: `<h1>Helping Kids Stay Organized</h1><p>Organisation is not something children are born with or without. It is a set of learnable systems — and the children who learn these systems early have a significant advantage in school, in friendships, and eventually in their careers.</p><h2>Ages 3–5: Everything Has a Home</h2><ul><li>Label storage with pictures.</li><li>Teach 'one out, one back' — before getting a new toy out, put the current one away.</li><li>Use the same spot for essentials every single day.</li></ul><h2>Ages 6–9: Systems and Checklists</h2><ul><li>Help them set up a homework station with all supplies in one place.</li><li>Introduce a 'landing pad' by the door — a hook for the bag, a tray for papers that need signing.</li><li>Teach the weekly bag check: every Sunday, empty the bag completely, sort, restock.</li><li>Use colour-coding for school subjects.</li></ul><h2>Ages 10–13: Self-Managing Systems</h2><ul><li>Help them set up a planner or digital calendar for assignments and deadlines.</li><li>Teach inbox-zero for papers: every paper that comes home gets sorted immediately.</li><li>Introduce the 5-minute tidy at the end of each day.</li><li>Let them design their own workspace — ownership increases maintenance.</li></ul><h2>What Undermines Organisation — Stop Doing These</h2><ul><li>Organising for them — a child whose parent sorts, packs, and tidies everything never builds the skill</li><li>Expecting perfection</li><li>Overwhelming overhauls — do not reorganise their entire room in one day</li><li>No maintenance routine</li><li>Criticising their system — if their method works for them, leave it alone</li></ul>`,
+
+  hd_04: `<h1>How Children Develop Habits</h1><p>A habit is not a decision. It is a behaviour that has been repeated so many times it becomes automatic — the brain's way of conserving energy by putting routine actions on autopilot.</p><h2>The Science of Habit Formation</h2><p>Every habit follows a three-part loop:</p><ul><li><strong>Cue:</strong> Something that triggers the behaviour — a time of day, a location, an event.</li><li><strong>Routine:</strong> The behaviour itself.</li><li><strong>Reward:</strong> Something that makes the brain want to repeat the loop.</li></ul><h2>How Long Does It Take?</h2><ul><li>Simple habits (hanging up a coat): 3–6 weeks with consistent cueing.</li><li>Moderate habits (brushing teeth without reminding): 6–12 weeks.</li><li>Complex habits (managing a full morning routine independently): 3–6 months.</li></ul><h2>Ages 3–5: Habits Through Routine and Repetition</h2><ul><li>Attach new habits to existing anchors. 'After we come inside, we take off shoes and put them on the rack.'</li><li>Make the habit physical and visible.</li><li>Use immediate, specific praise as the reward.</li></ul><h2>Ages 6–9: Habits Through Understanding and Ownership</h2><ul><li>Involve them in the decision. 'We need a system for getting ready. What do you think should happen first?'</li><li>Introduce habit stacking. 'After you brush your teeth, you put your clothes out for tomorrow.'</li><li>Shift from external rewards to internal ones gradually.</li></ul><h2>Ages 10–13: Habits Through Identity and Goals</h2><ul><li>Connect habits to their goals, not yours.</li><li>Introduce habit tracking.</li><li>Discuss habits as identity. 'You are someone who follows through on commitments.'</li></ul><h2>What Undermines Habit Formation — Stop Doing These</h2><ul><li>Inconsistency — the single biggest killer of habit formation</li><li>Too many habits at once</li><li>Nagging instead of cueing</li><li>Expecting willpower — children need environmental support</li><li>Punishing failure instead of re-cueing</li></ul>`,
+
+  hd_05: `<h1>Morning Routines for Kids</h1><p>If your mornings involve shouting 'we are going to be late' while one child cannot find their shoes and another has not eaten breakfast — you do not have a discipline problem. You have a systems problem.</p><h2>Ages 3–5: The Picture Chart System</h2><p>A routine that works: 1. Wake up 2. Use the toilet and wash hands 3. Get dressed (clothes laid out the night before) 4. Eat breakfast 5. Brush teeth 6. Shoes and bag on 7. Ready to leave</p><ul><li>A picture chart on the wall at their height showing each step.</li><li>Lay out clothes the night before.</li><li>Build in 10–15 minutes of buffer time.</li></ul><h2>Ages 6–9: The Checklist System</h2><ul><li>A written checklist they can tick off — the ticking is its own reward.</li><li>Teach them to pack their bag the night before and check it in the morning.</li><li>Do not hover. Let them work through the checklist independently.</li></ul><h2>Ages 10–13: The Self-Managed System</h2><ul><li>They set their own alarm and are responsible for getting themselves up.</li><li>The only parental role is a time check: 'We leave in 15 minutes' stated once, neutrally.</li><li>Natural consequences apply.</li></ul><h2>The Night-Before Prep That Makes Mornings Work</h2><ul><li>Clothes laid out or chosen.</li><li>Bag packed and by the door.</li><li>Breakfast decided.</li><li>A consistent bedtime — the number one cause of terrible mornings is insufficient sleep.</li></ul><h2>What Sabotages Morning Routines — Stop Doing These</h2><ul><li>Screens before the routine is complete</li><li>Nagging instead of cueing — a checklist on the wall works better than repeated questions</li><li>Doing it for them to save time</li><li>Inconsistency on weekends</li><li>Not building in buffer time</li></ul>`,
+
+  hd_06: `<h1>Teaching Responsibility at Home</h1><p>Responsibility is not taught through lectures. It is taught through experience — real tasks, real consequences, and the real satisfaction of contributing to something that matters.</p><h2>The Mindset Shift: From Chores to Contribution</h2><p>'Everyone in this family has a role. My role is to cook dinner. Your role is to set the table. We are a team.' This framing changes everything.</p><h2>Age-Appropriate Responsibilities</h2><h3>Ages 3–5</h3><ul><li>Put toys away after playing</li><li>Carry their plate to the sink</li><li>Help feed a pet</li><li>Put dirty clothes in the laundry basket</li><li>Water a plant</li><li>Help set the table</li></ul><h3>Ages 6–9</h3><ul><li>Make their own bed</li><li>Pack their school bag</li><li>Clear and wipe the table after meals</li><li>Sort laundry by colour</li><li>Help prepare simple food</li><li>Keep their room tidy</li></ul><h3>Ages 10–13</h3><ul><li>Cook a simple meal independently</li><li>Do their own laundry</li><li>Clean a bathroom</li><li>Manage their homework schedule without reminders</li><li>Care for a pet independently</li><li>Help with grocery shopping</li></ul><h2>How to Teach Responsibility Without Nagging</h2><ul><li>Teach the task once, thoroughly. Do it together, then watch them, then let them do it alone.</li><li>Set clear expectations.</li><li>Use natural consequences, not punishment.</li><li>Accept imperfection. A 6-year-old's made bed will not look like yours.</li><li>Express genuine gratitude.</li></ul>`,
+
+  hd_07: `<h1>Teaching Self Discipline</h1><p>There are two kinds of disciplined children. The first behaves well because an adult is watching. The second behaves well because they have internalised the standards and can regulate themselves even when no one is watching. The first has been disciplined. The second has self-discipline.</p><h2>What Self Discipline Actually Is</h2><ul><li><strong>Impulse control:</strong> The ability to pause between a desire and an action.</li><li><strong>Delayed gratification:</strong> The ability to choose a larger later reward over a smaller immediate one.</li><li><strong>Self-regulation:</strong> The ability to manage emotions, attention, and behaviour in pursuit of a goal.</li></ul><h2>Ages 3–5: The Foundations of Impulse Control</h2><ul><li>Play games that require impulse control. Simon says, red light/green light, freeze dance.</li><li>Use 'when-then' consistently.</li><li>Praise self-regulation when you see it.</li></ul><h2>Ages 6–9: Building the Muscle</h2><ul><li>Introduce the concept of 'hard now, easy later' versus 'easy now, hard later.'</li><li>Give them increasing autonomy with clear expectations.</li><li>Let them set and pursue their own goals.</li><li>Do not rescue them from the consequences of poor self-discipline.</li></ul><h2>Ages 10–13: From External to Internal</h2><ul><li>Have explicit conversations about self discipline as a competitive advantage.</li><li>Help them identify their own self-discipline weaknesses without judgment.</li><li>Reduce external controls gradually.</li><li>Model your own self-discipline openly.</li></ul><h2>What Undermines Self Discipline — Stop Doing These</h2><ul><li>Over-controlling — a child who is micromanaged never develops self-management</li><li>Inconsistent consequences</li><li>Rewarding everything externally</li><li>Modelling poor self-discipline</li><li>Expecting perfection</li></ul>`,
+
+  hd_08: `<h1>Teaching Time Management to Kids</h1><p>The morning rush where everyone is shouting. The homework that starts at 9 PM because the afternoon disappeared. The project due tomorrow that was assigned two weeks ago. Every one of these scenarios has the same root cause: a child who has not yet learned to manage time.</p><h2>Ages 3–5: Make Time Visible</h2><ul><li>Use visual timers — an hourglass or kitchen timer makes time something the child can see passing.</li><li>Create visual schedules.</li><li>Use 'first-then' language. 'First we eat dinner, then we play.'</li><li>Build time awareness through daily conversation.</li></ul><h2>Ages 6–9: Build Estimation and Planning Skills</h2><ul><li>Play the 'how long will it take' game. Before any task, ask them to estimate. Then time it and see.</li><li>Introduce a simple planner or calendar.</li><li>Teach backward planning for projects. 'Your science project is due Friday. Today is Monday. Let's work backward.'</li><li>Let them experience the consequences of poor time management.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them design their own weekly schedule.</li><li>Introduce the concept of prioritisation. 'You have three things to do tonight. Which one is most urgent? Which is most important? Are they the same thing?'</li><li>Discuss time wasters honestly.</li><li>Model your own time management.</li></ul><h2>What Undermines Time Management — Stop Doing These</h2><ul><li>Managing all their time for them</li><li>Rescuing them from time-related consequences</li><li>Over-scheduling — a child with no unstructured time never learns to manage time</li><li>Vague time references: 'We're leaving soon' means nothing. 'We're leaving in 10 minutes' gives them something to work with.</li></ul>`,
+
+  hd_09: `<h1>Screen Time Balance for Kids</h1><p>The truth about screen time is nuanced. Screens are not inherently good or bad. What matters is how much, what kind, when, and what they are replacing. A child who watches a nature documentary for 30 minutes after a full day of school is in a completely different situation from a child who spends four hours scrolling.</p><h2>Guidelines by Age</h2><ul><li><strong>Ages 3–5:</strong> 30 minutes to 1 hour per day of high-quality content. No screens in the hour before bedtime.</li><li><strong>Ages 6–9:</strong> 1–1.5 hours of recreational screen time per day, after homework, physical activity, and responsibilities are complete.</li><li><strong>Ages 10–13:</strong> 1.5–2 hours, with the child increasingly managing their own limits.</li></ul><h2>The Screen Time Rules That Actually Work</h2><ul><li>Screens come after, not before — after homework, after physical activity, after responsibilities.</li><li>No screens in bedrooms — devices charge in a communal area overnight.</li><li>No screens during meals — this applies to parents too.</li><li>Not all screen time is equal — creating content is different from consuming it.</li><li>Model what you expect.</li></ul><h2>What Makes Screen Time Problems Worse — Stop Doing These</h2><ul><li>Using screens as the default babysitter</li><li>No clear rules</li><li>Screens as emotional regulation — handing a child a screen every time they are bored teaches that screens are how you manage feelings</li><li>Parental hypocrisy</li></ul>`,
+
+  hd_10: `<h1>Why Routines Help Children</h1><p>Ask any child psychologist what the single most effective non-therapeutic intervention for childhood anxiety is, and most will say the same thing: a consistent daily routine. Routines help children because they answer the question every child is unconsciously asking throughout the day: 'What happens next?' When that question has a reliable answer, the child's nervous system can relax.</p><h2>The Science: How Routines Affect the Developing Brain</h2><ul><li><strong>Routines reduce cortisol.</strong> When a child knows what to expect, the brain's stress response system stays calm.</li><li><strong>Routines build neural efficiency.</strong> When a sequence of actions is repeated consistently, the brain automates it, freeing up cognitive resources for higher-order thinking.</li><li><strong>Routines develop executive function.</strong> Following a multi-step routine exercises planning, sequencing, and self-monitoring.</li><li><strong>Routines support emotional regulation.</strong> A child anchored by a predictable day has more emotional capacity to handle the unpredictable things within it.</li></ul><h2>The Specific Ways Routines Help</h2><ul><li><strong>Reduce anxiety and behavioural problems.</strong></li><li><strong>Build independence and confidence.</strong></li><li><strong>Improve sleep.</strong></li><li><strong>Reduce family conflict</strong> — when the routine is the authority, not the parent, arguments decrease.</li><li><strong>Help children through transitions</strong> — during family disruptions, routines provide the stability that everything else has lost.</li></ul><h2>What Undermines Routines — Stop Doing These</h2><ul><li>Total inconsistency — a routine that is followed three days a week is not a routine</li><li>Over-complexity — a 15-step morning routine for a 5-year-old will fail</li><li>No transition support — warnings help: 'In five minutes, it will be bath time.'</li><li>Abandoning routine during holidays</li><li>Making it punitive — if the routine feels like a punishment, it will be resisted</li></ul>`,
+
+  sl_01: `<h1>Bullying in Primary Schools</h1><p>Bullying in primary schools is more common than most parents realise and more harmful than most schools acknowledge. Research consistently shows that one in four to five children will experience bullying during their primary school years.</p><h2>What Bullying Actually Is — And What It Is Not</h2><p>Bullying is repeated, intentional aggressive behaviour directed at a specific child by someone with more social or physical power. The three defining features are: repetition, intent, and power imbalance. A one-off argument between equal friends is conflict, not bullying. Conflict needs mediation. Rudeness needs correction. Bullying needs intervention.</p><h2>Types of Bullying</h2><ul><li><strong>Physical bullying:</strong> Hitting, pushing, kicking, taking or damaging belongings.</li><li><strong>Verbal bullying:</strong> Name-calling, insults, threats, taunting.</li><li><strong>Social bullying:</strong> Deliberate exclusion, spreading rumours, public humiliation.</li><li><strong>Cyberbullying:</strong> Hurtful messages, social media exclusion, sharing embarrassing content.</li></ul><h2>How to Respond When Your Child Is Being Bullied</h2><ul><li><strong>Step 1 — Listen without overreacting:</strong> 'Thank you for telling me. That must be really hard. I am going to help you with this, and we are going to figure it out together.'</li><li><strong>Step 2 — Gather information calmly.</strong></li><li><strong>Step 3 — Document everything</strong> — dates, times, locations, witnesses.</li><li><strong>Step 4 — Contact the school strategically,</strong> in writing.</li><li><strong>Step 5 — Build your child's resilience</strong> alongside school intervention.</li></ul><h2>What to Tell Your Child</h2><p><strong>Do say:</strong> 'This is not your fault.' / 'You did the right thing telling me.' / 'We are going to deal with this together.'</p><p><strong>Do not say:</strong> 'Just ignore them.' / 'Hit them back.' / 'What did you do to make them pick on you?'</p>`,
+
+  sl_02: `<h1>Encouraging Curiosity in Kids</h1><p>Every child is born curious. The tragedy is that this natural curiosity is often diminished by the time a child reaches middle school. A curious child does not need to be motivated to learn. They are already motivated. Your job is simply to not get in the way.</p><h2>Ages 3–5: Follow Their Lead</h2><ul><li>When they ask 'why?' answer. Then ask them back: 'Why do YOU think?'</li><li>Let them explore freely within safety boundaries.</li><li>Provide open-ended materials: blocks, sand, water, art supplies.</li><li>Wonder aloud. 'I wonder why the sky turns orange at sunset. What do you think?'</li></ul><h2>Ages 6–9: Deepen and Broaden</h2><ul><li>When they show interest in something, invest in it.</li><li>Visit museums, nature reserves, workshops, and exhibitions.</li><li>Encourage questions over answers. 'That is a brilliant question. Let us find out together.'</li><li>Let them go deep into a topic they love.</li></ul><h2>Ages 10–13: Connect Curiosity to Identity</h2><ul><li>Connect curiosity to people they admire.</li><li>Give them real problems to solve.</li><li>Support independent research.</li><li>Do not shut down challenging questions.</li></ul><h2>What Kills Curiosity — Stop Doing These</h2><ul><li>Always giving the answer immediately</li><li>Correcting exploration</li><li>Over-scheduling — boredom is where curiosity begins</li><li>Valuing grades over learning</li><li>Dismissing their interests: 'That's not useful'</li></ul>`,
+
+  sl_03: `<h1>Helping Children Focus on Studies</h1><p>'Focus!' 'Concentrate!' 'Stop daydreaming!' — if these words are on constant rotation in your household, you are not alone. The ability to focus is developmental. A 5-year-old can sustain attention for roughly 10–15 minutes. A 10-year-old can manage 20–30 minutes. Even a 13-year-old will struggle beyond 40 minutes without a break. These are not character flaws — they are brain facts.</p><h2>Ages 6–9: Structure the Environment</h2><ul><li>Create a dedicated study space — quiet, well-lit, clear of distractions, with all materials within reach.</li><li>Use the Pomodoro technique adapted for kids: 15–20 minutes of focused work, followed by a 5-minute break.</li><li>Remove screens from the study area completely — not just turned off, physically removed.</li><li>Start with the hardest subject — willpower and focus are highest at the beginning.</li></ul><h2>Ages 10–13: Teach Self-Management</h2><ul><li>Help them identify their peak focus times.</li><li>Introduce active study techniques — summarising in their own words, teaching the material to someone else, creating mind maps.</li><li>Discuss phone management honestly.</li><li>Connect the work to their goals.</li></ul><h2>What Destroys Focus — Stop Doing These</h2><ul><li>Hovering during study time — adds pressure, not focus</li><li>Marathon study sessions without breaks</li><li>Multitasking myths — studying while watching TV reduces the quality of everything</li><li>Comparing to siblings or peers</li><li>Making study time a punishment</li></ul>`,
+
+  sl_04: `<h1>Helping Kids Deal with Teasing</h1><p>Teasing exists on a spectrum. Light, mutual teasing between friends is a normal part of social bonding. Repeated, targeted teasing that makes a child feel humiliated is a form of bullying.</p><h2>Ages 6–9: Build the Toolkit</h2><ul><li><strong>The Shrug Response:</strong> 'So?' said with a shrug and walking away. Teasing depends on a reaction. A non-reaction deflates it.</li><li><strong>The Agree and Deflect:</strong> If teased about glasses: 'Yeah, they help me see better!' Taking ownership removes its power as a weapon.</li><li><strong>The Humour Redirect:</strong> 'Good one!' and then changing the subject.</li><li><strong>The Boundary Statement:</strong> 'That's not funny to me. Stop.' Direct, clear, and non-aggressive.</li></ul><h2>Ages 10–13: Social Intelligence</h2><ul><li>Help them understand the motivation behind teasing.</li><li>Discuss the difference between ignoring (which can look like weakness) and being unbothered (which communicates strength).</li><li>If teasing becomes persistent, involve the school.</li></ul><h2>What Not to Do</h2><ul><li>'Just ignore it' without teaching them how</li><li>'Tease them back' — this escalates the situation</li><li>Over-protecting — intervening in every social interaction prevents coping skills from developing</li><li>Dismissing their pain: 'It's just teasing'</li></ul>`,
+
+  sl_05: `<h1>Helping Kids Develop Reading Habits</h1><p>A child who reads regularly outperforms a child who does not in vocabulary, comprehension, empathy, critical thinking, and academic achievement across every subject. Reading is not just a language skill. It is the foundational skill that makes all other learning possible.</p><h2>Ages 5–7: Make Reading a Warm Experience</h2><ul><li>Read aloud to them every day, even after they can read independently.</li><li>Let them choose any book. Comic books, picture books, books 'below their level' — all count.</li><li>Visit libraries and bookshops regularly. Let them browse without pressure.</li></ul><h2>Ages 8–10: Protect the Pleasure</h2><ul><li>Separate 'reading for school' from 'reading for fun.' Fun reading has zero requirements.</li><li>Let them abandon books they do not enjoy — forced completion kills habits.</li><li>Introduce series — once hooked on a character, they will read the next book voluntarily.</li><li>Create a cosy reading space in the home.</li></ul><h2>Ages 11–13: Respect Their Autonomy</h2><ul><li>Never criticise their reading choices. Graphic novels, fan fiction, manga — all build reading skills.</li><li>Connect reading to their interests.</li><li>Read alongside them — the most powerful model is a parent who reads for pleasure.</li><li>Do not quiz them on what they read.</li></ul>`,
+
+  sl_06: `<h1>Helping Kids Make Friends</h1><p>Few things cause parents more heartache than watching their child struggle socially. But friendship is a skill, not a gift. Some children learn it naturally. Others need explicit teaching. The parent's role is not to make friends for their child — it is to teach them the skills to make friends for themselves.</p><h2>Ages 3–5: Teach the Basics</h2><ul><li>Teach them to walk up, make eye contact, and say: 'Can I play with you?'</li><li>Arrange playdates with one child — not groups. Short, activity-based playdates work best.</li><li>Teach sharing and turn-taking through games, not lectures.</li></ul><h2>Ages 6–9: Develop Friendship Skills</h2><ul><li>Help them find their people — activities outside school expand the pool of potential friends.</li><li>Teach conversation skills. Ask questions, listen to the answer, find common interests. 'What do you like to do?' is a friendship opener that works at every age.</li><li>Coach them through conflict — teach them to repair rather than abandon friendships.</li><li>Invite peers over — a child who is struggling socially at school may do better in a home environment.</li></ul><h2>Ages 10–13: Navigate Social Complexity</h2><ul><li>Respect their social world — do not dismiss pre-teen social dynamics as trivial.</li><li>Help them understand social dynamics without controlling them.</li><li>Support their interests — a pre-teen who is passionate about something will eventually find others who share that passion.</li><li>Teach them that quality matters more than quantity. One genuine friendship is worth more than ten surface-level ones.</li></ul><h2>What Undermines Friendship Skills — Stop Doing These</h2><ul><li>Arranging all their social life — they never learn to initiate independently</li><li>Criticising their friends</li><li>Forcing them to be social</li><li>Solving all their social problems instead of coaching</li></ul>`,
+
+  sl_07: `<h1>Homework Struggles in Children</h1><p>The homework battle is one of the most common and most exhausting conflicts in family life. Homework struggles in children are rarely about laziness. They are about one or more of these: the work is too hard, the child is too tired, the environment is wrong, or the emotional associations with homework have become so negative that the child cannot get started without dread.</p><h2>The Homework Environment Checklist</h2><ul><li>Quiet, consistent location — same place every day</li><li>Good lighting and a comfortable chair</li><li>All supplies within reach</li><li>No screens within sight — phones in another room</li><li>A timer visible to the child</li><li>Parent available nearby but not hovering</li></ul><h2>Ages 5–7: Keep It Light</h2><ul><li>Homework at this age should take 10–20 minutes maximum.</li><li>Sit nearby but do not do the work.</li><li>Make it part of the routine — same time, same place, every day.</li></ul><h2>Ages 8–10: Build Independence</h2><ul><li>Introduce a 'homework launch' routine: snack, then 10 minutes of free time, then homework.</li><li>Help them plan the session. 'What do you have tonight? What do you want to start with?'</li><li>Check the work after, not during. Let them make mistakes.</li></ul><h2>Ages 11–13: Hand Over Responsibility</h2><ul><li>The homework is theirs, not yours.</li><li>If they do not do homework and there are consequences at school, let the consequences happen.</li><li>If they ask for help, guide rather than give answers. 'What do you think the first step is?'</li></ul><h2>What Makes Homework Struggles Worse — Stop Doing These</h2><ul><li>Doing the work for them</li><li>Turning homework into a control battle</li><li>Criticising during homework</li><li>Making homework take over the evening</li><li>Bribing or threatening</li></ul>`,
+
+  sl_08: `<h1>Signs Your Child Is Being Bullied</h1><p>Most bullied children do not tell their parents. They stay silent out of shame, fear of making things worse, or belief that adults cannot help. This means you cannot rely on your child telling you — you need to be able to recognise the signs.</p><h2>Behavioural Signs</h2><ul><li><strong>Avoidance of school:</strong> Sudden reluctance, frequent complaints of stomach aches on school mornings that disappear on weekends.</li><li><strong>Coming home hungry</strong> because lunch was taken or they ate alone and left early.</li><li><strong>Sleep disruption:</strong> Difficulty falling asleep, nightmares, waking during the night.</li><li><strong>Loss of interest in activities</strong> they previously enjoyed.</li><li><strong>Coming home with damaged or missing belongings.</strong></li><li><strong>Becoming secretive about online activity.</strong></li></ul><h2>Emotional Signs</h2><ul><li>Increased irritability or emotional outbursts at home</li><li>Withdrawal from family and friends</li><li>Low self-esteem or self-critical language: 'Nobody likes me.' 'I'm stupid.'</li><li>Sadness or tearfulness, especially after school or on Sunday evenings</li><li>Expressions of helplessness: 'There's no point.' 'Nothing will change.'</li></ul><h2>Academic Signs</h2><ul><li>Declining grades</li><li>Loss of interest in schoolwork</li><li>Reluctance to participate in class</li></ul><h2>What to Do if You Recognise These Signs</h2><ul><li><strong>Step 1 — Create a safe opening:</strong> 'I have noticed you seem a bit different lately. Is anything happening at school that is making things hard?'</li><li><strong>Step 2 — Observe more closely</strong> for a few weeks.</li><li><strong>Step 3 — Talk to the school</strong> even if your child has not confirmed bullying.</li><li><strong>Step 4 — Strengthen their support network</strong> outside the school environment.</li></ul>`,
+
+  sl_09: `<h1>Reducing School Stress</h1><p>Some school stress is normal and even healthy. But there is a point where school stress stops being productive and starts being harmful — the child who cannot sleep because of worry, who has stomach aches every Monday, who has lost all joy in learning.</p><h2>Common Sources of School Stress by Age</h2><h3>Ages 5–7</h3><ul><li>Separation from parents</li><li>Navigating new social environments</li><li>Learning to read and the pressure of keeping up with peers</li><li>Fear of getting things wrong</li></ul><h3>Ages 8–10</h3><ul><li>Increasing academic expectations</li><li>Standardised testing</li><li>Complex social dynamics</li><li>Comparing themselves to peers</li></ul><h3>Ages 11–13</h3><ul><li>Academic pressure intensifying</li><li>Social media and peer comparison</li><li>Puberty and body image</li><li>Future anxiety: 'What if I don't get into a good school?'</li></ul><h2>The Home as Stress Buffer</h2><p>The most powerful thing you can do to reduce school stress is make home the antidote. Home should be where the child is valued for who they are, not what they produce. Where they can rest, play, connect, and be imperfect.</p><h2>What Increases School Stress — Stop Doing These</h2><ul><li>Adding your own academic pressure</li><li>Comparing to others</li><li>Over-focusing on grades</li><li>Dismissing their stress</li><li>Over-scheduling</li></ul>`,
+
+  sl_10: `<h1>School Anxiety in Children</h1><p>Some children wake up on school mornings with stomach aches that are real. Their chest feels tight. Their legs feel heavy. They are not pretending — they are anxious. School anxiety in children is more common than most parents realise.</p><h2>Common Causes of School Anxiety</h2><ul><li><strong>Social anxiety:</strong> Fear of being judged, embarrassed, or rejected by peers.</li><li><strong>Academic anxiety:</strong> Fear of failing, not understanding, or being called on.</li><li><strong>Separation anxiety:</strong> Particularly in younger children.</li><li><strong>Bullying:</strong> A child who is being bullied may develop school anxiety even after the bullying has stopped.</li><li><strong>A specific traumatic event at school:</strong> Being publicly humiliated or having a panic attack in class.</li></ul><h2>How to Help</h2><ul><li><strong>Step 1 — Validate:</strong> 'I can see that going to school feels really scary for you right now. That feeling is real.'</li><li><strong>Step 2 — Identify the specific trigger:</strong> 'What part of the day is hardest? If you could skip one thing at school, what would it be?'</li><li><strong>Step 3 — Work with the school.</strong></li><li><strong>Step 4 — Gradual exposure, not avoidance:</strong> The brain interprets avoidance as confirmation that school is dangerous. Every day away from school makes the return harder.</li><li><strong>Step 5 — Build coping strategies:</strong> Breathing exercises, a worry time, a calm morning routine.</li></ul><h2>What Makes School Anxiety Worse — Stop Doing These</h2><ul><li>Allowing indefinite school avoidance</li><li>Providing excessive reassurance</li><li>Interrogating after school: 'Was anyone mean to you?'</li><li>Showing your own anxiety</li><li>Punishing the anxiety</li></ul><h2>When to Seek Professional Help</h2><p>School anxiety warrants professional support when the child is missing significant amounts of school, physical symptoms are persistent and disabling, the anxiety is not improving despite consistent support, or the child expresses hopelessness. Early intervention is key.</p>`,
+
+  fr_01: `<h1>Age-Wise Behaviour Guide</h1><p>The number one question behind every parenting worry is: 'Is this normal?' The tantrums, the defiance, the mood swings, the sudden fears, the social drama — are these signs that something is wrong, or are they exactly what a child of this age is supposed to be doing?</p><h2>Ages 3–4: The 'I Want It My Way' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tantrums (daily is normal at this age)</li><li>Saying 'no' to everything — testing boundaries</li><li>Difficulty sharing and taking turns</li><li>Imaginative fears (monsters, dark, loud noises)</li><li>Physical aggression when frustrated</li><li>Lying (inventing stories — this is imagination, not deception)</li></ul><h3>When to Worry</h3><ul><li>Aggression that is causing injury and is not decreasing</li><li>Complete inability to be soothed by any adult</li><li>Significant language delay alongside behavioural challenges</li></ul><h2>Ages 5–6: The 'Rules and Fairness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Tattling — they have discovered rules and want everyone to follow them</li><li>Bossiness with peers — experimenting with social power</li><li>Sensitivity to criticism and a need for praise</li><li>Some separation anxiety around school transitions</li></ul><h2>Ages 7–9: The 'Social Awareness' Stage</h2><h3>Normal Behaviours</h3><ul><li>Friendship drama — best friends changing weekly</li><li>Comparing themselves to peers</li><li>Increased arguing and negotiating</li><li>White lies ('I already brushed my teeth')</li></ul><h2>Ages 10–11: The 'Pre-Teen Shift' Stage</h2><h3>Normal Behaviours</h3><ul><li>Mood swings</li><li>Pulling away from parents while still wanting connection</li><li>Strong opinions and willingness to challenge authority</li><li>Increased interest in privacy</li></ul><h2>Ages 12–13: The 'Full Pre-Teen' Stage</h2><h3>Normal Behaviours</h3><ul><li>Argumentative and increasingly skilled at it</li><li>Intense emotional reactions that seem disproportionate</li><li>Testing boundaries more deliberately than ever</li><li>Oscillating between wanting adult treatment and child-like needs</li></ul><h2>The Golden Rule Across All Ages</h2><p>If you are asking 'is this normal?' the answer is almost always yes. The time to worry is when behaviour is significantly more extreme than peers, persists despite consistent support, or is getting worse rather than better. Any mention of self-harm or suicidal thoughts — take it seriously immediately.</p>`,
+
+  fr_02: `<h1>Emotional Development Chart</h1><p>One of the most common questions parents ask is: 'Is this normal?' This chart maps what emotional skills and behaviours are typical at each age — and what to do to support the next stage of growth. Use this as a compass, not a ruler.</p><h2>Ages 3–4: What Is Developing</h2><ul><li>Basic emotional vocabulary (happy, sad, angry, scared)</li><li>Earliest impulse control (can wait briefly with support)</li><li>Understanding that other people have feelings</li><li>Ability to be soothed by a trusted adult</li></ul><h3>How to Support This Stage</h3><ul><li>Name emotions constantly — yours and theirs</li><li>Keep routines predictable</li><li>Do not punish emotional outbursts — co-regulate instead</li></ul><h2>Ages 5–6: What Is Developing</h2><ul><li>Expanded emotional vocabulary (frustrated, embarrassed, proud, worried)</li><li>Early self-regulation — can calm down with strategies (not yet independently)</li><li>Growing capacity for empathy and perspective-taking</li></ul><h2>Ages 7–9: What Is Developing</h2><ul><li>Self-regulation becoming more independent</li><li>Ability to see situations from another person's perspective</li><li>Understanding that people can feel two things at once</li><li>Growing capacity for delayed gratification</li></ul><h2>Ages 10–11: What Is Developing</h2><ul><li>Abstract emotional thinking ('I feel anxious about the future')</li><li>Ability to reflect on their own emotional patterns</li><li>Understanding of complex emotions (jealousy, guilt, loyalty)</li><li>Early identity formation — 'who am I?'</li></ul><h2>Ages 12–13: What Is Developing</h2><ul><li>Sophisticated emotional reasoning and self-awareness</li><li>Identity consolidation — values, beliefs, and self-concept forming</li><li>Capacity for long-term goal-setting and self-motivation</li><li>Understanding of nuanced moral and ethical questions</li></ul><h2>When to Be Concerned</h2><p>Seek professional guidance if your child is significantly behind peers in multiple emotional areas, emotional development seems to be regressing, or challenges are significantly impacting daily functioning. Early support is always more effective than waiting.</p>`,
+
+  fr_03: `<h1>Habit Tracker for Kids</h1><p>A habit tracker is one of the simplest and most effective parenting tools available. Done well, a habit tracker transforms abstract goals ('be more responsible') into concrete, visible, daily actions that a child can own, measure, and feel proud of.</p><h2>Ages 3–5: The Visual Picture Tracker</h2><p>Format: A simple chart with pictures representing each habit. The child places a sticker when the habit is complete.</p><p>Good starter habits: brush teeth, put shoes by the door, put dirty clothes in the basket, help set the table.</p><h2>Ages 6–9: The Weekly Checklist Tracker</h2><p>Format: A weekly grid with habits listed down the side and days of the week across the top.</p><p>Good habits to track: morning routine completed independently, reading for pleasure, homework started on time, room tidied before bed, one kind action.</p><h2>Ages 10–13: The Self-Directed Tracker</h2><p>Format: A journal-style tracker or simple app the child manages independently.</p><p>Good habits to track: exercise, reading, homework session, screen-free time before bed, journaling, skill practice.</p><h2>How to Use Without Battles</h2><ul><li>Start with habits they are already close to doing.</li><li>Celebrate the process, not just the product.</li><li>Phase it out when the habit is automatic — typically after 6–12 weeks.</li><li>Never use the tracker as punishment.</li><li>Keep it simple — a tracker that takes 10 minutes to fill in will be abandoned in a week.</li></ul>`,
+
+  fr_04: `<h1>Parenting Checklist</h1><p>Parenting does not come with a manual — but it should at least come with a checklist. Use it as a quarterly check-in. Not a test. Not a judgment. Just a way to make sure the important things are getting attention amidst the chaos of daily life.</p><h2>Ages 3–5</h2><h3>Emotional Development</h3><ul><li>My child can name at least 5 emotions</li><li>I name my child's emotions for them when they cannot</li><li>I validate emotions before correcting behaviour</li><li>My child has a consistent bedtime routine that includes connection time</li><li>I read to my child daily</li><li>I model emotional expression openly</li></ul><h3>Social Skills</h3><ul><li>My child has regular opportunities to play with other children</li><li>My child can use basic social language ('please', 'thank you', 'can I play?')</li><li>My child has at least one friendship that involves regular interaction</li></ul><h3>Physical Wellbeing</h3><ul><li>My child gets at least 60 minutes of physical activity daily</li><li>Bedtime is consistent and my child gets 10–13 hours of sleep</li><li>Screen time is limited and high-quality (under 1 hour/day)</li></ul><h2>Ages 6–9</h2><h3>Emotional Development</h3><ul><li>My child has at least one strategy for calming down when upset</li><li>I allow my child to experience frustration and disappointment without immediately fixing it</li><li>I praise effort and persistence, not just outcomes</li><li>My child knows it is safe to make mistakes in our home</li></ul><h3>Habits and Independence</h3><ul><li>My child has age-appropriate responsibilities at home</li><li>My child can manage a morning routine with minimal reminders</li><li>My child can pack their own school bag</li><li>Screen time is structured and balanced with other activities</li></ul><h2>Ages 10–13</h2><h3>Emotional Development</h3><ul><li>I listen more than I advise — especially about social and emotional matters</li><li>My child has healthy coping strategies for stress</li><li>My child knows I love them unconditionally, independent of their achievements</li></ul><h3>Academic and Life Skills</h3><ul><li>My child manages their own homework with minimal parental oversight</li><li>My child can cook a simple meal, do laundry, and manage basic household tasks</li><li>My child has interests and activities that are theirs, not mine</li><li>My child has unstructured free time — not every hour is scheduled</li></ul>`,
+
+  fr_05: `<h1>Parenting Tools for Modern Parents</h1><p>Modern parents have access to more information than any generation in history. The problem is not lack of resources — it is knowing which ones actually help and which ones add noise.</p><h2>The Essential Toolkit</h2><h3>1. A Daily Routine System</h3><p>Tools that help: a visual schedule chart for ages 3–7, a family calendar, a consistent morning and evening routine checklist. The best routine tool takes less than a minute to use and is visible where it matters.</p><h3>2. A Habit Tracking System</h3><p>Tools that help: a paper-based habit tracker for younger children, a bullet journal or printed monthly grid for pre-teens. Look for something child-owned, simple to complete, and visually rewarding.</p><h3>3. An Emotional Development Resource</h3><p>Tools that help: an emotional development chart, feelings cards or emotions posters for younger children, books about emotions. Look for something age-appropriate, evidence-based, and integrated into daily life.</p><h3>4. A Communication Framework</h3><p>Frameworks that help: 'I feel _____ because _____' sentence structure, the 'validate, then redirect' approach, active listening practice, daily check-in questions ('What was the best part of your day? What was the hardest?').</p><h3>5. A Screen Time Management System</h3><p>Tools that help: a family media agreement, a device charging station outside bedrooms, a daily routine where screens have a defined place. Look for a system that gives children increasing self-management as they age.</p><h2>How to Choose Parenting Tools That Actually Help</h2><ul><li>Does it fit into your existing life?</li><li>Is it evidence-based?</li><li>Does it empower the child, not just the parent?</li><li>Is it sustainable?</li><li>Does it reduce your stress, not add to it?</li></ul>`,
+
+  fr_06: `<h1>School Readiness Guide</h1><p>The children who do best in their first year of school are not necessarily the ones who can read earliest. They are the ones who can sit in a group, follow a simple instruction, manage their emotions when frustrated, share materials, and ask for help when they need it.</p><h2>The Four Domains of School Readiness</h2><h3>1. Emotional Readiness</h3><ul><li>Can separate from you without prolonged distress</li><li>Can cope with minor frustrations without a complete meltdown</li><li>Can express basic needs verbally ('I need help', 'I feel sad', 'I need the toilet')</li><li>Can manage transitions</li><li>Can recover from upsets within a reasonable time</li></ul><h3>2. Social Readiness</h3><ul><li>Can play cooperatively with other children</li><li>Can share and take turns (with support)</li><li>Can follow simple group instructions</li><li>Can communicate needs to an adult who is not their parent</li></ul><h3>3. Academic Readiness</h3><ul><li>Recognises their own name in print</li><li>Can hold a pencil or crayon</li><li>Can count objects to at least 10</li><li>Can listen to a short story and answer simple questions about it</li><li>Shows curiosity and asks questions</li></ul><h3>4. Physical Readiness and Self-Care</h3><ul><li>Can use the toilet independently</li><li>Can dress themselves</li><li>Can open their lunch box and water bottle</li><li>Can sit for 10–15 minutes</li></ul><h2>How to Prepare Your Child</h2><ul><li>Talk positively about school — but honestly. 'School is where you will learn new things and make new friends. Some days will be easy and some will be hard, and that's okay.'</li><li>Visit the school if possible — familiarity reduces anxiety.</li><li>Practise the morning routine.</li><li>Build independence in self-care tasks.</li></ul><h2>The First Week</h2><ul><li>Keep mornings calm and unhurried.</li><li>Be positive at drop-off — confident, warm, brief. Lingering makes separation harder.</li><li>Have a consistent after-school routine.</li><li>Do not interrogate: 'What did you do today?' often gets 'nothing.' Try: 'What was the best part of today?'</li></ul>`,
+};
+
+
+type ViewState =
+  | { type: "landing" }
+  | { type: "article"; catId: string; artId: string; artLabel: string };
+
+function MegaMenu({ onSelect }: { onSelect: (v: ViewState) => void }) {
+  const [open, setOpen] = useState(false);
+  const [hoveredCat, setHoveredCat] = useState<string | null>(null);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => { setOpen(true); setHoveredCat(CATEGORIES[0].id); }}
+      onMouseLeave={() => { setOpen(false); setHoveredCat(null); }}
+    >
+      <button
+        onClick={() => { onSelect({ type: "landing" }); setOpen(false); }}
+        className="flex items-center gap-1.5 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+      >
+        Parenting Guide
+        <ChevronDown
+          size={13}
+          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 6 }}
+            transition={{ duration: 0.18 }}
+            className="absolute top-full left-0 flex rounded-b-2xl overflow-hidden shadow-2xl z-[200]"
+            style={{
+              background: "#ffffff",
+              border: "1px solid rgba(249,115,22,0.2)",
+              borderTop: "3px solid #f97316",
+              minWidth: "580px",
+              marginTop: "0px",
+            }}
+          >
+            <div className="w-[220px] border-r border-gray-100 py-2">
+              {CATEGORIES.map((cat) => (
+                <div
+                  key={cat.id}
+                  className="flex items-center justify-between px-5 py-3 cursor-pointer transition-all duration-150"
+                  style={{
+                    background: hoveredCat === cat.id ? "#f8f9fb" : "transparent",
+                    borderLeft: hoveredCat === cat.id ? "3px solid #f97316" : "3px solid transparent",
+                    color: hoveredCat === cat.id ? "#f97316" : "#374151",
+                  }}
+                  onMouseEnter={() => setHoveredCat(cat.id)}
+                  onClick={() => {
+                    onSelect({ type: "article", catId: cat.id, artId: cat.id, artLabel: cat.label });
+                    setOpen(false);
+                  }}
+                >
+                  <span className="text-[0.9rem] font-medium">{cat.label}</span>
+                  <ChevronRight size={13} style={{ color: hoveredCat === cat.id ? "#f97316" : "#9ca3af" }} />
+                </div>
+              ))}
+            </div>
+
+            <div className="flex-1 py-2 px-1">
+              {hoveredCat && (
+                <div className="grid grid-cols-1 gap-0.5">
+                  {CATEGORIES.find((c) => c.id === hoveredCat)?.subtopics.map((sub) => (
+                    <div
+                      key={sub.id}
+                      className="px-4 py-2 text-[0.85rem] text-gray-600 cursor-pointer rounded-lg transition-all duration-100 hover:text-[#f97316]"
+                      onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                      onClick={() => {
+                        onSelect({ type: "article", catId: hoveredCat!, artId: sub.id, artLabel: sub.label });
+                        setOpen(false);
+                      }}
+                    >
+                      {sub.label}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function ArticleView({ view, onNavigate }: { view: ViewState; onNavigate: (v: ViewState) => void }) {
+  if (view.type === "landing") {
+    return (
+      <div className="text-center py-20 px-6">
+        <div
+          className="inline-block px-4 py-1.5 rounded-full text-[0.7rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-6"
+          style={{ background: "rgba(249,115,22,0.08)", border: "1px solid rgba(249,115,22,0.2)" }}
+        >
+          Family Playbook
+        </div>
+        <h1
+          className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+          style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
+        >
+          The Parenting Guide Your Family<br />Actually Needs
+        </h1>
+        <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+          Science-backed, psychologist-designed guidance for ages 3–13.
+          Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => onNavigate({ type: "article", catId: cat.id, artId: cat.id, artLabel: cat.label })}
+              className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+            >
+              <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
+              <p className="text-gray-500 text-[0.8rem] leading-[1.5]">{cat.subtopics.length} guides</p>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  /* article view — used for both category articles and subtopic articles */
+  const isCategoryArticle = CATEGORIES.some((c) => c.id === view.artId);
+  const cat = CATEGORIES.find((c) => c.id === view.catId)!;
+  const html = CONTENT[view.artId] ?? `<h1>${view.artLabel}</h1><p>Content coming soon.</p>`;
+
+  return (
+    <div className="max-w-[860px] mx-auto px-6 py-10">
+      {/* breadcrumb */}
+      <div className="flex items-center gap-2 text-[0.8rem] text-gray-400 mb-8 flex-wrap">
+        <button
+          onClick={() => onNavigate({ type: "landing" })}
+          className="text-[#f97316] font-medium hover:underline"
+        >
+          Parenting Guide
+        </button>
+        {/* Only show parent breadcrumb for subtopic articles */}
+        {!isCategoryArticle && cat && (
+          <>
+            <span>›</span>
+            <button
+              onClick={() => onNavigate({ type: "article", catId: cat.id, artId: cat.id, artLabel: cat.label })}
+              className="text-[#f97316] font-medium hover:underline"
+            >
+              {cat.label}
+            </button>
+          </>
+        )}
+        <span>›</span>
+        <span className="text-gray-500">{view.artLabel}</span>
+      </div>
+
+      <div className="article-prose" dangerouslySetInnerHTML={{ __html: html }} />
+
+      {/* Back button — for subtopics go back to category article, for category articles go to landing */}
+      <button
+        onClick={() =>
+          isCategoryArticle
+            ? onNavigate({ type: "landing" })
+            : onNavigate({ type: "article", catId: cat.id, artId: cat.id, artLabel: cat.label })
+        }
+        className="mt-10 inline-flex items-center gap-2 text-[#f97316] font-medium text-[0.9rem] hover:gap-3 transition-all duration-150"
+      >
+        {isCategoryArticle ? "← Back to Parenting Guide" : `← Back to ${cat.label}`}
+      </button>
+    </div>
+  );
+}
+
+export default function ParentingGuidePage() {
+  const searchParams = useSearchParams();
+  const [view, setView] = useState<ViewState>({ type: "landing" });
+
+  useEffect(() => {
+    const artId = searchParams.get("artId");
+
+    if (artId) {
+      // Check if it's a category-level article (e.g. "child_behaviour")
+      const foundCat = CATEGORIES.find((c) => c.id === artId);
+      if (foundCat) {
+        setView({ type: "article", catId: artId, artId: artId, artLabel: foundCat.label });
+        return;
+      }
+
+      // Otherwise it's a subtopic article (e.g. "cb_01")
+      const parentCat = CATEGORIES.find((c) => c.subtopics.some((s) => s.id === artId));
+      const foundSub = parentCat?.subtopics.find((s) => s.id === artId);
+      if (parentCat && foundSub) {
+        setView({ type: "article", catId: parentCat.id, artId: foundSub.id, artLabel: foundSub.label });
+        return;
+      }
+    }
+
+    setView({ type: "landing" });
+  }, [searchParams]);
+
+  const navigate = (v: ViewState) => {
+    setView(v);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      <style>{`
+        .article-prose h1 {
+          font-family: 'Rubik', sans-serif;
+          font-size: clamp(1.6rem, 3vw, 2.2rem);
+          font-weight: 700;
+          color: #1b2a4a;
+          line-height: 1.25;
+          margin-bottom: 1.2rem;
+          padding-bottom: 1rem;
+          border-bottom: 2px solid #f0f2f5;
+        }
+        .article-prose h2 {
+          font-family: 'Rubik', sans-serif;
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #1b2a4a;
+          margin-top: 2rem;
+          margin-bottom: 0.75rem;
+        }
+        .article-prose h3 {
+          font-size: 1rem;
+          font-weight: 600;
+          color: #1e3a5f;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+        .article-prose p {
+          font-size: 0.96rem;
+          color: #3b4258;
+          line-height: 1.8;
+          margin-bottom: 0.9rem;
+        }
+        .article-prose ul {
+          margin: 0.5rem 0 1.2rem 1.2rem;
+          list-style: none;
+          padding: 0;
+        }
+        .article-prose ul li {
+          position: relative;
+          padding: 0.3rem 0 0.3rem 1.2rem;
+          font-size: 0.93rem;
+          line-height: 1.7;
+          color: #3b4258;
+        }
+        .article-prose ul li::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 12px;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #f97316;
+          opacity: 0.6;
+        }
+        .article-prose strong { color: #1b2a4a; font-weight: 600; }
+      `}</style>
+
+      <div className="min-h-screen relative z-[1]" style={{ background: "#f8f9fb" }}>
+        <motion.div
+          key={JSON.stringify(view)}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35 }}
+        >
+          <ArticleView view={view} onNavigate={navigate} />
+        </motion.div>
+      </div>
+    </>
+  );
+}
+
+export { MegaMenu };
+export type { ViewState };

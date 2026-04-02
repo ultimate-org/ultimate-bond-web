@@ -179,11 +179,11 @@ const PHASES = [
     h3: "Knowledge AI",
     h4: "UltiMate Assistant",
     items: [
-      "Answers all parenting & child development questions",
-      "Explains app philosophy, structure & how to use",
-      "Grounded in app context — not generic AI",
-      "Full content guardrails — safe, accurate, focused",
-      "Phase 1 does not access user data",
+      "Clear, practical answers to everyday parenting questions — so you know what to do in the moment",
+      "Understand the app's approach and philosophy — so you can use it with clarity and purpose",
+      "Guidance tailored to your situation — not generic advice",
+      "Reliable, thoughtful insights you can trust — building your confidence as a parent",
+      // "Phase 1 does not access user data",
     ],
   },
   {
@@ -197,11 +197,11 @@ const PHASES = [
     h3: "Contextual AI",
     h4: "In-App Guidance Engine",
     items: [
-      "Reads in-app activity & milestone progress",
-      "Suggests next most relevant activity or challenge",
-      "Prompts families when engagement drops",
-      "Surfaces relevant WonderChat prompts daily",
-      "Uses app usage data — not personal data",
+      "Understands your journey in the app — so guidance always feels relevant to you",
+      "Suggests the next best activity — so you always know what to do next with your child",
+      "Gentle, timely nudges — helping you stay consistent without feeling overwhelmed",
+      "Meaningful daily prompts — making it easier to connect and engage with your child",
+      // "Uses app usage data — not personal data",
     ],
   },
   {
@@ -215,11 +215,11 @@ const PHASES = [
     h3: "Personalised AI",
     h4: "Family Intelligence Engine",
     items: [
-      "Integrates StrengthFinder psychometric results",
-      "Analyses quarterly child self-assessment trends",
-      "Delivers truly personalised activity prescriptions",
-      "Predicts developmental gaps before they emerge",
-      "Maps your entire family journey longitudinally",
+      "Understands your child's strengths and progress — so guidance truly fits your child",
+      "Tracks growth over time — helping you see what's improving and what needs attention",
+      "Recommends tailored activities — so every effort creates real impact",
+      "Anticipates potential gaps early — so you can support your child before challenges grow",
+      // "Maps your entire family journey longitudinally",
     ],
   },
 ];
@@ -317,17 +317,17 @@ export default function AiRoadmap() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 rounded-[20px] px-10 py-8 text-center bg-[#04060f]"
-          style={{ border: "1px solid rgba(249,115,22,0.25)" }}
+          className="mt-10 rounded-[20px] px-10 py-8 text-center"
+          // style={{ border: "1px solid rgba(249,115,22,0.25)" }}
         >
           {/* p — flywheel statement */}
           <p className="text-white font-bold text-[1rem] mb-1.5 leading-[1.6]">
-            Families use daily → AI observes patterns → AI learns what works → AI prescribes better next steps → Families see stronger results → More engagement → Better AI
+            From knowledge → to context → to <span className="text-[#f97316]">knowing your child</span>
           </p>
 
           {/* span — subline */}
           <span className="text-[#9ca3af] text-[0.85rem]">
-            The families who use UltiMate today are building the intelligence that will make UltiMate tomorrow&apos;s most personalised family platform in the world.
+            Each layer builds on the last — growing smarter as your family grows
           </span>
         </motion.div>
 

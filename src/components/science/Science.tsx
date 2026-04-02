@@ -979,11 +979,27 @@ export default function Science() {
       <div className={containerClass}>
 
         {/* .section-header.reveal */}
-        <SectionHeader
+        {/* <SectionHeader
           tag="The Science"
-          heading="Not Intuition. Science."
+          heading="Built on Science, Not Opinion"
+          sub="UltiMate operationalises the world's most authoritative child development research into simple daily family actions."
+        /> */}
+
+       <SectionHeader
+          tag="The Science"
+          heading={
+            <>
+              Built on
+              {/* <br /> */}
+             <em className="text-[#f97316] not-italic"> Science,</em>
+              <br />
+              Not Opinion
+            </>
+          }
           sub="UltiMate operationalises the world's most authoritative child development research into simple daily family actions."
         />
+
+
 
         {/* .science-grid.reveal — 2-col on lg, 1-col on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-10">

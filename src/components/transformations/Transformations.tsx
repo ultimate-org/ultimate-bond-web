@@ -332,7 +332,7 @@ export default function TransformationJourney() {
   const activeData = TABS.find((t) => t.id === activeTab)!.data;
 
   return (
-    <section className="py-[100px] relative z-[1] bg-[#0B0E1A]">
+    <section id="transformations" className="py-[100px] relative z-[1] bg-[#0B0E1A]">
       <div className={containerClass}>
 
         {/* header */}
@@ -359,7 +359,7 @@ export default function TransformationJourney() {
             Where Your Family Is Today —
             <br />
             And Where{" "}
-            <em className="not-italic text-[#FBBF24]">UltiMate</em>{" "}
+            <em className="not-italic text-[#f97316]">UltiMate</em>{" "}
             Takes You
           </h2>
 

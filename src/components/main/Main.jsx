@@ -258,7 +258,7 @@ const STATS = [
   { val: "1500+", label: "Life Skill Activities" },
   { val: "1000+", label: "Audio Stories"         },
   { val: "20+",   label: "Family Milestones"      },
-  { val: "10min", label: "Daily Engagement"       },
+  { val: "10mins", label: "Daily Engagement"       },
 ];
 
 const fadeUp = {

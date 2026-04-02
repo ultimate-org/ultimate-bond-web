@@ -9,7 +9,7 @@ function TermsConditions
 () {
   return (
     <div className='w-full h-screen'>
-          <object data="/legal/termsformatted.pdf" type="application/pdf" width={"100%"} height={"100%"}></object>
+          <object data="/legal/termsformatted.pdf" type="application/pdf" width={"100%"} height={"100%"} style={{zIndex:100}}></object>
     </div>
   )
 }

@@ -10,7 +10,9 @@ import Problem from "@/components/problem/Problem";
 import Science from "@/components/science/Science";
 // import Solution from "@/components/solution/Solution";
 import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
+// import Stars from "@/components/star/Star";
 import TransformationJourney from "@/components/transformations/Transformations";
+import WhatsAppButton from "@/components/whatsappButton/WhatsappButton";
 // import Why from "@/components/why/Why";
 import {Main, Header, ParentTestimony} from "@/index"
 
@@ -24,7 +26,7 @@ export const metadata = {
 
 function Landing() {
   return <>
-  
+  {/* <Stars/> */}
     <Header></Header>
     <Main></Main>
     <Aicte/>
@@ -42,6 +44,7 @@ function Landing() {
     <Advisors/>
     <ParentTestimony/>
     <CtaFooter/>
+    <WhatsAppButton/>
     {/* <Problem/> */}
     {/* {/* <Statistics></Statistics> */}
     {/* <UnderLyingCauses></UnderLyingCauses> */} 
