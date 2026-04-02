@@ -1967,6 +1967,353 @@
 
 
 
+// "use client";
+
+// import Link from "next/link";
+// import Image from "next/image";
+// import { useState, useEffect } from "react";
+// import { useRouter } from "next/navigation";
+// import { usePathname } from "next/navigation";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { Menu, X } from "lucide-react";
+
+// const NAV_LINKS = [
+//   { label: "Challenge",  href: "#problem"  },
+//   // { label: "Solution", href: "#solution" },
+//   { label: "Journey",  href: "#journey"  },
+//   { label: "Transformation", href: "#transformations" },
+//   { label: "Features", href: "#features" },
+//   { label: "Ulti-Bot",       href: "#ai"       },
+//   // { label: "Advisors", href: "#advisors" },
+// ];
+
+// const PG_CATEGORIES = [
+//   {
+//     id: "child_behaviour",
+//     label: "Child Behaviour",
+//     subtopics: [
+//       { id: "cb_01", label: "Why Children Lie" },
+//       { id: "cb_02", label: "Why Kids Talk Back" },
+//       { id: "cb_03", label: "Stubborn Children" },
+//       { id: "cb_04", label: "Discipline Without Punishment" },
+//       { id: "cb_05", label: "Aggressive Behaviour" },
+//       { id: "cb_06", label: "Why Children Refuse to Listen" },
+//       { id: "cb_07", label: "Sibling Fights" },
+//       { id: "cb_08", label: "Tantrums" },
+//       { id: "cb_09", label: "Teaching Respect" },
+//       { id: "cb_10", label: "Setting Boundaries" },
+//     ],
+//   },
+//   {
+//     id: "emotional_development",
+//     label: "Emotional Development",
+//     subtopics: [
+//       { id: "ed_01", label: "Building Emotional Resilience" },
+//       { id: "ed_02", label: "Emotional Intelligence in Children" },
+//       { id: "ed_03", label: "Helping Children Express Emotions" },
+//       { id: "ed_04", label: "Helping Children Overcome Fear" },
+//       { id: "ed_05", label: "Helping Kids Deal with Frustration" },
+//       { id: "ed_06", label: "Helping Kids Handle Disappointment" },
+//       { id: "ed_07", label: "Managing Tantrums (Age 3–6)" },
+//       { id: "ed_08", label: "Raising Emotionally Strong Children" },
+//       { id: "ed_09", label: "Teaching Patience to Children" },
+//       { id: "ed_10", label: "Why Children Get Angry" },
+//     ],
+//   },
+//   {
+//     id: "habits_discipline",
+//     label: "Habits & Discipline",
+//     subtopics: [
+//       { id: "hd_01", label: "Building Reading Habits" },
+//       { id: "hd_02", label: "Daily Routines for Children" },
+//       { id: "hd_03", label: "Helping Kids Stay Organized" },
+//       { id: "hd_04", label: "How Children Develop Habits" },
+//       { id: "hd_05", label: "Morning Routines for Kids" },
+//       { id: "hd_06", label: "Teaching Responsibility at Home" },
+//       { id: "hd_07", label: "Teaching Self Discipline" },
+//       { id: "hd_08", label: "Teaching Time Management" },
+//       { id: "hd_09", label: "Screen Time Balance for Kids" },
+//       { id: "hd_10", label: "Why Routines Help Children" },
+//     ],
+//   },
+//   {
+//     id: "school_life",
+//     label: "School Life",
+//     subtopics: [
+//       { id: "sl_01", label: "Bullying in Primary Schools" },
+//       { id: "sl_02", label: "Encouraging Curiosity in Kids" },
+//       { id: "sl_03", label: "Helping Children Focus on Studies" },
+//       { id: "sl_04", label: "Helping Kids Deal with Teasing" },
+//       { id: "sl_05", label: "Helping Kids Develop Reading Habits" },
+//       { id: "sl_06", label: "Helping Kids Make Friends" },
+//       { id: "sl_07", label: "Homework Struggles in Children" },
+//       { id: "sl_08", label: "Signs Your Child Is Being Bullied" },
+//       { id: "sl_09", label: "Reducing School Stress" },
+//       { id: "sl_10", label: "School Anxiety in Children" },
+//     ],
+//   },
+//   {
+//     id: "family_resources",
+//     label: "Family Resources",
+//     subtopics: [
+//       { id: "fr_01", label: "Age-Wise Behaviour Guide" },
+//       { id: "fr_02", label: "Emotional Development Chart" },
+//       { id: "fr_03", label: "Habit Tracker for Kids" },
+//       { id: "fr_04", label: "Parenting Checklist" },
+//       { id: "fr_05", label: "Parenting Tools for Modern Parents" },
+//       { id: "fr_06", label: "School Readiness Guide" },
+//     ],
+//   },
+// ];
+
+// export default function Navbar() {
+//   const [menuOpen, setMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [pgOpen, setPgOpen] = useState(false);
+//   const [pgHovered, setPgHovered] = useState("child_behaviour");
+//   const router = useRouter();
+//   const pathname = usePathname();
+//   const isHome = pathname === "/";
+
+//   useEffect(() => {
+//     const onScroll = () => setScrolled(window.scrollY > 50);
+//     window.addEventListener("scroll", onScroll, { passive: true });
+//     return () => window.removeEventListener("scroll", onScroll);
+//   }, []);
+
+//   return (
+//     <>
+//       <nav
+//         className="fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-[6%] py-4"
+//         style={{
+//           background: scrolled ? "rgba(4,6,15,0.97)" : "rgba(4,6,15,0.88)",
+//           backdropFilter: "blur(16px)",
+//           borderBottom: "1px solid rgba(255,255,255,0.08)",
+//         }}
+//       >
+//        {/* Logo */}
+//          <Link href="/" className="no-underline flex items-center">
+//        <Image
+//            src="/images/logo/Ultimate-Logo.png"
+//           alt="UltiMate"
+//          width={60}
+//           height={20}
+//            className=" w-auto object-contain"
+//           priority
+//           />
+//        </Link>
+
+//         {/* Desktop nav links — home only */}
+//         {isHome && (
+//           <ul className="hidden md:flex gap-8 list-none m-0 p-0 items-center">
+//             {NAV_LINKS.map((link) => (
+//               <li key={link.href}>
+//                 <Link
+//                   href={link.href}
+//                   className="text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] no-underline transition-colors duration-200 hover:text-white"
+//                 >
+//                   {link.label}
+//                 </Link>
+//               </li>
+//             ))}
+
+//             {/* Parenting Guide mega-menu */}
+//             <li
+//               className="relative h-full flex items-center"
+//               onMouseEnter={() => setPgOpen(true)}
+//               onMouseLeave={() => setPgOpen(false)}
+//             >
+//               {/* Click "Parenting Guide" → go to landing page */}
+//               <button
+//                 onClick={() => {
+//                   setPgOpen(false);
+//                   router.push("/parenting-guide");
+//                 }}
+//                 className="flex items-center gap-1 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+//               >
+//                 Parenting Guide
+//                 <svg
+//                   width="10"
+//                   height="10"
+//                   viewBox="0 0 10 10"
+//                   fill="currentColor"
+//                   className={`transition-transform duration-200 ${pgOpen ? "rotate-180" : ""}`}
+//                 >
+//                   <path d="M1 3l4 4 4-4" />
+//                 </svg>
+//               </button>
+
+//               {pgOpen && (
+//                 <div
+//                   className="absolute top-full left-0 flex shadow-2xl z-[200] rounded-b-2xl overflow-hidden"
+//                   style={{
+//                     background: "#fff",
+//                     border: "1px solid rgba(249,115,22,0.2)",
+//                     borderTop: "3px solid #f97316",
+//                     minWidth: "560px",
+//                     marginTop: "0px",
+//                   }}
+//                 >
+//                   {/* Left: categories — hover shows subtopics, click shows category article */}
+//                   <div className="w-[200px] border-r border-gray-100 py-2">
+//                     {PG_CATEGORIES.map((cat) => (
+//                       <div
+//                         key={cat.id}
+//                         className="flex items-center justify-between px-4 py-2.5 cursor-pointer transition-all duration-150 text-[0.88rem]"
+//                         style={{
+//                           background: pgHovered === cat.id ? "#f8f9fb" : "transparent",
+//                           borderLeft: pgHovered === cat.id ? "3px solid #f97316" : "3px solid transparent",
+//                           color: pgHovered === cat.id ? "#f97316" : "#374151",
+//                           fontWeight: 500,
+//                         }}
+//                         onMouseEnter={() => setPgHovered(cat.id)}
+//                         onClick={() => {
+//                           // Click category name → show that category's article from CONTENT
+//                           router.push(`/parenting-guide?artId=${cat.id}`);
+//                           setPgOpen(false);
+//                         }}
+//                       >
+//                         <span>{cat.label}</span>
+//                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5">
+//                           <path d="M3 2l4 3-4 3" />
+//                         </svg>
+//                       </div>
+//                     ))}
+//                   </div>
+
+//                   {/* Right: subtopics — click shows that subtopic's article */}
+//                   <div className="flex-1 py-2 px-1 overflow-y-auto max-h-[320px]">
+//                     {PG_CATEGORIES.find((c) => c.id === pgHovered)?.subtopics.map((sub) => (
+//                       <div
+//                         key={sub.id}
+//                         className="px-4 py-1.5 text-[0.82rem] text-gray-600 cursor-pointer rounded-md transition-all duration-100 hover:text-[#f97316]"
+//                         onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(249,115,22,0.04)")}
+//                         onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+//                         onClick={() => {
+//                           router.push(`/parenting-guide?artId=${sub.id}`);
+//                           setPgOpen(false);
+//                         }}
+//                       >
+//                         {sub.label}
+//                       </div>
+//                     ))}
+//                   </div>
+//                 </div>
+//               )}
+//             </li>
+//           </ul>
+//         )}
+
+//         {/* Desktop right buttons */}
+//         <div className="hidden md:flex items-center gap-3">
+//           <Link
+//             href="/blogs"
+//             className="text-[#f97316] text-[0.85rem] font-bold no-underline px-[20px] py-[8px] rounded-full transition-all duration-200 hover:bg-[rgba(249,115,22,0.08)] hover:-translate-y-[1px]"
+//             style={{
+//               border: "1px solid rgba(249,115,22,0.5)",
+//               fontFamily: "'Rubik', sans-serif",
+//             }}
+//           >
+//             Blogs
+//           </Link>
+
+         
+//        <button
+//           // href="#cta"
+//         onClick={() => {router.push("/download-app");}}
+//       className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full transition-all duration-200 hover:bg-[#ea6a0a] hover:-translate-y-[1px]"
+//         style={{
+//           background: "#f97316",
+//            boxShadow: "0 0 20px rgba(249,115,22,0.35)",
+//          fontFamily: "'Rubik', sans-serif",
+//    }}
+//         >
+//           Get the App
+//          </button>
+//         </div>
+
+//         {/* Mobile hamburger */}
+//         <button
+//           className="md:hidden text-white p-1"
+//           onClick={() => setMenuOpen((v) => !v)}
+//           aria-label="Toggle menu"
+//         >
+//           {menuOpen ? <X size={22} /> : <Menu size={22} />}
+//         </button>
+//       </nav>
+
+//       {/* Mobile drawer */}
+//       <AnimatePresence>
+//         {menuOpen && (
+//           <motion.div
+//             key="mobile-menu"
+//             initial={{ opacity: 0, y: -12 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             exit={{ opacity: 0, y: -12 }}
+//             transition={{ duration: 0.22, ease: "easeOut" }}
+//             className="fixed top-[65px] left-0 right-0 z-[99] flex flex-col px-[6%] py-6 gap-5 md:hidden"
+//             style={{
+//               background: "rgba(4,6,15,0.97)",
+//               backdropFilter: "blur(16px)",
+//               borderBottom: "1px solid rgba(255,255,255,0.08)",
+//             }}
+//           >
+//             {isHome &&
+//               NAV_LINKS.map((link) => (
+//                 <Link
+//                   key={link.href}
+//                   href={link.href}
+//                   onClick={() => setMenuOpen(false)}
+//                   className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em] no-underline transition-colors duration-200 hover:text-white"
+//                 >
+//                   {link.label}
+//                 </Link>
+//               ))}
+
+//             {isHome && (
+//               <Link
+//                 href="/parenting-guide"
+//                 onClick={() => setMenuOpen(false)}
+//                 className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em] no-underline transition-colors duration-200 hover:text-white"
+//               >
+//                 Parenting Guide
+//               </Link>
+//             )}
+
+//             <div className="flex items-center gap-3 flex-wrap">
+//               <Link
+//                 href="/blogs"
+//                 onClick={() => setMenuOpen(false)}
+//                 className="text-[#f97316] text-[0.85rem] font-bold no-underline px-[20px] py-[8px] rounded-full"
+//                 style={{
+//                   border: "1px solid rgba(249,115,22,0.5)",
+//                   fontFamily: "'Rubik', sans-serif",
+//                 }}
+//               >
+//                 Blog
+//               </Link>
+
+//                <button
+//                // href="#cta"
+//                onClick={() => {router.push("/download-app"); setMenuOpen(false)}}
+//              className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full"
+//                style={{
+//                    background: "#f97316",
+//                 boxShadow: "0 0 20px rgba(249,115,22,0.35)",
+//                 fontFamily: "'Rubik', sans-serif",
+//                }}
+//             >
+//               Get the App
+//               </button>
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </>
+//   );
+// }
+
+
 "use client";
 
 import Link from "next/link";
@@ -1975,16 +2322,14 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Challenge",  href: "#problem"  },
-  // { label: "Solution", href: "#solution" },
   { label: "Journey",  href: "#journey"  },
-  { label: "Transformations", href: "#transformations" },
+  { label: "Transformation", href: "#transformations" },
   { label: "Features", href: "#features" },
   { label: "Ulti-Bot",       href: "#ai"       },
-  // { label: "Advisors", href: "#advisors" },
 ];
 
 const PG_CATEGORIES = [
@@ -2071,6 +2416,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [pgOpen, setPgOpen] = useState(false);
   const [pgHovered, setPgHovered] = useState("child_behaviour");
+  // mobile: which category accordion is open
+  const [mobilePgOpen, setMobilePgOpen] = useState(false);
+  const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -2091,17 +2439,17 @@ export default function Navbar() {
           borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}
       >
-       {/* Logo */}
-         <Link href="/" className="no-underline flex items-center">
-       <Image
-           src="/images/logo/Ultimate-Logo.png"
-          alt="UltiMate"
-         width={60}
-          height={20}
-           className=" w-auto object-contain"
-          priority
+        {/* Logo */}
+        <Link href="/" className="no-underline flex items-center">
+          <Image
+            src="/images/logo/Ultimate-Logo.png"
+            alt="UltiMate"
+            width={60}
+            height={20}
+            className="w-auto object-contain"
+            priority
           />
-       </Link>
+        </Link>
 
         {/* Desktop nav links — home only */}
         {isHome && (
@@ -2123,7 +2471,6 @@ export default function Navbar() {
               onMouseEnter={() => setPgOpen(true)}
               onMouseLeave={() => setPgOpen(false)}
             >
-              {/* Click "Parenting Guide" → go to landing page */}
               <button
                 onClick={() => {
                   setPgOpen(false);
@@ -2154,7 +2501,7 @@ export default function Navbar() {
                     marginTop: "0px",
                   }}
                 >
-                  {/* Left: categories — hover shows subtopics, click shows category article */}
+                  {/* Left: categories */}
                   <div className="w-[200px] border-r border-gray-100 py-2">
                     {PG_CATEGORIES.map((cat) => (
                       <div
@@ -2168,7 +2515,6 @@ export default function Navbar() {
                         }}
                         onMouseEnter={() => setPgHovered(cat.id)}
                         onClick={() => {
-                          // Click category name → show that category's article from CONTENT
                           router.push(`/parenting-guide?artId=${cat.id}`);
                           setPgOpen(false);
                         }}
@@ -2181,7 +2527,7 @@ export default function Navbar() {
                     ))}
                   </div>
 
-                  {/* Right: subtopics — click shows that subtopic's article */}
+                  {/* Right: subtopics */}
                   <div className="flex-1 py-2 px-1 overflow-y-auto max-h-[320px]">
                     {PG_CATEGORIES.find((c) => c.id === pgHovered)?.subtopics.map((sub) => (
                       <div
@@ -2217,8 +2563,8 @@ export default function Navbar() {
             Blogs
           </Link>
 
-          <Link
-            href="#cta"
+          <button
+            onClick={() => { router.push("/download-app"); }}
             className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full transition-all duration-200 hover:bg-[#ea6a0a] hover:-translate-y-[1px]"
             style={{
               background: "#f97316",
@@ -2227,7 +2573,7 @@ export default function Navbar() {
             }}
           >
             Get the App
-          </Link>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -2249,13 +2595,14 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="fixed top-[65px] left-0 right-0 z-[99] flex flex-col px-[6%] py-6 gap-5 md:hidden"
+            className="fixed top-[65px] left-0 right-0 z-[99] flex flex-col px-[6%] py-6 gap-5 md:hidden overflow-y-auto max-h-[80vh]"
             style={{
               background: "rgba(4,6,15,0.97)",
               backdropFilter: "blur(16px)",
               borderBottom: "1px solid rgba(255,255,255,0.08)",
             }}
           >
+            {/* Regular nav links */}
             {isHome &&
               NAV_LINKS.map((link) => (
                 <Link
@@ -2268,16 +2615,107 @@ export default function Navbar() {
                 </Link>
               ))}
 
+            {/* ── Parenting Guide accordion — mobile only ── */}
             {isHome && (
-              <Link
-                href="/parenting-guide"
-                onClick={() => setMenuOpen(false)}
-                className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em] no-underline transition-colors duration-200 hover:text-white"
-              >
-                Parenting Guide
-              </Link>
+              <div>
+                {/* Top row: label → landing, chevron → toggle accordion */}
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => {
+                      router.push("/parenting-guide");
+                      setMenuOpen(false);
+                    }}
+                    className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+                  >
+                    Parenting Guide
+                  </button>
+                  <button
+                    onClick={() => setMobilePgOpen((v) => !v)}
+                    className="text-[#9ca3af] p-1"
+                    aria-label="Toggle parenting guide menu"
+                  >
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${mobilePgOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
+
+                {/* Accordion content */}
+                <AnimatePresence>
+                  {mobilePgOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden mt-2"
+                    >
+                      {PG_CATEGORIES.map((cat) => (
+                        <div key={cat.id} className="mb-1">
+                          {/* Category row */}
+                          <div className="flex items-center justify-between">
+                            <button
+                              onClick={() => {
+                                router.push(`/parenting-guide?artId=${cat.id}`);
+                                setMenuOpen(false);
+                              }}
+                              className="text-[0.88rem] font-medium py-2 pl-3 text-left transition-colors duration-150"
+                              style={{ color: "#f97316" }}
+                            >
+                              {cat.label}
+                            </button>
+                            <button
+                              onClick={() =>
+                                setMobileExpandedCat((prev) =>
+                                  prev === cat.id ? null : cat.id
+                                )
+                              }
+                              className="p-2 text-[#9ca3af]"
+                            >
+                              <ChevronDown
+                                size={14}
+                                className={`transition-transform duration-200 ${
+                                  mobileExpandedCat === cat.id ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                          </div>
+
+                          {/* Subtopics */}
+                          <AnimatePresence>
+                            {mobileExpandedCat === cat.id && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.15 }}
+                                className="overflow-hidden pl-4"
+                              >
+                                {cat.subtopics.map((sub) => (
+                                  <button
+                                    key={sub.id}
+                                    onClick={() => {
+                                      router.push(`/parenting-guide?artId=${sub.id}`);
+                                      setMenuOpen(false);
+                                    }}
+                                    className="block w-full text-left text-[0.8rem] py-1.5 text-[#9ca3af] hover:text-white transition-colors duration-150"
+                                  >
+                                    {sub.label}
+                                  </button>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             )}
 
+            {/* CTA buttons */}
             <div className="flex items-center gap-3 flex-wrap">
               <Link
                 href="/blogs"
@@ -2291,9 +2729,8 @@ export default function Navbar() {
                 Blog
               </Link>
 
-              <Link
-                href="#cta"
-                onClick={() => setMenuOpen(false)}
+              <button
+                onClick={() => { router.push("/download-app"); setMenuOpen(false); }}
                 className="text-white text-[0.85rem] font-bold no-underline px-[22px] py-[9px] rounded-full"
                 style={{
                   background: "#f97316",
@@ -2302,7 +2739,7 @@ export default function Navbar() {
                 }}
               >
                 Get the App
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
