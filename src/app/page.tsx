@@ -1,6 +1,7 @@
 import Advisors from "@/components/advisors/Advisors";
 import Aicte from "@/components/aicte/Aicte";
 import AiRoadmap from "@/components/aiRoadMap/AiRoadMap";
+import BeyondAcademics from "@/components/beyondAcademics/BeyondAcademics";
 import Consequences from "@/components/consequences/Consequences";
 import CtaFooter from "@/components/ctaFooter/CtaFooter";
 import FeaturesRadar from "@/components/featureRadar/FeatureRadar";
@@ -9,7 +10,7 @@ import ParentingPulse from "@/components/parentingPulse/ParentingPulse";
 import Problem from "@/components/problem/Problem";
 import Science from "@/components/science/Science";
 // import Solution from "@/components/solution/Solution";
-import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
+// import SpaceWhy from "@/components/spaceWhy/SpaceWhy";
 // import Stars from "@/components/star/Star";
 import TransformationJourney from "@/components/transformations/Transformations";
 import WhatsAppButton from "@/components/whatsappButton/WhatsappButton";
@@ -30,7 +31,8 @@ function Landing() {
     <Header></Header>
     <Main></Main>
     <Aicte/>
-    <SpaceWhy/>
+    <BeyondAcademics/>
+    {/* <SpaceWhy/> */}
     <Problem/>
     <Consequences/>
     <Science/>
