@@ -60,7 +60,7 @@
 // //                     <p className={`text-center text-white text-xl md:text-4xl ${DeliciousHandrawn.className} ${styles.mainTextColor}`}>So, are we raising <span className={`${DeliciousHandrawn.className} text-4xl`}>happy, resilient, and emotionally</span> strong children?</p>
 // //         </div>
 // //           </div>
-      
+
 // //         </div>
 // //     </div>
 // //   )
@@ -253,12 +253,13 @@
 import { motion } from "framer-motion";
 import { BtnPrimary, BtnSecondary } from "@/components/ui/UI";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const STATS = [
   { val: "1500+", label: "Life Skill Activities" },
-  { val: "1000+", label: "Audio Stories"         },
-  { val: "20+",   label: "Family Milestones"      },
-  { val: "10mins", label: "Daily Engagement"       },
+  { val: "1000+", label: "Audio Stories" },
+  { val: "20+", label: "Family Milestones" },
+  { val: "10mins", label: "Daily Engagement" },
 ];
 
 const fadeUp = {
@@ -279,7 +280,7 @@ export default function Hero() {
       {/* .hero-bg-img */}
       <div
         className="absolute inset-0 z-0 bg-center bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url('/images/hero_bg.png')` }}
+        style={{ backgroundImage: `url('/images/hero_bg1.jpeg')` }}
       >
         {/* gradient overlay */}
         <div
@@ -292,17 +293,17 @@ export default function Hero() {
       </div>
 
       {/* .hero-inner */}
-      <div className="relative z-10 max-w-[1160px] mx-auto w-full">
+      <div className="relative z-10 max-w-[1160px] ml-12 mr-auto w-full flex flex-col md:flex-row items-center justify-between gap-10">
 
         {/* .hero-content.reveal */}
-        <div className="max-w-[580px]">
+        <div className="max-w-[580px] w-full">
 
           {/* .hero-eyebrow */}
           <motion.div
             custom={0} initial="hidden" animate="visible" variants={fadeUp}
             className="flex items-center gap-2 mb-5"
           >
-            <span className="w-6 h-[1px] bg-[#f97316] flex-shrink-0" />
+            {/* <span className="w-6 h-[1px] bg-[#f97316] flex-shrink-0" /> */}
             <span
               className="text-[0.78rem] tracking-[0.14em] uppercase font-bold text-[#f97316]"
               style={{ fontFamily: "'Rubik', sans-serif" }}
@@ -341,7 +342,7 @@ export default function Hero() {
             custom={3} initial="hidden" animate="visible" variants={fadeUp}
             className="flex gap-4 flex-wrap mb-12"
           >
-            <BtnPrimary onClick={()=>router.push("/download-app")}>Get the App</BtnPrimary>
+            <BtnPrimary onClick={() => router.push("/download-app")}>Get the App</BtnPrimary>
             <BtnSecondary href="#journey">See How It Works →</BtnSecondary>
           </motion.div>
 
@@ -354,9 +355,8 @@ export default function Hero() {
             {STATS.map((s, i) => (
               <div
                 key={s.label}
-                className={`px-4 py-[1.1rem] text-center bg-[rgba(10,14,31,0.7)] ${
-                  i < STATS.length - 1 ? "border-r border-white/10" : ""
-                }`}
+                className={`px-4 py-[1.1rem] text-center bg-[rgba(10,14,31,0.7)] ${i < STATS.length - 1 ? "border-r border-white/10" : ""
+                  }`}
               >
                 {/* .hero-stat-val */}
                 <span
@@ -374,6 +374,27 @@ export default function Hero() {
           </motion.div>
 
         </div>
+
+        {/* Hero Right Image */}
+        <motion.div
+          custom={5} initial="hidden" animate="visible" variants={fadeUp}
+          className="hidden md:block relative w-full min-w-[500px] lg:min-w-[650px] max-w-[800px] -mt-24 -mr-20"
+        >
+          <motion.div
+            animate={{ y: [0, -15, 0] }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <img
+              src="/images/3_mascots_on_rocket.png"
+              alt="Mascots on Rocket"
+              className="w-full h-auto object-contain"
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

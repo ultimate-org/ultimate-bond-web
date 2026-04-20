@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { GoogleAnalytics } from '@next/third-parties/google';
 import MetaPixel from '@/components/MetaPixel'; 
 import Stars from "@/components/star/Star";
+import CookieConsent from '@/components/cookie/CookieConsent'
 
 
 const geistSans = Geist({
@@ -21,8 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ulti-Mate",
-  description: "Unleash the power of Child Development and Parenting with UltiMate. We offer age appropriate Life Skills enhancing 4000+ Child engagement along with practical parenting guidance and many more aids to enhance parent child bond.",
+  title: "UltiMate – Daily Family Bonding App",
+  description: "Leading AICTE-accredited family app. Schools build academics, UltiMate builds resilience, emotional strength & real-world thinking. Ages 3–13. 10 mins/day.",
   icons: {
     icon: '/favicon.ico', // Path from /app
     shortcut: '/icon.png', // Optional
@@ -57,6 +58,7 @@ export default async function RootLayout({
           <Footer />
         </NextIntlClientProvider>
         <MetaPixel/>
+        <CookieConsent />
       </body>
         <GoogleAnalytics gaId="G-8FN0J3Y8CC"></GoogleAnalytics>
     </html>
