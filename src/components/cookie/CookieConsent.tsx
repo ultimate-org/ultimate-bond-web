@@ -99,6 +99,7 @@ export default function CookieConsent() {
 
       {/* Learn more link */}
       <a
+        target='_blank'
         href="/privacy-policy"
         className="text-[12px] text-blue-700 underline inline-block mb-4"
       >

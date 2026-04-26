@@ -203,6 +203,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const FOOTER_LINKS = [
   { label: "Home",               href: "/"                    },
@@ -252,6 +253,9 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/readometer") return null;
+
   return (
     <footer
       className="relative z-[1] px-[6%] py-12 text-center"
