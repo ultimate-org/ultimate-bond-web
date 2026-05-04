@@ -254,7 +254,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   const pathname = usePathname();
-  if (pathname === "/readometer") return null;
+  if (pathname === "/readometer" || pathname === "/wordquest" || pathname === "/top-parenting") return null;
 
   return (
     <footer
