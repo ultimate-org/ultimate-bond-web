@@ -2411,13 +2411,21 @@ const PG_CATEGORIES = [
   },
 ];
 
+const PC_OPTIONS = [
+  { id: "readometer", label: "Readometer", href: "/readometer" },
+  { id: "wordquest", label: "Wordquest", href: "/wordquest" },
+  { id: "kyc", label: "KYC", href: "/kyc" },
+];
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [pgOpen, setPgOpen] = useState(false);
+  const [pcOpen, setPcOpen] = useState(false);
   const [pgHovered, setPgHovered] = useState("child_behaviour");
   // mobile: which category accordion is open
   const [mobilePgOpen, setMobilePgOpen] = useState(false);
+  const [mobilePcOpen, setMobilePcOpen] = useState(false);
   const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -2544,6 +2552,61 @@ export default function Navbar() {
                       </div>
                     ))}
                   </div>
+                </div>
+              )}
+            </li>
+
+            {/* Parenting Corner dropdown */}
+            <li
+              className="relative h-full flex items-center"
+              onMouseEnter={() => setPcOpen(true)}
+              onMouseLeave={() => setPcOpen(false)}
+            >
+              <button
+                className="flex items-center gap-1 text-[#9ca3af] text-[0.85rem] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-white"
+              >
+                Parenting Corner
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="currentColor"
+                  className={`transition-transform duration-200 ${pcOpen ? "rotate-180" : ""}`}
+                >
+                  <path d="M1 3l4 4 4-4" />
+                </svg>
+              </button>
+
+              {pcOpen && (
+                <div
+                  className="absolute top-full left-0 flex flex-col shadow-2xl z-[200] rounded-b-2xl overflow-hidden py-2"
+                  style={{
+                    background: "#fff",
+                    border: "1px solid rgba(249,115,22,0.2)",
+                    borderTop: "3px solid #f97316",
+                    minWidth: "200px",
+                    marginTop: "0px",
+                  }}
+                >
+                  {PC_OPTIONS.map((opt) => {
+                    const isActive = pathname === opt.href;
+                    return (
+                      <div
+                        key={opt.id}
+                        className={`px-4 py-2.5 text-[0.85rem] cursor-pointer transition-all duration-100 border-l-[3px] ${
+                          isActive 
+                            ? "text-[#f97316] border-[#f97316] bg-[#f8f9fb]" 
+                            : "text-gray-600 border-transparent hover:text-[#f97316] hover:border-[#f97316] hover:bg-[#f8f9fb]"
+                        }`}
+                        onClick={() => {
+                          router.push(opt.href);
+                          setPcOpen(false);
+                        }}
+                      >
+                        {opt.label}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </li>
@@ -2709,6 +2772,59 @@ export default function Navbar() {
                           </AnimatePresence>
                         </div>
                       ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+
+            {/* ── Parenting Corner accordion — mobile only ── */}
+            {isHome && (
+              <div className="mt-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em]">
+                    Parenting Corner
+                  </span>
+                  <button
+                    onClick={() => setMobilePcOpen((v) => !v)}
+                    className="text-[#9ca3af] p-1"
+                    aria-label="Toggle parenting corner menu"
+                  >
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${mobilePcOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
+
+                <AnimatePresence>
+                  {mobilePcOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden mt-1 pl-3"
+                    >
+                      {PC_OPTIONS.map((opt) => {
+                        const isActive = pathname === opt.href;
+                        return (
+                          <button
+                            key={opt.id}
+                            onClick={() => {
+                              router.push(opt.href);
+                              setMenuOpen(false);
+                            }}
+                            className={`block w-full text-left text-[0.88rem] py-2 pl-3 border-l-[3px] transition-all duration-150 ${
+                              isActive 
+                                ? "text-[#f97316] border-[#f97316] bg-[rgba(249,115,22,0.04)]" 
+                                : "text-[#9ca3af] border-transparent hover:text-white hover:border-[#f97316]"
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        );
+                      })}
                     </motion.div>
                   )}
                 </AnimatePresence>
