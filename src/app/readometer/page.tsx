@@ -1682,9 +1682,957 @@
 // }
 
 
+// "use client";
+// import { Playfair_Display } from "next/font/google";
+// import { useState, useEffect } from "react";
+
+// const playfair = Playfair_Display({ subsets: ["latin"] });
+
+// // ── Types ─────────────────────────────────────────────────────────────────
+// interface LeaderboardEntry {
+//   rank: number;
+//   child_id: number;
+//   display_name: string;
+//   city: string | null;
+//   profile_image: string | null;
+//   milestone_title: string | null;
+//   total_reading_min: number;
+//   interesting_count: number;
+// }
+
+// // ── Constants ─────────────────────────────────────────────────────────────
+// const AGE_CATEGORIES = [
+//   { id: 1, label: "Pre-Primary", icon: "🐣" },
+//   { id: 2, label: "Primary", icon: "📖" },
+//   { id: 3, label: "Secondary I", icon: "🎒" },
+//   { id: 4, label: "Secondary II", icon: "🎓" },
+// ];
+
+// const TIME_PERIODS = [
+//   { value: "weekly", label: "Weekly" },
+//   { value: "monthly", label: "Monthly" },
+//   { value: "all_time", label: "All Time" },
+// ];
+
+// const PODIUM_ORDER = [1, 0, 2];
+// const FALLBACK_AVATAR = "https://cdn-icons-png.flaticon.com/512/6997/6997662.png";
+// const getAvatar = (entry: LeaderboardEntry) => entry.profile_image || FALLBACK_AVATAR;
+
+// // ── useWindowSize ─────────────────────────────────────────────────────────
+// function useWindowSize() {
+//   const [size, setSize] = useState({ width: 1200, height: 800 });
+//   useEffect(() => {
+//     const update = () => setSize({ width: window.innerWidth, height: window.innerHeight });
+//     update();
+//     window.addEventListener("resize", update);
+//     return () => window.removeEventListener("resize", update);
+//   }, []);
+//   return size;
+// }
+
+// // ── Skeleton ──────────────────────────────────────────────────────────────
+// const Skeleton = ({ w, h, r = 8 }: { w: string; h: string; r?: number }) => (
+//   <div
+//     style={{
+//       width: w,
+//       height: h,
+//       borderRadius: r,
+//       background: "linear-gradient(90deg, #1f1c18 25%, #2a2520 50%, #1f1c18 75%)",
+//       backgroundSize: "200% 100%",
+//       animation: "shimmer 1.5s infinite",
+//     }}
+//   />
+// );
+
+// // ── Category Tab ──────────────────────────────────────────────────────────
+// function CategoryTab({
+//   label,
+//   icon,
+//   active,
+//   onClick,
+//   isMobile,
+// }: {
+//   label: string;
+//   icon: string;
+//   active?: boolean;
+//   onClick: () => void;
+//   isMobile: boolean;
+// }) {
+//   return (
+//     <button
+//       onClick={onClick}
+//       style={{
+//         display: "flex",
+//         alignItems: "center",
+//         gap: 5,
+//         padding: isMobile ? "6px 10px" : "8px 16px",
+//         borderRadius: "999px",
+//         fontSize: isMobile ? "0.7rem" : "0.8rem",
+//         fontWeight: active ? 600 : 500,
+//         cursor: "pointer",
+//         transition: "all 0.2s",
+//         fontFamily: "'Outfit'",
+//         border: `1px solid ${active ? "#f97316" : "#2a2a2a"}`,
+//         background: active ? "#f97316" : "#2C2620",
+//         color: active ? "#fff" : "#9ca3af",
+//       }}>
+//       <span style={{ fontSize: isMobile ? "0.75rem" : "0.875rem" }}>{icon}</span>
+//       {label}
+//     </button>
+//   );
+// }
+
+// // ── Podium Config ─────────────────────────────────────────────────────────
+// const getPodiumConfig = (isMobile: boolean) => [
+//   {
+//     avatarSize: isMobile ? 48 : 67,
+//     podiumH: isMobile ? 44 : 60,
+//     fontSize: isMobile ? 18 : 26,
+//     transform: "translateY(0)",
+//     medalW: isMobile ? 14 : 19,
+//     medalH: isMobile ? 19 : 26,
+//     medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583434.png",
+//     podiumBg: "linear-gradient(180deg, #A8B8C833 0%, #A8B8C80D 100%)",
+//     isFirst: false,
+//   },
+//   {
+//     avatarSize: isMobile ? 62 : 84,
+//     podiumH: isMobile ? 66 : 90,
+//     fontSize: isMobile ? 22 : 32,
+//     transform: isMobile ? "translateY(-20px)" : "translateY(-32px)",
+//     medalW: isMobile ? 20 : 27,
+//     medalH: isMobile ? 28 : 39,
+//     medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+//     podiumBg: "linear-gradient(180deg, #E8782A40 0%, #E8782A14 100%)",
+//     isFirst: true,
+//   },
+//   {
+//     avatarSize: isMobile ? 40 : 54,
+//     podiumH: isMobile ? 28 : 40,
+//     fontSize: isMobile ? 18 : 26,
+//     transform: "translateY(0)",
+//     medalW: isMobile ? 11 : 15,
+//     medalH: isMobile ? 14 : 19,
+//     medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+//     podiumBg: "linear-gradient(180deg, #afbac533 0%, #c1cedc0d 100%)",
+//     isFirst: false,
+//   },
+// ];
+
+// // ── Podium Card ───────────────────────────────────────────────────────────
+// function PodiumCard({
+//   entry,
+//   position,
+//   isMobile,
+//   activePeriod,
+// }: {
+//   entry: LeaderboardEntry;
+//   position: number;
+//   isMobile: boolean;
+//   activePeriod: string;
+// }) {
+//   const cfg = getPodiumConfig(isMobile)[position];
+
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         flexDirection: "column",
+//         alignItems: "center",
+//         transform: cfg.transform,
+//         marginTop: cfg.isFirst ? (isMobile ? 10 : 15) : 0,
+//       }}>
+//       <img
+//         src={cfg.medalSrc}
+//         alt="medal"
+//         style={{ width: cfg.medalW, height: cfg.medalH, marginBottom: 6, objectFit: "contain" }}
+//       />
+
+//       <div
+//         style={{
+//           width: cfg.avatarSize,
+//           height: cfg.avatarSize,
+//           borderRadius: "50%",
+//           border: "3px solid #f97316",
+//           overflow: "hidden",
+//           marginBottom: isMobile ? 8 : 14,
+//           boxShadow: cfg.isFirst ? "0 0 24px rgba(249,115,22,0.4)" : "none",
+//         }}>
+//         <img
+//           src={getAvatar(entry)}
+//           alt={entry.display_name}
+//           style={{ width: "100%", height: "100%", objectFit: "cover" }}
+//         />
+//       </div>
+
+//       <p
+//         style={{
+//           color: cfg.isFirst ? "#E8782A" : "#ffffff",
+//           fontSize: cfg.isFirst ? (isMobile ? 13 : 17) : isMobile ? 11 : 15,
+//           fontWeight: 700,
+//           margin: "0 0 2px 0",
+//           textAlign: "center",
+//           fontFamily: "'Outfit'",
+//           maxWidth: isMobile ? 80 : 140,
+//         }}>
+//         {entry.display_name}
+//       </p>
+
+//       {entry.city && !isMobile && (
+//         <p
+//           style={{
+//             color: "#5C5248",
+//             fontSize: 12,
+//             margin: "0 0 10px 0",
+//             textAlign: "center",
+//             fontFamily: "'Outfit'",
+//             fontWeight: 400,
+//           }}>
+//           {entry.city}
+//         </p>
+//       )}
+
+//       <p
+//         style={{
+//           color: cfg.isFirst ? "#E8782A" : "#F0EAE2",
+//           fontSize: cfg.fontSize,
+//           fontWeight: 800,
+//           lineHeight: `${cfg.fontSize + 4}px`,
+//           margin: isMobile ? "4px 0 2px 0" : "0 0 2px 0",
+//           fontFamily: "'Outfit'",
+//         }}>
+//         {entry.total_reading_min.toLocaleString()} min
+//       </p>
+
+//       <p
+//         style={{
+//           color: "#5C5248",
+//           fontSize: isMobile ? 10 : 12,
+//           margin: isMobile ? "0 0 8px 0" : "0 0 14px 0",
+//           fontFamily: "'Outfit'",
+//           fontWeight: 400,
+//         }}>
+//         this {activePeriod === "weekly" ? "week" : activePeriod === "monthly" ? "month" : "time"}
+//       </p>
+
+//       {!isMobile && (
+//         <div
+//           style={{
+//             background: "#F585232E",
+//             borderRadius: "999px",
+//             padding: "6px 18px",
+//             color: "#F58523",
+//             fontSize: 12,
+//             fontWeight: 600,
+//             border: "1px solid #E8782A4D",
+//             marginBottom: 16,
+//             fontFamily: "'Outfit'",
+//             display: "flex",
+//             alignItems: "center",
+//             gap: 6,
+//           }}>
+//           🎁 {cfg.isFirst ? "Crossword Coupon Winner" : "Coupon Winner"}
+//         </div>
+//       )}
+
+//       <div
+//         style={{
+//           background: cfg.podiumBg,
+//           borderRadius: "12px 12px 0 0",
+//           width: cfg.isFirst ? (isMobile ? 90 : 140) : isMobile ? 70 : 120,
+//           height: cfg.podiumH,
+//           display: "flex",
+//           alignItems: "center",
+//           justifyContent: "center",
+//         }}>
+//         <span
+//           style={{
+//             color: "#FFFFFF66",
+//             fontSize: isMobile ? 16 : 24,
+//             fontWeight: 800,
+//             fontFamily: "'Outfit'",
+//           }}>
+//           #{entry.rank}
+//         </span>
+//       </div>
+//     </div>
+//   );
+// }
+
+// // ── Leaderboard Row ───────────────────────────────────────────────────────
+// function LeaderboardRow({
+//   entry,
+//   isLast,
+//   maxMinutes,
+//   isMobile,
+// }: {
+//   entry: LeaderboardEntry;
+//   isLast: boolean;
+//   maxMinutes: number;
+//   isMobile: boolean;
+// }) {
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         alignItems: "center",
+//         padding: isMobile ? "10px 14px" : "13px 24px",
+//         borderBottom: !isLast ? "1px solid #2C2620" : "none",
+//         gap: isMobile ? 10 : 16,
+//         minHeight: isMobile ? 60 : 69,
+//       }}>
+//       {/* Rank */}
+//       <div
+//         style={{
+//           width: isMobile ? 24 : 32,
+//           color: "#5C5248",
+//           fontSize: isMobile ? 14 : 20,
+//           fontWeight: 700,
+//           flexShrink: 0,
+//           textAlign: "center",
+//           fontFamily: "'Outfit'",
+//         }}>
+//         #{entry.rank}
+//       </div>
+
+//       {/* Avatar */}
+//       <div
+//         style={{
+//           width: isMobile ? 34 : 42,
+//           height: isMobile ? 34 : 42,
+//           borderRadius: "50%",
+//           border: "2px solid #2a2a2a",
+//           overflow: "hidden",
+//           flexShrink: 0,
+//           background: "#1f1f1f",
+//         }}>
+//         <img
+//           src={getAvatar(entry)}
+//           alt={entry.display_name}
+//           style={{ width: "100%", height: "100%", objectFit: "cover" }}
+//         />
+//       </div>
+
+//       {/* Name + milestone */}
+//       <div style={{
+//     flexGrow: isMobile ? 1 : 0,
+//     flexShrink: isMobile ? 1 : 0,
+//     flexBasis: isMobile ? 0 : "auto",
+//     width: isMobile ? undefined : 310,
+//     minWidth: 0,
+//   }}>
+//         <p
+//           style={{
+//             color: "#F0EAE2",
+//             fontSize: isMobile ? 12 : 14,
+//             fontWeight: 600,
+//             margin: "0 0 4px 0",
+//             lineHeight: "100%",
+//             fontFamily: "'Outfit'",
+//             whiteSpace: "nowrap",
+//             overflow: "hidden",
+//             textOverflow: "ellipsis",
+//           }}>
+//           {entry.display_name}
+//         </p>
+//         <p
+//           style={{
+//             color: "#A0511C",
+//             fontSize: isMobile ? 10 : 12,
+//             fontWeight: 500,
+//             margin: 0,
+//             lineHeight: "100%",
+//             fontFamily: "'Outfit'",
+//             whiteSpace: "nowrap",
+//             overflow: "hidden",
+//             textOverflow: "ellipsis",
+//           }}>
+//           {entry.milestone_title || "—"}
+//         </p>
+//       </div>
+
+//       {/* Progress bar — hidden on mobile */}
+//       {!isMobile && (
+//         <div
+//           style={{
+//             flex: 1,
+//             height: 5,
+//             background: "#2C2620",
+//             borderRadius: "999px",
+//             overflow: "hidden",
+//           }}>
+//           <div
+//             style={{
+//               height: "100%",
+//               width: `${(entry.total_reading_min / maxMinutes) * 100}%`,
+//               background: "linear-gradient(90deg, #c45e10 0%, #f97316 100%)",
+//               borderRadius: "999px",
+//             }}
+//           />
+//         </div>
+//       )}
+
+//       {/* Minutes */}
+//       <div
+//         style={{
+//           width: isMobile ? "auto" : 76,
+//           textAlign: "right",
+//           color: "#f0eae2",
+//           fontSize: isMobile ? 12 : 15,
+//           fontWeight: 700,
+//           flexShrink: 0,
+//           fontFamily: "'Outfit'",
+//         }}>
+//         {entry.total_reading_min} min
+//       </div>
+
+//       {/* Interesting count — hidden on mobile */}
+//       {!isMobile && (
+//         <div
+//           style={{
+//             width: 52,
+//             flexShrink: 0,
+//             display: "flex",
+//             alignItems: "center",
+//             justifyContent: "flex-end",
+//             gap: 1,
+//           }}>
+//           <span style={{ fontSize: 13 }}>📚</span>
+//           <span style={{ color: "#E8782A", fontSize: 14, fontWeight: 700 }}>
+//             {entry.interesting_count}
+//           </span>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// // ── Main Component ────────────────────────────────────────────────────────
+// export default function ReadometerPage() {
+//   const [activeCategory, setActiveCategory] = useState(3);
+//   const [activePeriod, setActivePeriod] = useState("weekly");
+//   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+//   const { width } = useWindowSize();
+
+//   const isMobile = width < 640;
+//   const isTablet = width >= 640 && width < 1024;
+
+//   const fetchLeaderboard = async (categoryId: number, period: string) => {
+//     setLoading(true);
+//     setError(null);
+//     try {
+//       const res = await fetch(
+//         `/readometer/api/?age_category_id=${categoryId}&time_period=${period}`
+//       );
+//       if (!res.ok) throw new Error("Failed to fetch leaderboard");
+//       const json = await res.json();
+//       if (json.code === 200) {
+//         setLeaderboard(json.data);
+//       } else {
+//         throw new Error(json.message || "Something went wrong");
+//       }
+//     } catch (err: any) {
+//       console.error("Error fetching leaderboard:", err);
+//       setError(err.message || "Failed to load leaderboard");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchLeaderboard(activeCategory, activePeriod);
+//   }, [activeCategory, activePeriod]);
+
+//   const activeCategoryLabel = AGE_CATEGORIES.find((c) => c.id === activeCategory)?.label || "";
+//   const top3 = leaderboard.slice(0, 3);
+//   const rest = leaderboard.slice(3);
+//   const maxMinutes = Math.max(...rest.map((e) => e.total_reading_min), 1);
+//   const podiumEntries = PODIUM_ORDER.map((i) => top3[i]).filter(Boolean);
+
+//   const contentMaxWidth = isTablet ? "95%" : 900;
+//   const sectionPadding = isMobile ? "32px 16px 16px" : "48px 40px 16px";
+//   const outerPadding = isMobile ? "0 12px" : "0 16px";
+
+//   return (
+//     <main
+//       style={{
+//         minHeight: "100vh",
+//         background: "#080705",
+//         fontFamily: "'Outfit', sans-serif",
+//       }}>
+//       <style>{`
+//         @keyframes shimmer {
+//           0% { background-position: 200% 0; }
+//           100% { background-position: -200% 0; }
+//         }
+//       `}</style>
+
+//       {/* ── Hero Header ── */}
+//       <section
+//         style={{
+//           paddingTop: isMobile ? 24 : 40,
+//           paddingLeft: isMobile ? 16 : 24,
+//           paddingRight: isMobile ? 16 : 24,
+//           display: "flex",
+//           justifyContent: "center",
+//           background:
+//             "radial-gradient(circle at center, rgba(222,146,92,0.18) 0%, rgba(8,7,5,1) 60%)",
+//         }}>
+//         <div style={{ width: "100%", maxWidth: 900, textAlign: "center" }}>
+//           <div style={{ marginBottom: 12, marginTop: 12 }}>
+//             <span
+//               style={{
+//                 color: "#f97316",
+//                 fontSize: isMobile ? 11 : 13,
+//                 fontWeight: 700,
+//                 letterSpacing: "0.4em",
+//                 textTransform: "uppercase",
+//                 fontFamily: "'Outfit'",
+//               }}>
+//               READOMETER LEADERBOARD
+//             </span>
+//           </div>
+
+//           <h1
+//             className={playfair.className}
+//             style={{
+//               color: "#f0f0f0",
+//               fontSize: isMobile ? "1.8rem" : "3rem",
+//               lineHeight: 1.1,
+//               fontWeight: 800,
+//               marginBottom: isMobile ? 14 : 24,
+//             }}>
+//             India's Top Young Readers
+//           </h1>
+
+//           <p
+//             className={playfair.className}
+//             style={{
+//               color: "#9ca3af",
+//               fontSize: isMobile ? 14 : 17,
+//               fontStyle: "italic",
+//               opacity: 0.8,
+//               marginBottom: isMobile ? 14 : 20,
+//             }}>
+//             Ranked by minutes read. Verified by parents. Celebrated by all.
+//           </p>
+
+//           <div
+//             style={{
+//               display: "inline-flex",
+//               alignItems: "center",
+//               gap: 12,
+//               padding: isMobile ? "5px 14px" : "6px 20px",
+//               borderRadius: "999px",
+//               border: "1px solid rgba(249,115,22,0.3)",
+//               background:
+//                 "linear-gradient(175deg, rgba(245,166,35,0.18) 0%, rgba(232,120,42,0.12) 100%)",
+//               marginBottom: isMobile ? 20 : 28,
+//             }}>
+//             <p
+//               style={{
+//                 color: "#f97316",
+//                 fontSize: isMobile ? 11 : 14,
+//                 fontWeight: 600,
+//                 margin: 0,
+//                 fontFamily: "'Outfit'",
+//                 textAlign: "center",
+//               }}>
+//               🎁 Top 3 in each group win Crossword Bookstore Coupons every week!
+//             </p>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ── Controls ── */}
+//       <div
+//         style={{
+//           background: "#0f0f0f",
+//           padding: isMobile ? "12px 12px" : "14px 24px",
+//           display: "flex",
+//           flexDirection: "column",
+//           alignItems: "center",
+//           justifyContent: "center",
+//           gap: isMobile ? 10 : 16,
+//           borderBottom: "1px solid rgba(255,255,255,0.1)",
+//         }}>
+//         {/* Category tabs */}
+//         <div
+//           style={{
+//             display: "flex",
+//             gap: isMobile ? 6 : 8,
+//             flexWrap: "wrap",
+//             justifyContent: "center",
+//           }}>
+//           {AGE_CATEGORIES.map((cat) => (
+//             <CategoryTab
+//               key={cat.id}
+//               label={cat.label}
+//               icon={cat.icon}
+//               active={activeCategory === cat.id}
+//               onClick={() => setActiveCategory(cat.id)}
+//               isMobile={isMobile}
+//             />
+//           ))}
+//         </div>
+
+//         {/* Time period pills */}
+//         <div
+//           style={{
+//             display: "flex",
+//             background: "#2C2620",
+//             borderRadius: "999px",
+//             padding: 4,
+//             border: "1px solid rgba(255,255,255,0.06)",
+//           }}>
+//           {TIME_PERIODS.map((p) => (
+//             <button
+//               key={p.value}
+//               onClick={() => setActivePeriod(p.value)}
+//               style={{
+//                 padding: isMobile ? "5px 14px" : "6px 20px",
+//                 borderRadius: "999px",
+//                 background: activePeriod === p.value ? "#f97316" : "transparent",
+//                 color: activePeriod === p.value ? "#fff" : "#9ca3af",
+//                 fontSize: isMobile ? "0.7rem" : "0.8rem",
+//                 fontWeight: 700,
+//                 border: "none",
+//                 cursor: "pointer",
+//                 fontFamily: "'Outfit'",
+//                 transition: "all 0.2s",
+//               }}>
+//               {p.label}
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* ── Sub-header + Podium ── */}
+//       <section
+//         style={{
+//           background: "#0f0f0f",
+//           padding: sectionPadding,
+//           fontFamily: "'Outfit', sans-serif",
+//         }}>
+//         <div style={{ maxWidth: contentMaxWidth, margin: "0 auto" }}>
+//           <p
+//             style={{
+//               color: "#f97316",
+//               fontSize: isMobile ? 11 : 13,
+//               fontWeight: 700,
+//               letterSpacing: "3px",
+//               margin: "0 0 8px 0",
+//               textTransform: "uppercase",
+//               fontFamily: "'Outfit'",
+//             }}>
+//             Readometer
+//           </p>
+
+//           <h1
+//             style={{
+//               color: "#ffffff",
+//               fontSize: isMobile ? 20 : 28,
+//               fontWeight: 800,
+//               margin: "0 0 10px 0",
+//               lineHeight: 1.2,
+//               fontFamily: "'Playfair Display'",
+//             }}>
+//             Top Readers — {activeCategoryLabel}
+//           </h1>
+
+//           <p
+//             style={{
+//               color: "#9B8F85",
+//               fontSize: isMobile ? 13 : 15,
+//               margin: "0 0 8px 0",
+//               fontFamily: "'Outfit'",
+//               fontWeight: 400,
+//             }}>
+//             Children who read the most minutes this{" "}
+//             {activePeriod === "weekly" ? "week" : activePeriod === "monthly" ? "month" : "time"},
+//             verified by parents.
+//           </p>
+
+//           <div
+//             style={{
+//               display: "inline-block",
+//               border: "1px solid #E8782A40",
+//               borderRadius: "999px",
+//               padding: "6px 16px",
+//               color: "#f97316",
+//               fontSize: isMobile ? 11 : 12,
+//               marginBottom: isMobile ? 20 : 32,
+//               backgroundColor: "#E8782A1A",
+//               fontFamily: "'Outfit'",
+//               fontWeight: 600,
+//             }}>
+//             Top 3 readers receive Crossword Bookstore coupons every Monday
+//           </div>
+
+//           {/* Podium card */}
+//           <div
+//             style={{
+//               background:
+//                 "linear-gradient(135deg, #1A1612 0%, #000000 50%, #241e18ff 100%)",
+//               borderRadius: 20,
+//               padding: isMobile ? "32px 16px 24px" : "48px 32px 32px",
+//               border: "1px solid #2a2a2a",
+//             }}>
+//             {loading ? (
+//               <div
+//                 style={{
+//                   display: "flex",
+//                   alignItems: "flex-end",
+//                   justifyContent: "center",
+//                   gap: isMobile ? 14 : 26,
+//                   minHeight: isMobile ? 180 : 280,
+//                 }}>
+//                 {[isMobile ? 50 : 80, isMobile ? 80 : 120, isMobile ? 35 : 60].map((h, i) => (
+//                   <div
+//                     key={i}
+//                     style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+//                     <Skeleton w={isMobile ? "50px" : "80px"} h={isMobile ? "50px" : "80px"} r={999} />
+//                     <Skeleton w={isMobile ? "60px" : "80px"} h="14px" />
+//                     <Skeleton w={isMobile ? "50px" : "60px"} h="12px" />
+//                     <div
+//                       style={{
+//                         height: h,
+//                         width: isMobile ? 80 : 120,
+//                         background: "#1f1c18",
+//                         borderRadius: "12px 12px 0 0",
+//                       }}
+//                     />
+//                   </div>
+//                 ))}
+//               </div>
+//             ) : error ? (
+//               <div style={{ textAlign: "center", color: "#9B8F85", padding: "60px 0" }}>
+//                 {error}
+//               </div>
+//             ) : podiumEntries.length === 0 ? (
+//               <div style={{ textAlign: "center", color: "#9B8F85", padding: "60px 0" }}>
+//                 No data available for this period.
+//               </div>
+//             ) : (
+//               <div
+//                 style={{
+//                   display: "flex",
+//                   alignItems: "flex-end",
+//                   justifyContent: "center",
+//                   gap: isMobile ? 10 : 26,
+//                 }}>
+//                 {podiumEntries.map((entry, idx) => (
+//                   <PodiumCard
+//                     key={entry.rank}
+//                     entry={entry}
+//                     position={idx}
+//                     isMobile={isMobile}
+//                     activePeriod={activePeriod}
+//                   />
+//                 ))}
+//               </div>
+//             )}
+
+//             <p
+//               style={{
+//                 color: "#4a453fff",
+//                 fontSize: isMobile ? 10 : 12,
+//                 textAlign: "center",
+//                 margin: "24px 0 0 0",
+//                 paddingTop: 20,
+//               }}>
+//               🎁 Top 3 readers in each age group win exclusive Crossword bookstore coupons —
+//               delivered to parent email every Monday morning. New winners announced weekly.
+//             </p>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ── Rest of leaderboard ── */}
+//       {!loading && !error && rest.length > 0 && (
+//         <div style={{ maxWidth: contentMaxWidth, margin: "24px auto 0", padding: outerPadding }}>
+//           <div
+//             style={{
+//               background: "#1A1612",
+//               borderRadius: 20,
+//               border: "1px solid #2a2a2a",
+//               overflow: "hidden",
+//             }}>
+//             {rest.map((entry, index) => (
+//               <LeaderboardRow
+//                 key={entry.child_id}
+//                 entry={entry}
+//                 isLast={index === rest.length - 1}
+//                 maxMinutes={maxMinutes}
+//                 isMobile={isMobile}
+//               />
+//             ))}
+//           </div>
+//         </div>
+//       )}
+
+//       {/* ── Rewards Banner ── */}
+//       {/* <div
+//         style={{
+//           maxWidth: contentMaxWidth,
+//           margin: "24px auto 0",
+//           padding: outerPadding,
+//         }}>
+//         <div
+//           style={{
+//             background: "#1A1612",
+//             borderRadius: 16,
+//             border: "1px solid #2a2a2a",
+//             borderLeft: "4px solid #E8782A",
+//             padding: isMobile ? "16px" : "24px 28px",
+//             display: "flex",
+//             flexDirection: isMobile ? "column" : "row",
+//             alignItems: isMobile ? "flex-start" : "center",
+//             justifyContent: "space-between",
+//             gap: isMobile ? 14 : 20,
+//           }}>
+//           <div
+//             style={{
+//               display: "flex",
+//               alignItems: isMobile ? "flex-start" : "center",
+//               gap: isMobile ? 14 : 24,
+//             }}>
+//             <img
+//               src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png"
+//               alt="gift"
+//               style={{
+//                 width: isMobile ? 48 : 71,
+//                 height: isMobile ? 52 : 78,
+//                 flexShrink: 0,
+//                 objectFit: "contain",
+//               }}
+//             />
+//             <div>
+//               <p
+//                 style={{
+//                   margin: "0 0 8px 0",
+//                   fontSize: isMobile ? 16 : 22,
+//                   fontWeight: 800,
+//                   color: "#F0EAE2",
+//                   fontFamily: "'Playfair Display'",
+//                 }}>
+//                 Winners get real rewards!
+//               </p>
+//               <p
+//                 style={{
+//                   margin: 0,
+//                   fontSize: isMobile ? 12 : 14,
+//                   color: "#9B8F85",
+//                   fontWeight: 400,
+//                   lineHeight: "22.4px",
+//                   fontFamily: "'Outfit'",
+//                 }}>
+//                 Top 3 readers in each age group every week receive exclusive Crossword bookstore
+//                 coupons — delivered to the parent's registered email every Monday morning.
+//               </p>
+//             </div>
+//           </div>
+//           <button
+//             style={{
+//               background: "#20160dff",
+//               border: "2px solid #E8782A",
+//               borderRadius: "999px",
+//               padding: "10px 28px",
+//               color: "#E8782A",
+//               fontSize: isMobile ? 12 : 14,
+//               fontWeight: 600,
+//               cursor: "pointer",
+//               flexShrink: 0,
+//               fontFamily: "'Outfit'",
+//               whiteSpace: "nowrap",
+//               height: 44,
+//               alignSelf: isMobile ? "flex-start" : "center",
+//             }}>
+//             How rewards work
+//           </button>
+//         </div>
+//       </div> */}
+
+//       {/* ── CTA Footer ── */}
+//       <section
+//         style={{
+//           background: "#131009",
+//           marginTop: 31,
+//           padding: isMobile ? "40px 20px" : "64px 40px",
+//           display: "flex",
+//           flexDirection: "column",
+//           alignItems: "center",
+//           justifyContent: "center",
+//           textAlign: "center",
+//           gap: 16,
+//           border: "1px solid #2C2620",
+//           boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+//         }}>
+//         <h2
+//           style={{
+//             color: "#f0eae2",
+//             fontSize: isMobile ? 20 : 28,
+//             fontWeight: 800,
+//             fontFamily: "'Playfair Display'",
+//             lineHeight: "100%",
+//             margin: 0,
+//           }}>
+//           Want to see your child's name here?
+//         </h2>
+//         <p
+//           style={{
+//             color: "#9B8F85",
+//             fontSize: isMobile ? 13 : 15,
+//             fontWeight: 400,
+//             margin: 0,
+//             fontFamily: "'Outfit'",
+//           }}>
+//           Download UltiMate and start your family's learning journey today.
+//         </p>
+//         <button
+//           style={{
+//             background: "#E8782A",
+//             border: "none",
+//             height: 47,
+//             width: 198,
+//             borderRadius: "999px",
+//             color: "#ffffff",
+//             fontSize: 15,
+//             fontWeight: 700,
+//             cursor: "pointer",
+//             fontFamily: "'Outfit'",
+//             marginTop: 14,
+//           }}>
+//           Download UltiMate
+//         </button>
+//         <p
+//           style={{
+//             color: "#4a453f",
+//             fontSize: isMobile ? 11 : 12,
+//             fontWeight: 400,
+//             margin: "8px 0 0 0",
+//             fontFamily: "'Outfit'",
+//             lineHeight: "19.2px",
+//             maxWidth: 520,
+//           }}>
+//           All reading minutes are self-reported and parent-verified. Only families who opted in
+//           appear publicly. Manage visibility in the UltiMate app under Privacy Settings. Crossword
+//           coupons are subject to availability and delivered to registered parent email.
+//         </p>
+//       </section>
+//     </main>
+//   );
+// }
+
+
+
 "use client";
 import { Playfair_Display } from "next/font/google";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -1722,7 +2670,8 @@ const getAvatar = (entry: LeaderboardEntry) => entry.profile_image || FALLBACK_A
 function useWindowSize() {
   const [size, setSize] = useState({ width: 1200, height: 800 });
   useEffect(() => {
-    const update = () => setSize({ width: window.innerWidth, height: window.innerHeight });
+    const update = () =>
+      setSize({ width: window.innerWidth, height: window.innerHeight });
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -1842,12 +2791,17 @@ function PodiumCard({
         transform: cfg.transform,
         marginTop: cfg.isFirst ? (isMobile ? 10 : 15) : 0,
       }}>
-      <img
+
+      {/* Medal */}
+      <Image
         src={cfg.medalSrc}
         alt="medal"
-        style={{ width: cfg.medalW, height: cfg.medalH, marginBottom: 6, objectFit: "contain" }}
+        width={cfg.medalW}
+        height={cfg.medalH}
+        style={{ marginBottom: 6, objectFit: "contain" }}
       />
 
+      {/* Avatar */}
       <div
         style={{
           width: cfg.avatarSize,
@@ -1857,14 +2811,19 @@ function PodiumCard({
           overflow: "hidden",
           marginBottom: isMobile ? 8 : 14,
           boxShadow: cfg.isFirst ? "0 0 24px rgba(249,115,22,0.4)" : "none",
+          position: "relative",
+          flexShrink: 0,
         }}>
-        <img
+        <Image
           src={getAvatar(entry)}
           alt={entry.display_name}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          fill
+          style={{ objectFit: "cover" }}
+          unoptimized
         />
       </div>
 
+      {/* Name */}
       <p
         style={{
           color: cfg.isFirst ? "#E8782A" : "#ffffff",
@@ -1878,6 +2837,7 @@ function PodiumCard({
         {entry.display_name}
       </p>
 
+      {/* City */}
       {entry.city && !isMobile && (
         <p
           style={{
@@ -1892,6 +2852,7 @@ function PodiumCard({
         </p>
       )}
 
+      {/* Minutes */}
       <p
         style={{
           color: cfg.isFirst ? "#E8782A" : "#F0EAE2",
@@ -1912,9 +2873,15 @@ function PodiumCard({
           fontFamily: "'Outfit'",
           fontWeight: 400,
         }}>
-        this {activePeriod === "weekly" ? "week" : activePeriod === "monthly" ? "month" : "time"}
+        this{" "}
+        {activePeriod === "weekly"
+          ? "week"
+          : activePeriod === "monthly"
+          ? "month"
+          : "time"}
       </p>
 
+      {/* Coupon badge */}
       {!isMobile && (
         <div
           style={{
@@ -1935,6 +2902,7 @@ function PodiumCard({
         </div>
       )}
 
+      {/* Podium block */}
       <div
         style={{
           background: cfg.podiumBg,
@@ -1981,6 +2949,7 @@ function LeaderboardRow({
         gap: isMobile ? 10 : 16,
         minHeight: isMobile ? 60 : 69,
       }}>
+
       {/* Rank */}
       <div
         style={{
@@ -2005,22 +2974,26 @@ function LeaderboardRow({
           overflow: "hidden",
           flexShrink: 0,
           background: "#1f1f1f",
+          position: "relative",
         }}>
-        <img
+        <Image
           src={getAvatar(entry)}
           alt={entry.display_name}
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          fill
+          style={{ objectFit: "cover" }}
+          unoptimized
         />
       </div>
 
       {/* Name + milestone */}
-      <div style={{
-    flexGrow: isMobile ? 1 : 0,
-    flexShrink: isMobile ? 1 : 0,
-    flexBasis: isMobile ? 0 : "auto",
-    width: isMobile ? undefined : 310,
-    minWidth: 0,
-  }}>
+      <div
+        style={{
+          flexGrow: isMobile ? 1 : 0,
+          flexShrink: isMobile ? 1 : 0,
+          flexBasis: isMobile ? 0 : "auto",
+          width: isMobile ? undefined : 310,
+          minWidth: 0,
+        }}>
         <p
           style={{
             color: "#F0EAE2",
@@ -2115,9 +3088,13 @@ export default function ReadometerPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { width } = useWindowSize();
+  const router = useRouter()
 
   const isMobile = width < 640;
   const isTablet = width >= 640 && width < 1024;
+  const contentMaxWidth = isTablet ? "95%" : 900;
+  const sectionPadding = isMobile ? "32px 16px 16px" : "48px 40px 16px";
+  const outerPadding = isMobile ? "0 12px" : "0 16px";
 
   const fetchLeaderboard = async (categoryId: number, period: string) => {
     setLoading(true);
@@ -2133,9 +3110,9 @@ export default function ReadometerPage() {
       } else {
         throw new Error(json.message || "Something went wrong");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error fetching leaderboard:", err);
-      setError(err.message || "Failed to load leaderboard");
+      setError(err instanceof Error ? err.message : "Failed to load leaderboard");
     } finally {
       setLoading(false);
     }
@@ -2145,15 +3122,12 @@ export default function ReadometerPage() {
     fetchLeaderboard(activeCategory, activePeriod);
   }, [activeCategory, activePeriod]);
 
-  const activeCategoryLabel = AGE_CATEGORIES.find((c) => c.id === activeCategory)?.label || "";
+  const activeCategoryLabel =
+    AGE_CATEGORIES.find((c) => c.id === activeCategory)?.label || "";
   const top3 = leaderboard.slice(0, 3);
   const rest = leaderboard.slice(3);
   const maxMinutes = Math.max(...rest.map((e) => e.total_reading_min), 1);
   const podiumEntries = PODIUM_ORDER.map((i) => top3[i]).filter(Boolean);
-
-  const contentMaxWidth = isTablet ? "95%" : 900;
-  const sectionPadding = isMobile ? "32px 16px 16px" : "48px 40px 16px";
-  const outerPadding = isMobile ? "0 12px" : "0 16px";
 
   return (
     <main
@@ -2204,7 +3178,7 @@ export default function ReadometerPage() {
               fontWeight: 800,
               marginBottom: isMobile ? 14 : 24,
             }}>
-            India's Top Young Readers
+            India&apos;s Top Young Readers
           </h1>
 
           <p
@@ -2351,8 +3325,12 @@ export default function ReadometerPage() {
               fontWeight: 400,
             }}>
             Children who read the most minutes this{" "}
-            {activePeriod === "weekly" ? "week" : activePeriod === "monthly" ? "month" : "time"},
-            verified by parents.
+            {activePeriod === "weekly"
+              ? "week"
+              : activePeriod === "monthly"
+              ? "month"
+              : "time"}
+            , verified by parents.
           </p>
 
           <div
@@ -2389,11 +3367,24 @@ export default function ReadometerPage() {
                   gap: isMobile ? 14 : 26,
                   minHeight: isMobile ? 180 : 280,
                 }}>
-                {[isMobile ? 50 : 80, isMobile ? 80 : 120, isMobile ? 35 : 60].map((h, i) => (
+                {[
+                  isMobile ? 50 : 80,
+                  isMobile ? 80 : 120,
+                  isMobile ? 35 : 60,
+                ].map((h, i) => (
                   <div
                     key={i}
-                    style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-                    <Skeleton w={isMobile ? "50px" : "80px"} h={isMobile ? "50px" : "80px"} r={999} />
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 8,
+                    }}>
+                    <Skeleton
+                      w={isMobile ? "50px" : "80px"}
+                      h={isMobile ? "50px" : "80px"}
+                      r={999}
+                    />
                     <Skeleton w={isMobile ? "60px" : "80px"} h="14px" />
                     <Skeleton w={isMobile ? "50px" : "60px"} h="12px" />
                     <div
@@ -2408,11 +3399,21 @@ export default function ReadometerPage() {
                 ))}
               </div>
             ) : error ? (
-              <div style={{ textAlign: "center", color: "#9B8F85", padding: "60px 0" }}>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#9B8F85",
+                  padding: "60px 0",
+                }}>
                 {error}
               </div>
             ) : podiumEntries.length === 0 ? (
-              <div style={{ textAlign: "center", color: "#9B8F85", padding: "60px 0" }}>
+              <div
+                style={{
+                  textAlign: "center",
+                  color: "#9B8F85",
+                  padding: "60px 0",
+                }}>
                 No data available for this period.
               </div>
             ) : (
@@ -2443,8 +3444,9 @@ export default function ReadometerPage() {
                 margin: "24px 0 0 0",
                 paddingTop: 20,
               }}>
-              🎁 Top 3 readers in each age group win exclusive Crossword bookstore coupons —
-              delivered to parent email every Monday morning. New winners announced weekly.
+              🎁 Top 3 readers in each age group win exclusive Crossword
+              bookstore coupons — delivered to parent email every Monday
+              morning. New winners announced weekly.
             </p>
           </div>
         </div>
@@ -2452,7 +3454,12 @@ export default function ReadometerPage() {
 
       {/* ── Rest of leaderboard ── */}
       {!loading && !error && rest.length > 0 && (
-        <div style={{ maxWidth: contentMaxWidth, margin: "24px auto 0", padding: outerPadding }}>
+        <div
+          style={{
+            maxWidth: contentMaxWidth,
+            margin: "24px auto 0",
+            padding: outerPadding,
+          }}>
           <div
             style={{
               background: "#1A1612",
@@ -2473,86 +3480,14 @@ export default function ReadometerPage() {
         </div>
       )}
 
-      {/* ── Rewards Banner ── */}
+      {/* ── Rewards Banner (commented out) ── */}
       {/* <div
         style={{
           maxWidth: contentMaxWidth,
           margin: "24px auto 0",
           padding: outerPadding,
         }}>
-        <div
-          style={{
-            background: "#1A1612",
-            borderRadius: 16,
-            border: "1px solid #2a2a2a",
-            borderLeft: "4px solid #E8782A",
-            padding: isMobile ? "16px" : "24px 28px",
-            display: "flex",
-            flexDirection: isMobile ? "column" : "row",
-            alignItems: isMobile ? "flex-start" : "center",
-            justifyContent: "space-between",
-            gap: isMobile ? 14 : 20,
-          }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: isMobile ? "flex-start" : "center",
-              gap: isMobile ? 14 : 24,
-            }}>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4213/4213958.png"
-              alt="gift"
-              style={{
-                width: isMobile ? 48 : 71,
-                height: isMobile ? 52 : 78,
-                flexShrink: 0,
-                objectFit: "contain",
-              }}
-            />
-            <div>
-              <p
-                style={{
-                  margin: "0 0 8px 0",
-                  fontSize: isMobile ? 16 : 22,
-                  fontWeight: 800,
-                  color: "#F0EAE2",
-                  fontFamily: "'Playfair Display'",
-                }}>
-                Winners get real rewards!
-              </p>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: isMobile ? 12 : 14,
-                  color: "#9B8F85",
-                  fontWeight: 400,
-                  lineHeight: "22.4px",
-                  fontFamily: "'Outfit'",
-                }}>
-                Top 3 readers in each age group every week receive exclusive Crossword bookstore
-                coupons — delivered to the parent's registered email every Monday morning.
-              </p>
-            </div>
-          </div>
-          <button
-            style={{
-              background: "#20160dff",
-              border: "2px solid #E8782A",
-              borderRadius: "999px",
-              padding: "10px 28px",
-              color: "#E8782A",
-              fontSize: isMobile ? 12 : 14,
-              fontWeight: 600,
-              cursor: "pointer",
-              flexShrink: 0,
-              fontFamily: "'Outfit'",
-              whiteSpace: "nowrap",
-              height: 44,
-              alignSelf: isMobile ? "flex-start" : "center",
-            }}>
-            How rewards work
-          </button>
-        </div>
+        ...
       </div> */}
 
       {/* ── CTA Footer ── */}
@@ -2579,7 +3514,7 @@ export default function ReadometerPage() {
             lineHeight: "100%",
             margin: 0,
           }}>
-          Want to see your child's name here?
+          Want to see your child&apos;s name here?
         </h2>
         <p
           style={{
@@ -2589,9 +3524,10 @@ export default function ReadometerPage() {
             margin: 0,
             fontFamily: "'Outfit'",
           }}>
-          Download UltiMate and start your family's learning journey today.
+          Download UltiMate and start your family&apos;s learning journey today.
         </p>
         <button
+        onClick={()=>router.push("/download-app")}
           style={{
             background: "#E8782A",
             border: "none",
@@ -2617,9 +3553,10 @@ export default function ReadometerPage() {
             lineHeight: "19.2px",
             maxWidth: 520,
           }}>
-          All reading minutes are self-reported and parent-verified. Only families who opted in
-          appear publicly. Manage visibility in the UltiMate app under Privacy Settings. Crossword
-          coupons are subject to availability and delivered to registered parent email.
+          All reading minutes are self-reported and parent-verified. Only
+          families who opted in appear publicly. Manage visibility in the
+          UltiMate app under Privacy Settings. Crossword coupons are subject to
+          availability and delivered to registered parent email.
         </p>
       </section>
     </main>

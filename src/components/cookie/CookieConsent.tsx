@@ -33,7 +33,7 @@ export function hasConsented(): boolean {
 }
 
 function loadFacebookPixel(): void {
-  if (typeof window === 'undefined' || (window as any).fbq) return
+  if (typeof window === 'undefined' || (window).fbq) return
   const s = document.createElement('script')
   s.innerHTML = `
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

@@ -9,7 +9,6 @@
 // };
 
 // export default nextConfig;
-
 import createNextIntlPlugin from 'next-intl/plugin';
  
 const withNextIntl = createNextIntlPlugin();
@@ -17,7 +16,8 @@ const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com","ultimate-user-data.s3.ap-south-1.amazonaws.com","ultimate-bond-prod.s3.ap-south-1.amazonaws.com"],
+      domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com","ultimate-user-data.s3.ap-south-1.amazonaws.com","ultimate-bond-prod.s3.ap-south-1.amazonaws.com", "cdn-icons-png.flaticon.com"],
+      remotePatterns: [{ protocol: "https", hostname: "*.amazonaws.com" }],
   },
   typescript: {
     // !! WARN !!

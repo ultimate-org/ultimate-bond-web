@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { Playfair_Display } from "next/font/google";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
@@ -61,7 +61,7 @@ const leaderboardData = [
   { rank: 7, name: "Arjun Kapoor", title: "Parent of rajesh-primary", minutes: 44, streak: 7, change: 4, },
 ];
 
-const maxMinutes = 720;
+// const maxMinutes = 720;
 
 
 export default function ReadometerPage() {
@@ -95,7 +95,7 @@ export default function ReadometerPage() {
                 className={`${playfair.className} text-[#f0f0f0] text-[3rem] md:text-[3rem] leading-[1.1]`}
                 style={{ fontWeight: 800, fontFamily: "'Playfair Display'" }}
               >
-                India's Sharpest Young Minds
+                India&apos;s Sharpest Young Minds
               </h1>
             </div>
 
@@ -198,7 +198,7 @@ export default function ReadometerPage() {
 
           {/* Section Label */}
           <p style={{ color: "#5C5248", fontSize: "11px", fontWeight: 600, letterSpacing: "0.15em", margin: "0 0 16px 0", fontFamily: "'Outfit'", textTransform: "uppercase" }}>
-            This Week's Top Performers
+            This Week&apos;s Top Performers
           </p>
 
           {/* Top 3 Cards */}
@@ -513,7 +513,7 @@ export default function ReadometerPage() {
           fontFamily: "'Outfit'",
           lineHeight: "100%",
         }}>
-          Download UltiMate and start your family's learning journey today.
+          Download UltiMate and start your family&apos;s learning journey today.
         </p>
 
         {/* CTA Button */}
