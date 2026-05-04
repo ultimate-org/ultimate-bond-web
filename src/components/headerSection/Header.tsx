@@ -2414,7 +2414,7 @@ const PG_CATEGORIES = [
 const PC_OPTIONS = [
   { id: "readometer", label: "Readometer", href: "/readometer" },
   { id: "wordquest", label: "Wordquest", href: "/wordquest" },
-  { id: "Top Parenting", label: "Top Parenting", href: "/top-parenting" },
+  // { id: "Top Parenting", label: "Top Parenting", href: "/top-parenting" },
 ];
 
 export default function Navbar() {

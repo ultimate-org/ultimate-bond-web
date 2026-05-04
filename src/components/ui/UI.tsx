@@ -78,7 +78,7 @@ export function BtnPrimary({
   onClick?: () => void;
 }) {
   const cls =
-    "inline-flex items-center gap-2 bg-[#f97316] text-white px-[30px] py-[14px] rounded-full font-bold text-[0.95rem] no-underline transition-all duration-[250ms] hover:bg-[#ea6a0a] hover:-translate-y-[2px]";
+    "inline-flex items-center gap-2 bg-[#f97316] text-white px-[30px] py-[14px] rounded-full font-bold text-[0.95rem] no-underline transition-all hover:bg-[#ea6a0a] hover:-translate-y-[2px]";
   const style = {
     boxShadow: "0 0 30px rgba(249,115,22,0.35)",
     fontFamily: "'Rubik', sans-serif",
@@ -111,7 +111,7 @@ export function BtnSecondary({
   onClick?: () => void;
 }) {
   const cls =
-    "inline-flex items-center gap-2 border border-white/[0.12] text-white px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all duration-[250ms] hover:border-[#f97316] hover:text-[#f97316]";
+    "inline-flex items-center gap-2 border border-white/[0.12] text-white px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all hover:border-[#f97316] hover:text-[#f97316]";
 
   if (href) {
     return (
