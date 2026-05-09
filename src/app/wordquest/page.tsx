@@ -1918,7 +1918,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: "translateY(0)",
     medalW: isMobile ? 14 : 19,
     medalH: isMobile ? 19 : 26,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583434.png",
+    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
     podiumBg: "linear-gradient(180deg, #757c8333 0%, #A8B8C80D 100%)",
     isFirst: false,
     accentColor: "#ffffff",
@@ -1931,7 +1931,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: isMobile ? "translateY(-20px)" : "translateY(-32px)",
     medalW: isMobile ? 20 : 27,
     medalH: isMobile ? 28 : 39,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+    medalSrc:  "https://cdn-icons-png.flaticon.com/512/2583/2583344.png",
     podiumBg: "linear-gradient(180deg, #8B5CF647 0%, #8B5CF612 100%)",
     isFirst: true,
     accentColor: "#C4B5FD",
@@ -1944,7 +1944,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: "translateY(0)",
     medalW: isMobile ? 11 : 15,
     medalH: isMobile ? 14 : 19,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583434.png",
     podiumBg: "linear-gradient(180deg, #afbac533 0%, #c1cedc0d 100%)",
     isFirst: false,
     accentColor: "#ffffff",
@@ -2531,7 +2531,7 @@ export default function WordlePage() {
               ? "week"
               : activePeriod === "monthly"
               ? "month"
-              : "time"}.
+              : "all time"}.
           </p>
 
           <div
@@ -2712,7 +2712,7 @@ export default function WordlePage() {
         </p>
 
         <button
-        onClick={()=>router.push("/download-app")}
+         onClick={()=>router.push("/download-app")}
           style={{
             background: "#8B5CF6",
             border: "none",

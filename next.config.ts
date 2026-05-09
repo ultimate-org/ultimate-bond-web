@@ -17,14 +17,23 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     images: {
       domains: ["ultimate-qa.s3.ap-south-1.amazonaws.com","ultimate-user-data.s3.ap-south-1.amazonaws.com","ultimate-bond-prod.s3.ap-south-1.amazonaws.com", "cdn-icons-png.flaticon.com"],
-      remotePatterns: [{ protocol: "https", hostname: "*.amazonaws.com" }],
+      remotePatterns: [{ protocol: "https" as const, hostname: "**.amazonaws.com" }],
   },
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
+  },
+   async headers() {
+    return [
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+    ];
   },
   };
  

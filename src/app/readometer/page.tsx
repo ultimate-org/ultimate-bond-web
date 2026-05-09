@@ -2740,7 +2740,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: "translateY(0)",
     medalW: isMobile ? 14 : 19,
     medalH: isMobile ? 19 : 26,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583434.png",
+    medalSrc:  "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
     podiumBg: "linear-gradient(180deg, #A8B8C833 0%, #A8B8C80D 100%)",
     isFirst: false,
   },
@@ -2751,7 +2751,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: isMobile ? "translateY(-20px)" : "translateY(-32px)",
     medalW: isMobile ? 20 : 27,
     medalH: isMobile ? 28 : 39,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583344.png",
     podiumBg: "linear-gradient(180deg, #E8782A40 0%, #E8782A14 100%)",
     isFirst: true,
   },
@@ -2762,7 +2762,7 @@ const getPodiumConfig = (isMobile: boolean) => [
     transform: "translateY(0)",
     medalW: isMobile ? 11 : 15,
     medalH: isMobile ? 14 : 19,
-    medalSrc: "https://cdn-icons-png.flaticon.com/512/2583/2583319.png",
+    medalSrc:"https://cdn-icons-png.flaticon.com/512/2583/2583434.png",
     podiumBg: "linear-gradient(180deg, #afbac533 0%, #c1cedc0d 100%)",
     isFirst: false,
   },
@@ -3329,7 +3329,7 @@ export default function ReadometerPage() {
               ? "week"
               : activePeriod === "monthly"
               ? "month"
-              : "time"}
+              : "all time"}
             , verified by parents.
           </p>
 
