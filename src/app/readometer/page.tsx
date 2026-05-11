@@ -2633,6 +2633,7 @@ import { Playfair_Display } from "next/font/google";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Header } from "@/index";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -3082,8 +3083,8 @@ function LeaderboardRow({
 
 // ── Main Component ────────────────────────────────────────────────────────
 export default function ReadometerPage() {
-  const [activeCategory, setActiveCategory] = useState(3);
-  const [activePeriod, setActivePeriod] = useState("weekly");
+  const [activeCategory, setActiveCategory] = useState(1);
+  const [activePeriod, setActivePeriod] = useState("all_time");
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -3136,6 +3137,7 @@ export default function ReadometerPage() {
         background: "#080705",
         fontFamily: "'Outfit', sans-serif",
       }}>
+      <Header />
       <style>{`
         @keyframes shimmer {
           0% { background-position: 200% 0; }
@@ -3146,7 +3148,7 @@ export default function ReadometerPage() {
       {/* ── Hero Header ── */}
       <section
         style={{
-          paddingTop: isMobile ? 24 : 40,
+          paddingTop: isMobile ? 80 : 100,
           paddingLeft: isMobile ? 16 : 24,
           paddingRight: isMobile ? 16 : 24,
           display: "flex",

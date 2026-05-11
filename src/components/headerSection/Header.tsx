@@ -2325,11 +2325,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Challenge",  href: "#problem"  },
-  { label: "Journey",  href: "#journey"  },
-  { label: "Transformation", href: "#transformations" },
-  { label: "Features", href: "#features" },
-  { label: "Ulti-Bot",       href: "#ai"       },
+  { label: "Challenge",  href: "/#problem"  },
+  { label: "Journey",  href: "/#journey"  },
+  { label: "Transformation", href: "/#transformations" },
+  { label: "Features", href: "/#features" },
+  { label: "Ulti-Bot",       href: "/#ai"       },
 ];
 
 const PG_CATEGORIES = [
@@ -2430,6 +2430,7 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const showFullNav = isHome || pathname === "/readometer" || pathname === "/wordquest";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -2460,7 +2461,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav links — home only */}
-        {isHome && (
+        {showFullNav && (
           <ul className="hidden md:flex gap-8 list-none m-0 p-0 items-center">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
@@ -2666,7 +2667,7 @@ export default function Navbar() {
             }}
           >
             {/* Regular nav links */}
-            {isHome &&
+            {showFullNav &&
               NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -2679,7 +2680,7 @@ export default function Navbar() {
               ))}
 
             {/* ── Parenting Guide accordion — mobile only ── */}
-            {isHome && (
+            {showFullNav && (
               <div>
                 {/* Top row: label → landing, chevron → toggle accordion */}
                 <div className="flex items-center justify-between">
@@ -2779,7 +2780,7 @@ export default function Navbar() {
             )}
 
             {/* ── Parenting Corner accordion — mobile only ── */}
-            {isHome && (
+            {showFullNav && (
               <div className="mt-2">
                 <div className="flex items-center justify-between">
                   <span className="text-[#9ca3af] text-[0.95rem] font-medium tracking-[0.02em]">
