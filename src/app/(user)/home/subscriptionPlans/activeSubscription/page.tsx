@@ -231,7 +231,6 @@ const MySubscriptions = () => {
 };
 
 const UserSubscriptionDetailCard = ({ data }: { data: any }) => {
-    console.log("DDDDAA", data)
     return (
       <div className="px-4 py-6 rounded-lg border border-gray-300 w-full h-full flex flex-col justify-evenly bg-blue-50 shadow-sm">
         {/* Child image and name section - centered and properly spaced */}

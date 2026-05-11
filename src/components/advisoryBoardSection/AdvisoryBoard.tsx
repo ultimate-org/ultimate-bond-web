@@ -36,7 +36,7 @@ function AdvisoryBoard() {
       <div className= {`${styles.advisoryBoardContainer}`}>
             <div className='py-8'>
                         <div className='my-2'>
-                            <h1 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.adivisoryBoardText}`}>Our Advisors</h1>
+                            <h2 className={`text-center text-2xl md:text-5xl ${montserratBold.className} ${styles.adivisoryBoardText}`}>Our Child Psychology & Parenting Advisors</h2>
                         </div>
                         <div className='flex flex-col md:flex-row items-center justify-center my-4 md:my-8'>
                             {
@@ -49,7 +49,7 @@ function AdvisoryBoard() {
                                         {/* Info */}
                                         <div className='justify-center items-center'>
                                             <div className='my-1'>   
-                                            <h2 className={`text-center text-lg ${montserratBold.className} font-bold text-white`}>{advisors.name}</h2>
+                                            <h3 className={`text-center text-lg ${montserratBold.className} font-bold text-white`}>{advisors.name}</h3>
                                             </div>
                                             <div className='flex flex-col justify-evenly'>
                                                 <div className='h-[3rem]'>

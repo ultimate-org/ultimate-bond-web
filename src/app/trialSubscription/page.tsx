@@ -105,6 +105,7 @@
 import DownloadAppModal from "@/components/modal/DownloadAppModal";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { sendGAEvent } from "@next/third-parties/google";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -118,6 +119,7 @@ export default function Page() {
         try {
             const parentInfo = localStorage.getItem("ParentInfo");
             const parent = parentInfo ? JSON.parse(parentInfo) : null;
+            sendGAEvent('event', 'trial_page_viewed',{value:parent?.parent_id});
             const res = await fetch(`/home/subscriptionPlans/user/${parent?.parent_id}/api`);
             const response = await res.json();
             if (response.code === 200) {
@@ -135,6 +137,7 @@ export default function Page() {
     };
 
     const handleUpgrade = () => {
+        sendGAEvent('event', 'view_plans_clicked');
         router.replace("/home/subscriptionPlans"); 
     };
 
@@ -142,6 +145,7 @@ export default function Page() {
         try {
             const parentInfo = localStorage.getItem("ParentInfo");
             const parent = parentInfo ? JSON.parse(parentInfo) : null;
+            sendGAEvent('event', 'start_trial_clicked',{value:parent?.parent_id});
             const response = await fetch(`/home/parentProfile/${parent?.parent_id}/api`,{method:"PUT", headers:{"Content-Type":"application/json"}});
             const res = await response.json();
             if (res.code !== 200) {
@@ -151,7 +155,8 @@ export default function Page() {
                 });
                 return;
             }
-            
+            sendGAEvent('event', 'trial_started',{value:parent?.parent_id});
+
             setShowappdownloadModal(true);
         }catch(err)
     {
@@ -166,7 +171,8 @@ export default function Page() {
     
     useEffect(() => {
         const isLoggedIn = localStorage.getItem("isLoggedIn");
-    
+        
+
         if (!isLoggedIn || JSON.parse(isLoggedIn) === false) {
             router.replace("/")
             return;

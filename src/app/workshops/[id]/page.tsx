@@ -117,7 +117,7 @@ function Workshop({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="w-full flex justify-center items-center pt-[5rem]">
-      <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo1.png"></Header>
+      <Header></Header>
       {workshopDetails && (
         <button
           onClick={handleRegister}
