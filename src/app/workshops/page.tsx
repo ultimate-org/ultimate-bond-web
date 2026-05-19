@@ -60,7 +60,7 @@ useEffect(() => {
 
   return (
     <div className='min-h-screen py-[5rem] '>
-      <Header secondaryLogo="/images/logo/Your-Parenting-Partner-Logo1.png"></Header>
+      <Header></Header>
       <div className='my-10'>
         <h1 className={`text-2xl ml-8 ${anton.className}`}>Upcoming Workshops</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>

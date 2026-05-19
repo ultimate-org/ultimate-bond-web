@@ -5,3 +5,7 @@
 .parentTestimony {
     color : var(--primary-blue-lightest-color)
 }
+
+ .ultimateText{
+    font-family: "SmallPrint";
+  }

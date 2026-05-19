@@ -52,12 +52,16 @@ function RegretAndOutcome() {
         <div className="w-full p-8">
             <div className="my-4">
                 <div className='w-[90%] md:w-[70%] lg:w-[60%] mx-auto'>
-                <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-2 ${montserratBold.className}`}>
+                {/* <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-2 ${montserratBold.className}`}>
                     How will the
                     </h3>
                     <h3 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
                     <span className={`font-bold text-[#F15A29] ${styles.ultimateText}`}>Ulti-Mate child</span> be?
-                    </h3>
+                    </h3> */}
+                    
+                    <h2 className={`text-center text-2xl md:text-5xl font-semibold mb-8 ${montserratBold.className}`}>
+                    How <span className={`font-bold text-[#F15A29] ${styles.ultimateText}`}>Ulti-Mate</span> Helps Shape Your Child’s Future
+                    </h2>
                     </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {tryThis.map((item) => (
@@ -82,7 +86,7 @@ function RegretAndOutcome() {
                                 </div>
                             </div>
                             <div className="lg:w-[70%] lg:ml-4 mt-4 lg:mt-0 text-center lg:text-left">
-                                <h2 className={`text-md md:text-lg font-semibold ${montserratBold.className}`}>{item.title}</h2>
+                                <h3 className={`text-md md:text-lg font-semibold ${montserratBold.className}`}>{item.title}</h3>
                                 <p className={`md:text-base text-xs mt-2 ${montserratRegular.className}`}>{item.description}</p>
                             </div>
                         </motion.div>

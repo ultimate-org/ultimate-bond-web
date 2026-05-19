@@ -1038,6 +1038,7 @@ import {  DownloadAppModal, FAQAccordian, FeatureListCard, SubscriptionPlanCard 
 import { Textarea } from "@/components/ui/textarea";
 import Script from "next/script";
 import { poppinsBold, poppinsRegular } from "@/fonts/fonts";
+import { sendGAEvent } from "@next/third-parties/google";
 // import { set } from "date-fns";
 
 interface Child {
@@ -1367,10 +1368,9 @@ export default function SubscriptionPlans() {
                     name: 'Adeptify Technologies Pvt Ltd',
                     description: selectedSubscriptionPlan.name,
                     order_id: response.razorpay_order_id,
-                    handler: async function (response: any) {
+                    // handler: async function (response: any) {
                         // Handle successful payment
-                        console.log('Payment successful:', response);
-                        
+                        handler: async function () {
                         try {
                             setLoading(true);
                             setLoadingMessage(
@@ -1481,6 +1481,30 @@ export default function SubscriptionPlans() {
                                     child_ids: selectedChildrens
                                 }),
                             })
+
+                            await fetch('/home/featureAssignment/subscription/kyc/api', {
+                                method:"POST",
+                                headers: {  
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    parent_id: parseInt(parentDetails?.parent_id),
+                                    child_ids: selectedChildrens,
+                                    is_trial: false
+                                }),
+                            }) 
+
+                            await fetch('/home/featureAssignment/subscription/wonderchat/api', {
+                                method:"POST",
+                                headers: {  
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    parent_id: parseInt(parentDetails?.parent_id),
+                                    child_ids: selectedChildrens,
+                                    is_trial: false
+                                }),
+                            }) 
 
                             setShowAppDownloadModal(true);
                             // const featureAssignmentRes = await fetch('/home/featureAssignment/subscription/api', {
@@ -1711,6 +1735,7 @@ export default function SubscriptionPlans() {
             setLoadingMessage("Fetching Parent Details...");
             const parentInfo = localStorage.getItem("ParentInfo");
             const parent = parentInfo ? JSON.parse(parentInfo) : null;
+            sendGAEvent('event', 'plans_page_viewed',{value:parent?.parent_id});
             const res = await fetch(`/home/subscriptionPlans/user/${parent?.parent_id}/api`);
             const response = await res.json();
             if (response.code === 200) {
