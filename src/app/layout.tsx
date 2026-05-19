@@ -5,10 +5,6 @@ import {NextIntlClientProvider} from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Footer, } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
-import { GoogleAnalytics } from '@next/third-parties/google';
-import MetaPixel from '@/components/MetaPixel'; 
-import Stars from "@/components/star/Star";
-import CookieConsent from '@/components/cookie/CookieConsent'
 
 
 const geistSans = Geist({
@@ -22,16 +18,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UltiMate – Daily Family Bonding App",
-  description: "Leading AICTE-accredited family app. Schools build academics, UltiMate builds resilience, emotional strength & real-world thinking. Ages 3–13. 10 mins/day.",
+  title: "Ulti-Mate",
+  description: "Unleash the power of Child Development and Parenting with UltiMate. We offer age appropriate Life Skills enhancing 4000+ Child engagement along with practical parenting guidance and many more aids to enhance parent child bond.",
   icons: {
     icon: '/favicon.ico', // Path from /app
     shortcut: '/icon.png', // Optional
     apple: '/icon.png', // Apple touch icon
   },
-  verification: {
-    google: 'XK0Yxs7-PPza92y',
-  }
+
 };
 
 export default async function RootLayout({
@@ -45,24 +39,19 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-     
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
-        <NextIntlClientProvider messages={messages}>
-          {/* <Header></Header> */}
-          <Stars/>
+                <NextIntlClientProvider messages={messages}>
+                {/* <Header></Header> */}
+
           {children}
           <Toaster />
-          <Footer />
-        </NextIntlClientProvider>
-        <MetaPixel/>
-        <CookieConsent />
+          <Footer></Footer>
+
+          </NextIntlClientProvider>
+
       </body>
-        <GoogleAnalytics gaId="G-8FN0J3Y8CC"></GoogleAnalytics>
     </html>
   );
 }
-
-
