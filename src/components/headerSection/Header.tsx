@@ -2429,7 +2429,7 @@ export default function Navbar() {
   const [mobileExpandedCat, setMobileExpandedCat] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isHome = pathname === "/" || '/readometer' || '/wordquest'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);

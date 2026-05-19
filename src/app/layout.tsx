@@ -9,6 +9,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import MetaPixel from '@/components/MetaPixel'; 
 import Stars from "@/components/star/Star";
 import CookieConsent from '@/components/cookie/CookieConsent'
+import MsClarity from "@/components/microsoft-clairty";
 
 
 const geistSans = Geist({
@@ -49,7 +50,7 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
+       <MsClarity />
         <NextIntlClientProvider messages={messages}>
           {/* <Header></Header> */}
           <Stars/>

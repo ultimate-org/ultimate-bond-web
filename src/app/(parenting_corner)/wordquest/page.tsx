@@ -2285,8 +2285,8 @@ function LeaderboardRow({
 
 // ── Main Component ────────────────────────────────────────────────────────
 export default function WordlePage() {
-  const [activeCategory, setActiveCategory] = useState(3);
-  const [activePeriod, setActivePeriod] = useState("weekly");
+  const [activeCategory, setActiveCategory] = useState(1);
+  const [activePeriod, setActivePeriod] = useState("all_time");
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -2339,6 +2339,7 @@ export default function WordlePage() {
         minHeight: "100vh",
         background: "#080705",
         fontFamily: "'Outfit', sans-serif",
+         paddingTop:100
       }}>
       <style>{`
         @keyframes shimmer {
