@@ -391,7 +391,7 @@ export default function Hero() {
             <img
               src="/images/3_mascots_on_rocket.png"
               alt="Mascots on Rocket"
-              className="w-full max-w-lg h-auto object-contain mx-auto"
+              className="w-full max-w-2xl h-auto object-contain mx-auto"
             />
           </motion.div>
         </motion.div>

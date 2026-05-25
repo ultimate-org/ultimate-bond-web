@@ -561,6 +561,20 @@ const CATEGORIES = [
   },
 ];
 
+
+const ARTICLE_IMAGES: Record<string, string> = {
+  cb_01: "/parenting/cb_01.png",
+  cb_02: "/parenting/cb_02.png",
+  cb_03: "/parenting/cb_03.png",
+  cb_04: "/parenting/cb_04.png",
+  cb_05: "/parenting/cb_05.png",
+  cb_06: "/parenting/cb_06.png",
+  cb_07: "/parenting/cb_07.png",
+  cb_08: "/parenting/cb_08.png",
+  cb_09: "/parenting/cb_09.png",
+  cb_10: "/parenting/cb_10.png",
+};
+
 const CONTENT: Record<string, string> = {
   child_behaviour: `<h1>Understanding Child Behaviour</h1><p>Your child is not trying to ruin your evening. They are trying to tell you something they do not yet have the words for. Every tantrum, every refusal, every moment of aggression or silence is a message — and when you learn to read it, everything changes.</p><h2>The One Shift That Changes Everything</h2><p>Most parents respond to what their child does. The parents who have an easier time are responding to why their child does it. Difficult behaviour is almost never defiance. It is almost always one of four things:</p><ul><li>An unmet need — hunger, tiredness, overwhelm, attention</li><li>An emotion they cannot name yet — frustration, shame, jealousy, fear</li><li>A skill they have not built yet — patience, empathy, impulse control</li><li>A test — not of your authority, but of whether you are safe to be real around</li></ul><h2>Ages 3–5: Big Emotions, Tiny Vocabulary</h2><p>Tantrums at this age are not manipulation. They are a neurological overflow — the emotional brain firing faster than the rational brain can catch up.</p><ul><li>Do not match the energy. Speak slowly and quietly. Get low — physically kneel down to their level.</li><li>Name the emotion out loud: 'You are really angry right now because we had to stop playing.'</li><li>Wait it out without leaving and without giving in. Your calm, consistent presence is the lesson.</li><li>After it passes — not during — briefly name what happened and what you can do next time.</li></ul><h2>Ages 6–9: Testing Rules, Seeking Fairness</h2><ul><li>When they refuse to follow a rule, explain the reason behind it once — briefly.</li><li>When they come home grumpy, give them 20 minutes before engaging.</li><li>If there is a conflict with a sibling or friend, resist the urge to solve it.</li><li>Catch them doing the right thing and name it specifically.</li></ul><h2>Ages 10–13: Independence Is Not Disrespect</h2><ul><li>Pick your battles deliberately. If you fight about everything, you win nothing and lose the relationship.</li><li>When they argue back, pause before responding.</li><li>Give them increasing autonomy in low-stakes areas.</li><li>Never mock, dismiss, or minimise what they care about.</li></ul>`,
   emotional_development: `<h1>Emotional Development in Children</h1><p>Emotional development is not about how well your child names feelings on a poster. It is about whether they feel safe enough to be honest with you when it is inconvenient for them.</p><h2>What Emotional Development Actually Means</h2><p>Real emotional development means your child can:</p><ul><li>Feel a difficult emotion without it taking over their behaviour</li><li>Say 'I am angry' instead of hitting, shutting down, or acting out</li><li>Recognise when someone else is struggling and respond with care</li><li>Come to you when something is wrong — not just when it is easy</li><li>Recover from disappointment without falling apart or giving up</li></ul><h2>Ages 3–5: Name It to Tame It</h2><ul><li>During a meltdown, narrate the emotion without trying to stop it: 'You are so frustrated right now. That makes sense. I am right here.'</li><li>Name your own emotions too: 'I am feeling a bit stressed right now, so I am going to take a few deep breaths.'</li><li>After a difficult moment has passed, revisit it briefly.</li><li>Read stories with emotional complexity and pause at key moments.</li></ul><h2>Ages 6–9: Teach the Space Between Feeling and Action</h2><ul><li>Introduce the concept of 'what do you do with big feelings?' — build a short personal list together.</li><li>When they handle a hard moment well, name it immediately.</li><li>Teach empathy through real situations, not hypotheticals.</li><li>Let them experience disappointment without rescuing.</li></ul><h2>Ages 10–13: Respect the Privacy, Keep the Channel Open</h2><ul><li>Stop asking 'what is wrong?' when they are quiet. Say instead: 'You seem like you have something on your mind. I am here when you want to talk.'</li><li>Never mock, dismiss, or minimise what they feel.</li><li>Share your own emotional struggles — age-appropriately.</li><li>When they do open up, fight every instinct to immediately fix, advise, or lecture.</li></ul>`,
@@ -728,24 +742,49 @@ function ArticleView({ view, onNavigate, onHome }: { view: ViewState; onNavigate
           Family Playbook
         </div>
         <h1
-          className="text-[#1b2a4a] font-bold leading-[1.2] mb-4"
+          className="text-[#F8F5F0] font-bold leading-[1.2] mb-4"
           style={{ fontSize: "clamp(2rem, 4vw, 2.8rem)", fontFamily: "'Rubik', sans-serif" }}
         >
           The Parenting Guide Your Family<br />Actually Needs
         </h1>
-        <p className="text-gray-500 text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+        <p className="text-[#f97316] text-[1rem] max-w-[520px] mx-auto leading-[1.7] mb-12">
+          <strong>
           Science-backed, psychologist-designed guidance for ages 3–13.
-          Hover over <strong>Parenting Guide</strong> in the navbar to explore topics.
+          Hover over Parenting Guide in the navbar to explore topics.</strong>
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[760px] mx-auto text-left">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => onNavigate({ type: "article", catId: cat.id, artId: cat.id, artLabel: cat.label })}
-              className="bg-white border border-gray-200 rounded-[10px] p-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f97316] hover:shadow-lg"
+              onClick={() =>
+                onNavigate({
+                  type: "article",
+                  catId: cat.id,
+                  artId: cat.id,
+                  artLabel: cat.label,
+                })
+              }
+              className="
+        rounded-[10px]
+        p-5
+        text-left
+        text-white
+        border border-white/10
+        transition-all
+        duration-200
+        hover:-translate-y-1
+      "
+              style={{
+                background:"#0a0e1f",
+              }}
             >
-              <h3 className="text-[#1b2a4a] font-semibold text-[0.95rem] mb-1">{cat.label}</h3>
-              <p className="text-gray-500 text-[0.8rem] leading-[1.5]">{cat.subtopics.length} guides</p>
+              <h3 className="text-white font-semibold text-[0.95rem] mb-1">
+                {cat.label}
+              </h3>
+
+              <p className="text-white/85 text-[0.8rem] leading-[1.5]">
+                {cat.subtopics.length} guides
+              </p>
             </button>
           ))}
         </div>
@@ -783,8 +822,30 @@ function ArticleView({ view, onNavigate, onHome }: { view: ViewState; onNavigate
         <span className="text-gray-500">{view.artLabel}</span>
       </div>
 
-      <div className="article-prose" dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="relative">
 
+        {/* ARTICLE CONTENT */}
+        <div
+          className="article-prose"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+
+        {/* RIGHT SIDE IMAGE */}
+        {ARTICLE_IMAGES[view.artId] && (
+          <div className="hidden xl:block absolute right-[-400px] top-1/2 -translate-y-1/2">
+            <img
+              src={ARTICLE_IMAGES[view.artId]}
+              alt={view.artLabel}
+              className="
+        w-[480px]
+        h-[480px]
+        object-contain
+      "
+            />
+          </div>
+        )}
+
+      </div>
       <button
         onClick={() =>
           isCategoryArticle
@@ -841,7 +902,7 @@ export default function ParentingGuidePage() {
           font-family: 'Rubik', sans-serif;
           font-size: clamp(1.6rem, 3vw, 2.2rem);
           font-weight: 700;
-          color: #1b2a4a;
+          color: #F8F5F0;
           line-height: 1.25;
           margin-bottom: 1.2rem;
           padding-bottom: 1rem;
@@ -851,20 +912,20 @@ export default function ParentingGuidePage() {
           font-family: 'Rubik', sans-serif;
           font-size: 1.25rem;
           font-weight: 700;
-          color: #1b2a4a;
+          color: #f97316;
           margin-top: 2rem;
           margin-bottom: 0.75rem;
         }
         .article-prose h3 {
           font-size: 1rem;
           font-weight: 600;
-          color: #1e3a5f;
+          color: #FFB86B;
           margin-top: 1.5rem;
           margin-bottom: 0.5rem;
         }
         .article-prose p {
           font-size: 0.96rem;
-          color: #3b4258;
+          color: #F8F5F0;
           line-height: 1.8;
           margin-bottom: 0.9rem;
         }
@@ -878,7 +939,7 @@ export default function ParentingGuidePage() {
           padding: 0.3rem 0 0.3rem 1.2rem;
           font-size: 0.93rem;
           line-height: 1.7;
-          color: #3b4258;
+          color: #CFC7BD;
         }
         .article-prose ul li::before {
           content: '';
@@ -891,10 +952,10 @@ export default function ParentingGuidePage() {
           background: #f97316;
           opacity: 0.6;
         }
-        .article-prose strong { color: #1b2a4a; font-weight: 600; }
+        .article-prose strong { color: #CFC7BD; font-weight: 600; }
       `}</style>
 
-      <div className="min-h-screen relative z-[1]" style={{ background: "#f8f9fb" }}>
+      <div className="min-h-screen relative z-[1]" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%)" }}>
         <motion.div
           key={JSON.stringify(view)}
           initial={{ opacity: 0, y: 12 }}
