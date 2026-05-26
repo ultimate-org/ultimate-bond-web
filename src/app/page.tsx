@@ -14,6 +14,8 @@ import Science from "@/components/science/Science";
 // import Stars from "@/components/star/Star";
 import TransformationJourney from "@/components/transformations/Transformations";
 import WhatsAppButton from "@/components/whatsappButton/WhatsappButton";
+import LiveMomentsStack from '@/components/liveMomentStock/Livemomentstock';
+
 // import Why from "@/components/why/Why";
 import {Main, Header, ParentTestimony} from "@/index"
 
@@ -47,6 +49,7 @@ function Landing() {
     <ParentTestimony/>
     <CtaFooter/>
     <WhatsAppButton/>
+    <LiveMomentsStack/>
     {/* <Problem/> */}
     {/* {/* <Statistics></Statistics> */}
     {/* <UnderLyingCauses></UnderLyingCauses> */} 

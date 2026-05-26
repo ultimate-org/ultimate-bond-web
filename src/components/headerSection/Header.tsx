@@ -2325,11 +2325,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const NAV_LINKS = [
-  { label: "Challenge",  href: "#problem"  },
-  { label: "Journey",  href: "#journey"  },
-  { label: "Transformation", href: "#transformations" },
-  { label: "Features", href: "#features" },
-  { label: "Ulti-Bot",       href: "#ai"       },
+  { label: "Challenge",  href: "/#problem"  },
+  { label: "Journey",  href: "/#journey"  },
+  { label: "Transformation", href: "/#transformations" },
+  { label: "Features", href: "/#features" },
+  { label: "Ulti-Bot",       href: "/#ai"       },
 ];
 
 const PG_CATEGORIES = [
