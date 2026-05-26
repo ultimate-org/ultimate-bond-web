@@ -1810,6 +1810,7 @@ import { Playfair_Display } from "next/font/google";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { Header } from "@/index";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -2341,6 +2342,7 @@ export default function WordlePage() {
         fontFamily: "'Outfit', sans-serif",
          paddingTop:100
       }}>
+      <Header />
       <style>{`
         @keyframes shimmer {
           0% { background-position: 200% 0; }
@@ -2351,7 +2353,7 @@ export default function WordlePage() {
       {/* ── Hero Header ── */}
       <section
         style={{
-          paddingTop: isMobile ? 24 : 40,
+          paddingTop: isMobile ? 80 : 100,
           paddingLeft: isMobile ? 16 : 24,
           paddingRight: isMobile ? 16 : 24,
           display: "flex",

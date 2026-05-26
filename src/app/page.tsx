@@ -1,5 +1,6 @@
 import Advisors from "@/components/advisors/Advisors";
 import Aicte from "@/components/aicte/Aicte";
+import BondMeter from "@/components/bondMeter/BondMeter";
 import AiRoadmap from "@/components/aiRoadMap/AiRoadMap";
 import BeyondAcademics from "@/components/beyondAcademics/BeyondAcademics";
 import Consequences from "@/components/consequences/Consequences";
@@ -32,6 +33,7 @@ function Landing() {
   {/* <Stars/> */}
     <Header></Header>
     <Main></Main>
+    <BondMeter />
     <Aicte/>
     <BeyondAcademics/>
     {/* <SpaceWhy/> */}

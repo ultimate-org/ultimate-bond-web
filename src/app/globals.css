@@ -9,7 +9,16 @@ html{
 body {
   font-family: Arial, Helvetica, sans-serif;
   
-} 
+}
+
+/* Background with bluish theme and white dots */
+.bg-bluish-dots {
+  background-color: #020e25; /* --primary-color */
+  background-image: 
+    radial-gradient(circle at 0 0, transparent 98%, #f0f4ff 99%, #f0f4ff 100%, transparent 101%),
+    radial-gradient(circle at 10px 10px, transparent 98%, #f0f4ff 99%, #f0f4ff 100%, transparent 101%);
+  background-size: 20px 20px;
+}
 @font-face {
   font-family: 'SmallPrint';
   src: 
