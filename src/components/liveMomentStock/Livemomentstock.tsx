@@ -77,8 +77,8 @@ const EXITING_STYLE = '!translate-x-[420px] !scale-90 !opacity-0';
 export default function LiveMomentsStack({
   data = MOMENTS_DATA,
   maxVisible = 5,
-  autoRemoveMs = 8000,
-  streamIntervalMs = 4000,
+  autoRemoveMs = 18000,
+  streamIntervalMs = 14000,
   enabled = true,
 }: LiveMomentsStackProps) {
   const [cards, setCards] = useState<ActiveCard[]>([]);
