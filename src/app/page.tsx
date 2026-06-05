@@ -31,8 +31,10 @@ export const metadata = {
 function Landing() {
   return <>
   {/* <Stars/> */}
-    <Header></Header>
-    <Main></Main>
+    <div className="[--nav-h:60px] lg:[--nav-h:80px]">
+  <Header />
+  <Main />
+</div>
     <BondMeter />
     <Aicte/>
     <BeyondAcademics/>
