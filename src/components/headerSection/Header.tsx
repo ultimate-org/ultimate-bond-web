@@ -3408,8 +3408,8 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-const HEADLINE_GRADIENT =
-  "linear-gradient(103.7deg, #ffb13d 0%, #ff7a18 26%, #ff4d8d 64%, #a24bff 100%)";
+// const HEADLINE_GRADIENT =
+//   "linear-gradient(103.7deg, #ffb13d 0%, #ff7a18 26%, #ff4d8d 64%, #a24bff 100%)";
 const CTA_GRADIENT =
   "linear-gradient(166deg, #ffae57 0%, #ff8a2e 40%, #fb6e11 100%)";
 
