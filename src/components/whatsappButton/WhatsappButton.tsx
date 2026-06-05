@@ -22,7 +22,7 @@ export default function WhatsAppButton() {
       rel="noopener noreferrer"
       onClick={handleClick}
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-[150px] right-5 z-[200] transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_16px_rgba(37,211,102,0.5)]"
+      className="fixed top-[25px] right-8 z-[200] transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_16px_rgba(37,211,102,0.5)]"
     >
       <Image
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
