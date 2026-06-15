@@ -2633,7 +2633,7 @@ import { Playfair_Display } from "next/font/google";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Header } from "@/index";
+// import { Header } from "@/index";
 
 const playfair = Playfair_Display({ subsets: ["latin"] });
 
@@ -3136,9 +3136,9 @@ export default function ReadometerPage() {
         minHeight: "100vh",
         background: "#080705",
         fontFamily: "'Outfit', sans-serif",
-        paddingTop:100
+        // paddingTop:100
       }}>
-      <Header />
+      {/* <Header /> */}
       <style>{`
         @keyframes shimmer {
           0% { background-position: 200% 0; }
