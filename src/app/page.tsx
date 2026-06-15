@@ -19,6 +19,8 @@ import LiveMomentsStack from '@/components/liveMomentStock/Livemomentstock';
 
 // import Why from "@/components/why/Why";
 import {Main, Header, ParentTestimony} from "@/index"
+import RealityCheck from "@/components/realityCheck/RealityCheck";
+import InvisibleConsequences from "@/components/invinsibleConsequences/InvinsibleConsequences";
 
 // import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
 // import { Star } from "lucide-react";
@@ -35,15 +37,17 @@ function Landing() {
   <Header />
   <Main />
 </div>
-    <BondMeter />
-    <Aicte/>
-    <BeyondAcademics/>
+    <TransformationJourney/>
+    {/* <BondMeter />
+    <Aicte/> */}
+    {/* <BeyondAcademics/> */}
+    <RealityCheck/>
+    <InvisibleConsequences/>
     {/* <SpaceWhy/> */}
-    <Problem/>
-    <Consequences/>
+    {/* <Problem/>
+    <Consequences/> */}
     <Science/>
     {/* <Solution/> */}
-    <TransformationJourney/>
     <Journey/>
     <FeaturesRadar/>
     <ParentingPulse/>

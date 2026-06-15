@@ -30,35 +30,120 @@ const themeStyles: Record<MomentTheme, {
   meta: string;
   shine: string;
 }> = {
+  // ─── Amber / orange family (reading & stories) ───
   readometer: {
-    card: [
-      'bg-[linear-gradient(135deg,rgba(239,159,39,0.18)_0%,rgba(180,80,20,0.22)_100%),rgba(40,20,10,0.55)]',
-      'border-[rgba(250,199,117,0.35)]',
-      'shadow-[inset_0_1px_0_rgba(255,200,120,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(180,80,20,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(239,159,39,0.12)]',
-    ].join(' '),
+    card: 'bg-[linear-gradient(135deg,rgba(239,159,39,0.18)_0%,rgba(180,80,20,0.22)_100%),rgba(40,20,10,0.55)] border-[rgba(250,199,117,0.35)] shadow-[inset_0_1px_0_rgba(255,200,120,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(180,80,20,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(239,159,39,0.12)]',
     icon: 'bg-[linear-gradient(135deg,rgba(250,199,117,0.35),rgba(239,159,39,0.15))] border-[rgba(250,199,117,0.4)]',
     meta: 'text-[#FFC78A]',
     shine: 'bg-[linear-gradient(90deg,transparent,rgba(255,200,120,0.5),transparent)]',
   },
+  story: {
+    card: 'bg-[linear-gradient(135deg,rgba(255,176,59,0.18)_0%,rgba(193,109,11,0.24)_100%),rgba(38,22,8,0.55)] border-[rgba(255,205,130,0.35)] shadow-[inset_0_1px_0_rgba(255,210,140,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(193,109,11,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(255,176,59,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(255,205,130,0.35),rgba(255,176,59,0.15))] border-[rgba(255,205,130,0.4)]',
+    meta: 'text-[#FFD08A]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(255,210,140,0.5),transparent)]',
+  },
+  casestudy: {
+    card: 'bg-[linear-gradient(135deg,rgba(214,158,46,0.18)_0%,rgba(146,99,18,0.24)_100%),rgba(34,26,10,0.55)] border-[rgba(235,200,120,0.35)] shadow-[inset_0_1px_0_rgba(235,205,130,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(146,99,18,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(214,158,46,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(235,200,120,0.35),rgba(214,158,46,0.15))] border-[rgba(235,200,120,0.4)]',
+    meta: 'text-[#EBCB86]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(235,205,130,0.5),transparent)]',
+  },
+ 
+  // ─── Violet / indigo family (cognitive) ───
   wordquest: {
-    card: [
-      'bg-[linear-gradient(135deg,rgba(139,92,246,0.22)_0%,rgba(76,29,149,0.28)_100%),rgba(25,15,50,0.55)]',
-      'border-[rgba(175,169,236,0.35)]',
-      'shadow-[inset_0_1px_0_rgba(200,180,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(76,29,149,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(139,92,246,0.12)]',
-    ].join(' '),
+    card: 'bg-[linear-gradient(135deg,rgba(139,92,246,0.22)_0%,rgba(76,29,149,0.28)_100%),rgba(25,15,50,0.55)] border-[rgba(175,169,236,0.35)] shadow-[inset_0_1px_0_rgba(200,180,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(76,29,149,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(139,92,246,0.12)]',
     icon: 'bg-[linear-gradient(135deg,rgba(175,169,236,0.35),rgba(139,92,246,0.15))] border-[rgba(175,169,236,0.4)]',
     meta: 'text-[#C9C0FF]',
     shine: 'bg-[linear-gradient(90deg,transparent,rgba(200,180,255,0.5),transparent)]',
   },
+  kyc: {
+    card: 'bg-[linear-gradient(135deg,rgba(124,109,242,0.20)_0%,rgba(55,48,163,0.28)_100%),rgba(20,18,48,0.55)] border-[rgba(170,165,240,0.35)] shadow-[inset_0_1px_0_rgba(190,180,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(55,48,163,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(99,91,255,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(170,165,240,0.35),rgba(99,91,255,0.15))] border-[rgba(170,165,240,0.4)]',
+    meta: 'text-[#BFB8FF]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(190,180,255,0.5),transparent)]',
+  },
+  strengthfinder: {
+    card: 'bg-[linear-gradient(135deg,rgba(167,139,250,0.20)_0%,rgba(91,33,182,0.28)_100%),rgba(28,18,52,0.55)] border-[rgba(196,181,253,0.35)] shadow-[inset_0_1px_0_rgba(210,195,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(91,33,182,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(167,139,250,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(196,181,253,0.35),rgba(167,139,250,0.15))] border-[rgba(196,181,253,0.4)]',
+    meta: 'text-[#D6C9FF]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(210,195,255,0.5),transparent)]',
+  },
+ 
+  // ─── Pink / magenta family (achievement) ───
   milestone: {
-    card: [
-      'bg-[linear-gradient(135deg,rgba(255,122,184,0.18)_0%,rgba(100,30,80,0.25)_100%),rgba(30,15,35,0.55)]',
-      'border-[rgba(255,180,220,0.35)]',
-      'shadow-[inset_0_1px_0_rgba(255,200,230,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(100,30,80,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(255,122,184,0.12)]',
-    ].join(' '),
+    card: 'bg-[linear-gradient(135deg,rgba(255,122,184,0.18)_0%,rgba(100,30,80,0.25)_100%),rgba(30,15,35,0.55)] border-[rgba(255,180,220,0.35)] shadow-[inset_0_1px_0_rgba(255,200,230,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(100,30,80,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(255,122,184,0.12)]',
     icon: 'bg-[linear-gradient(135deg,rgba(255,180,220,0.35),rgba(255,122,184,0.15))] border-[rgba(255,180,220,0.4)]',
     meta: 'text-[#FFB4DC]',
     shine: 'bg-[linear-gradient(90deg,transparent,rgba(255,200,230,0.5),transparent)]',
+  },
+  portfolio: {
+    card: 'bg-[linear-gradient(135deg,rgba(244,114,182,0.18)_0%,rgba(131,24,67,0.25)_100%),rgba(34,14,28,0.55)] border-[rgba(251,182,217,0.35)] shadow-[inset_0_1px_0_rgba(252,200,228,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(131,24,67,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(244,114,182,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(251,182,217,0.35),rgba(244,114,182,0.15))] border-[rgba(251,182,217,0.4)]',
+    meta: 'text-[#FBB6D9]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(252,200,228,0.5),transparent)]',
+  },
+ 
+  // ─── Teal / green family (action & body) ───
+  challenge: {
+    card: 'bg-[linear-gradient(135deg,rgba(45,212,191,0.18)_0%,rgba(15,118,110,0.26)_100%),rgba(8,32,30,0.55)] border-[rgba(153,228,217,0.35)] shadow-[inset_0_1px_0_rgba(170,235,225,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(15,118,110,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(45,212,191,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(153,228,217,0.35),rgba(45,212,191,0.15))] border-[rgba(153,228,217,0.4)]',
+    meta: 'text-[#99E4D9]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(170,235,225,0.5),transparent)]',
+  },
+  habitup_physical: {
+    card: 'bg-[linear-gradient(135deg,rgba(52,211,153,0.18)_0%,rgba(6,95,70,0.26)_100%),rgba(8,30,24,0.55)] border-[rgba(150,230,200,0.35)] shadow-[inset_0_1px_0_rgba(165,235,210,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(6,95,70,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(52,211,153,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(150,230,200,0.35),rgba(52,211,153,0.15))] border-[rgba(150,230,200,0.4)]',
+    meta: 'text-[#96E6C8]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(165,235,210,0.5),transparent)]',
+  },
+  activity: {
+    card: 'bg-[linear-gradient(135deg,rgba(34,197,94,0.18)_0%,rgba(21,94,52,0.26)_100%),rgba(10,30,18,0.55)] border-[rgba(150,225,175,0.35)] shadow-[inset_0_1px_0_rgba(165,230,185,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(21,94,52,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(34,197,94,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(150,225,175,0.35),rgba(34,197,94,0.15))] border-[rgba(150,225,175,0.4)]',
+    meta: 'text-[#96E1AF]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(165,230,185,0.5),transparent)]',
+  },
+ 
+  // ─── Sky / blue family (calm & conversation) ───
+  wonderchat: {
+    card: 'bg-[linear-gradient(135deg,rgba(56,189,248,0.18)_0%,rgba(7,89,133,0.26)_100%),rgba(8,24,38,0.55)] border-[rgba(160,210,245,0.35)] shadow-[inset_0_1px_0_rgba(170,215,245,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(7,89,133,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(56,189,248,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(160,210,245,0.35),rgba(56,189,248,0.15))] border-[rgba(160,210,245,0.4)]',
+    meta: 'text-[#A8D6F5]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(170,215,245,0.5),transparent)]',
+  },
+  habitup_mental: {
+    card: 'bg-[linear-gradient(135deg,rgba(96,165,250,0.18)_0%,rgba(30,64,175,0.26)_100%),rgba(12,20,42,0.55)] border-[rgba(170,200,250,0.35)] shadow-[inset_0_1px_0_rgba(180,205,250,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(30,64,175,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(96,165,250,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(170,200,250,0.35),rgba(96,165,250,0.15))] border-[rgba(170,200,250,0.4)]',
+    meta: 'text-[#AAC8FA]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(180,205,250,0.5),transparent)]',
+  },
+ 
+  // ─── Saffron / gold family (spiritual) ───
+  shlok: {
+    card: 'bg-[linear-gradient(135deg,rgba(251,191,36,0.18)_0%,rgba(180,83,9,0.26)_100%),rgba(36,24,8,0.55)] border-[rgba(253,216,140,0.35)] shadow-[inset_0_1px_0_rgba(253,220,150,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(180,83,9,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(251,191,36,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(253,216,140,0.35),rgba(251,191,36,0.15))] border-[rgba(253,216,140,0.4)]',
+    meta: 'text-[#FDD88C]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(253,220,150,0.5),transparent)]',
+  },
+  mudra: {
+    card: 'bg-[linear-gradient(135deg,rgba(253,186,116,0.18)_0%,rgba(154,52,18,0.26)_100%),rgba(34,20,10,0.55)] border-[rgba(254,205,160,0.35)] shadow-[inset_0_1px_0_rgba(254,210,170,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(154,52,18,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(253,186,116,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(254,205,160,0.35),rgba(253,186,116,0.15))] border-[rgba(254,205,160,0.4)]',
+    meta: 'text-[#FECDA0]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(254,210,170,0.5),transparent)]',
+  },
+  parentingvirtue: {
+    card: 'bg-[linear-gradient(135deg,rgba(245,158,11,0.18)_0%,rgba(120,53,15,0.26)_100%),rgba(32,22,8,0.55)] border-[rgba(250,200,130,0.35)] shadow-[inset_0_1px_0_rgba(250,205,140,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(120,53,15,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(245,158,11,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(250,200,130,0.35),rgba(245,158,11,0.15))] border-[rgba(250,200,130,0.4)]',
+    meta: 'text-[#FAC882]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(250,205,140,0.5),transparent)]',
+  },
+ 
+  // ─── Lime (everyday chores) ───
+  habitup_chores: {
+    card: 'bg-[linear-gradient(135deg,rgba(132,204,22,0.18)_0%,rgba(63,98,18,0.26)_100%),rgba(20,30,8,0.55)] border-[rgba(190,225,130,0.35)] shadow-[inset_0_1px_0_rgba(200,230,150,0.3),inset_0_-1px_0_rgba(0,0,0,0.1),0_8px_32px_rgba(63,98,18,0.35),0_24px_60px_rgba(0,0,0,0.4),0_0_40px_rgba(132,204,22,0.12)]',
+    icon: 'bg-[linear-gradient(135deg,rgba(190,225,130,0.35),rgba(132,204,22,0.15))] border-[rgba(190,225,130,0.4)]',
+    meta: 'text-[#BEE182]',
+    shine: 'bg-[linear-gradient(90deg,transparent,rgba(200,230,150,0.5),transparent)]',
   },
 };
 
@@ -172,8 +257,8 @@ export default function LiveMomentsStack({
           : POSITION_STYLES[Math.min(card.position, POSITION_STYLES.length - 1)];
 
         const exitTransition = card.exiting
-          ? 'transition-all duration-500 ease-[cubic-bezier(0.5,0,0.75,0)]'
-          : 'transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]';
+  ? 'transition-all duration-500 ease-in-soft'
+  : 'transition-all duration-500 ease-spring';
 
         return (
           <div
