@@ -1,12 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const HEADLINE_GRADIENT =
   "linear-gradient(95.82deg, #ffb13d 0%, #ff7a18 26%, #ff4d8d 64%, #a24bff 100%)";
-
-const PILL_BORDER_GRADIENT =
-  "linear-gradient(135deg, rgba(255,220,160,0.92) 0%, rgba(255,180,100,0.60) 22%, rgba(255,122,24,0.85) 50%, rgba(255,180,100,0.60) 78%, rgba(255,220,160,0.92) 100%)";
 
 const CARD_SHADOW =
   "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.05), 0 18px 50px rgba(0,0,0,0.30)";
@@ -165,15 +163,15 @@ export default function InvisibleConsequences() {
                 aria-hidden
                 className="ic-gloss pointer-events-none absolute inset-0 z-[2] rounded-[inherit] opacity-0 transition-opacity duration-400 group-hover:opacity-100"
               />
-
               {/* LEFT side (blue) */}
               <div className="relative flex flex-col p-[1.125rem] sm:p-6">
                 <AgePill tone="blue">{card.left.age}</AgePill>
                 <div className="relative my-3 flex min-h-[9.375rem] flex-1 items-center justify-center">
                   <div className="flex h-[clamp(8.125rem,16vw,10.625rem)] w-[clamp(8.125rem,16vw,10.625rem)] items-center justify-center bg-transparent">
-                    <img
+                    <Image
                       src={`${IMG_BASE}/${card.left.img}.webp`}
                       alt=""
+                      fill
                       className="pointer-events-none block h-auto max-h-full w-auto max-w-full object-contain"
                       onError={(e) => { e.currentTarget.style.opacity = "0"; }}
                     />
@@ -199,9 +197,10 @@ export default function InvisibleConsequences() {
                 <AgePill tone="red">{card.right.age}</AgePill>
                 <div className="relative my-3 flex min-h-[9.375rem] flex-1 items-center justify-center">
                   <div className="flex h-[clamp(8.125rem,16vw,10.625rem)] w-[clamp(8.125rem,16vw,10.625rem)] items-center justify-center bg-transparent">
-                    <img
+                    <Image
                       src={`${IMG_BASE}/${card.right.img}.webp`}
                       alt=""
+                      fill
                       className="pointer-events-none block h-auto max-h-full w-auto max-w-full object-contain"
                       onError={(e) => { e.currentTarget.style.opacity = "0"; }}
                     />
@@ -221,10 +220,11 @@ export default function InvisibleConsequences() {
 
       {/* Branch visual — full bleed, flush to bottom */}
       <div className="pointer-events-none relative z-[1] mt-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(1.125rem,4vw,4.5rem)] leading-[0]">
-        <img
+        <Image
           src={`${IMG_BASE}/ic.webp`}
           alt=""
           className="block h-auto w-full bg-transparent"
+          fill
           onError={(e) => { e.currentTarget.style.opacity = "0"; }}
         />
       </div>
