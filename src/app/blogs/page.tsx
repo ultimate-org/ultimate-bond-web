@@ -1249,7 +1249,7 @@ export default function Blogs() {
       <Header />
 
       <main
-        className="pt-[100px] pb-[100px] relative overflow-hidden"
+        className=" pb-[100px] relative overflow-hidden"
         style={{ background: "#04060f" }}
       >
         {/* radial glow */}
@@ -1266,7 +1266,7 @@ export default function Blogs() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative text-center px-[6vw] pt-[9rem] pb-[5rem] overflow-hidden z-[1]"
+          className="relative text-center px-[6vw] pt-[3rem] pb-[5rem] overflow-hidden z-[1]"
         >
           <div
             className="absolute inset-0 pointer-events-none"

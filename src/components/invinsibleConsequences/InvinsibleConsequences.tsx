@@ -80,8 +80,8 @@ function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.Rea
 export default function InvisibleConsequences() {
   return (
     <section
-      className="relative w-full overflow-hidden px-[clamp(1.125rem,4vw,4.5rem)] pb-0 pt-[clamp(3rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white"
-      style={{ background: "linear-gradient(180deg, #0a0a14 0%, #08080d 100%)" }}
+      className="relative w-full overflow-hidden px-[clamp(1.125rem,4vw,4.5rem)] pb-0 pt-[clamp(3rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white bg-[#050507]" 
+    //   style={{ background: "linear-gradient(180deg, #0a0a14 0%, #08080d 100%)" }}
     >
       {/* warm glow */}
       <div
@@ -102,23 +102,13 @@ export default function InvisibleConsequences() {
           variants={fadeUp}
           className="mb-[clamp(1.375rem,2.8vh,2.25rem)] flex justify-center"
         >
-          <div
-            className="relative inline-flex h-8 items-center gap-2 rounded-full px-3.5 backdrop-blur-[1.125rem] sm:h-9 sm:gap-2.5 sm:px-[1.125rem]"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(20,20,30,0.55) 0%, rgba(8,8,13,0.55) 100%)",
-              boxShadow: "inset 0 1px 0 rgba(255,175,100,0.18)",
-            }}
-          >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 rounded-[inherit] p-px [mask:linear-gradient(#000_0_0)_content-box,linear-gradient(#000_0_0)] [mask-composite:exclude] [-webkit-mask:linear-gradient(#000_0_0)_content-box,linear-gradient(#000_0_0)] [-webkit-mask-composite:xor]"
-              style={{ background: PILL_BORDER_GRADIENT }}
-            />
-            <span className="h-[0.4375rem] w-[0.4375rem] flex-shrink-0 rounded-full bg-[#ff9a40] sm:h-2 sm:w-2" />
-            <span className="whitespace-nowrap font-['Outfit',sans-serif] text-[0.6875rem] font-semibold uppercase tracking-[0.1rem] text-[#ffb36b] sm:text-[0.75rem] sm:tracking-[0.125rem]">
+          <div className="mb-[26px] flex justify-center">
+          <div className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]">
+            <span className="h-[7.2px] w-[7.2px] rounded-[3.6px] bg-[#ff9a40] shadow-[0_0_8.229px_#ff9a40]" />
+            <span className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px] text-[#ffb36b]">
               The Invisible Consequences
             </span>
+          </div>
           </div>
         </motion.div>
 

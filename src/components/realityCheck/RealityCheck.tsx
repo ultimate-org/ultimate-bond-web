@@ -344,8 +344,9 @@ const orb = {
 export default function RealityCheck() {
   return (
     <section
-      className="relative w-full overflow-hidden px-[clamp(1.125rem,4vw,4.5rem)] py-[clamp(3rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white"
-      style={{ background: "linear-gradient(180deg, #0a0a14 0%, #08080d 100%)" }}
+      className="relative w-full overflow-hidden px-[clamp(1.125rem,4vw,4.5rem)] py-[clamp(3rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white bg-[#050507]"
+    //   style={{ background: "linear-gradient(180deg, #0a0a14 0%, #08080d 100%)" }}
+
     >
       {/* warm glow */}
       <div

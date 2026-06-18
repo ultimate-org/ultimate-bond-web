@@ -232,7 +232,7 @@ function Page({ searchParams }: { searchParams: Promise<{ name?: string }> }) {
       <Header />
 
       {blogDetails ? (
-        <div className="max-w-[860px] mx-auto px-[6%] pt-[120px] pb-[100px]">
+        <div className="max-w-[860px] mx-auto px-[6%] pt-[50px] pb-[100px]">
 
           {/* Hero image */}
           <div className="relative w-full rounded-[20px] overflow-hidden mb-10"
