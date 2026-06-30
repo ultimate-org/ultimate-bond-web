@@ -143,7 +143,7 @@ export default function Navbar() {
 
         {/* Desktop nav links */}
         {showFullNav ? (
-          <ul className="m-0 hidden list-none items-center justify-center gap-5 p-0 lg:flex xl:gap-9">
+          <ul className="m-0 hidden list-none items-center justify-center gap-4 p-0 lg:flex xl:gap-9">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className={navLink}>

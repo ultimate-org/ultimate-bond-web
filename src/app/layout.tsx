@@ -73,7 +73,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Footer, } from "@/index"
 import { Toaster } from "@/components/ui/toaster"
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics,GoogleTagManager } from '@next/third-parties/google';
 import MetaPixel from '@/components/MetaPixel'; 
 import Stars from "@/components/star/Star";
 import CookieConsent from '@/components/cookie/CookieConsent'
@@ -363,6 +363,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+         <GoogleTagManager gtmId="GTM-MBMZ8FB4" />
         <MsClarity />
         <NextIntlClientProvider messages={messages}>
           <Stars />
