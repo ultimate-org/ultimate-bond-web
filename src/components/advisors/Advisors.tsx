@@ -1,315 +1,35 @@
-// "use client";
-
-// import Image from "next/image";
-// import { motion } from "framer-motion";
-// import { containerClass, SectionHeader } from "@/components/ui/UI";
-
-// const ADVISORS = [
-//   {
-//     photo: "", // set to "/advisors/name.jpg" when available
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-//   {
-//     photo: "",
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-//   {
-//     photo: "",
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-//   {
-//     photo: "",
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-//   {
-//     photo: "",
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-//   {
-//     photo: "",
-//     icon: "👤",
-//     name: "Advisor Name",
-//     title: "Role · Organisation",
-//     bio: "Brief background about this advisor and why their expertise matters to the mission.",
-//   },
-// ];
-
-// const cardVariants = {
-//   hidden: { opacity: 0, y: 28 },
-//   visible: (i: number) => ({
-//     opacity: 1, y: 0,
-//     transition: { duration: 0.45, delay: i * 0.08, ease: "easeOut" },
-//   }),
-// };
-
-// export default function Advisors() {
-//   return (
-//     <section id="advisors" className="py-[100px] relative z-[1] bg-[#0a0e1f]">
-//       <div className={containerClass}>
-//         <SectionHeader
-//           tag="Our Advisors"
-//           heading={<>Guided by the<br /><em className="text-[#f97316] not-italic">best in the field</em></>}
-//           sub="Industry leaders, educators and technologists who believe in what we're building — and help us build it better."
-//         />
-
-//         {/* .advisors-grid — repeat(3,1fr) */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-//           {ADVISORS.map((adv, i) => (
-//             <motion.div
-//               key={`${adv.name}-${i}`}
-//               custom={i}
-//               initial="hidden"
-//               whileInView="visible"
-//               viewport={{ once: true, amount: 0.15 }}
-//               variants={cardVariants}
-//               /* .advisor-card */
-//               className="bg-[#04060f] border border-white/[0.08] rounded-[20px] p-8 text-center transition-all duration-300 hover:-translate-y-[3px] hover:border-[rgba(249,115,22,0.3)]"
-//             >
-//               {/* .advisor-photo */}
-//               <div
-//                 className="relative w-[120px] h-[120px] rounded-2xl mx-auto mb-5 overflow-hidden flex flex-col items-center justify-center gap-1.5"
-//                 style={{
-//                   border: "1px solid rgba(249,115,22,0.25)",
-//                   background: "#0d1224",
-//                 }}
-//               >
-//                 {/* ::before gradient overlay */}
-//                 <div
-//                   className="absolute inset-0 z-0"
-//                   style={{
-//                     background:
-//                       "linear-gradient(135deg, rgba(249,115,22,0.06), rgba(59,130,246,0.06))",
-//                   }}
-//                 />
-
-//                 {adv.photo ? (
-//                   /* real photo when available */
-//                   <Image
-//                     src={adv.photo}
-//                     alt={adv.name}
-//                     fill
-//                     className="object-cover relative z-[1]"
-//                   />
-//                 ) : (
-//                   /* placeholder state */
-//                   <>
-//                     {/* .advisor-photo-icon */}
-//                     <span className="text-[1.8rem] opacity-40 relative z-[1] leading-none">
-//                       {adv.icon}
-//                     </span>
-//                     {/* .advisor-photo-label */}
-//                     <span
-//                       className="text-[0.62rem] tracking-[0.06em] uppercase text-[#9ca3af] opacity-60 relative z-[1] text-center leading-[1.4]"
-//                     >
-//                       Photo
-//                       <br />
-//                       Coming Soon
-//                     </span>
-//                   </>
-//                 )}
-//               </div>
-
-//               {/* .advisor-card h3 */}
-//               <h3
-//                 className="text-white font-black text-[1rem] mb-1"
-//                 style={{ fontFamily: "'Rubik', sans-serif" }}
-//               >
-//                 {adv.name}
-//               </h3>
-
-//               {/* .advisor-title */}
-//               <p className="text-[#f97316] text-[0.82rem] font-medium mb-2.5">
-//                 {adv.title}
-//               </p>
-
-//               {/* .advisor-card p */}
-//               <p className="text-[#9ca3af] text-[0.82rem] leading-[1.55] font-light">
-//                 {adv.bio}
-//               </p>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-// "use client";
-
-// import { motion } from "framer-motion";
-// import { containerClass, SectionHeader } from "@/components/ui/UI";
-
-// /* ── 3 advisors, word-for-word from HTML ── */
-// const ADVISORS = [
-//   {
-//     name: "Dr. Nandita Babu",
-//     title: "Senior Professor (Rtd) · Former HOD, Psychology",
-//     bio: "Delhi University · Decades of research in developmental psychology and child cognition. The scientific backbone of UltiMate's child development framework.",
-//   },
-//   {
-//     name: "Mr. Sudhir Panse",
-//     title: "Mentor & Life Coach · IIT Alumni",
-//     bio: "IIT Alumni with deep expertise in mentoring, leadership development and life coaching. Shapes UltiMate's caregiver growth and virtue framework.",
-//   },
-//   {
-//     name: "Dr. Naina Athalye",
-//     title: "Ph.D. Psychology · Pune University",
-//     bio: "Clinical and developmental psychology expertise from Pune University. Guides UltiMate's emotional intelligence and parenting behaviour modules.",
-//   },
-// ];
-
-// const cardVariants = {
-//   hidden: { opacity: 0, y: 20 },
-//   visible: (i: number) => ({
-//     opacity: 1, y: 0,
-//     transition: { duration: 0.4, delay: i * 0.1, ease: "easeOut" },
-//   }),
-// };
-
-// export default function Advisors() {
-//   return (
-//     <section
-//       id="advisors"
-//       className="py-[100px] relative z-[1]"
-//       style={{ background: "#0a0e1f" }}
-//     >
-//       <div className={containerClass}>
-
-//         {/* .section-header.reveal */}
-//         <SectionHeader
-//           tag="Expert Backed"
-//           heading={
-//             <>
-//               Our Child Psychology &amp;
-//               <br />
-//               Parenting Advisors
-//             </>
-//           }
-//           sub="Built on decades of research and guided by India's leading child development experts."
-//         />
-
-//         {/* .advisors-grid.reveal */}
-//         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-//           {ADVISORS.map((adv, i) => (
-//             <motion.div
-//               key={adv.name}
-//               custom={i}
-//               initial="hidden"
-//               whileInView="visible"
-//               viewport={{ once: true, amount: 0.2 }}
-//               variants={cardVariants}
-//               /* .advisor-card */
-//               className="bg-[#04060f] border border-white/[0.08] rounded-[20px] p-8 text-center transition-all duration-300 hover:border-[rgba(249,115,22,0.25)] hover:-translate-y-[3px]"
-//             >
-//               {/* .advisor-photo */}
-//               <div
-//                 className="w-[120px] h-[120px] rounded-[16px] mx-auto mb-5 flex flex-col items-center justify-center gap-1.5 overflow-hidden relative"
-//                 style={{
-//                   border: "1px solid rgba(249,115,22,0.25)",
-//                   background: "#0d1224",
-//                 }}
-//               >
-//                 {/* ::before gradient overlay */}
-//                 <div
-//                   className="absolute inset-0"
-//                   style={{
-//                     background:
-//                       "linear-gradient(135deg, rgba(249,115,22,0.06), rgba(59,130,246,0.06))",
-//                   }}
-//                 />
-
-//                 {/* .advisor-photo-icon */}
-//                 <span className="text-[1.8rem] relative z-[1]" style={{ opacity: 0.4 }}>
-//                   📷
-//                 </span>
-
-//                 {/* .advisor-photo-label */}
-//                 <span
-//                   className="text-[0.62rem] tracking-[0.06em] uppercase text-[#9ca3af] text-center leading-[1.4] relative z-[1]"
-//                   style={{ opacity: 0.6 }}
-//                 >
-//                   Photo
-//                   <br />
-//                   Coming Soon
-//                 </span>
-//               </div>
-
-//               {/* h3 */}
-//               <h3
-//                 className="text-white font-black text-[1rem] mb-1"
-//                 style={{ fontFamily: "'Rubik', sans-serif" }}
-//               >
-//                 {adv.name}
-//               </h3>
-
-//               {/* .advisor-title */}
-//               <div className="text-[#f97316] text-[0.82rem] font-medium mb-2.5">
-//                 {adv.title}
-//               </div>
-
-//               {/* p */}
-//               <p className="text-[#9ca3af] text-[0.82rem] leading-[1.55] font-light">
-//                 {adv.bio}
-//               </p>
-//             </motion.div>
-//           ))}
-//         </div>
-
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { containerClass, SectionHeader } from "@/components/ui/UI";
+import { containerClass } from "@/components/ui/UI";
 
-/* ── Add advisor photos to /public/advisors/ and update src below ── */
 const ADVISORS = [
   {
+    initials: "NB",
     name: "Dr. Nandita Babu",
-    title: "Senior Professor (Rtd) · Former HOD, Psychology",
-    bio: "Delhi University · Decades of research in developmental psychology and child cognition. The scientific backbone of UltiMate's child development framework.",
-    photo: "/images/advisoryBoard/nandita-babu.jpg",
+    role: "Senior Professor (Rtd) · Former HOD, Psychology, Delhi University",
+    desc: "Decades of research in developmental psychology and child cognition — the scientific backbone of UltiMate's framework.",
   },
   {
+    initials: "SP",
     name: "Mr. Sudhir Panse",
-    title: "Mentor & Life Coach · IIT Alumni",
-    bio: "IIT Alumni with deep expertise in mentoring, leadership development and life coaching. Shapes UltiMate's caregiver growth and virtue framework.",
-    photo: "/images/advisoryBoard/sudhir-panse.jpeg",
+    role: "Mentor & Life Coach · IIT Alumni",
+    desc: "Deep expertise in mentoring, leadership and life coaching. Shapes UltiMate's caregiver-growth and virtue framework.",
   },
   {
+    initials: "NA",
     name: "Dr. Naina Athalye",
-    title: "Ph.D. Psychology · Pune University",
-    bio: "Clinical and developmental psychology expertise from Pune University. Guides UltiMate's emotional intelligence and parenting behaviour modules.",
-    photo: "/images/advisoryBoard/naina-athalye.jpeg",
+    role: "Ph.D. Psychology · Pune University",
+    desc: "Clinical and developmental psychology expertise guiding UltiMate's emotional-intelligence and parenting modules.",
   },
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.4, delay: i * 0.1, ease: "easeOut" },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
@@ -317,25 +37,93 @@ export default function Advisors() {
   return (
     <section
       id="advisors"
-      className="py-[100px] relative z-[1]"
-      style={{ background: "#0a0e1f" }}
+      className="relative w-full overflow-hidden"
+      style={{
+        background: "#050507",
+        padding: "clamp(56px,7vw,110px) clamp(20px,4vw,48px)",
+      }}
     >
-      <div className={containerClass}>
+    
+      <div className={`${containerClass} relative z-10`}>
 
-        <SectionHeader
-          tag="Expert Backed"
-          heading={
-            <>
-              {/* Our Child Psychology &amp;
-              <br />
-              Parenting Advisors */}
-              Our Advisors
-            </>
-          }
-          sub="Built on decades of research and guided by India's leading child development experts."
-        />
+        {/* ── Pill ── */}
+        <div className="flex justify-center mb-[26px]">
+          <div
+            className="inline-flex items-center gap-[10px] h-[36px] px-[18px] rounded-full"
+            style={{
+              border: "1.029px solid rgba(255,154,64,0.25)",
+              background: "linear-gradient(180deg,rgba(255,154,64,0.03) 0%,rgba(255,122,24,0.01) 100%)",
+              boxShadow: "inset 0 1.029px 0 rgba(255,255,255,0.16)",
+            }}
+          >
+            <span
+              className="rounded-full shrink-0"
+              style={{
+                width: "7.2px",
+                height: "7.2px",
+                background: "#ff9a40",
+                boxShadow: "0 0 8.229px #ff9a40",
+              }}
+            />
+            <span
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 600,
+                fontSize: "12.343px",
+                color: "#ffb36b",
+                letterSpacing: "1.9749px",
+                textTransform: "uppercase",
+              }}
+            >
+              Expert Backed
+            </span>
+          </div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        {/* ── Heading ── */}
+        <h2
+          className="text-center mx-auto mb-[22px]"
+          style={{
+            fontFamily: "'Outfit', sans-serif",
+            fontWeight: 800,
+            fontSize: "clamp(34px,4.6vw,60px)",
+            lineHeight: 1.02,
+            letterSpacing: "-1.2px",
+            color: "#fff",
+            maxWidth: "760px",
+          }}
+        >
+          Our{" "}
+          <span
+            style={{
+              background: "linear-gradient(103.78deg,#FFB13D 0%,#FF7A18 26%,#FF4D8D 64%,#A24BFF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            advisors
+          </span>
+        </h2>
+
+        {/* ── Sub ── */}
+        <p
+          className="text-center mx-auto"
+          style={{
+            fontFamily: "'Poppins', sans-serif",
+            fontWeight: 400,
+            fontSize: "clamp(16px,1.5vw,20px)",
+            lineHeight: 1.62,
+            color: "#8b8a98",
+            maxWidth: "720px",
+            marginBottom: "clamp(40px,5vw,64px)",
+          }}
+        >
+          Built on decades of research and guided by India&apos;s leading child-development experts.
+        </p>
+
+        {/* ── Cards ── */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {ADVISORS.map((adv, i) => (
             <motion.div
               key={adv.name}
@@ -344,37 +132,64 @@ export default function Advisors() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
-              className="bg-[#04060f] border border-white/[0.08] rounded-[20px] p-8 text-center transition-all duration-300 hover:border-[rgba(249,115,22,0.25)] hover:-translate-y-[3px]"
+              /* Tailwind glassmorphism card */
+              className="relative flex flex-col rounded-[28px] p-[30px] min-h-[318px]
+                         bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12]
+                         shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_0_rgba(255,255,255,0.04),0_26px_60px_rgba(0,0,0,0.45)]
+                         transition-all duration-500 hover:-translate-y-1
+                         hover:bg-white/[0.09] hover:border-white/[0.2]"
             >
-              {/* .advisor-photo — real image */}
+              {/* Gradient border — ::after mask equivalent */}
               <div
-                className="w-[120px] h-[120px] rounded-[16px] mx-auto mb-5 overflow-hidden relative"
-                style={{ border: "1px solid rgba(249,115,22,0.25)" }}
+                className="absolute inset-0 rounded-[28px] pointer-events-none"
+                style={{
+                  padding: "1px",
+                  background: "linear-gradient(155deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.10) 20%, rgba(255,255,255,0.03) 52%, rgba(255,255,255,0.07) 80%, rgba(255,255,255,0.16) 100%)",
+                  WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude",
+                }}
+              />
+
+              {/* Avatar */}
+              <div
+                className="flex items-center justify-center shrink-0 mb-8"
+                style={{
+                  width: "84px",
+                  height: "84px",
+                  borderRadius: "42px",
+                  background: "radial-gradient(circle at 38% 32%, #ff9a40 0%, #e47625 50%, #d76318 75%, #c9510a 100%)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  filter: "drop-shadow(0 0 15px rgba(255,122,24,0.35))",
+                  fontFamily: "'Outfit', sans-serif",
+                  fontWeight: 800,
+                  fontSize: "28px",
+                  color: "#fff",
+                  letterSpacing: "0.5px",
+                }}
               >
-                <Image
-                  src={adv.photo}
-                  alt={adv.name}
-                  fill
-                  className="object-cover object-top"
-                />
+                {adv.initials}
               </div>
 
-              {/* h3 */}
+              {/* Name */}
               <h3
-                className="text-white font-black text-[1rem] mb-1"
-                style={{ fontFamily: "'Rubik', sans-serif" }}
+                className="text-white mb-2"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "20px", lineHeight: 1.1 }}
               >
                 {adv.name}
               </h3>
 
-              {/* .advisor-title */}
-              <div className="text-[#f97316] text-[0.82rem] font-medium mb-2.5">
-                {adv.title}
-              </div>
+              {/* Role */}
+              <p
+                className="mb-5"
+                style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 500, fontSize: "13px", lineHeight: 1.5, color: "#ffb36b" }}
+              >
+                {adv.role}
+              </p>
 
-              {/* p */}
-              <p className="text-[#9ca3af] text-[0.82rem] leading-[1.55] font-light">
-                {adv.bio}
+              {/* Description */}
+              <p style={{ fontFamily: "'Poppins', sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: 1.6, color: "#8b8a98" }}>
+                {adv.desc}
               </p>
             </motion.div>
           ))}
