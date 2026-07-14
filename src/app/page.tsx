@@ -7,7 +7,7 @@ import AiRoadmap from "@/components/aiRoadMap/AiRoadMap";
 import CtaFooter from "@/components/ctaFooter/CtaFooter";
 import FeaturesRadar from "@/components/featureRadar/FeatureRadar";
 import Journey from "@/components/journey/Journey";
-import ParentingPulse from "@/components/parentingPulse/ParentingPulse";
+// import ParentingPulse from "@/components/parentingPulse/ParentingPulse";
 // import Problem from "@/components/problem/Problem";
 import Science from "@/components/science/Science";
 // import Solution from "@/components/solution/Solution";
@@ -50,7 +50,7 @@ function Landing() {
     {/* <Solution/> */}
     <Journey/>
     <FeaturesRadar/>
-    <ParentingPulse/>
+    {/* <ParentingPulse/> */}
     <AiRoadmap/>
     {/* <Why/> */}
     <Advisors/>

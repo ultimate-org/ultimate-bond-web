@@ -377,11 +377,123 @@
 
 
 
+// "use client";
+
+// import Image from "next/image";
+// import { motion } from "framer-motion";
+// import { containerClass } from "@/components/ui/UI";
+
+// const STORE_BTNS = [
+//   {
+//     img: "/images/applink/app_store_white.png",
+//     alt: "Download on the App Store",
+//     href: process.env.NEXT_PUBLIC_APP_APPSTORE_SHARE_LINK,
+//   },
+//   {
+//     img: "/images/applink/play_store_white.png",
+//     alt: "Get it on Google Play",
+//     href: process.env.NEXT_PUBLIC_APP_PLAYSTORE_SHARE_LINK,
+//   },
+// ];
+
+// export default function Cta() {
+//   return (
+//     <section
+//       id="cta"
+//       className="py-[100px] text-center relative z-[1]"
+//       style={{
+//         background:
+//           "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%)",
+//       }}
+//     >
+//       <div className={`${containerClass} flex flex-col items-center`}>
+
+//         {/* .section-tag */}
+//         <span
+//           className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 mb-6 text-[0.75rem] font-bold tracking-[0.06em] uppercase text-[#f97316]"
+//           style={{
+//             background: "rgba(249,115,22,0.1)",
+//             border: "1px solid rgba(249,115,22,0.25)",
+//             fontFamily: "'Rubik', sans-serif",
+//           }}
+//         >
+//           Be The Ulti-Mate Parent
+//         </span>
+
+//         {/* h2 */}
+//         <motion.h2
+//           initial={{ opacity: 0, y: 16 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.5 }}
+//           className="text-white font-black leading-[1.15] tracking-[-0.03em] mb-4 max-w-[700px] mx-auto"
+//           style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", fontFamily: "'Rubik', sans-serif" }}
+//         >
+//           Be The{" "}
+//           <em className="text-[#f97316] not-italic">UltiMate</em>{" "}
+//           Parent
+//           <br />
+//           in Your Child&apos;s Growth
+//         </motion.h2>
+
+//         {/* p */}
+//         <p className="text-[#9ca3af] text-[1rem] mb-10 font-light">
+//           Download the app today and start your family&apos;s journey across the stars.
+//           <br />
+//           10 minutes a day. 20+ milestones. One extraordinary family. 100% results guaranteed.
+//         </p>
+
+//         {/* store badge buttons */}
+//         <div className="flex gap-4 justify-center flex-wrap mb-8">
+//           {STORE_BTNS.map((btn) => (
+//             <a
+//               key={btn.alt}
+//               href={btn.href}
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="transition-all duration-300 hover:-translate-y-[2px] hover:opacity-90"
+//             >
+//               <Image
+//                 src={btn.img}
+//                 alt={btn.alt}
+//                 width={160}
+//                 height={52}
+//                 className="h-[52px] w-auto object-contain"
+//               />
+//             </a>
+//           ))}
+//         </div>
+
+//         {/* .guarantee */}
+//         <div className="flex items-center justify-center gap-1.5 text-[0.82rem] text-[#9ca3af]">
+//           ✅ 100% results guaranteed · follow the framework · free to start
+//         </div>
+
+//       </div>
+//     </section>
+//   );
+// }
+
+
+
+
 "use client";
+
+/**
+ * CtaFooter — "Be The UltiMate Parent"
+ *
+ * CLIENT COMPONENT (framer-motion entrance animation on the heading).
+ *
+ * Restyled to match the other sections:
+ *   - void #050507 background with the warm orange radial glow
+ *   - the shared pill + gradient-heading + subtitle treatment
+ *   - Tailwind-first (no <style> block needed)
+ *
+ * Text, store links, and env vars are UNCHANGED.
+ */
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { containerClass } from "@/components/ui/UI";
 
 const STORE_BTNS = [
   {
@@ -396,55 +508,60 @@ const STORE_BTNS = [
   },
 ];
 
-export default function Cta() {
+export default function CtaFooter() {
   return (
     <section
       id="cta"
-      className="py-[100px] text-center relative z-[1]"
-      style={{
-        background:
-          "radial-gradient(ellipse 60% 80% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%)",
-      }}
+      className="relative z-[1] w-full overflow-hidden bg-[#050507] px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] text-center font-['Poppins',sans-serif] text-[#c3c2ce] antialiased"
     >
-      <div className={`${containerClass} flex flex-col items-center`}>
+      {/* Warm radial glow, centered */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(255,122,24,0.07) 0%, transparent 70%)",
+        }}
+      />
 
-        {/* .section-tag */}
-        <span
-          className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 mb-6 text-[0.75rem] font-bold tracking-[0.06em] uppercase text-[#f97316]"
-          style={{
-            background: "rgba(249,115,22,0.1)",
-            border: "1px solid rgba(249,115,22,0.25)",
-            fontFamily: "'Rubik', sans-serif",
-          }}
-        >
-          Be The Ulti-Mate Parent
-        </span>
+      <div className="relative z-[1] mx-auto flex max-w-[1240px] flex-col items-center">
+        {/* Pill */}
+        <div className="mb-[26px] flex justify-center">
+          <div className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]">
+            <span className="h-[7.2px] w-[7.2px] rounded-full bg-[#ff9a40] shadow-[0_0_8.229px_#ff9a40]" />
+            <span className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px] text-[#ffb36b]">
+              Be The Ulti-Mate Parent
+            </span>
+          </div>
+        </div>
 
-        {/* h2 */}
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-white font-black leading-[1.15] tracking-[-0.03em] mb-4 max-w-[700px] mx-auto"
-          style={{ fontSize: "clamp(2.2rem, 5vw, 3.5rem)", fontFamily: "'Rubik', sans-serif" }}
+          className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] text-white max-[560px]:tracking-[-0.6px]"
         >
           Be The{" "}
-          <em className="text-[#f97316] not-italic">UltiMate</em>{" "}
+          <span className="bg-[linear-gradient(110.93deg,#FFB13D_0%,#FF7A18_26%,#FF4D8D_64%,#A24BFF_100%)] bg-clip-text text-transparent">
+            UltiMate
+          </span>{" "}
           Parent
           <br />
           in Your Child&apos;s Growth
         </motion.h2>
 
-        {/* p */}
-        <p className="text-[#9ca3af] text-[1rem] mb-10 font-light">
-          Download the app today and start your family&apos;s journey across the stars.
+        {/* Subtitle */}
+        <p className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+          Download the app today and start your family&apos;s journey across the
+          stars.
           <br />
-          10 minutes a day. 20+ milestones. One extraordinary family. 100% results guaranteed.
+          10 minutes a day. 20+ milestones. One extraordinary family. 100%
+          results guaranteed.
         </p>
 
-        {/* store badge buttons */}
-        <div className="flex gap-4 justify-center flex-wrap mb-8">
+        {/* Store badge buttons */}
+        <div className="mb-8 flex flex-wrap justify-center gap-4">
           {STORE_BTNS.map((btn) => (
             <a
               key={btn.alt}
@@ -458,17 +575,16 @@ export default function Cta() {
                 alt={btn.alt}
                 width={160}
                 height={52}
-                className="h-[52px] w-auto object-contain"
+                className="h-[52px] w-auto object-contain max-[400px]:h-[46px]"
               />
             </a>
           ))}
         </div>
 
-        {/* .guarantee */}
-        <div className="flex items-center justify-center gap-1.5 text-[0.82rem] text-[#9ca3af]">
+        {/* Guarantee line */}
+        <div className="flex items-center justify-center gap-1.5 text-center text-[clamp(12px,1.1vw,13.5px)] text-[#8b8a98]">
           ✅ 100% results guaranteed · follow the framework · free to start
         </div>
-
       </div>
     </section>
   );
