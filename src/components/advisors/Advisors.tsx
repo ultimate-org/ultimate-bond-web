@@ -2,22 +2,23 @@
 
 import { motion } from "framer-motion";
 import { containerClass } from "@/components/ui/UI";
+import Image from "next/image";
 
 const ADVISORS = [
   {
-    initials: "NB",
+    image: "/images/advisoryBoard/nandita-babu.webp",
     name: "Dr. Nandita Babu",
     role: "Senior Professor (Rtd) · Former HOD, Psychology, Delhi University",
     desc: "Decades of research in developmental psychology and child cognition — the scientific backbone of UltiMate's framework.",
   },
   {
-    initials: "SP",
+    image: "/images/advisoryBoard/sudhir-panse.webp",
     name: "Mr. Sudhir Panse",
     role: "Mentor & Life Coach · IIT Alumni",
     desc: "Deep expertise in mentoring, leadership and life coaching. Shapes UltiMate's caregiver-growth and virtue framework.",
   },
   {
-    initials: "NA",
+    image: "/images/advisoryBoard/naina-athalye.webp",
     name: "Dr. Naina Athalye",
     role: "Ph.D. Psychology · Pune University",
     desc: "Clinical and developmental psychology expertise guiding UltiMate's emotional-intelligence and parenting modules.",
@@ -43,7 +44,7 @@ export default function Advisors() {
         padding: "clamp(56px,7vw,110px) clamp(20px,4vw,48px)",
       }}
     >
-    
+
       <div className={`${containerClass} relative z-10`}>
 
         {/* ── Pill ── */}
@@ -152,23 +153,18 @@ export default function Advisors() {
               />
 
               {/* Avatar */}
-              <div
-                className="flex items-center justify-center shrink-0 mb-8"
-                style={{
-                  width: "84px",
-                  height: "84px",
-                  borderRadius: "42px",
-                  background: "radial-gradient(circle at 38% 32%, #ff9a40 0%, #e47625 50%, #d76318 75%, #c9510a 100%)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  filter: "drop-shadow(0 0 15px rgba(255,122,24,0.35))",
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 800,
-                  fontSize: "28px",
-                  color: "#fff",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                {adv.initials}
+              {/* Advisor Image */}
+              <div className="flex justify-center mb-8">
+                <div className="relative w-[90px] h-[90px] rounded-full overflow-hidden border-2 border-[#ff9a40] shadow-[0_0_20px_rgba(255,122,24,0.35)] transition-transform duration-300 hover:scale-105">
+                  <Image
+                    src={adv.image}
+                    alt={adv.name}
+                    fill
+                    sizes="90px"
+                    className="object-cover"
+                    priority={i === 0}
+                  />
+                </div>
               </div>
 
               {/* Name */}
