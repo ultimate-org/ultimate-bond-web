@@ -678,10 +678,6 @@ export default function Navbar() {
               onMouseLeave={() => setPgOpen(false)}
             >
               <button
-                onClick={() => {
-                  setPgOpen(false);
-                  router.push("/parenting-guide");
-                }}
                 className={navLink}
               >
                 Parenting Guide
@@ -855,11 +851,7 @@ export default function Navbar() {
               <div>
                 <div className="flex items-center justify-between">
                   <button
-                    onClick={() => {
-                      router.push("/parenting-guide");
-                      setMenuOpen(false);
-                    }}
-                    className="cursor-pointer border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[#c3c2ce] transition-colors duration-300 hover:text-white"
+                    className="border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[#c3c2ce] transition-colors duration-300 hover:text-white"
                   >
                     Parenting Guide
                   </button>
