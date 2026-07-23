@@ -1,7 +1,7 @@
 import Advisors from "@/components/advisors/Advisors";
 // import Aicte from "@/components/aicte/Aicte";
 // import BondMeter from "@/components/bondMeter/BondMeter";
-import AiRoadmap from "@/components/aiRoadMap/AiRoadMap";
+// import AiRoadmap from "@/components/aiRoadMap/AiRoadMap";
 // import BeyondAcademics from "@/components/beyondAcademics/BeyondAcademics";
 // import Consequences from "@/components/consequences/Consequences";
 import CtaFooter from "@/components/ctaFooter/CtaFooter";
@@ -18,7 +18,7 @@ import WhatsAppButton from "@/components/whatsappButton/WhatsappButton";
 import LiveMomentsStack from '@/components/liveMomentStock/Livemomentstock';
 
 // import Why from "@/components/why/Why";
-import {Main, Header, ParentTestimony} from "@/index"
+import { Main, Header, ParentTestimony } from "@/index"
 import RealityCheck from "@/components/realityCheck/RealityCheck";
 import InvisibleConsequences from "@/components/invinsibleConsequences/InvinsibleConsequences";
 
@@ -26,41 +26,41 @@ import InvisibleConsequences from "@/components/invinsibleConsequences/Invinsibl
 // import { Star } from "lucide-react";
 
 export const metadata = {
-  title:"UltiMate Parenting Smart App for Daily Child & Family Bonding",
-  description:"Ultimate Parenting app offers daily activities, storytelling, mantras, habits, and live workshops to support confident and emotionally strong children."
+  title: "UltiMate Parenting Smart App for Daily Child & Family Bonding",
+  description: "Ultimate Parenting app offers daily activities, storytelling, mantras, habits, and live workshops to support confident and emotionally strong children."
 }
 
 function Landing() {
   return <>
-  {/* <Stars/> */}
+    {/* <Stars/> */}
     <div className="[--nav-h:80px] lg:[--nav-h:80px]">
-  <Header />
-  <Main />
-</div>
-    <TransformationJourney/>
+      <Header />
+      <Main />
+    </div>
+    <TransformationJourney />
     {/* <BondMeter />
     <Aicte/> */}
     {/* <BeyondAcademics/> */}
-    <RealityCheck/>
-    <InvisibleConsequences/>
+    <RealityCheck />
+    <InvisibleConsequences />
     {/* <SpaceWhy/> */}
     {/* <Problem/>
     <Consequences/> */}
-    <Science/>
+    <Science />
     {/* <Solution/> */}
-    <Journey/>
-    <FeaturesRadar/>
+    <Journey />
+    <FeaturesRadar />
     {/* <ParentingPulse/> */}
-    <AiRoadmap/>
+    {/* <AiRoadmap/> */}
     {/* <Why/> */}
-    <Advisors/>
-    <ParentTestimony/>
-    <CtaFooter/>
-    <WhatsAppButton/>
-    <LiveMomentsStack/>
+    <Advisors />
+    <ParentTestimony />
+    <CtaFooter />
+    <WhatsAppButton />
+    <LiveMomentsStack />
     {/* <Problem/> */}
     {/* {/* <Statistics></Statistics> */}
-    {/* <UnderLyingCauses></UnderLyingCauses> */} 
+    {/* <UnderLyingCauses></UnderLyingCauses> */}
     {/* <ConeOfLearning></ConeOfLearning> */}
     {/* <UltimateFrameWork></UltimateFrameWork>
     <LifeChanging></LifeChanging>

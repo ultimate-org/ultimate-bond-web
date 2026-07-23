@@ -1399,12 +1399,14 @@ const EDGE_LEFT =
   "linear-gradient(180deg, rgba(255,255,255,0.8), transparent, rgba(255,255,255,0.3))";
 const HEADLINE_GRADIENT =
   "linear-gradient(103.7deg, #ffb13d 0%, #ff7a18 26%, #ff4d8d 64%, #a24bff 100%)";
+const CTA_GRADIENT =
+  "linear-gradient(166deg, #ffae57 0%, #ff8a2e 40%, #fb6e11 100%)";
 
 const STATS = [
   {
-    label: "More real family time each week",
+    label: "Adds up to real family time",
     badge: "★",
-    num: <>+5hrs</>,
+    num: <>10 Min</>,
     badgeBg:
       "linear-gradient(150deg, rgba(79,227,154,0.6), rgba(31,168,94,0.6))",
     numColor: "#34d67e",
@@ -1737,9 +1739,13 @@ export default function Hero() {
                 variants={fadeUp}
                 className="relative z-[2] mb-[clamp(18px,2.6vh,36px)] flex flex-wrap items-center justify-center gap-3 sm:gap-[18px] lg:justify-start"
               >
-                <BtnPrimary onClick={() => router.push("/download-app")}>
+                <button
+                  onClick={() => router.push("/download-app")}
+                  className="cursor-pointer rounded-[12px] border-0 px-4 py-2 font-['Outfit',sans-serif] text-[13px] font-bold text-white transition-[transform,filter] duration-900 ease-smooth hover:-translate-y-px hover:brightness-105 xl:px-5 xl:py-2.5 xl:text-[14px]"
+                  style={{ background: CTA_GRADIENT }}
+                >
                   Get the App
-                </BtnPrimary>
+                </button>
                 <BtnSecondary href="#journey">See How It Works →</BtnSecondary>
               </motion.div>
 
@@ -1840,4 +1846,4 @@ export default function Hero() {
       </div>
     </div>
   );
-}
+} 
