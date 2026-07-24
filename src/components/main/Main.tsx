@@ -1384,11 +1384,9 @@
 //   );
 // }
 
-
 "use client";
 
 import { motion } from "framer-motion";
-import { BtnPrimary, BtnSecondary } from "@/components/ui/UI";
 import { useRouter } from "next/navigation";
 
 const GLASS_SHADOW =
@@ -1451,7 +1449,8 @@ const STATS = [
 
 const TESTIMONIALS = [
   {
-    initial: "P",
+    id: "gaurav",
+    images: "/images/transformation/Garurav.webp",
     avaBg: "linear-gradient(150deg, #ff9a6e 0%, #e8633b 100%)",
     quote: "We've seen such an increase in family interaction.",
     author: "— Gaurav, Father of 2",
@@ -1459,13 +1458,13 @@ const TESTIMONIALS = [
     iconBg: "linear-gradient(150deg, #ff6fa0 0%, #ff3d7f 100%)",
     iconStroke: "rgba(255,140,180,0.6)",
     iconInset: "rgba(255,200,220,0.55)",
-    // staggered: first card sits to the left
     alignClass: "lg:self-start lg:ml-0 xl:ml-[2%]",
     delay: "0s",
     duration: "5s",
   },
   {
-    initial: "N",
+    id: "neha",
+    images: "/images/transformation/Neha.webp",
     avaBg: "linear-gradient(150deg, #c58bff 0%, #a24bff 100%)",
     quote: "My son opens up so much more now.",
     author: "— Neha, Mom of 1",
@@ -1473,7 +1472,6 @@ const TESTIMONIALS = [
     iconBg: "linear-gradient(180deg, #ff9a40 0%, #ff7a18 52%, #f2670a 100%)",
     iconStroke: "rgba(255,190,120,0.6)",
     iconInset: "rgba(255,220,180,0.55)",
-    // staggered: second card sits to the right
     alignClass: "lg:self-end lg:mr-0 xl:mr-[2%]",
     delay: "-2.75s",
     duration: "5.5s",
@@ -1573,8 +1571,15 @@ const GLOW = {
 export default function Hero() {
   const router = useRouter();
 
+  const handleScrollToJourney = () => {
+    const section = document.querySelector("#journey");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="relative flex min-h-[calc(100svh-var(--nav-h,64px))] w-full flex-col overflow-hidden font-['Poppins',sans-serif] antialiased lg:h-[calc(100svh-var(--nav-h,64px))]">
+    <div className="relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-[var(--nav-h,80px)] font-['Poppins',sans-serif] antialiased lg:h-[100svh]">
       <style>{`
         @keyframes orbit-travel { to { offset-distance: 100%; } }
         @keyframes card-float { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-16px,0)} }
@@ -1583,7 +1588,7 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* page background — scoped to the hero (absolute, not fixed) */}
+      {/* page background */}
       <div
         className="absolute inset-0 -z-10"
         style={{
@@ -1625,10 +1630,8 @@ export default function Hero() {
           />
         </div>
 
-        {/* NAV is a separate component rendered above <Hero /> in your layout */}
-
         {/* HERO */}
-        <section className="relative flex w-full flex-1 items-center overflow-visible py-8  sm:py-10 lg:py-0">
+        <section className="relative flex w-full flex-1 items-center overflow-visible py-8 sm:py-10 lg:py-0">
           {/* Ambient glow blobs */}
           <div
             className="pointer-events-none absolute -left-[140px] -top-[180px] z-0 h-[260px] w-[260px] rounded-full opacity-[0.78] blur-[110px] sm:h-[440px] sm:w-[440px] lg:h-[620px] lg:w-[620px] lg:blur-[130px]"
@@ -1659,9 +1662,9 @@ export default function Hero() {
             }}
           />
 
-          {/* Mascot — hidden on mobile/tablet, capped on laptop, larger on xl/2xl */}
+          {/* Mascot */}
           <div
-            className=" hidden lg:absolute lg:bottom-0 lg:right-0 lg:z-0 lg:flex lg:items-end lg:justify-center lg:overflow-hidden lg:h-[clamp(280px,52vh,400px)] lg:w-[clamp(340px,37vw,540px)] xl:h-[clamp(370px,62vh,610px)] xl:w-[clamp(450px,45vw,900px)] 2xl:h-[clamp(430px,70vh,690px)] 2xl:w-[clamp(540px,70vw,1060px)]"
+            className="hidden lg:absolute lg:bottom-0 lg:right-0 lg:z-0 lg:flex lg:items-end lg:justify-center lg:overflow-hidden lg:h-[clamp(280px,52vh,400px)] lg:w-[clamp(340px,37vw,540px)] xl:h-[clamp(370px,62vh,610px)] xl:w-[clamp(450px,45vw,900px)] 2xl:h-[clamp(430px,70vh,690px)] 2xl:w-[clamp(540px,70vw,1060px)]"
             id="mascot"
           >
             <video
@@ -1678,7 +1681,7 @@ export default function Hero() {
 
           {/* HERO INNER — content grid */}
           <div className="relative z-[1] mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 sm:px-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-[clamp(24px,3vw,56px)] lg:px-[clamp(20px,4vw,72px)]">
-            {/* LEFT — centered on mobile, left-aligned on lg+ */}
+            {/* LEFT */}
             <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
               {/* Pill */}
               <motion.div
@@ -1737,16 +1740,40 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeUp}
-                className="relative z-[2] mb-[clamp(18px,2.6vh,36px)] flex flex-wrap items-center justify-center gap-3 sm:gap-[18px] lg:justify-start"
+                className="relative z-[2] mb-[clamp(38px,2.6vh,36px)] flex flex-wrap items-center justify-center gap-3 sm:gap-[18px] lg:justify-start"
               >
                 <button
                   onClick={() => router.push("/download-app")}
-                  className="cursor-pointer rounded-[12px] border-0 px-4 py-2 font-['Outfit',sans-serif] text-[13px] font-bold text-white transition-[transform,filter] duration-900 ease-smooth hover:-translate-y-px hover:brightness-105 xl:px-5 xl:py-2.5 xl:text-[14px]"
+                  className="cursor-pointer rounded-[12px] border-0 px-6 py-3.5 font-['Outfit',sans-serif] text-[15px] font-bold text-white transition-[transform,filter] duration-300 ease-smooth hover:-translate-y-px hover:brightness-105 sm:px-7 sm:py-4 sm:text-[16px]"
                   style={{ background: CTA_GRADIENT }}
                 >
                   Get the App
                 </button>
-                <BtnSecondary href="#journey">See How It Works →</BtnSecondary>
+
+                {/* Updated "See How It Works" button matching .btn-ghost design */}
+                <button
+                  type="button"
+                  onClick={handleScrollToJourney}
+                  className="group inline-flex h-[3.25rem] sm:h-[3.5rem] cursor-pointer items-center gap-2.5 border-none bg-transparent px-4 sm:px-5 font-['Outfit',sans-serif] text-[19px] sm:text-[19px] font-bold tracking-[0.2px] text-[#ff9a40] transition-colors duration-300 ease-in-out hover:text-[#ffb677] hover:opacity-100"
+                >
+                  <span>See How It Works</span>
+                  <span className="inline-flex h-[1.125rem] w-[1.125rem] items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-[2px]">
+                    <svg
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-full w-full"
+                    >
+                      <path
+                        d="M4 10h12M11 5l5 5-5 5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </button>
               </motion.div>
 
               {/* Stat cards */}
@@ -1791,17 +1818,17 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* RIGHT — testimonials: flex column, staggered, hidden below lg */}
+            {/* RIGHT — testimonials */}
             <motion.div
               custom={5}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
-              className="relative top-[-80px] z-[2] hidden h-full w-full lg:flex lg:flex-col lg:justify-start lg:gap-[clamp(12px,2.2vh,22px)] lg:pt-0 "
+              className="relative top-[-90px] z-[2] hidden h-full w-full lg:flex lg:flex-col lg:justify-start lg:gap-[clamp(12px,2.2vh,22px)] lg:pt-0"
             >
               {TESTIMONIALS.map((t) => (
                 <div
-                  key={t.initial}
+                  key={t.id}
                   className={`group relative z-[3] flex w-[clamp(220px,21vw,300px)] flex-col gap-2 rounded-[20px] border border-white/30 bg-white/[0.07] p-[16px_18px_18px] backdrop-blur-[23px] transition-colors duration-700 hover:border-white/40 hover:[animation-play-state:paused] ${t.alignClass}`}
                   style={{
                     boxShadow: GLASS_SHADOW,
@@ -1813,10 +1840,18 @@ export default function Hero() {
                   <GlassEdgeTop />
                   <div className="flex items-center gap-3">
                     <span
-                      className="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-[18px] font-['Outfit',sans-serif] text-[15px] font-bold text-white"
+                      className="relative inline-flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-full font-['Outfit',sans-serif] text-[15px] font-bold text-white ring-1 ring-white/20"
                       style={{ background: t.avaBg }}
                     >
-                      {t.initial}
+                      {t.images ? (
+                        <img
+                          src={t.images}
+                          alt={t.author.replace("— ", "")}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        t.id
+                      )}
                     </span>
                     <div className="text-[13px] leading-none tracking-[1.6px] text-[#ffb36b]">
                       ★★★★★
@@ -1846,4 +1881,4 @@ export default function Hero() {
       </div>
     </div>
   );
-} 
+}
