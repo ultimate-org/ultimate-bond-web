@@ -90,7 +90,7 @@
 // //         </div>
 // //       </section>
 
-      
+
 // //     </>
 // //   );
 // // }
@@ -253,6 +253,438 @@
 // }
 
 
+//BEFORE
+
+// "use client";
+
+// /**
+//  * FeatureCarousel — "Everything a family needs to thrive."
+//  *
+//  * CLIENT COMPONENT — required: 3D coverflow with pointer-drag, autoplay,
+//  * keyboard nav, and dot navigation. All need browser events + state.
+//  *
+//  * Icons: @phosphor-icons/react  →  npm i @phosphor-icons/react
+//  * Named imports tree-shake, so only these 16 glyphs ship (much lighter than
+//  * the CDN icon-font the original HTML used).
+//  *
+//  * Fonts: Outfit (display) + Poppins (body) must be loaded globally.
+//  */
+
+// import { useCallback, useEffect, useRef, useState } from "react";
+// import type { Icon } from "@phosphor-icons/react";
+// import {
+//   FlagPennant,
+//   PuzzlePiece,
+//   ChatsCircle,
+//   MagnifyingGlass,
+//   Headphones,
+//   Star,
+//   Trophy,
+//   GraduationCap,
+//   Barbell,
+//   BookOpen,
+//   Lightbulb,
+//   HandsPraying,
+//   FolderOpen,
+//   PencilSimple,
+//   GameController,
+//   Broadcast,
+// } from "@phosphor-icons/react";
+
+// type Feature = {
+//   Icon: Icon;
+//   name: string;
+//   desc: string;
+//   builds: string;
+// };
+
+// const FEATURES: Feature[] = [
+//   { Icon: FlagPennant, name: "Milestone Tracking", desc: "A cosmic journey through 20+ tiers — tools unlock as your family advances.", builds: "Discipline & shared purpose" },
+//   { Icon: PuzzlePiece, name: "Life Skills Activities", desc: "1500+ psychologist-designed offline activities for EQ, AQ, CQ and SQ.", builds: "Critical thinking & EQ" },
+//   { Icon: ChatsCircle, name: "WonderChat", desc: "Age-smart prompts for meaningful five to ten minute parent-child talks.", builds: "Reflection & trust" },
+//   { Icon: MagnifyingGlass, name: "Know Your Child", desc: "Decodes behaviour with science-backed explanations so you respond, not react.", builds: "Awareness & less conflict" },
+//   { Icon: Headphones, name: "Audio Stories", desc: "1000+ value-based stories with a Socratic question at the end of each.", builds: "Imagination & empathy" },
+//   { Icon: Star, name: "StrengthFinder", desc: "A psychometric read to identify your child's natural strengths.", builds: "Self-awareness & direction" },
+//   { Icon: Trophy, name: "Challenges", desc: "Guided parent-child challenges for discipline, habit-building and grit.", builds: "Self-regulation & resilience" },
+//   { Icon: GraduationCap, name: "Virtues Workshop", desc: "A weekly focus on one parenting quality, with small daily challenges.", builds: "Caregiver growth" },
+//   { Icon: Barbell, name: "Habit-Up", desc: "Daily fitness, mental-health and household-responsibility routines.", builds: "Health & discipline" },
+//   { Icon: BookOpen, name: "Read-O-Meter", desc: "Tracks daily reading minutes and rewards consistent habits.", builds: "Language & communication" },
+//   { Icon: Lightbulb, name: "Case Studies", desc: "Harvard-inspired real-world scenarios for everyday problem-solving.", builds: "Decision-making & ethics" },
+//   { Icon: HandsPraying, name: "Shlok and Mudra", desc: "Indian wisdom brought to life through shlok audio and mudras.", builds: "Cultural identity & focus" },
+//   { Icon: FolderOpen, name: "Portfolio", desc: "A living record of achievements across sport, academics and arts.", builds: "Pride & accountability" },
+//   { Icon: PencilSimple, name: "Create Task", desc: "Build custom activities tailored to your child and family context.", builds: "Personalisation & ownership" },
+//   { Icon: GameController, name: "Points and Rewards", desc: "Gamified recognition that links real effort to earned rewards.", builds: "Motivation & consistency" },
+//   { Icon: Broadcast, name: "Parenting Pulse", desc: "A daily feed of age-matched signals and one action to take today.", builds: "Timely & actionable" },
+// ];
+
+// const N = FEATURES.length;
+// const DEPTH = 240;
+// const AUTOPLAY_MS = 3800;
+
+// /**
+//  * Card + spacing metrics, derived from viewport width.
+//  * SPACING must scale with the card, otherwise neighbours fly off-screen on
+//  * phones and bunch up on wide monitors. Recomputed on every resize.
+//  */
+// function getMetrics(w: number) {
+//   if (w <= 480) return { card: 260, spacing: 172, depth: 150, height: 420 };
+//   if (w <= 640) return { card: 292, spacing: 196, depth: 180, height: 452 };
+//   if (w <= 900) return { card: 310, spacing: 220, depth: 210, height: 462 };
+//   return { card: 330, spacing: 244, depth: DEPTH, height: 472 };
+// }
+
+// const pad = (n: number) => (n < 10 ? "0" : "") + n;
+
+// export default function FeatureCarousel() {
+//   const carRef = useRef<HTMLDivElement | null>(null);
+//   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+//   // `pos` is a float during drag, snapped to int on release. Kept in a ref so
+//   // the rAF/pointer handlers don't re-render on every move.
+//   const posRef = useRef(0);
+//   const [active, setActive] = useState(0);
+
+//   // Live layout metrics — recomputed on resize so drag + placement stay correct
+//   const metricsRef = useRef(getMetrics(1280));
+//   const [metrics, setMetrics] = useState(() => getMetrics(1280));
+
+//   const downRef = useRef(false);
+//   const movedRef = useRef(false);
+//   const startXRef = useRef(0);
+//   const startPosRef = useRef(0);
+//   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+//   const reduceRef = useRef(false);
+
+//   const idx = useCallback(() => {
+//     const p = posRef.current;
+//     return ((Math.round(p) % N) + N) % N;
+//   }, []);
+
+//   /** Position every card in 3D space for a given (possibly fractional) pos. */
+//   const place = useCallback((p: number, withTrans: boolean) => {
+//     const { spacing, depth } = metricsRef.current;
+//     for (let i = 0; i < N; i++) {
+//       const el = cardRefs.current[i];
+//       if (!el) continue;
+
+//       let off = i - p;
+//       if (off > N / 2) off -= N;
+//       if (off < -N / 2) off += N;
+//       const abs = Math.abs(off);
+
+//       el.style.transition = withTrans ? "" : "none";
+
+//       // Far-off cards: park them out of sight, skip the math
+//       if (abs > 3.15) {
+//         el.style.opacity = "0";
+//         el.style.pointerEvents = "none";
+//         el.style.transform = `translate3d(${off * 150}px,0,-1050px) scale(.5)`;
+//         el.classList.remove("is-active");
+//         continue;
+//       }
+
+//       el.style.pointerEvents = "auto";
+//       const x = off * spacing;
+//       const z = -abs * depth;
+//       const rot = Math.max(-44, Math.min(44, off * -26));
+//       const scale = Math.max(0.56, 1 - abs * 0.15);
+//       const op = Math.max(0, 1 - abs * 0.4);
+
+//       el.style.opacity = op.toFixed(3);
+//       el.style.zIndex = String(120 - Math.round(abs * 10));
+//       el.style.transform = `translate3d(${x.toFixed(1)}px,0,${z.toFixed(1)}px) rotateY(${rot.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
+//       el.classList.toggle("is-active", abs < 0.5);
+//     }
+//   }, []);
+
+//   const sync = useCallback(() => setActive(idx()), [idx]);
+
+//   const stop = useCallback(() => {
+//     if (timerRef.current) {
+//       clearInterval(timerRef.current);
+//       timerRef.current = null;
+//     }
+//   }, []);
+
+//   const step = useCallback(
+//     (d: number) => {
+//       posRef.current = Math.round(posRef.current) + d;
+//       place(posRef.current, true);
+//       sync();
+//     },
+//     [place, sync]
+//   );
+
+//   const restart = useCallback(() => {
+//     if (reduceRef.current) return;
+//     stop();
+//     timerRef.current = setInterval(() => step(1), AUTOPLAY_MS);
+//   }, [stop, step]);
+
+//   /** Jump to a specific index by the shortest path around the loop. */
+//   const go = useCallback(
+//     (i: number) => {
+//       const cur = idx();
+//       let off = i - cur;
+//       if (off > N / 2) off -= N;
+//       if (off < -N / 2) off += N;
+//       posRef.current = Math.round(posRef.current) + off;
+//       place(posRef.current, true);
+//       sync();
+//       restart();
+//     },
+//     [idx, place, sync, restart]
+//   );
+
+//   // Init: honour reduced-motion, lay out cards, start autoplay
+//   useEffect(() => {
+//     reduceRef.current =
+//       typeof window !== "undefined" &&
+//       !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+//     const applyMetrics = () => {
+//       const m = getMetrics(window.innerWidth);
+//       metricsRef.current = m;
+//       setMetrics(m);
+//       place(posRef.current, false); // re-lay out without animating
+//     };
+
+//     applyMetrics();
+//     sync();
+//     restart();
+
+//     window.addEventListener("resize", applyMetrics);
+//     return () => {
+//       window.removeEventListener("resize", applyMetrics);
+//       stop();
+//     };
+//   }, [place, sync, restart, stop]);
+
+//   // Keyboard nav
+//   useEffect(() => {
+//     const onKey = (e: KeyboardEvent) => {
+//       if (e.key === "ArrowRight") {
+//         step(1);
+//         restart();
+//       } else if (e.key === "ArrowLeft") {
+//         step(-1);
+//         restart();
+//       }
+//     };
+//     window.addEventListener("keydown", onKey);
+//     return () => window.removeEventListener("keydown", onKey);
+//   }, [step, restart]);
+
+//   // ── Pointer drag ──
+//   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+//     downRef.current = true;
+//     movedRef.current = false;
+//     startXRef.current = e.clientX;
+//     startPosRef.current = posRef.current;
+//     stop();
+//     carRef.current?.classList.add("grabbing");
+//     try {
+//       carRef.current?.setPointerCapture(e.pointerId);
+//     } catch {
+//       /* no-op */
+//     }
+//   };
+
+//   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+//     if (!downRef.current) return;
+//     const dx = e.clientX - startXRef.current;
+//     if (Math.abs(dx) > 4) movedRef.current = true;
+//     posRef.current = startPosRef.current - dx / metricsRef.current.spacing;
+//     place(posRef.current, false); // no transition while dragging = 1:1 feel
+//     sync();
+//   };
+
+//   const release = () => {
+//     if (!downRef.current) return;
+//     downRef.current = false;
+//     carRef.current?.classList.remove("grabbing");
+//     posRef.current = Math.round(posRef.current); // snap
+//     place(posRef.current, true);
+//     sync();
+//     restart();
+//     setTimeout(() => {
+//       movedRef.current = false;
+//     }, 0);
+//   };
+
+//   return (
+//     <section
+//       id="features"
+//       className="relative w-full bg-[#050507] py-[clamp(64px,8vw,120px)] font-['Poppins',sans-serif] text-[#C3C2CE] antialiased"
+//     >
+//       <div className="relative z-[1] mx-auto w-full max-w-[1240px] px-8 max-[640px]:px-4">
+//         {/* Section head */}
+//         <div className="mx-auto mb-[clamp(40px,5vw,72px)] flex max-w-[820px] flex-col items-center gap-5 text-center">
+//           <span className="inline-flex h-[34px] items-center gap-[9px] rounded-full border border-[rgba(255,154,64,0.28)] bg-[linear-gradient(180deg,rgba(255,154,64,0.05)_0%,rgba(255,122,24,0.02)_100%)] px-[18px] font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[0.18em] text-[#FFB36B] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+//             <span className="h-[7px] w-[7px] rounded-full bg-[#FF9A40] shadow-[0_0_8px_#FF9A40]" />
+//             The ecosystem
+//           </span>
+
+//           <h2 className="m-0 font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.06] tracking-[-0.02em] text-white [text-wrap:balance]">
+//             Everything a family needs{" "}
+//             <span className="bg-[linear-gradient(100deg,#FF7A18_26%,#FF4D8D_64%)] bg-clip-text text-transparent">
+//               to thrive.
+//             </span>
+//           </h2>
+
+//           <p className="mx-auto max-w-[62ch] text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8B8A98] [text-wrap:pretty]">
+//             Not a single tool, a complete daily family operating system. Every
+//             feature serves the whole family. No feature works in isolation, grab
+//             anywhere and glide.
+//           </p>
+//         </div>
+
+//         {/* Carousel stage */}
+//         <div
+//           ref={carRef}
+//           style={{ height: metrics.height, perspective: metrics.card * 5.15 }}
+//           className="car relative mx-auto w-full max-w-[1120px] cursor-grab select-none [touch-action:pan-y]"
+//           aria-roledescription="carousel"
+//           onPointerDown={onPointerDown}
+//           onPointerMove={onPointerMove}
+//           onPointerUp={release}
+//           onPointerCancel={release}
+//           onLostPointerCapture={release}
+//           onPointerEnter={stop}
+//           onPointerLeave={() => {
+//             if (!downRef.current) restart();
+//           }}
+//         >
+//           <div className="absolute inset-0 [transform-style:preserve-3d]">
+//             {FEATURES.map((f, i) => {
+//               const Ico = f.Icon;
+//               return (
+//                 <div
+//                   key={f.name}
+//                   ref={(el) => {
+//                     cardRefs.current[i] = el;
+//                   }}
+//                   onClick={() => {
+//                     if (!movedRef.current) go(i);
+//                   }}
+//                   style={{
+//                     width: metrics.card,
+//                     height: metrics.height - 72,
+//                     marginLeft: -metrics.card / 2,
+//                     marginTop: -(metrics.height - 72) / 2,
+//                   }}
+//                   className="card absolute left-1/2 top-1/2 flex flex-col gap-5 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.065)_0%,rgba(255,255,255,0.022)_100%)] p-[32px_30px_30px] backdrop-blur-[22px] backdrop-saturate-[140%] max-[640px]:gap-4 max-[640px]:p-[24px_20px]"
+//                 >
+//                   {/* Icon box — gradient ring + gradient glyph */}
+//                   <div className="c-ico relative flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[15px] bg-white/[0.04] sm:h-[60px] sm:w-[60px] sm:rounded-[17px]">
+//                     <Ico size={28} weight="duotone" className="relative z-[1]" />
+//                   </div>
+
+//                   <h3 className="m-0 font-['Outfit',sans-serif] text-[clamp(20px,4.5vw,25px)] font-bold leading-[1.15] tracking-[-0.01em] text-white">
+//                     {f.name}
+//                   </h3>
+//                   <p className="m-0 text-[clamp(13px,3.4vw,15px)] font-normal leading-[1.55] text-[#8B8A98]">
+//                     {f.desc}
+//                   </p>
+
+//                   <div className="mt-auto flex flex-wrap items-center gap-x-[9px] gap-y-1 border-t border-white/[0.06] pt-[18px]">
+//                     <span className="h-2 w-2 flex-none rounded-full bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)] shadow-[0_0_8px_rgba(255,122,24,.5)]" />
+//                     <span className="font-['Outfit',sans-serif] text-[10.5px] font-semibold uppercase tracking-[.12em] text-[#5C5B68]">
+//                       Builds
+//                     </span>
+//                     <span className="text-[12.5px] font-medium tracking-[.01em] text-[#C3C2CE]">
+//                       {f.builds}
+//                     </span>
+//                   </div>
+//                 </div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         {/* Counter */}
+//         <div className="mt-[clamp(24px,3vw,40px)] text-center font-['Outfit',sans-serif] text-[14px] font-bold tracking-[0.02em] text-[#8B8A98]">
+//           <b className="text-[#FFB36B]">{pad(active + 1)}</b> / {N} ·{" "}
+//           <span>{FEATURES[active].name}</span>
+//         </div>
+
+//         {/* Dots */}
+//         <div className="mx-auto mt-4 flex max-w-[440px] flex-wrap items-center justify-center gap-2">
+//           {FEATURES.map((f, i) => (
+//             <button
+//               key={f.name}
+//               aria-label={`Go to feature ${i + 1}`}
+//               aria-current={i === active}
+//               onClick={() => go(i)}
+//               className={`car-dot h-2 cursor-pointer rounded-full border-0 p-0 transition-all duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+//                 i === active
+//                   ? "w-[26px] rounded-[5px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)]"
+//                   : "w-2 bg-white/[0.18] hover:bg-white/40"
+//               }`}
+//             />
+//           ))}
+//         </div>
+//       </div>
+
+//       <style jsx>{`
+//         .car.grabbing {
+//           cursor: grabbing;
+//         }
+
+//         /* Card: shadows + the transition curve (multi-layer inset shadows and
+//            the 5-property transition are unwieldy as Tailwind arbitrary values) */
+//         .card {
+//           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+//             inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 26px 60px rgba(0, 0, 0, 0.55);
+//           transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+//             opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+//             box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+//             border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+//             background 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+//           will-change: transform, opacity;
+//           backface-visibility: hidden;
+//           -webkit-backface-visibility: hidden;
+//         }
+//         .card.is-active {
+//           background: linear-gradient(
+//             180deg,
+//             rgba(255, 255, 255, 0.1) 0%,
+//             rgba(255, 255, 255, 0.035) 100%
+//           );
+//           border-color: rgba(255, 255, 255, 0.18);
+//           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18),
+//             inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 30px 74px rgba(0, 0, 0, 0.6),
+//             0 0 44px rgba(255, 122, 24, 0.08);
+//         }
+
+//         /* Icon box gradient ring (mask-composite) + gradient-filled glyph */
+//         .c-ico::before {
+//           content: "";
+//           position: absolute;
+//           inset: 0;
+//           border-radius: inherit;
+//           padding: 2px;
+//           background: linear-gradient(
+//             145deg,
+//             #ffb13d 0%,
+//             #ff7a18 34%,
+//             #ff4d8d 70%,
+//             #a24bff 100%
+//           );
+//           -webkit-mask: linear-gradient(#000 0 0) content-box,
+//             linear-gradient(#000 0 0);
+//           -webkit-mask-composite: xor;
+//           mask-composite: exclude;
+//           pointer-events: none;
+//         }
+//         /* Tint the Phosphor glyph with the brand gradient */
+//         .c-ico :global(svg) {
+//           color: #ff9a40;
+//         }
+//       `}</style>
+//     </section>
+//   );
+// }
 
 "use client";
 
@@ -261,6 +693,11 @@
  *
  * CLIENT COMPONENT — required: 3D coverflow with pointer-drag, autoplay,
  * keyboard nav, and dot navigation. All need browser events + state.
+ *
+ * Motion model: stepped, not drifting. Every AUTOPLAY_MS the carousel advances
+ * exactly one card and comes to rest; the CSS transition on .card animates the
+ * move. `pos` is an unbounded integer, so index 15 -> 16 wraps to 0 and the
+ * loop continues forever in both directions.
  *
  * Icons: @phosphor-icons/react  →  npm i @phosphor-icons/react
  * Named imports tree-shake, so only these 16 glyphs ship (much lighter than
@@ -318,7 +755,9 @@ const FEATURES: Feature[] = [
 
 const N = FEATURES.length;
 const DEPTH = 240;
-const AUTOPLAY_MS = 3800;
+
+/** Pause between steps, in ms. One card per tick. */
+const AUTOPLAY_MS = 5000;
 
 /**
  * Card + spacing metrics, derived from viewport width.
@@ -338,8 +777,9 @@ export default function FeatureCarousel() {
   const carRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // `pos` is a float during drag, snapped to int on release. Kept in a ref so
-  // the rAF/pointer handlers don't re-render on every move.
+  // `pos` is a float during drag, snapped to int on release. Unbounded — it
+  // just keeps counting up, and the offset wrap in place() turns that into an
+  // endless loop (…15 -> 16 lands on index 0 again).
   const posRef = useRef(0);
   const [active, setActive] = useState(0);
 
@@ -366,6 +806,8 @@ export default function FeatureCarousel() {
       const el = cardRefs.current[i];
       if (!el) continue;
 
+      // Shortest signed distance around the ring — this is what makes the
+      // carousel infinite: card 0 is "one step right" of card 15, not 15 back.
       let off = i - p;
       if (off > N / 2) off -= N;
       if (off < -N / 2) off += N;
@@ -405,6 +847,7 @@ export default function FeatureCarousel() {
     }
   }, []);
 
+  /** Advance d whole cards and come to rest. */
   const step = useCallback(
     (d: number) => {
       posRef.current = Math.round(posRef.current) + d;
@@ -414,11 +857,16 @@ export default function FeatureCarousel() {
     [place, sync]
   );
 
+  // step() is referenced by the interval, but restart() must not be rebuilt
+  // every time step changes — a ref keeps the timer stable.
+  const stepRef = useRef(step);
+  stepRef.current = step;
+
   const restart = useCallback(() => {
     if (reduceRef.current) return;
     stop();
-    timerRef.current = setInterval(() => step(1), AUTOPLAY_MS);
-  }, [stop, step]);
+    timerRef.current = setInterval(() => stepRef.current(1), AUTOPLAY_MS);
+  }, [stop]);
 
   /** Jump to a specific index by the shortest path around the loop. */
   const go = useCallback(
@@ -430,16 +878,24 @@ export default function FeatureCarousel() {
       posRef.current = Math.round(posRef.current) + off;
       place(posRef.current, true);
       sync();
-      restart();
+      restart(); // reset the 5s clock so the click gets its full dwell
     },
     [idx, place, sync, restart]
   );
 
   // Init: honour reduced-motion, lay out cards, start autoplay
   useEffect(() => {
-    reduceRef.current =
-      typeof window !== "undefined" &&
-      !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const mq =
+      typeof window !== "undefined" && window.matchMedia
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null;
+    reduceRef.current = !!mq?.matches;
+    const onMq = (e: MediaQueryListEvent) => {
+      reduceRef.current = e.matches;
+      if (e.matches) stop();
+      else restart();
+    };
+    mq?.addEventListener?.("change", onMq);
 
     const applyMetrics = () => {
       const m = getMetrics(window.innerWidth);
@@ -452,9 +908,20 @@ export default function FeatureCarousel() {
     sync();
     restart();
 
+    // Don't tick while the tab is hidden — otherwise the carousel silently
+    // races through several cards and jumps on return.
+    const onVis = () => {
+      if (document.hidden) stop();
+      else restart();
+    };
+
     window.addEventListener("resize", applyMetrics);
+    document.addEventListener("visibilitychange", onVis);
+
     return () => {
       window.removeEventListener("resize", applyMetrics);
+      document.removeEventListener("visibilitychange", onVis);
+      mq?.removeEventListener?.("change", onMq);
       stop();
     };
   }, [place, sync, restart, stop]);
@@ -564,6 +1031,7 @@ export default function FeatureCarousel() {
                     cardRefs.current[i] = el;
                   }}
                   onClick={() => {
+                    // A drag that ended on this card is not a click.
                     if (!movedRef.current) go(i);
                   }}
                   style={{
@@ -572,7 +1040,8 @@ export default function FeatureCarousel() {
                     marginLeft: -metrics.card / 2,
                     marginTop: -(metrics.height - 72) / 2,
                   }}
-                  className="card absolute left-1/2 top-1/2 flex flex-col gap-5 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.065)_0%,rgba(255,255,255,0.022)_100%)] p-[32px_30px_30px] backdrop-blur-[22px] backdrop-saturate-[140%] max-[640px]:gap-4 max-[640px]:p-[24px_20px]"
+                  className={`card absolute left-1/2 top-1/2 flex flex-col gap-5 rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.065)_0%,rgba(255,255,255,0.022)_100%)] p-[32px_30px_30px] backdrop-blur-[22px] backdrop-saturate-[140%] max-[640px]:gap-4 max-[640px]:p-[24px_20px] ${i === active ? "cursor-default" : "cursor-pointer"
+                    }`}
                 >
                   {/* Icon box — gradient ring + gradient glyph */}
                   <div className="c-ico relative flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[15px] bg-white/[0.04] sm:h-[60px] sm:w-[60px] sm:rounded-[17px]">
@@ -615,11 +1084,10 @@ export default function FeatureCarousel() {
               aria-label={`Go to feature ${i + 1}`}
               aria-current={i === active}
               onClick={() => go(i)}
-              className={`car-dot h-2 cursor-pointer rounded-full border-0 p-0 transition-all duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                i === active
-                  ? "w-[26px] rounded-[5px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)]"
-                  : "w-2 bg-white/[0.18] hover:bg-white/40"
-              }`}
+              className={`car-dot h-2 cursor-pointer rounded-full border-0 p-0 transition-all duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${i === active
+                ? "w-[26px] rounded-[5px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)]"
+                : "w-2 bg-white/[0.18] hover:bg-white/40"
+                }`}
             />
           ))}
         </div>
@@ -631,7 +1099,9 @@ export default function FeatureCarousel() {
         }
 
         /* Card: shadows + the transition curve (multi-layer inset shadows and
-           the 5-property transition are unwieldy as Tailwind arbitrary values) */
+           the 5-property transition are unwieldy as Tailwind arbitrary values).
+           transform/opacity ARE transitioned here — the carousel steps between
+           discrete resting positions, so CSS animates each 0.6s move. */
         .card {
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
             inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 26px 60px rgba(0, 0, 0, 0.55);

@@ -646,7 +646,7 @@ export default function Navbar() {
     isHome || pathname === "/readometer" || pathname === "/wordquest";
 
   return (
-    <header className="relative z-[50] w-full flex-none bg-[#050507]">
+    <header className="relative top-0 left-0 right-0 z-[50] w-full flex-none">
       <div className="mx-auto grid w-full max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-2 sm:gap-8 sm:px-7 sm:py-2.5 lg:grid-cols-[1fr_auto_1fr] lg:px-[clamp(20px,4vw,72px)] lg:py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center no-underline">
@@ -683,9 +683,8 @@ export default function Navbar() {
                 Parenting Guide
                 <ChevronDown
                   size={13}
-                  className={`transition-transform duration-200 ${
-                    pgOpen ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform duration-200 ${pgOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -699,11 +698,10 @@ export default function Navbar() {
                         return (
                           <div
                             key={cat.id}
-                            className={`flex cursor-pointer items-center justify-between px-4 py-2.5 font-['Poppins',sans-serif] text-[13px] font-medium transition-all duration-150 ${
-                              active
-                                ? "border-l-[3px] border-[#ff7a18] bg-[#fff6ef] text-[#ff7a18]"
-                                : "border-l-[3px] border-transparent text-[#374151]"
-                            }`}
+                            className={`flex cursor-pointer items-center justify-between px-4 py-2.5 font-['Poppins',sans-serif] text-[13px] font-medium transition-all duration-150 ${active
+                              ? "border-l-[3px] border-[#ff7a18] bg-[#fff6ef] text-[#ff7a18]"
+                              : "border-l-[3px] border-transparent text-[#374151]"
+                              }`}
                             onMouseEnter={() => setPgHovered(cat.id)}
                             onClick={() => {
                               router.push(`/parenting-guide?artId=${cat.id}`);
@@ -758,9 +756,8 @@ export default function Navbar() {
                 Parenting Corner
                 <ChevronDown
                   size={13}
-                  className={`transition-transform duration-200 ${
-                    pcOpen ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform duration-200 ${pcOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -772,11 +769,10 @@ export default function Navbar() {
                       return (
                         <div
                           key={opt.id}
-                          className={`cursor-pointer border-l-[3px] px-4 py-2.5 font-['Poppins',sans-serif] text-[13px] transition-all duration-100 ${
-                            isActive
-                              ? "border-[#ff7a18] bg-[#fff6ef] text-[#ff7a18]"
-                              : "border-transparent text-[#4b5563] hover:border-[#ff7a18] hover:bg-[#fff6ef] hover:text-[#ff7a18]"
-                          }`}
+                          className={`cursor-pointer border-l-[3px] px-4 py-2.5 font-['Poppins',sans-serif] text-[13px] transition-all duration-100 ${isActive
+                            ? "border-[#ff7a18] bg-[#fff6ef] text-[#ff7a18]"
+                            : "border-transparent text-[#4b5563] hover:border-[#ff7a18] hover:bg-[#fff6ef] hover:text-[#ff7a18]"
+                            }`}
                           onClick={() => {
                             router.push(opt.href);
                             setPcOpen(false);
@@ -862,9 +858,8 @@ export default function Navbar() {
                   >
                     <ChevronDown
                       size={16}
-                      className={`transition-transform duration-200 ${
-                        mobilePgOpen ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-200 ${mobilePgOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                 </div>
@@ -900,11 +895,10 @@ export default function Navbar() {
                             >
                               <ChevronDown
                                 size={14}
-                                className={`transition-transform duration-200 ${
-                                  mobileExpandedCat === cat.id
-                                    ? "rotate-180"
-                                    : ""
-                                }`}
+                                className={`transition-transform duration-200 ${mobileExpandedCat === cat.id
+                                  ? "rotate-180"
+                                  : ""
+                                  }`}
                               />
                             </button>
                           </div>
@@ -957,9 +951,8 @@ export default function Navbar() {
                   >
                     <ChevronDown
                       size={16}
-                      className={`transition-transform duration-200 ${
-                        mobilePcOpen ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform duration-200 ${mobilePcOpen ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                 </div>
@@ -982,11 +975,10 @@ export default function Navbar() {
                               router.push(opt.href);
                               setMenuOpen(false);
                             }}
-                            className={`block w-full cursor-pointer border-l-[3px] bg-transparent py-2 pl-3 text-left font-['Poppins',sans-serif] text-[13.5px] transition-all duration-150 ${
-                              isActive
-                                ? "border-[#ff7a18] bg-[rgba(255,122,24,0.05)] text-[#ff7a18]"
-                                : "border-transparent text-[#8b8a98] hover:border-[#ff7a18] hover:text-white"
-                            }`}
+                            className={`block w-full cursor-pointer border-l-[3px] bg-transparent py-2 pl-3 text-left font-['Poppins',sans-serif] text-[13.5px] transition-all duration-150 ${isActive
+                              ? "border-[#ff7a18] bg-[rgba(255,122,24,0.05)] text-[#ff7a18]"
+                              : "border-transparent text-[#8b8a98] hover:border-[#ff7a18] hover:text-white"
+                              }`}
                           >
                             {opt.label}
                           </button>
