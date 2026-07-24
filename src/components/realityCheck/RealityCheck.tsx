@@ -456,7 +456,7 @@ export default function RealityCheck() {
               <br />
               NO ONE
               <br />
-              HANDS YOU
+              GIVES YOU
             </div>
           </motion.div>
 

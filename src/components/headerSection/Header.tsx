@@ -646,7 +646,7 @@ export default function Navbar() {
     isHome || pathname === "/readometer" || pathname === "/wordquest";
 
   return (
-    <header className="relative top-0 left-0 right-0 z-[50] w-full flex-none">
+    <header className="absolute top-0 left-0 right-0 z-[50] w-full">
       <div className="mx-auto grid w-full max-w-[1600px] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-2 sm:gap-8 sm:px-7 sm:py-2.5 lg:grid-cols-[1fr_auto_1fr] lg:px-[clamp(20px,4vw,72px)] lg:py-3">
         {/* Logo */}
         <Link href="/" className="flex items-center no-underline">
