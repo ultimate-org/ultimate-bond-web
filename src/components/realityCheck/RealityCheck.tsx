@@ -349,13 +349,13 @@ export default function RealityCheck() {
 
     >
       {/* warm glow */}
-      <div
+      {/* <div
         className="pointer-events-none absolute left-1/2 top-[-7.5rem] z-0 h-[33.75rem] w-[min(106.25rem,90vw)] -translate-x-1/2"
         style={{
           background:
             "radial-gradient(ellipse 60% 60% at 50% 30%, rgba(255,138,43,0.08) 0%, rgba(255,138,43,0) 65%)",
         }}
-      />
+      /> */}
 
       <div className="relative z-[1] mx-auto max-w-[100rem]">
         {/* Pill — reusable orange-glow */}
@@ -451,7 +451,7 @@ export default function RealityCheck() {
                 VS
               </span>
             </div>
-            <div className="text-center font-['Poppins',sans-serif] text-[0.6875rem] font-normal uppercase leading-[1.25] tracking-[0.09375rem] text-[#8b8a98] sm:text-[0.75rem] sm:tracking-[0.125rem]">
+            <div className="text-center font-['Poppins',sans-serif] text-[0.6875rem] font-semibold uppercase leading-[1.25] tracking-[0.09375rem] text-[#8b8a98] sm:text-[1.0rem] sm:tracking-[0.125rem]">
               THE ONE
               <br />
               NO ONE
