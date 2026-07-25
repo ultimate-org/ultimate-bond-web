@@ -1,5 +1,3 @@
-
-
 // // // // // // // "use client";
 
 // // // // // // // import { useEffect, useRef, useState } from "react";
@@ -5203,7 +5201,7 @@ export default function Transformation() {
           <div className="card flex flex-col rounded-[36px] border border-white/10 bg-white/[0.04] p-[26px_36px_28px] backdrop-blur-[50px] max-[980px]:p-[28px_24px]">
             <Label>Bond Meter</Label>
 
-            <div className="relative mx-auto mt-3.5 aspect-square w-full max-w-[296px] max-[980px]:max-w-[320px]">
+            <div className="relative mx-auto mt-3.5 aspect-square w-full max-w-[360px] max-[980px]:max-w-[360px]">
               <svg className="h-full w-full -rotate-90" viewBox="0 0 240 240">
                 <defs>
                   <linearGradient id="uxGradAfter" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -5288,7 +5286,7 @@ export default function Transformation() {
               </span>
               <p className="qt font-['Poppins',sans-serif] text-[14.5px] font-normal leading-[1.6] text-[#8b8a98]">
                 <span className="swap-before">
-                  The dashed line marks where each thread of the bond started.{" "}
+                  The dashed line marks where thread of the bond started.{" "}
                   <b className="font-semibold text-white">Before, the words came out sharp</b> and
                   the moment closed before it ever opened.
                 </span>
@@ -5317,6 +5315,16 @@ export default function Transformation() {
             Start the transformation <IconArrowRight />
           </button>
         </div>
+      </div>
+
+      {/* Branch illustration */}
+      <div className="relative z-0 -mt-[clamp(0px,10vh,100px)] w-full pointer-events-none">
+        <img
+          src="/images/transformation/branch.webp"
+          alt="A character transforming from disconnected to thriving along a mossy branch"
+          className="block h-auto w-full"
+          loading="lazy"
+        />
       </div>
 
       <style jsx>{`

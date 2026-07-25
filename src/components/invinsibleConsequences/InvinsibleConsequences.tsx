@@ -345,13 +345,13 @@ export default function InvisibleConsequences() {
   return (
     <section className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white bg-gradient-to-b from-[#0a0a14] to-[#08080d]">
       {/* Warm top glow */}
-      <div
+      {/* <div
         className="pointer-events-none absolute left-1/2 top-[-7.5rem] z-0 h-[33.75rem] w-[min(106.25rem,90vw)] -translate-x-1/2"
         style={{
           background:
             "radial-gradient(ellipse 60% 60% at 50% 30%, rgba(255,138,43,0.08) 0%, rgba(255,138,43,0) 65%)",
         }}
-      />
+      /> */}
 
       <div className="relative z-[1] mx-auto max-w-[100rem]">
         {/* Top Header Pill */}
@@ -404,6 +404,18 @@ export default function InvisibleConsequences() {
         >
           What you see today as a small habit, your child will live tomorrow as a defining trait.
         </motion.p>
+
+        {/* Branch visual — full bleed, above the grid (mirrored) */}
+        <div className="pointer-events-none relative z-[1] mb-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+          <Image
+            src={`${IMG_BASE}/branch.webp`}
+            alt=""
+            width={1600}
+            height={10}
+            className="block h-auto w-full -scale-x-100 bg-transparent"
+            onError={(e) => { e.currentTarget.style.opacity = "0"; }}
+          />
+        </div>
 
         {/* 2x2 Grid */}
         <div className="mx-auto grid max-w-[80rem] grid-cols-1 gap-[clamp(1.125rem,1.6vw,1.75rem)] lg:grid-cols-2">
@@ -476,12 +488,14 @@ export default function InvisibleConsequences() {
       </div>
 
       {/* Branch visual — full bleed, flush to bottom */}
-      <div className="pointer-events-none relative z-[1] mt-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+
+      {/* Closing image — full bleed, flush to bottom */}
+      <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
         <Image
-          src={`${IMG_BASE}/branch.webp`}
+          src={`${IMG_BASE}/ic.webp`}
           alt=""
           width={1600}
-          height={300}
+          height={10}
           className="block h-auto w-full bg-transparent"
           onError={(e) => { e.currentTarget.style.opacity = "0"; }}
         />
