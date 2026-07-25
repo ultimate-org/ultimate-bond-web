@@ -5568,13 +5568,13 @@ function IconQuote() {
   );
 }
 
-function IconStar() {
-  return (
-    <svg viewBox="0 0 26 26" fill="none" stroke="#ff9a40" strokeWidth="1.8" className="h-[26px] w-[26px]">
-      <path d="M13 3l2.7 6.3L22 11l-5 4.2L18.5 22 13 18.5 7.5 22 9 15.2 4 11l6.3-1.7L13 3z" strokeLinejoin="round" />
-    </svg>
-  );
-}
+// function IconStar() {
+//   return (
+//     <svg viewBox="0 0 26 26" fill="none" stroke="#ff9a40" strokeWidth="1.8" className="h-[26px] w-[26px]">
+//       <path d="M13 3l2.7 6.3L22 11l-5 4.2L18.5 22 13 18.5 7.5 22 9 15.2 4 11l6.3-1.7L13 3z" strokeLinejoin="round" />
+//     </svg>
+//   );
+// }
 
 function IconArrowRight() {
   return (
