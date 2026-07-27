@@ -38,14 +38,10 @@ export default function Advisors() {
   return (
     <section
       id="advisors"
-      className="relative w-full overflow-hidden"
-      style={{
-        background: "#050507",
-        padding: "clamp(56px,7vw,110px) clamp(20px,4vw,48px)",
-      }}
+      className="relative w-full overflow-hidden bg-[#050507] px-5 sm:px-7 lg:px-8 py-[clamp(56px,7vw,110px)]"
     >
 
-      <div className={`${containerClass} relative z-10`}>
+      <div className="relative z-10 mx-auto max-w-[950px]">
 
         {/* ── Pill ── */}
         <div className="flex justify-center mb-[26px]">

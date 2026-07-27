@@ -2414,9 +2414,9 @@ export default function FeatureCarousel() {
   return (
     <section
       id="features"
-      className="relative w-full bg-[#050507] py-[clamp(64px,8vw,120px)] font-['Poppins',sans-serif] text-[#C3C2CE] antialiased"
+      className="relative w-full bg-[#050507] px-[clamp(20px,4vw,48px)] py-[clamp(64px,8vw,120px)] font-['Poppins',sans-serif] text-[#C3C2CE] antialiased"
     >
-      <div className="relative z-[1] mx-auto w-full max-w-[1240px] px-8 max-[640px]:px-4">
+      <div className="relative z-[1] mx-auto w-full max-w-[1240px]">
         {/* Section head */}
         <div className="mx-auto mb-[clamp(40px,5vw,72px)] flex max-w-[820px] flex-col items-center gap-5 text-center">
           <span className="inline-flex h-[34px] items-center gap-[9px] rounded-full border border-[rgba(255,154,64,0.28)] bg-[linear-gradient(180deg,rgba(255,154,64,0.05)_0%,rgba(255,122,24,0.02)_100%)] px-[18px] font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[0.18em] text-[#FFB36B] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">

@@ -66,9 +66,9 @@ export default function WhatsAppButton() {
       <Image
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         alt="WhatsApp"
-        width={60}
-        height={60}
-        className="h-[60px] w-[60px] rounded-full drop-shadow-xl"
+        width={40}
+        height={40}
+        className="h-[40px] w-[40px] rounded-full drop-shadow-xl"
       />
     </a>
   );

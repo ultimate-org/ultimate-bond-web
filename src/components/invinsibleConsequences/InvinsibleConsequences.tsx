@@ -343,7 +343,7 @@ function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.Rea
 
 export default function InvisibleConsequences() {
   return (
-    <section className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white bg-gradient-to-b from-[#0a0a14] to-[#08080d]">
+    <section className="relative w-full overflow-hidden px-5 sm:px-7 lg:px-8 pb-0 pt-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] antialiased text-white bg-gradient-to-b from-[#0a0a14] to-[#08080d]">
       {/* Warm top glow */}
       {/* <div
         className="pointer-events-none absolute left-1/2 top-[-7.5rem] z-0 h-[33.75rem] w-[min(106.25rem,90vw)] -translate-x-1/2"
@@ -353,7 +353,7 @@ export default function InvisibleConsequences() {
         }}
       /> */}
 
-      <div className="relative z-[1] mx-auto max-w-[100rem]">
+      <div className="relative z-[1] mx-auto max-w-[950px]">
         {/* Top Header Pill */}
         <motion.div
           custom={0}
@@ -406,7 +406,7 @@ export default function InvisibleConsequences() {
         </motion.p>
 
         {/* Branch visual — full bleed, above the grid (mirrored) */}
-        <div className="pointer-events-none relative z-[1] mb-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+        <div className="pointer-events-none relative z-[1] mb-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(20px,4vw,48px)] leading-none">
           <Image
             src={`${IMG_BASE}/branch.webp`}
             alt=""
@@ -418,7 +418,7 @@ export default function InvisibleConsequences() {
         </div>
 
         {/* 2x2 Grid */}
-        <div className="mx-auto grid max-w-[80rem] grid-cols-1 gap-[clamp(1.125rem,1.6vw,1.75rem)] lg:grid-cols-2">
+        <div className="mx-auto grid max-w-full grid-cols-1 gap-[clamp(1.125rem,1.6vw,1.75rem)] lg:grid-cols-2">
           {CARDS.map((card, i) => (
             <motion.article
               key={i}
@@ -490,7 +490,7 @@ export default function InvisibleConsequences() {
       {/* Branch visual — full bleed, flush to bottom */}
 
       {/* Closing image — full bleed, flush to bottom */}
-      <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+      <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(20px,4vw,48px)] leading-none">
         <Image
           src={`${IMG_BASE}/ic.webp`}
           alt=""
