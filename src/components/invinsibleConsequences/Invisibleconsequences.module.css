@@ -1,0 +1,518 @@
+/* ═══════════════════════════════════════════════════════════
+   Invisible Consequences — scoped styles
+   Tokens live on .section (not :root) so the component is
+   self-contained and can be dropped anywhere on the page.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Animatable custom property for the rotating gloss stroke.
+   @property is global by design — custom property names are not
+   hashed by CSS Modules, so this registration works from here. */
+@property --gloss-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.section {
+    /* ── Type colors ── */
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2ce;
+    --text-muted: #8b8a98;
+    --body-grey: #c9cbd3;
+
+    /* Orange family */
+    --orange-glow: #ff9a40;
+    --orange-text: #ffb36b;
+    --orange-deep: #ff7a18;
+
+    /* Age-pill accents */
+    --blue-accent: #5ba8ff;
+    --red-accent: #e94a3f;
+
+    /* Headline gradient */
+    --headline-gradient: linear-gradient(95.82deg,
+            #ffb13d 0%,
+            #ff7a18 26%,
+            #ff4d8d 64%,
+            #a24bff 100%);
+
+    /* Background */
+    --bg-top: #0a0a14;
+    --bg-bottom: #08080d;
+    --warm-glow: rgba(255, 138, 43, 0.08);
+
+    /* ── Pill tokens — glass surface + orange gradient stroke, no outer glow ── */
+    --pog-bg: linear-gradient(180deg,
+            rgba(20, 20, 30, 0.55) 0%,
+            rgba(8, 8, 13, 0.55) 100%);
+    --pog-backdrop-blur: 18px;
+    --pog-border-width: 1px;
+    --pog-border-gradient: linear-gradient(135deg,
+            rgba(255, 220, 160, 0.92) 0%,
+            rgba(255, 180, 100, 0.6) 22%,
+            rgba(255, 122, 24, 0.85) 50%,
+            rgba(255, 180, 100, 0.6) 78%,
+            rgba(255, 220, 160, 0.92) 100%);
+    --pog-radius: 999px;
+    --pog-height: 36px;
+    --pog-padding: 0 18px;
+    --pog-gap: 10px;
+    --pog-shadow: inset 0 1px 0 rgba(255, 175, 100, 0.18);
+    --pog-text-color: var(--orange-text);
+    --pog-text-size: 12px;
+    --pog-text-weight: 600;
+    --pog-text-tracking: 2px;
+    --pog-text-family: 'Outfit', sans-serif;
+    --pog-dot-size: 8px;
+    --pog-dot-bg: var(--orange-glow);
+    --pog-dot-shadow: none;
+
+    /* ── Liquid-glass card tokens ──
+     The glass reads from the border + inset highlights only. The fill
+     stays transparent so backdrop-filter shows what's behind it. */
+    --lg-bg: transparent;
+    --lg-bg-hover: transparent;
+    --lg-border-color: rgba(255, 255, 255, 0.22);
+    --lg-border-hover: rgba(255, 255, 255, 0.45);
+    --lg-border-width: 1.5px;
+    --lg-radius: 29.073px;
+    --lg-blur: 50px;
+    --lg-saturate: 100%;
+    --lg-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+        0 18px 50px rgba(0, 0, 0, 0.3);
+    --lg-shadow-hover:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+        0 32px 80px rgba(0, 0, 0, 0.45),
+        0 0 60px rgba(255, 154, 64, 0.12);
+
+    --container-max: 1600px;
+    --side-pad: clamp(20px, 4vw, 72px);
+
+    position: relative;
+    width: 100%;
+    padding: clamp(60px, 8vh, 120px) var(--side-pad) 0;
+    overflow: hidden;
+    color: var(--text-primary);
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Warm ambient glow behind the header block */
+.section::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1700px, 90vw);
+    height: 540px;
+    background: radial-gradient(ellipse 60% 60% at 50% 30%,
+            var(--warm-glow) 0%,
+            rgba(255, 138, 43, 0) 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+/* ───── Eyebrow pill ───── */
+.pillWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: clamp(22px, 2.8vh, 36px);
+}
+
+.pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pog-gap);
+    height: var(--pog-height);
+    padding: var(--pog-padding);
+    border-radius: var(--pog-radius);
+    background: var(--pog-bg);
+    backdrop-filter: blur(var(--pog-backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--pog-backdrop-blur));
+    box-shadow: var(--pog-shadow);
+}
+
+/* Orange stroke as a masked ring so it never bleeds into the fill */
+.pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--pog-border-width);
+    background: var(--pog-border-gradient);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.pillDot {
+    width: var(--pog-dot-size);
+    height: var(--pog-dot-size);
+    border-radius: 50%;
+    background: var(--pog-dot-bg);
+    box-shadow: var(--pog-dot-shadow);
+    flex-shrink: 0;
+}
+
+.pillText {
+    font-family: var(--pog-text-family);
+    font-weight: var(--pog-text-weight);
+    font-size: var(--pog-text-size);
+    color: var(--pog-text-color);
+    letter-spacing: var(--pog-text-tracking);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ───── Headline + sub ───── */
+.heading {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.02;
+    color: var(--text-primary);
+    text-align: center;
+    letter-spacing: -1.2px;
+    margin: 0 auto clamp(18px, 2.4vh, 30px);
+    max-width: 920px;
+}
+
+.gradient {
+    background: var(--headline-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.sub {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: clamp(15px, 1.1vw, 20px);
+    line-height: 1.55;
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto clamp(56px, 7vh, 96px);
+}
+
+/* ───── 2×2 grid ───── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(18px, 1.6vw, 28px);
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* ───── Liquid-glass card ───── */
+.card {
+    position: relative;
+    border-radius: var(--lg-radius);
+    border: var(--lg-border-width) solid var(--lg-border-color);
+    background: var(--lg-bg);
+    backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturate));
+    -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(var(--lg-saturate));
+    box-shadow: var(--lg-shadow);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    min-height: 274px;
+    transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.5s ease,
+        background-color 0.5s ease,
+        box-shadow 0.5s ease;
+    will-change: transform;
+    --gloss-angle: 0deg;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: transparent;
+    background-color: var(--lg-bg-hover);
+    box-shadow: var(--lg-shadow-hover);
+}
+
+/* Rotating-gloss stroke: a conic ring sitting exactly on the border,
+   revealed on hover while the card interior stays untouched. */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--lg-border-width);
+    background: conic-gradient(from var(--gloss-angle),
+            var(--lg-border-color) 0deg,
+            rgba(255, 255, 255, 0.9) 60deg,
+            var(--lg-border-color) 130deg,
+            var(--lg-border-color) 230deg,
+            rgba(255, 255, 255, 0.9) 300deg,
+            var(--lg-border-color) 360deg);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: glossSpin 3s linear infinite;
+}
+
+@keyframes glossSpin {
+    to {
+        --gloss-angle: 360deg;
+    }
+}
+
+/* ───── Card halves ───── */
+.side {
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.agePill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    align-self: flex-start;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.agePill::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 7px currentColor;
+    flex-shrink: 0;
+}
+
+.blue {
+    background: rgba(91, 168, 255, 0.16);
+    border: 1px solid rgba(91, 168, 255, 0.55);
+    color: #8cc4ff;
+}
+
+.red {
+    background: rgba(233, 74, 63, 0.16);
+    border: 1px solid rgba(233, 74, 63, 0.55);
+    color: #ff8a80;
+}
+
+/* ───── Mascot ─────
+   Every frame shares the same box so all eight mascots read as
+   the same scale regardless of the artwork's own dimensions. */
+.mascotWrap {
+    position: relative;
+    flex: 1;
+    margin: 14px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
+
+.mascotFrame {
+    position: relative;
+    width: clamp(130px, 16vw, 170px);
+    height: clamp(130px, 16vw, 170px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.mascotFrame img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* ───── Card text ─────
+   Title is locked to two lines so single-line titles still occupy the
+   same height and the body copy stays aligned across all four cards. */
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.33;
+    letter-spacing: -0.2px;
+    color: #fff;
+    margin: 0 0 6px;
+    min-height: calc(17px * 1.33 * 2);
+    display: flex;
+    align-items: flex-end;
+    text-align: left;
+}
+
+.body {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 12.46px;
+    line-height: 18.07px;
+    color: var(--body-grey);
+    margin: 0;
+    text-align: left;
+}
+
+/* ───── Divider orb ───── */
+.divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+}
+
+.dividerOrb {
+    width: 44.422px;
+    height: 44.422px;
+    border-radius: 22.211px;
+    background: rgba(255, 138, 43, 0.08);
+    border: 1px solid rgba(255, 154, 64, 0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orange-text);
+}
+
+.dividerOrb svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    stroke-width: 2.2;
+}
+
+/* ───── Branch strip, flush to the viewport edges ───── */
+.branch {
+    position: relative;
+    margin: clamp(40px, 6vh, 100px) calc(-1 * var(--side-pad)) 0;
+    line-height: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.branch img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+}
+
+/* ───── Responsive ───── */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 48px 18px 0;
+    }
+
+    .heading {
+        font-size: 32px;
+        letter-spacing: -0.6px;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+
+    .pillWrap .pill {
+        --pog-height: 32px;
+        --pog-padding: 0 14px;
+        --pog-text-size: 11px;
+        --pog-text-tracking: 1.6px;
+        --pog-dot-size: 7px;
+        --pog-gap: 8px;
+    }
+
+    .card {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto 1fr;
+        min-height: auto;
+    }
+
+    .divider {
+        padding: 6px 0;
+    }
+
+    .dividerOrb {
+        transform: rotate(90deg);
+    }
+
+    .side {
+        padding: 18px;
+    }
+
+    .mascotFrame {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .card::before {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+}

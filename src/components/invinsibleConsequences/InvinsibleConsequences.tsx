@@ -261,321 +261,196 @@
 //     </section>
 //   );
 // }
-
-
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
+import type { ReactEventHandler } from "react";
+import styles from "./InvisibleConsequences.module.css";
 
-const HEADLINE_GRADIENT =
-  "linear-gradient(95.82deg, #ffb13d 0%, #ff7a18 26%, #ff4d8d 64%, #a24bff 100%)";
+/** One half of a card — the habit now, or the trait it becomes. */
+export interface ConsequenceFace {
+  age: number;
+  title: string;
+  body: string;
+  image: string;
+}
 
-const CARD_SHADOW =
-  "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.05), 0 18px 50px rgba(0,0,0,0.30)";
-const CARD_SHADOW_HOVER =
-  "inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.45), 0 0 60px rgba(255,154,64,0.12)";
+/** A before/after pair: the small sign today, the defining trait tomorrow. */
+export interface ConsequenceCard {
+  id: string;
+  before: ConsequenceFace;
+  after: ConsequenceFace;
+}
 
-type Side = { age: string; img: string; title: string; body: string };
-type Card = { left: Side; right: Side };
+export interface InvisibleConsequencesProps {
+  id?: string;
+  eyebrow?: string;
+  subheading?: string;
+  cards?: ConsequenceCard[];
+  /** Pass null to render the section without the bottom branch strip. */
+  branchImage?: string | null;
+  className?: string;
+}
 
-const CARDS: Card[] = [
+type SideVariant = "blue" | "red";
+
+/** All eight mascots plus the branch strip live in public/images/invinsibleconsequences. */
+const IMAGE_BASE = "/images/invinsibleconsequences";
+
+/* Swap copy or artwork here — the markup below never needs to change. */
+const DEFAULT_CARDS: ConsequenceCard[] = [
   {
-    left: { age: "AGE 7", img: "blueone", title: "Needs a screen to calm down", body: "Can't self-regulate without a device" },
-    right: { age: "AGE 15", img: "redone", title: "Can't handle discomfort", body: "Without his phone, falls apart" },
+    id: "self-regulation",
+    before: {
+      age: 7,
+      title: "Needs a screen to calm down",
+      body: "Can't self-regulate without a device",
+      image: `${IMAGE_BASE}/blueone.webp`,
+    },
+    after: {
+      age: 15,
+      title: "Can't handle discomfort",
+      body: "Without his phone, falls apart",
+      image: `${IMAGE_BASE}/redone.webp`,
+    },
   },
   {
-    left: { age: "AGE 8", img: "bluethree", title: 'Only answer is "fine"', body: "Closed off, no emotional vocabulary" },
-    right: { age: "AGE 17", img: "redtwo", title: "You find out about bullying", body: "3 months after it started" },
+    id: "emotional-vocabulary",
+    before: {
+      age: 8,
+      title: 'Only answer is "fine"',
+      body: "Closed off, no emotional vocabulary",
+      image: `${IMAGE_BASE}/bluethree.webp`,
+    },
+    after: {
+      age: 17,
+      title: "You find out about bullying",
+      body: "3 months after it started",
+      image: `${IMAGE_BASE}/redtwo.webp`,
+    },
   },
   {
-    left: { age: "AGE 7", img: "bluetwo", title: "Can't handle losing a game", body: "Low frustration tolerance" },
-    right: { age: "AGE 15", img: "redthree", title: "Can't handle rejection", body: "Or professional setbacks" },
+    id: "frustration-tolerance",
+    before: {
+      age: 7,
+      title: "Can't handle losing a game",
+      body: "Low frustration tolerance",
+      image: `${IMAGE_BASE}/bluetwo.webp`,
+    },
+    after: {
+      age: 15,
+      title: "Can't handle rejection",
+      body: "Or professional setbacks",
+      image: `${IMAGE_BASE}/redthree.webp`,
+    },
   },
   {
-    left: { age: "AGE 8", img: "bluefour", title: "Every choice made by parents", body: "No agency, no decision muscle" },
-    right: { age: "AGE 17", img: "redfour", title: "Can't pick a career", body: "College, or what to eat" },
+    id: "decision-making",
+    before: {
+      age: 8,
+      title: "Every choice made by parents",
+      body: "No agency, no decision muscle",
+      image: `${IMAGE_BASE}/bluefour.webp`,
+    },
+    after: {
+      age: 17,
+      title: "Can't pick a career",
+      body: "College, or what to eat",
+      image: `${IMAGE_BASE}/redfour.webp`,
+    },
   },
 ];
 
-const IMG_BASE = "/images/invinsibleconsequences";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: i * 0.1, ease: "easeOut" },
-  }),
+/* Artwork is decorative — if a file is missing, fade it out rather than
+   showing a broken-image icon inside the glass frame. */
+const hideOnError: ReactEventHandler<HTMLImageElement> = (event) => {
+  event.currentTarget.style.opacity = "0";
 };
 
-const cardIn = {
-  hidden: { opacity: 0, y: 36 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
-
-function Arrow() {
+function ArrowIcon() {
   return (
-    <svg viewBox="0 0 20 20" fill="none" className="block h-[1.125rem] w-[1.125rem]" style={{ strokeWidth: 2.2 }}>
-      <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path
+        d="M4 10h12M11 5l5 5-5 5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.ReactNode }) {
-  const styles =
-    tone === "blue"
-      ? "bg-[rgba(91,168,255,0.16)] border-[rgba(91,168,255,0.55)] text-[#8cc4ff]"
-      : "bg-[rgba(233,74,63,0.16)] border-[rgba(233,74,63,0.55)] text-[#ff8a80]";
+function CardSide({
+  variant,
+  age,
+  title,
+  body,
+  image,
+}: ConsequenceFace & { variant: SideVariant }) {
   return (
-    <span
-      className={`inline-flex h-[1.75rem] items-center justify-center gap-[7px] self-start rounded-full border px-3.5 font-['Poppins',sans-serif] text-[0.78125rem] font-bold uppercase tracking-[0.10625rem] [backdrop-filter:blur(0.75rem)_saturate(180%)] [-webkit-backdrop-filter:blur(0.75rem)_saturate(180%)] shadow-[inset_0_0.0625rem_0_rgba(255,255,255,0.25),inset_0_-0.0625rem_0_rgba(255,255,255,0.06)] ${styles}`}
-    >
-      <span className="h-[6px] w-[6px] rounded-full bg-current shadow-[0_0_7px_currentColor] flex-shrink-0" />
-      {children}
-    </span>
+    <div className={styles.side}>
+      <span className={`${styles.agePill} ${styles[variant]}`}>Age {age}</span>
+
+      <div className={styles.mascotWrap}>
+        <div className={styles.mascotFrame}>
+          <img src={image} alt="" onError={hideOnError} />
+        </div>
+      </div>
+
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.body}>{body}</p>
+    </div>
   );
 }
 
-export default function InvisibleConsequences() {
+export default function InvisibleConsequences({
+  id = "invisible-consequences",
+  eyebrow = "The Invisible Consequences",
+  subheading = "What you see today as a small habit, your child will live tomorrow as a defining trait.",
+  cards = DEFAULT_CARDS,
+  branchImage = `${IMAGE_BASE}/branch.webp`,
+  className = "",
+}: InvisibleConsequencesProps) {
   return (
-    <section className="relative w-full overflow-hidden px-5 sm:px-7 lg:px-8 pb-0 pt-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] antialiased text-white bg-gradient-to-b from-[#0a0a14] to-[#08080d]">
-      {/* Warm top glow */}
-      {/* <div
-        className="pointer-events-none absolute left-1/2 top-[-7.5rem] z-0 h-[33.75rem] w-[min(106.25rem,90vw)] -translate-x-1/2"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 60% at 50% 30%, rgba(255,138,43,0.08) 0%, rgba(255,138,43,0) 65%)",
-        }}
-      /> */}
-
-      <div className="relative z-[1] mx-auto max-w-[950px]">
-        {/* Top Header Pill */}
-        <motion.div
-          custom={0}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={fadeUp}
-          className="mb-[clamp(1.375rem,2.8vh,2.25rem)] flex justify-center"
-        >
-          <div className="pill-orange-glow relative inline-flex h-[36px] items-center gap-[10px] rounded-full px-[18px] [backdrop-filter:blur(18px)] [-webkit-backdrop-filter:blur(18px)] shadow-[inset_0_1px_0_rgba(255,175,100,0.18)]">
-            <span className="h-[8px] w-[8px] flex-shrink-0 rounded-full bg-[#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[2px] text-[#ffb36b] whitespace-nowrap">
-              The Invisible Consequences
-            </span>
+    <section id={id} className={`${styles.section} ${className}`}>
+      <div className={styles.inner}>
+        <div className={styles.pillWrap}>
+          <div className={styles.pill}>
+            <span className={styles.pillDot} />
+            <span className={styles.pillText}>{eyebrow}</span>
           </div>
-        </motion.div>
-
-        {/* Heading */}
-        <motion.h2
-          custom={1}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={fadeUp}
-          className="mx-auto mb-[clamp(1.125rem,2.4vh,1.875rem)] max-w-[57.5rem] text-center font-['Outfit',sans-serif] text-[clamp(2.125rem,4.4vw,3.75rem)] font-extrabold leading-[1.02] tracking-[-0.0375rem] text-white sm:tracking-[-0.075rem]"
-        >
-          Small Signs{" "}
-          <span className="bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
-            Today
-          </span>
-          .
-          <br />
-          Defining Traits{" "}
-          <span className="bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
-            Tomorrow
-          </span>
-          .
-        </motion.h2>
-
-        {/* Subtitle */}
-        <motion.p
-          custom={2}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={fadeUp}
-          className="mx-auto mb-[clamp(3.5rem,7vh,6rem)] max-w-[45rem] text-center text-[clamp(0.9375rem,1.1vw,1.25rem)] font-normal leading-[1.55] text-[#8b8a98]"
-        >
-          What you see today as a small habit, your child will live tomorrow as a defining trait.
-        </motion.p>
-
-        {/* Branch visual — full bleed, above the grid (mirrored) */}
-        <div className="pointer-events-none relative z-[1] mb-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(20px,4vw,48px)] leading-none">
-          <Image
-            src={`${IMG_BASE}/branch.webp`}
-            alt=""
-            width={1600}
-            height={10}
-            className="block h-auto w-full -scale-x-100 bg-transparent"
-            onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-          />
         </div>
 
-        {/* 2x2 Grid */}
-        <div className="mx-auto grid max-w-full grid-cols-1 gap-[clamp(1.125rem,1.6vw,1.75rem)] lg:grid-cols-2">
-          {CARDS.map((card, i) => (
-            <motion.article
-              key={i}
-              custom={i}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.25 }}
-              variants={cardIn}
-              className="ic-card group relative grid min-h-[17.125rem] grid-cols-1 grid-rows-[1fr_auto_1fr] items-stretch overflow-hidden rounded-[29.073px] border-[1.5px] border-white/22 bg-transparent backdrop-blur-[50px] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:-translate-y-1.5 lg:grid-cols-[1fr_auto_1fr] lg:grid-rows-1"
-              style={{ boxShadow: CARD_SHADOW }}
-            >
-              {/* LEFT Side (Blue) */}
-              <div className="relative flex flex-col p-6">
-                <AgePill tone="blue">{card.left.age}</AgePill>
-                <div className="relative my-3.5 flex min-h-[9.375rem] flex-1 items-center justify-center">
-                  <div className="flex h-[clamp(8.125rem,16vw,10.625rem)] w-[clamp(8.125rem,16vw,10.625rem)] items-center justify-center bg-transparent">
-                    <Image
-                      src={`${IMG_BASE}/${card.left.img}.webp`}
-                      alt=""
-                      width={170}
-                      height={170}
-                      className="pointer-events-none block h-auto max-h-full w-auto max-w-full object-contain"
-                      onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-                    />
-                  </div>
-                </div>
-                <h3 className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem] text-white">
-                  {card.left.title}
-                </h3>
-                <p className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem] text-[#c9cbd3]">
-                  {card.left.body}
-                </p>
-              </div>
+        <h2 className={styles.heading}>
+          Small Signs <span className={styles.gradient}>Today</span>.
+          <br />
+          Defining Traits <span className={styles.gradient}>Tomorrow</span>.
+        </h2>
 
-              {/* DIVIDER Orb */}
-              <div className="relative flex items-center justify-center px-1.5 py-1.5 lg:py-0">
-                <span className="flex h-[2.776rem] w-[2.776rem] rotate-90 items-center justify-center rounded-full border border-[rgba(255,154,64,0.28)] bg-[rgba(255,138,43,0.08)] text-[#ffb36b] backdrop-blur-[10px] shadow-[inset_0_1px_0_rgba(255,255,255,0.20),inset_0_-1px_0_rgba(255,255,255,0.05)] lg:rotate-0">
-                  <Arrow />
+        <p className={styles.sub}>{subheading}</p>
+
+        <div className={styles.grid}>
+          {cards.map((card) => (
+            <article key={card.id} className={styles.card}>
+              <CardSide variant="blue" {...card.before} />
+
+              <div className={styles.divider}>
+                <span className={styles.dividerOrb}>
+                  <ArrowIcon />
                 </span>
               </div>
 
-              {/* RIGHT Side (Red) */}
-              <div className="relative flex flex-col p-6">
-                <AgePill tone="red">{card.right.age}</AgePill>
-                <div className="relative my-3.5 flex min-h-[9.375rem] flex-1 items-center justify-center">
-                  <div className="flex h-[clamp(8.125rem,16vw,10.625rem)] w-[clamp(8.125rem,16vw,10.625rem)] items-center justify-center bg-transparent">
-                    <Image
-                      src={`${IMG_BASE}/${card.right.img}.webp`}
-                      alt=""
-                      width={170}
-                      height={170}
-                      className="pointer-events-none block h-auto max-h-full w-auto max-w-full object-contain"
-                      onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-                    />
-                  </div>
-                </div>
-                <h3 className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem] text-white">
-                  {card.right.title}
-                </h3>
-                <p className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem] text-[#c9cbd3]">
-                  {card.right.body}
-                </p>
-              </div>
-            </motion.article>
+              <CardSide variant="red" {...card.after} />
+            </article>
           ))}
         </div>
       </div>
 
-      {/* Branch visual — full bleed, flush to bottom */}
-
-      {/* Closing image — full bleed, flush to bottom */}
-      <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(20px,4vw,48px)] leading-none">
-        <Image
-          src={`${IMG_BASE}/ic.webp`}
-          alt=""
-          width={1600}
-          height={10}
-          className="block h-auto w-full bg-transparent"
-          onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-        />
-      </div>
-
-      {/* Component-scoped CSS animations and pseudo-element styles */}
-      <style jsx>{`
-        @property --gloss-angle {
-          syntax: '<angle>';
-          initial-value: 0deg;
-          inherits: false;
-        }
-
-        .pill-orange-glow {
-          background: linear-gradient(180deg, rgba(20, 20, 30, 0.55) 0%, rgba(8, 8, 13, 0.55) 100%);
-        }
-        .pill-orange-glow::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          padding: 1px;
-          background: linear-gradient(
-            135deg,
-            rgba(255, 220, 160, 0.92) 0%,
-            rgba(255, 180, 100, 0.60) 22%,
-            rgba(255, 122, 24, 0.85) 50%,
-            rgba(255, 180, 100, 0.60) 78%,
-            rgba(255, 220, 160, 0.92) 100%
-          );
-          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-
-        .ic-card:hover {
-          box-shadow: ${CARD_SHADOW_HOVER};
-          border-color: transparent;
-        }
-        .ic-card::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          padding: 1.5px;
-          background: conic-gradient(
-            from var(--gloss-angle),
-            rgba(255, 255, 255, 0.22) 0deg,
-            rgba(255, 255, 255, 0.90) 60deg,
-            rgba(255, 255, 255, 0.22) 130deg,
-            rgba(255, 255, 255, 0.22) 230deg,
-            rgba(255, 255, 255, 0.90) 300deg,
-            rgba(255, 255, 255, 0.22) 360deg
-          );
-          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          opacity: 0;
-          pointer-events: none;
-          z-index: 2;
-          transition: opacity 0.4s ease;
-        }
-        .ic-card:hover::before {
-          opacity: 1;
-          animation: ic-gloss-spin 3s linear infinite;
-        }
-
-        @keyframes ic-gloss-spin {
-          to {
-            --gloss-angle: 360deg;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .ic-card:hover::before {
-            animation: none;
-          }
-        }
-      `}</style>
+      {branchImage && (
+        <div className={styles.branch}>
+          <img src={branchImage} alt="" onError={hideOnError} />
+        </div>
+      )}
     </section>
   );
 }
