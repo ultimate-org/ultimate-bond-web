@@ -78,6 +78,8 @@ import MetaPixel from '@/components/MetaPixel';
 import Stars from "@/components/star/Star";
 import CookieConsent from '@/components/cookie/CookieConsent'
 import MsClarity from "@/components/microsoft-clairty";
+import Script from "next/script";
+import { ThemeProvider, themeInitScript } from "@/context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -354,7 +356,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         {/* ── Structured Data (JSON-LD) ── */}
         <script
@@ -362,17 +364,21 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-         <GoogleTagManager gtmId="GTM-MBMZ8FB4" />
-        <MsClarity />
-        <NextIntlClientProvider messages={messages}>
-          <Stars />
-          {children}
-          <Toaster />
-          <Footer />
-        </NextIntlClientProvider>
-        <MetaPixel />
-        <CookieConsent />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+        {/* Sets the theme class before hydration to avoid a light/dark flash */}
+        <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <ThemeProvider>
+          <GoogleTagManager gtmId="GTM-MBMZ8FB4" />
+          <MsClarity />
+          <NextIntlClientProvider messages={messages}>
+            <Stars />
+            {children}
+            <Toaster />
+            <Footer />
+          </NextIntlClientProvider>
+          <MetaPixel />
+          <CookieConsent />
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-8FN0J3Y8CC" />
     </html>

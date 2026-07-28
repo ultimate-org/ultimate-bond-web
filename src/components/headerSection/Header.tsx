@@ -526,6 +526,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 const CTA_GRADIENT =
   "linear-gradient(166deg, #ffae57 0%, #ff8a2e 40%, #fb6e11 100%)";
@@ -810,16 +811,20 @@ export default function Navbar() {
           >
             Get the App
           </button>
+          <ThemeToggle />
         </div>
 
-        {/* Mobile hamburger */}
-        <button
-          className="justify-self-end p-1 text-white lg:hidden"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Mobile controls: theme toggle + hamburger, grouped in a flex row so they sit side by side without overlapping */}
+        <div className="flex items-center justify-self-end gap-2.5 lg:hidden">
+          <ThemeToggle size="sm" />
+          <button
+            className="p-1 text-white"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
