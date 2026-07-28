@@ -88,12 +88,11 @@
         0 32px 80px rgba(0, 0, 0, 0.45),
         0 0 60px rgba(255, 154, 64, 0.12);
 
-    --container-max: 1600px;
-    --side-pad: clamp(20px, 4vw, 72px);
-
     position: relative;
     width: 100%;
-    padding: clamp(60px, 8vh, 120px) var(--side-pad) 0;
+    /* Horizontal margins come from the shared containerClass on .inner —
+     vertical rhythm only lives here. */
+    padding: clamp(60px, 8vh, 120px) 0 0;
     overflow: hidden;
     color: var(--text-primary);
     background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
@@ -120,8 +119,6 @@
 .inner {
     position: relative;
     z-index: 1;
-    max-width: var(--container-max);
-    margin: 0 auto;
 }
 
 /* ───── Eyebrow pill ───── */
@@ -190,7 +187,7 @@
     text-align: center;
     letter-spacing: -1.2px;
     margin: 0 auto clamp(18px, 2.4vh, 30px);
-    max-width: 920px;
+    max-width: 100%;
 }
 
 .gradient {
@@ -216,9 +213,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(18px, 1.6vw, 28px);
-    max-width: 1280px;
-    margin: 0 auto;
+    gap: clamp(14px, 1.4vw, 20px);
 }
 
 /* ───── Liquid-glass card ───── */
@@ -234,7 +229,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: stretch;
-    min-height: 274px;
+    min-height: 212px;
     transition:
         transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
         border-color 0.5s ease,
@@ -291,7 +286,7 @@
 /* ───── Card halves ───── */
 .side {
     position: relative;
-    padding: 24px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
 }
@@ -300,14 +295,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
-    height: 28px;
-    padding: 0 14px;
+    gap: 6px;
+    height: 24px;
+    padding: 0 10px;
     border-radius: 999px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 12.5px;
-    letter-spacing: 1.7px;
+    font-size: 10.5px;
+    letter-spacing: 1.3px;
     text-transform: uppercase;
     align-self: flex-start;
     backdrop-filter: blur(12px) saturate(180%);
@@ -319,11 +314,11 @@
 
 .agePill::before {
     content: '';
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: currentColor;
-    box-shadow: 0 0 7px currentColor;
+    box-shadow: 0 0 6px currentColor;
     flex-shrink: 0;
 }
 
@@ -345,17 +340,17 @@
 .mascotWrap {
     position: relative;
     flex: 1;
-    margin: 14px 0 12px;
+    margin: 10px 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 150px;
+    min-height: 98px;
 }
 
 .mascotFrame {
     position: relative;
-    width: clamp(130px, 16vw, 170px);
-    height: clamp(130px, 16vw, 170px);
+    width: clamp(88px, 11vw, 112px);
+    height: clamp(88px, 11vw, 112px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -379,12 +374,12 @@
 .title {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    font-size: 17px;
-    line-height: 1.33;
+    font-size: 14px;
+    line-height: 1.32;
     letter-spacing: -0.2px;
     color: #fff;
-    margin: 0 0 6px;
-    min-height: calc(17px * 1.33 * 2);
+    margin: 0 0 5px;
+    min-height: calc(14px * 1.32 * 2);
     display: flex;
     align-items: flex-end;
     text-align: left;
@@ -393,8 +388,8 @@
 .body {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    font-size: 12.46px;
-    line-height: 18.07px;
+    font-size: 11px;
+    line-height: 15.8px;
     color: var(--body-grey);
     margin: 0;
     text-align: left;
@@ -406,13 +401,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 6px;
+    padding: 0 4px;
 }
 
 .dividerOrb {
-    width: 44.422px;
-    height: 44.422px;
-    border-radius: 22.211px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
     background: rgba(255, 138, 43, 0.08);
     border: 1px solid rgba(255, 154, 64, 0.28);
     backdrop-filter: blur(10px);
@@ -427,8 +422,8 @@
 }
 
 .dividerOrb svg {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     display: block;
     stroke-width: 2.2;
 }
@@ -436,7 +431,7 @@
 /* ───── Branch strip, flush to the viewport edges ───── */
 .branch {
     position: relative;
-    margin: clamp(40px, 6vh, 100px) calc(-1 * var(--side-pad)) 0;
+    margin: clamp(40px, 6vh, 100px) 0 0;
     line-height: 0;
     pointer-events: none;
     z-index: 1;
@@ -459,7 +454,7 @@
 
 @media (max-width: 640px) {
     .section {
-        padding: 48px 18px 0;
+        padding: 48px 0 0;
     }
 
     .heading {
@@ -495,12 +490,12 @@
     }
 
     .side {
-        padding: 18px;
+        padding: 16px;
     }
 
     .mascotFrame {
-        width: 130px;
-        height: 130px;
+        width: 104px;
+        height: 104px;
     }
 }
 
