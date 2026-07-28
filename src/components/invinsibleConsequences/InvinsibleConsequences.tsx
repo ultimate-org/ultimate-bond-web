@@ -305,13 +305,13 @@ const DEFAULT_CARDS: ConsequenceCard[] = [
       age: 7,
       title: "Needs a screen to calm down",
       body: "Can't self-regulate without a device",
-      image: `${IMAGE_BASE}/blueone.png`,
+      image: `${IMAGE_BASE}/blueone.webp`,
     },
     after: {
       age: 15,
       title: "Can't handle discomfort",
       body: "Without his phone, falls apart",
-      image: `${IMAGE_BASE}/redone.png`,
+      image: `${IMAGE_BASE}/redone.webp`,
     },
   },
   {
@@ -320,13 +320,13 @@ const DEFAULT_CARDS: ConsequenceCard[] = [
       age: 8,
       title: 'Only answer is "fine"',
       body: "Closed off, no emotional vocabulary",
-      image: `${IMAGE_BASE}/bluetwo.png`,
+      image: `${IMAGE_BASE}/bluethree.webp`,
     },
     after: {
       age: 17,
       title: "You find out about bullying",
       body: "3 months after it started",
-      image: `${IMAGE_BASE}/redtwo.png`,
+      image: `${IMAGE_BASE}/redtwo.webp`,
     },
   },
   {
@@ -335,13 +335,13 @@ const DEFAULT_CARDS: ConsequenceCard[] = [
       age: 7,
       title: "Can't handle losing a game",
       body: "Low frustration tolerance",
-      image: `${IMAGE_BASE}/bluethree.png`,
+      image: `${IMAGE_BASE}/bluetwo.webp`,
     },
     after: {
       age: 15,
       title: "Can't handle rejection",
       body: "Or professional setbacks",
-      image: `${IMAGE_BASE}/redthree.png`,
+      image: `${IMAGE_BASE}/redthree.webp`,
     },
   },
   {
@@ -350,13 +350,13 @@ const DEFAULT_CARDS: ConsequenceCard[] = [
       age: 8,
       title: "Every choice made by parents",
       body: "No agency, no decision muscle",
-      image: `${IMAGE_BASE}/bluefour.png`,
+      image: `${IMAGE_BASE}/bluefour.webp`,
     },
     after: {
       age: 17,
       title: "Can't pick a career",
       body: "College, or what to eat",
-      image: `${IMAGE_BASE}/redfour.png`,
+      image: `${IMAGE_BASE}/redfour.webp`,
     },
   },
 ];
