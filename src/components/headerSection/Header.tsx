@@ -108,7 +108,7 @@
 // const navLink =
 //   "relative inline-flex items-center gap-[5px] pb-[5px] font-['Poppins',sans-serif] text-[14px] xl:text-[16px] font-medium text-[#8b8a98] no-underline transition-colors duration-500 hover:text-white cursor-pointer bg-transparent border-0 " +
 //   "after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-sm after:opacity-0 after:scale-x-0 after:origin-left after:transition-[transform,opacity] after:duration-700 after:ease-smooth hover:after:scale-x-100 hover:after:opacity-100 " +
-//   "after:[background-image:linear-gradient(103.7deg,#ffb13d_0%,#ff7a18_26%,#ff4d8d_64%,#a24bff_100%)]";
+//   "after:[background-image:var(--hero-h-accent-bg)]";
 
 // export default function Navbar() {
 //   const [menuOpen, setMenuOpen] = useState(false);
@@ -526,6 +526,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
+import ThemeToggle from "@/components/theme/ThemeToggle";
 
 const CTA_GRADIENT =
   "linear-gradient(166deg, #ffae57 0%, #ff8a2e 40%, #fb6e11 100%)";
@@ -625,9 +626,9 @@ const PC_OPTIONS = [
 
 // desktop nav link with animated gradient underline
 const navLink =
-  "relative inline-flex items-center gap-[5px] pb-[5px] font-['Poppins',sans-serif] text-[13px] xl:text-[14px] font-medium text-[#8b8a98] no-underline transition-colors duration-500 hover:text-white cursor-pointer bg-transparent border-0 " +
+  "relative inline-flex items-center gap-[5px] pb-[5px] font-['Poppins',sans-serif] text-[13px] xl:text-[14px] font-medium text-[var(--hero-nav-link)] no-underline transition-colors duration-500 hover:text-[var(--hero-nav-link-hover)] cursor-pointer bg-transparent border-0 " +
   "after:content-[''] after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-sm after:opacity-0 after:scale-x-0 after:origin-left after:transition-[transform,opacity] after:duration-700 after:ease-smooth hover:after:scale-x-100 hover:after:opacity-100 " +
-  "after:[background-image:linear-gradient(103.7deg,#ffb13d_0%,#ff7a18_26%,#ff4d8d_64%,#a24bff_100%)]";
+  "after:[background-image:var(--hero-h-accent-bg)]";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -795,27 +796,31 @@ export default function Navbar() {
         <div className="hidden items-center justify-end gap-2.5 lg:flex xl:gap-3">
           <Link
             href="/blogs"
-            className="cursor-pointer rounded-[12px] border border-[rgba(255,154,64,0.45)] bg-white/[0.04] px-3.5 py-1.5 font-['Outfit',sans-serif] text-[13px] font-bold text-[#ffb36b] no-underline transition-[transform,background] duration-900 ease-smooth hover:-translate-y-px hover:bg-[rgba(255,154,64,0.10)] xl:px-4 xl:py-2 xl:text-[14px]"
+            className="cursor-pointer rounded-[12px] border border-[var(--hero-blog-pill-border)] bg-[var(--hero-blog-pill-bg)] px-3.5 py-1.5 font-['Outfit',sans-serif] text-[13px] font-bold text-[var(--hero-pill-text)] no-underline transition-[transform,background] duration-900 ease-smooth hover:-translate-y-px hover:bg-[var(--hero-blog-pill-bg-hover)] xl:px-4 xl:py-2 xl:text-[14px]"
           >
             Blogs
           </Link>
           <button
             onClick={() => router.push("/download-app")}
             className="cursor-pointer rounded-[12px] border-0 px-4 py-2 font-['Outfit',sans-serif] text-[13px] font-bold text-white transition-[transform,filter] duration-900 ease-smooth hover:-translate-y-px hover:brightness-105 xl:px-5 xl:py-2.5 xl:text-[14px]"
-            style={{ background: CTA_GRADIENT }}
+            style={{ background: CTA_GRADIENT, boxShadow: "inset 0 1.14px 0 rgba(255,255,255,0.48)" }}
           >
             Get the App
           </button>
+          <ThemeToggle />
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="justify-self-end p-1 text-white lg:hidden"
-          onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-2 justify-self-end lg:hidden">
+          <ThemeToggle />
+          <button
+            className="p-1 text-[var(--hero-logo-text)]"
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}
@@ -827,8 +832,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="absolute left-0 right-0 top-full z-[99] flex max-h-[calc(100svh-64px)] flex-col gap-3.5 overflow-y-auto border-b border-white/[0.08] px-5 py-4 backdrop-blur-[16px] lg:hidden"
-            style={{ background: "rgba(5,5,7,0.97)" }}
+            className="absolute left-0 right-0 top-full z-[99] flex max-h-[calc(100svh-64px)] flex-col gap-3.5 overflow-y-auto border-b px-5 py-4 backdrop-blur-[16px] lg:hidden"
+            style={{ background: "var(--hero-mobile-nav-bg)", borderColor: "var(--hero-mobile-nav-border)" }}
           >
             {showFullNav &&
               NAV_LINKS.map((link) => (
@@ -836,7 +841,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="cursor-pointer text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[#c3c2ce] no-underline transition-colors duration-300 hover:text-white"
+                  className="cursor-pointer text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)] no-underline transition-colors duration-300 hover:text-[var(--hero-nav-link-hover)]"
                 >
                   {link.label}
                 </Link>
@@ -847,13 +852,13 @@ export default function Navbar() {
               <div>
                 <div className="flex items-center justify-between">
                   <button
-                    className="border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[#c3c2ce] transition-colors duration-300 hover:text-white"
+                    className="border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)] transition-colors duration-300 hover:text-[var(--hero-nav-link-hover)]"
                   >
                     Parenting Guide
                   </button>
                   <button
                     onClick={() => setMobilePgOpen((v) => !v)}
-                    className="border-0 bg-transparent p-1 text-[#8b8a98]"
+                    className="border-0 bg-transparent p-1 text-[var(--hero-nav-link)]"
                     aria-label="Toggle parenting guide menu"
                   >
                     <ChevronDown
@@ -881,7 +886,7 @@ export default function Navbar() {
                                 router.push(`/parenting-guide?artId=${cat.id}`);
                                 setMenuOpen(false);
                               }}
-                              className="cursor-pointer border-0 bg-transparent py-2 pl-3 text-left font-['Poppins',sans-serif] text-[13.5px] font-semibold text-[#ffb36b]"
+                              className="cursor-pointer border-0 bg-transparent py-2 pl-3 text-left font-['Poppins',sans-serif] text-[13.5px] font-semibold text-[var(--hero-pill-text)]"
                             >
                               {cat.label}
                             </button>
@@ -891,7 +896,7 @@ export default function Navbar() {
                                   prev === cat.id ? null : cat.id
                                 )
                               }
-                              className="border-0 bg-transparent p-2 text-[#8b8a98]"
+                              className="border-0 bg-transparent p-2 text-[var(--hero-nav-link)]"
                             >
                               <ChevronDown
                                 size={14}
@@ -921,7 +926,7 @@ export default function Navbar() {
                                       );
                                       setMenuOpen(false);
                                     }}
-                                    className="block w-full cursor-pointer border-0 bg-transparent py-1.5 text-left font-['Poppins',sans-serif] text-[12.5px] text-[#8b8a98] transition-colors duration-300 hover:text-white"
+                                    className="block w-full cursor-pointer border-0 bg-transparent py-1.5 text-left font-['Poppins',sans-serif] text-[12.5px] text-[var(--hero-nav-link)] transition-colors duration-300 hover:text-[var(--hero-nav-link-hover)]"
                                   >
                                     {sub.label}
                                   </button>
@@ -941,12 +946,12 @@ export default function Navbar() {
             {showFullNav && (
               <div className="mt-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-['Poppins',sans-serif] text-[15px] font-medium text-[#c3c2ce]">
+                  <span className="font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)]">
                     Parenting Corner
                   </span>
                   <button
                     onClick={() => setMobilePcOpen((v) => !v)}
-                    className="border-0 bg-transparent p-1 text-[#8b8a98]"
+                    className="border-0 bg-transparent p-1 text-[var(--hero-nav-link)]"
                     aria-label="Toggle parenting corner menu"
                   >
                     <ChevronDown
@@ -977,7 +982,7 @@ export default function Navbar() {
                             }}
                             className={`block w-full cursor-pointer border-l-[3px] bg-transparent py-2 pl-3 text-left font-['Poppins',sans-serif] text-[13.5px] transition-all duration-150 ${isActive
                               ? "border-[#ff7a18] bg-[rgba(255,122,24,0.05)] text-[#ff7a18]"
-                              : "border-transparent text-[#8b8a98] hover:border-[#ff7a18] hover:text-white"
+                              : "border-transparent text-[var(--hero-nav-link)] hover:border-[#ff7a18] hover:text-[var(--hero-nav-link-hover)]"
                               }`}
                           >
                             {opt.label}
@@ -995,7 +1000,7 @@ export default function Navbar() {
               <Link
                 href="/blogs"
                 onClick={() => setMenuOpen(false)}
-                className="cursor-pointer rounded-[12px] border border-[rgba(255,154,64,0.45)] bg-white/[0.04] px-4 py-2 font-['Outfit',sans-serif] text-[14px] font-bold text-[#ffb36b] no-underline"
+                className="cursor-pointer rounded-[12px] border border-[var(--hero-blog-pill-border)] bg-[var(--hero-blog-pill-bg)] px-4 py-2 font-['Outfit',sans-serif] text-[14px] font-bold text-[var(--hero-pill-text)] no-underline"
               >
                 Blog
               </Link>
@@ -1005,7 +1010,7 @@ export default function Navbar() {
                   setMenuOpen(false);
                 }}
                 className="cursor-pointer rounded-[12px] border-0 px-5 py-2.5 font-['Outfit',sans-serif] text-[14px] font-bold text-white"
-                style={{ background: CTA_GRADIENT }}
+                style={{ background: CTA_GRADIENT, boxShadow: "inset 0 1.14px 0 rgba(255,255,255,0.48)" }}
               >
                 Get the App
               </button>

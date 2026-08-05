@@ -34,11 +34,9 @@ function Landing() {
   return <>
     {/* <Stars/> */}
     <div
+      id="hero-section"
       className="relative [--nav-h:80px] lg:[--nav-h:80px]"
-      style={{
-        background:
-          "radial-gradient(ellipse 130% 80% at 50% 0%, #11182E 0%, #0A0E1C 32%, #060709 68%, #050507 100%), #050507",
-      }}
+      style={{ background: "var(--hero-page-bg)" }}
     >
       <Header />
       <Main />

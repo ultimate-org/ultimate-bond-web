@@ -78,6 +78,7 @@ import MetaPixel from '@/components/MetaPixel';
 import Stars from "@/components/star/Star";
 import CookieConsent from '@/components/cookie/CookieConsent'
 import MsClarity from "@/components/microsoft-clairty";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -354,23 +355,31 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-theme="dark" suppressHydrationWarning>
       <head>
         {/* ── Structured Data (JSON-LD) ── */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        {/* Apply the saved theme before first paint, so there's no flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('um-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`,
+          }}
+        />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
          <GoogleTagManager gtmId="GTM-MBMZ8FB4" />
         <MsClarity />
-        <NextIntlClientProvider messages={messages}>
-          <Stars />
-          {children}
-          <Toaster />
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>
+            <Stars />
+            {children}
+            <Toaster />
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
         <MetaPixel />
         <CookieConsent />
       </body>

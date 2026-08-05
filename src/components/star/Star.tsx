@@ -128,8 +128,8 @@ export default function Stars() {
     <canvas
       ref={canvasRef}
       id="stars"
-      className="fixed top-0 left-0 w-full h-full pointer-events-none bg-[#04060f] "
-      style={{ zIndex: -10 }}
+      className="fixed top-0 left-0 w-full h-full pointer-events-none"
+      style={{ zIndex: -10, background: "var(--hero-page-bg)" }}
     />
   );
 }
