@@ -1387,10 +1387,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const GLASS_SHADOW =
-  "0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(255,255,255,0.1)";
+// const GLASS_SHADOW =
+//   "0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5), inset 0 -1px 0 rgba(255,255,255,0.1)";
 const EDGE_TOP =
   "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)";
 const EDGE_LEFT =
