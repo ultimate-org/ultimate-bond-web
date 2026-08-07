@@ -40,7 +40,7 @@ export default function Advisors() {
       id="advisors"
       className="relative w-full overflow-hidden"
       style={{
-        background: "#050507",
+        background: "var(--site-page-bg)",
         padding: "clamp(56px,7vw,110px) clamp(20px,4vw,48px)",
       }}
     >
@@ -90,7 +90,7 @@ export default function Advisors() {
             fontSize: "clamp(34px,4.6vw,60px)",
             lineHeight: 1.02,
             letterSpacing: "-1.2px",
-            color: "#fff",
+            color: "var(--site-heading)",
             maxWidth: "760px",
           }}
         >
@@ -115,7 +115,7 @@ export default function Advisors() {
             fontWeight: 400,
             fontSize: "clamp(16px,1.5vw,20px)",
             lineHeight: 1.62,
-            color: "#8b8a98",
+            color: "var(--site-text-muted)",
             maxWidth: "720px",
             marginBottom: "clamp(40px,5vw,64px)",
           }}
@@ -135,10 +135,16 @@ export default function Advisors() {
               variants={cardVariants}
               /* Tailwind glassmorphism card */
               className="relative flex flex-col rounded-[28px] p-[30px] min-h-[318px]
-                         bg-white/[0.06] backdrop-blur-2xl border border-white/[0.12]
+                         border
                          shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_0_rgba(255,255,255,0.04),0_26px_60px_rgba(0,0,0,0.45)]
                          transition-all duration-500 hover:-translate-y-1
                          hover:bg-white/[0.09] hover:border-white/[0.2]"
+              style={{
+                background: "var(--site-card-bg)",
+                borderColor: "var(--site-card-border)",
+                backdropFilter: "blur(var(--site-glass-blur))",
+                WebkitBackdropFilter: "blur(var(--site-glass-blur))",
+              }}
             >
               {/* Gradient border — ::after mask equivalent */}
               <div
@@ -169,8 +175,8 @@ export default function Advisors() {
 
               {/* Name */}
               <h3
-                className="text-white mb-2"
-                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "20px", lineHeight: 1.1 }}
+                className="mb-2"
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: "20px", lineHeight: 1.1, color: "var(--site-heading)" }}
               >
                 {adv.name}
               </h3>

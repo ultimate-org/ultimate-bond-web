@@ -678,9 +678,7 @@ export default function Navbar() {
               onMouseEnter={() => setPgOpen(true)}
               onMouseLeave={() => setPgOpen(false)}
             >
-              <button
-                className={navLink}
-              >
+              <button className={navLink}>
                 Parenting Guide
                 <ChevronDown
                   size={13}
@@ -796,18 +794,20 @@ export default function Navbar() {
         <div className="hidden items-center justify-end gap-2.5 lg:flex xl:gap-3">
           <Link
             href="/blogs"
-            className="cursor-pointer rounded-[12px] border border-[var(--hero-blog-pill-border)] bg-[var(--hero-blog-pill-bg)] px-3.5 py-1.5 font-['Outfit',sans-serif] text-[13px] font-bold text-[var(--hero-pill-text)] no-underline transition-[transform,background] duration-900 ease-smooth hover:-translate-y-px hover:bg-[var(--hero-blog-pill-bg-hover)] xl:px-4 xl:py-2 xl:text-[14px]"
+            className="flex h-10 w-[118px] cursor-pointer items-center justify-center rounded-[12px] border border-[var(--hero-blog-pill-border)] bg-[var(--hero-blog-pill-bg)] font-['Outfit',sans-serif] text-[13px] font-bold text-[var(--hero-pill-text)] no-underline transition-[transform,background] duration-900 ease-smooth hover:-translate-y-px hover:bg-[var(--hero-blog-pill-bg-hover)]"
           >
             Blogs
           </Link>
           <button
             onClick={() => router.push("/download-app")}
-            className="cursor-pointer rounded-[12px] border-0 px-4 py-2 font-['Outfit',sans-serif] text-[13px] font-bold text-white transition-[transform,filter] duration-900 ease-smooth hover:-translate-y-px hover:brightness-105 xl:px-5 xl:py-2.5 xl:text-[14px]"
+            className="flex h-10 w-[118px] cursor-pointer items-center justify-center rounded-[12px] border-0 font-['Outfit',sans-serif] text-[13px] font-bold text-white transition-[transform,filter] duration-900 ease-smooth hover:-translate-y-px hover:brightness-105"
             style={{ background: CTA_GRADIENT, boxShadow: "inset 0 1.14px 0 rgba(255,255,255,0.48)" }}
           >
             Get the App
           </button>
-          <ThemeToggle />
+          <div className="flex h-10 w-[118px] items-center justify-center">
+            <ThemeToggle />
+          </div>
         </div>
 
         {/* Mobile hamburger */}
@@ -852,6 +852,7 @@ export default function Navbar() {
               <div>
                 <div className="flex items-center justify-between">
                   <button
+                    onClick={() => setMobilePgOpen((v) => !v)}
                     className="border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)] transition-colors duration-300 hover:text-[var(--hero-nav-link-hover)]"
                   >
                     Parenting Guide
@@ -946,9 +947,12 @@ export default function Navbar() {
             {showFullNav && (
               <div className="mt-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)]">
+                  <button
+                    onClick={() => setMobilePcOpen((v) => !v)}
+                    className="border-0 bg-transparent text-left font-['Poppins',sans-serif] text-[15px] font-medium text-[var(--hero-lead-accent)] transition-colors duration-300 hover:text-[var(--hero-nav-link-hover)]"
+                  >
                     Parenting Corner
-                  </span>
+                  </button>
                   <button
                     onClick={() => setMobilePcOpen((v) => !v)}
                     className="border-0 bg-transparent p-1 text-[var(--hero-nav-link)]"

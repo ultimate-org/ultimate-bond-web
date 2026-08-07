@@ -16,10 +16,10 @@ export const containerClass =
 export function SectionTag({ children }: { children: ReactNode }) {
   return (
     <span
-      className="inline-block text-[0.72rem] font-bold tracking-[0.12em] uppercase text-[#f97316] mb-4 px-3 py-1 rounded-full"
+      className="inline-block text-[0.72rem] font-bold tracking-[0.12em] uppercase text-[var(--site-pill-text)] mb-4 px-3 py-1 rounded-full"
       style={{
-        border: "1px solid rgba(249,115,22,0.3)",
-        background: "rgba(249,115,22,0.08)",
+        border: "1px solid var(--site-pill-border)",
+        background: "var(--site-pill-bg)",
         fontFamily: "'Rubik', sans-serif",
       }}
     >
@@ -48,7 +48,7 @@ export function SectionHeader({
     <div className="mb-12">
       {tag && <SectionTag>{tag}</SectionTag>}
       <h2
-        className="text-white font-black leading-[1.15] tracking-[-0.03em] mb-3"
+        className="text-[var(--site-heading)] font-black leading-[1.15] tracking-[-0.03em] mb-3"
         style={{
           fontSize: "clamp(2rem, 4vw, 3rem)",
           fontFamily: "'Rubik', sans-serif",
@@ -57,7 +57,7 @@ export function SectionHeader({
         {heading}
       </h2>
       {sub && (
-        <p className="text-[#9ca3af] text-[1rem] font-light max-w-[560px]">
+        <p className="text-[var(--site-text-muted)] text-[1rem] font-light max-w-[560px]">
           {sub}
         </p>
       )}
@@ -111,7 +111,7 @@ export function BtnSecondary({
   onClick?: () => void;
 }) {
   const cls =
-    "inline-flex items-center gap-2 border border-white/[0.12] text-white px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all hover:border-[#f97316] hover:text-[#f97316]";
+    "inline-flex items-center gap-2 border border-[var(--site-ghost-border)] text-[var(--site-ghost-text)] px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all hover:border-[var(--site-ghost-hover)] hover:text-[var(--site-ghost-hover)]";
 
   if (href) {
     return (

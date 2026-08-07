@@ -1602,7 +1602,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-[var(--nav-h,80px)] font-['Poppins',sans-serif] antialiased lg:h-[100svh]">
+    <div className="relative flex h-[100svh] w-full flex-col overflow-hidden pt-[var(--nav-h,80px)] font-['Poppins',sans-serif] antialiased">
       <style>{`
         @keyframes orbit-travel { to { offset-distance: 100%; } }
         @keyframes card-float { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-16px,0)} }
@@ -1680,7 +1680,7 @@ export default function Hero() {
           />
 
           {/* HERO INNER — content grid */}
-          <div className="relative z-[1] mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 sm:px-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-[clamp(24px,3vw,56px)] lg:px-[clamp(20px,4vw,72px)]">
+          <div className="relative z-[1] mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-8 px-5 sm:gap-10 sm:px-7 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:gap-[clamp(20px,2.2vw,56px)] lg:px-[clamp(20px,3vw,72px)]">
             {/* LEFT */}
             <div className="relative flex flex-col items-center text-center lg:items-start lg:text-left">
               {/* Pill */}
@@ -1734,7 +1734,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeUp}
-                className="relative z-[2] mb-[clamp(14px,2vh,28px)] mx-auto max-w-[640px] text-[clamp(13px,3.4vw,15px)] font-normal leading-[1.5] text-[var(--hero-lead-color)] sm:text-[14px] sm:leading-[1.55] lg:mx-0 lg:text-[clamp(14px,1.05vw,17px)]"
+                className="relative z-[2] mb-[clamp(10px,2vh,28px)] mx-auto max-w-[640px] text-[clamp(13px,3.4vw,15px)] font-normal leading-[1.5] text-[var(--hero-lead-color)] sm:text-[14px] sm:leading-[1.55] lg:mx-0 lg:text-[clamp(14px,1.05vw,17px)] lg:leading-[1.4]"
               >
                 No prep. No screen. Just meaningful conversations and real family
                 time. Spend just 10 mins a day with simple, age appropriate
@@ -1751,7 +1751,7 @@ export default function Hero() {
                 initial="hidden"
                 animate="visible"
                 variants={fadeUp}
-                className="relative z-[2] mb-[clamp(38px,2.6vh,36px)] flex flex-wrap items-center justify-center gap-3 sm:gap-[18px] lg:justify-start"
+                className="relative z-[2] mb-[clamp(12px,2.6vh,36px)] flex flex-wrap items-center justify-center gap-3 sm:gap-[18px] lg:justify-start"
               >
                 <button
                   onClick={() => router.push("/download-app")}
@@ -1801,7 +1801,7 @@ export default function Hero() {
                 {STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="group relative z-[1] flex min-h-[132px] flex-col justify-between gap-2 overflow-hidden rounded-[16px] bg-[var(--hero-card-bg)] p-[14px_14px_16px] backdrop-blur-[var(--hero-glass-blur)] transition-transform duration-850 ease-smooth hover:-translate-y-1.5 hover:scale-[1.025] sm:min-h-[165px] sm:rounded-[20px] sm:p-[18px_16px_20px] lg:min-h-[176px] lg:p-[20px_18px_22px]"
+                    className="group relative z-[1] flex min-h-[clamp(96px,14vh,132px)] flex-col justify-between gap-1.5 overflow-hidden rounded-[16px] bg-[var(--hero-card-bg)] p-[14px_14px_16px] backdrop-blur-[var(--hero-glass-blur)] transition-transform duration-850 ease-smooth hover:-translate-y-1.5 hover:scale-[1.025] sm:min-h-[clamp(112px,16vh,165px)] sm:rounded-[20px] sm:p-[16px_16px_18px] lg:min-h-[clamp(112px,16vh,176px)] lg:p-[16px_16px_18px]"
                     style={{ boxShadow: "var(--hero-card-shadow)" }}
                   >
                     <GradientRing colorVar="--hero-card-stroke" widthVar="--hero-card-border-w" />

@@ -329,8 +329,8 @@ function Arrow() {
 function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.ReactNode }) {
   const styles =
     tone === "blue"
-      ? "bg-[rgba(91,168,255,0.16)] border-[rgba(91,168,255,0.55)] text-[#8cc4ff]"
-      : "bg-[rgba(233,74,63,0.16)] border-[rgba(233,74,63,0.55)] text-[#ff8a80]";
+      ? "bg-[rgba(91,168,255,0.16)] border-[rgba(91,168,255,0.55)] text-[#5ba8ff]"
+      : "bg-[rgba(233,74,63,0.16)] border-[rgba(233,74,63,0.55)] text-[#e94a3f]";
   return (
     <span
       className={`inline-flex h-[1.75rem] items-center justify-center gap-[7px] self-start rounded-full border px-3.5 font-['Poppins',sans-serif] text-[0.78125rem] font-bold uppercase tracking-[0.10625rem] [backdrop-filter:blur(0.75rem)_saturate(180%)] [-webkit-backdrop-filter:blur(0.75rem)_saturate(180%)] shadow-[inset_0_0.0625rem_0_rgba(255,255,255,0.25),inset_0_-0.0625rem_0_rgba(255,255,255,0.06)] ${styles}`}
@@ -343,7 +343,13 @@ function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.Rea
 
 export default function InvisibleConsequences() {
   return (
-    <section className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased text-white bg-gradient-to-b from-[#0a0a14] to-[#08080d]">
+    <section
+      className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased"
+      style={{
+        color: "var(--site-heading)",
+        background: "linear-gradient(180deg, var(--site-page-bg) 0%, var(--site-page-bg-alt) 100%)",
+      }}
+    >
       {/* Warm top glow */}
       {/* <div
         className="pointer-events-none absolute left-1/2 top-[-7.5rem] z-0 h-[33.75rem] w-[min(106.25rem,90vw)] -translate-x-1/2"
@@ -365,7 +371,10 @@ export default function InvisibleConsequences() {
         >
           <div className="pill-orange-glow relative inline-flex h-[36px] items-center gap-[10px] rounded-full px-[18px] [backdrop-filter:blur(18px)] [-webkit-backdrop-filter:blur(18px)] shadow-[inset_0_1px_0_rgba(255,175,100,0.18)]">
             <span className="h-[8px] w-[8px] flex-shrink-0 rounded-full bg-[#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[2px] text-[#ffb36b] whitespace-nowrap">
+            <span
+              className="font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[2px] whitespace-nowrap"
+              style={{ color: "var(--site-pill-text)" }}
+            >
               The Invisible Consequences
             </span>
           </div>
@@ -378,7 +387,8 @@ export default function InvisibleConsequences() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
           variants={fadeUp}
-          className="mx-auto mb-[clamp(1.125rem,2.4vh,1.875rem)] max-w-[57.5rem] text-center font-['Outfit',sans-serif] text-[clamp(2.125rem,4.4vw,3.75rem)] font-extrabold leading-[1.02] tracking-[-0.0375rem] text-white sm:tracking-[-0.075rem]"
+          className="mx-auto mb-[clamp(1.125rem,2.4vh,1.875rem)] max-w-[57.5rem] text-center font-['Outfit',sans-serif] text-[clamp(2.125rem,4.4vw,3.75rem)] font-extrabold leading-[1.02] tracking-[-0.0375rem] sm:tracking-[-0.075rem]"
+          style={{ color: "var(--site-heading)" }}
         >
           Small Signs{" "}
           <span className="bg-clip-text text-transparent" style={{ backgroundImage: HEADLINE_GRADIENT }}>
@@ -400,7 +410,8 @@ export default function InvisibleConsequences() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.4 }}
           variants={fadeUp}
-          className="mx-auto mb-[clamp(3.5rem,7vh,6rem)] max-w-[45rem] text-center text-[clamp(0.9375rem,1.1vw,1.25rem)] font-normal leading-[1.55] text-[#8b8a98]"
+          className="mx-auto mb-[clamp(3.5rem,7vh,6rem)] max-w-[45rem] text-center text-[clamp(0.9375rem,1.1vw,1.25rem)] font-normal leading-[1.55]"
+          style={{ color: "var(--site-text-muted)" }}
         >
           What you see today as a small habit, your child will live tomorrow as a defining trait.
         </motion.p>
@@ -427,7 +438,7 @@ export default function InvisibleConsequences() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.25 }}
               variants={cardIn}
-              className="ic-card group relative grid min-h-[17.125rem] grid-cols-1 grid-rows-[1fr_auto_1fr] items-stretch overflow-hidden rounded-[29.073px] border-[1.5px] border-white/22 bg-transparent backdrop-blur-[50px] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:-translate-y-1.5 lg:grid-cols-[1fr_auto_1fr] lg:grid-rows-1"
+              className="ic-card group relative grid min-h-[17.125rem] grid-cols-1 grid-rows-[1fr_auto_1fr] items-stretch overflow-hidden rounded-[29.073px] border-[1.5px] border-[var(--site-card-border)] bg-transparent backdrop-blur-[50px] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform hover:-translate-y-1.5 lg:grid-cols-[1fr_auto_1fr] lg:grid-rows-1"
               style={{ boxShadow: CARD_SHADOW }}
             >
               {/* LEFT Side (Blue) */}
@@ -445,10 +456,16 @@ export default function InvisibleConsequences() {
                     />
                   </div>
                 </div>
-                <h3 className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem] text-white">
+                <h3
+                  className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem]"
+                  style={{ color: "var(--site-heading)" }}
+                >
                   {card.left.title}
                 </h3>
-                <p className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem] text-[#c9cbd3]">
+                <p
+                  className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem]"
+                  style={{ color: "var(--site-text)" }}
+                >
                   {card.left.body}
                 </p>
               </div>
@@ -475,10 +492,16 @@ export default function InvisibleConsequences() {
                     />
                   </div>
                 </div>
-                <h3 className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem] text-white">
+                <h3
+                  className="m-0 mb-1.5 flex min-h-[calc(1.0625rem*1.33*2)] items-end text-left font-['Poppins',sans-serif] text-[1.0625rem] font-bold leading-[1.33] tracking-[-0.0125rem]"
+                  style={{ color: "var(--site-heading)" }}
+                >
                   {card.right.title}
                 </h3>
-                <p className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem] text-[#c9cbd3]">
+                <p
+                  className="m-0 text-left font-['Manrope',sans-serif] text-[0.77875rem] font-normal leading-[1.12925rem]"
+                  style={{ color: "var(--site-text)" }}
+                >
                   {card.right.body}
                 </p>
               </div>
@@ -510,7 +533,7 @@ export default function InvisibleConsequences() {
         }
 
         .pill-orange-glow {
-          background: linear-gradient(180deg, rgba(20, 20, 30, 0.55) 0%, rgba(8, 8, 13, 0.55) 100%);
+          background: var(--site-pill-bg);
         }
         .pill-orange-glow::before {
           content: '';

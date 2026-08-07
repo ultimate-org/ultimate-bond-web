@@ -2414,24 +2414,34 @@ export default function FeatureCarousel() {
   return (
     <section
       id="features"
-      className="relative w-full bg-[#050507] py-[clamp(64px,8vw,120px)] font-['Poppins',sans-serif] text-[#C3C2CE] antialiased"
+      className="relative w-full py-[clamp(64px,8vw,120px)] font-['Poppins',sans-serif] antialiased"
+      style={{ background: "var(--site-page-bg)", color: "var(--site-text)" }}
     >
       <div className="relative z-[1] mx-auto w-full max-w-[1240px] px-8 max-[640px]:px-4">
         {/* Section head */}
         <div className="mx-auto mb-[clamp(40px,5vw,72px)] flex max-w-[820px] flex-col items-center gap-5 text-center">
-          <span className="inline-flex h-[34px] items-center gap-[9px] rounded-full border border-[rgba(255,154,64,0.28)] bg-[linear-gradient(180deg,rgba(255,154,64,0.05)_0%,rgba(255,122,24,0.02)_100%)] px-[18px] font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[0.18em] text-[#FFB36B] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <span
+            className="inline-flex h-[34px] items-center gap-[9px] rounded-full border px-[18px] font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[0.18em] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+            style={{ borderColor: "var(--site-pill-border)", background: "var(--site-pill-bg)", color: "var(--site-pill-text)" }}
+          >
             <span className="h-[7px] w-[7px] rounded-full bg-[#FF9A40] shadow-[0_0_8px_#FF9A40]" />
             The ecosystem
           </span>
 
-          <h2 className="m-0 font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.06] tracking-[-0.02em] text-white [text-wrap:balance]">
+          <h2
+            className="m-0 font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.06] tracking-[-0.02em] [text-wrap:balance]"
+            style={{ color: "var(--site-heading)" }}
+          >
             Everything a family needs{" "}
             <span className="bg-[linear-gradient(100deg,#FF7A18_26%,#FF4D8D_64%)] bg-clip-text text-transparent">
               to thrive.
             </span>
           </h2>
 
-          <p className="mx-auto max-w-[62ch] text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8B8A98] [text-wrap:pretty]">
+          <p
+            className="mx-auto max-w-[62ch] text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] [text-wrap:pretty]"
+            style={{ color: "var(--site-text-muted)" }}
+          >
             Not a single tool, a complete daily family operating system. Every
             feature serves the whole family. No feature works in isolation, grab
             anywhere and glide.
@@ -2470,23 +2480,38 @@ export default function FeatureCarousel() {
                       }`}
                   >
                     {/* Icon box — gradient ring + gradient glyph */}
-                    <div className="c-ico relative flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[15px] bg-white/[0.04] sm:h-[60px] sm:w-[60px] sm:rounded-[17px]">
+                    <div
+                      className="c-ico relative flex h-[52px] w-[52px] flex-none items-center justify-center rounded-[15px] sm:h-[60px] sm:w-[60px] sm:rounded-[17px]"
+                      style={{ background: "var(--site-card-border)" }}
+                    >
                       <Ico size={28} weight="duotone" className="relative z-[1]" />
                     </div>
 
-                    <h3 className="m-0 font-['Outfit',sans-serif] text-[clamp(20px,4.5vw,25px)] font-bold leading-[1.15] tracking-[-0.01em] text-white">
+                    <h3
+                      className="m-0 font-['Outfit',sans-serif] text-[clamp(20px,4.5vw,25px)] font-bold leading-[1.15] tracking-[-0.01em]"
+                      style={{ color: "var(--site-heading)" }}
+                    >
                       {f.name}
                     </h3>
-                    <p className="m-0 text-[clamp(13px,3.4vw,15px)] font-normal leading-[1.55] text-[#8B8A98]">
+                    <p
+                      className="m-0 text-[clamp(13px,3.4vw,15px)] font-normal leading-[1.55]"
+                      style={{ color: "var(--site-text-muted)" }}
+                    >
                       {f.desc}
                     </p>
 
-                    <div className="mt-auto flex flex-wrap items-center gap-x-[9px] gap-y-1 border-t border-white/[0.06] pt-[18px]">
+                    <div
+                      className="mt-auto flex flex-wrap items-center gap-x-[9px] gap-y-1 border-t pt-[18px]"
+                      style={{ borderColor: "var(--site-card-border)" }}
+                    >
                       <span className="h-2 w-2 flex-none rounded-full bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)] shadow-[0_0_8px_rgba(255,122,24,.5)]" />
                       <span className="font-['Outfit',sans-serif] text-[10.5px] font-semibold uppercase tracking-[.12em] text-[#5C5B68]">
                         Builds
                       </span>
-                      <span className="text-[12.5px] font-medium tracking-[.01em] text-[#C3C2CE]">
+                      <span
+                        className="text-[12.5px] font-medium tracking-[.01em]"
+                        style={{ color: "var(--site-text)" }}
+                      >
                         {f.builds}
                       </span>
                     </div>
@@ -2498,8 +2523,11 @@ export default function FeatureCarousel() {
         </div>
 
         {/* Counter */}
-        <div className="mt-[clamp(24px,3vw,40px)] text-center font-['Outfit',sans-serif] text-[14px] font-bold tracking-[0.02em] text-[#8B8A98]">
-          <b className="text-[#FFB36B]">{pad(active + 1)}</b> / {N} ·{" "}
+        <div
+          className="mt-[clamp(24px,3vw,40px)] text-center font-['Outfit',sans-serif] text-[14px] font-bold tracking-[0.02em]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
+          <b style={{ color: "var(--site-pill-text)" }}>{pad(active + 1)}</b> / {N} ·{" "}
           <span>{FEATURES[active].name}</span>
         </div>
 
@@ -2513,7 +2541,7 @@ export default function FeatureCarousel() {
               onClick={() => go(i)}
               className={`car-dot h-2 cursor-pointer rounded-full border-0 p-0 transition-all duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${i === active
                 ? "w-[26px] rounded-[5px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)]"
-                : "w-2 bg-white/[0.18] hover:bg-white/40"
+                : "w-2 bg-[var(--site-card-border)] hover:opacity-70"
                 }`}
             />
           ))}
@@ -2547,15 +2575,8 @@ export default function FeatureCarousel() {
            which makes cards randomly invisible. Solid dark fill renders
            reliably. */
         .card {
-          --ring: linear-gradient(
-            155deg,
-            rgba(255, 255, 255, 0.3) 0%,
-            rgba(255, 255, 255, 0.09) 22%,
-            rgba(255, 255, 255, 0.03) 55%,
-            rgba(255, 255, 255, 0.06) 80%,
-            rgba(255, 255, 255, 0.14) 100%
-          );
-          background: linear-gradient(180deg, #17171d 0%, #0d0d12 100%);
+          --ring: var(--site-card-border);
+          background: linear-gradient(180deg, var(--site-card-bg) 0%, var(--site-page-bg-alt) 100%);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
             inset 0 -1px 0 rgba(255, 255, 255, 0.03), 0 26px 60px rgba(0, 0, 0, 0.55);
           transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -2591,15 +2612,8 @@ export default function FeatureCarousel() {
           pointer-events: none;
         }
         .card.is-active {
-          --ring: linear-gradient(
-            155deg,
-            rgba(255, 255, 255, 0.46) 0%,
-            rgba(255, 255, 255, 0.15) 22%,
-            rgba(255, 255, 255, 0.06) 55%,
-            rgba(255, 255, 255, 0.1) 80%,
-            rgba(255, 255, 255, 0.24) 100%
-          );
-          background: linear-gradient(180deg, #1b1b22 0%, #101016 100%);
+          --ring: var(--site-ghost-hover);
+          background: linear-gradient(180deg, var(--site-card-border) 0%, var(--site-card-bg) 100%);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
             inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 30px 74px rgba(0, 0, 0, 0.6),
             0 0 44px rgba(255, 122, 24, 0.08);

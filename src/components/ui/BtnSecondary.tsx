@@ -13,7 +13,7 @@ export function BtnSecondary({
   onClick?: () => void;
 }) {
   const cls =
-    "inline-flex items-center gap-2 border border-white/[0.12] text-white px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all hover:border-[#f97316] hover:text-[#f97316]";
+    "inline-flex items-center gap-2 border border-[var(--site-ghost-border)] text-[var(--site-ghost-text)] px-[28px] py-[14px] rounded-full font-medium text-[0.95rem] no-underline transition-all hover:border-[var(--site-ghost-hover)] hover:text-[var(--site-ghost-hover)]";
 
   if (href) {
     return (

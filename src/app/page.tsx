@@ -21,6 +21,7 @@ import LiveMomentsStack from '@/components/liveMomentStock/Livemomentstock';
 import { Main, Header, ParentTestimony } from "@/index"
 import RealityCheck from "@/components/realityCheck/RealityCheck";
 import InvisibleConsequences from "@/components/invinsibleConsequences/InvinsibleConsequences";
+import AicteTicker from "@/components/aicteTicker/AicteTicker";
 
 // import {Main, UnderLyingCauses, Statistics,LifeChanging,UltimateFeatureVideoSection, UltimateFeatureSection, WhyUltimateSection, UltimateFrameWork, RegretAndOutcome, UltimateSample, AdvisoryBoard, Header, ParentTestimony, EndTagLine, } from "@/index"
 // import { Star } from "lucide-react";
@@ -41,11 +42,12 @@ function Landing() {
       <Header />
       <Main />
     </div>
-    <TransformationJourney />
+    <AicteTicker />
+    <RealityCheck />
     {/* <BondMeter />
     <Aicte/> */}
     {/* <BeyondAcademics/> */}
-    <RealityCheck />
+    <TransformationJourney />
     <InvisibleConsequences />
     {/* <SpaceWhy/> */}
     {/* <Problem/>

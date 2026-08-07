@@ -494,25 +494,30 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "@/components/theme/ThemeProvider";
 
 const STORE_BTNS = [
   {
-    img: "/images/applink/app_store_white.png",
+    imgDark: "/images/applink/app_store_white.png",
+    imgLight: "/images/applink/app_store.png",
     alt: "Download on the App Store",
     href: process.env.NEXT_PUBLIC_APP_APPSTORE_SHARE_LINK,
   },
   {
-    img: "/images/applink/play_store_white.png",
+    imgDark: "/images/applink/play_store_white.png",
+    imgLight: "/images/applink/play_store.png",
     alt: "Get it on Google Play",
     href: process.env.NEXT_PUBLIC_APP_PLAYSTORE_SHARE_LINK,
   },
 ];
 
 export default function CtaFooter() {
+  const { theme } = useTheme();
   return (
     <section
       id="cta"
-      className="relative z-[1] w-full overflow-hidden bg-[#050507] px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] text-center font-['Poppins',sans-serif] text-[#c3c2ce] antialiased"
+      className="relative z-[1] w-full overflow-hidden px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] text-center font-['Poppins',sans-serif] antialiased"
+      style={{ background: "var(--site-page-bg)", color: "var(--site-text)" }}
     >
       {/* Warm radial glow, centered */}
       <div
@@ -526,9 +531,19 @@ export default function CtaFooter() {
       <div className="relative z-[1] mx-auto flex max-w-[1240px] flex-col items-center">
         {/* Pill */}
         <div className="mb-[26px] flex justify-center">
-          <div className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]">
+          <div
+            className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] px-[18px]"
+            style={{
+              borderColor: "var(--site-pill-border)",
+              background: "var(--site-pill-bg)",
+              boxShadow: "inset 0 1.029px 0 rgba(255,255,255,0.16)",
+            }}
+          >
             <span className="h-[7.2px] w-[7.2px] rounded-full bg-[#ff9a40] shadow-[0_0_8.229px_#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px] text-[#ffb36b]">
+            <span
+              className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px]"
+              style={{ color: "var(--site-pill-text)" }}
+            >
               Be The Ulti-Mate Parent
             </span>
           </div>
@@ -540,7 +555,8 @@ export default function CtaFooter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] text-white max-[560px]:tracking-[-0.6px]"
+          className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] max-[560px]:tracking-[-0.6px]"
+          style={{ color: "var(--site-heading)" }}
         >
           Be The{" "}
           <span className="bg-[linear-gradient(110.93deg,#FFB13D_0%,#FF7A18_26%,#FF4D8D_64%,#A24BFF_100%)] bg-clip-text text-transparent">
@@ -552,7 +568,10 @@ export default function CtaFooter() {
         </motion.h2>
 
         {/* Subtitle */}
-        <p className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+        <p
+          className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
           Download the app today and start your family&apos;s journey across the
           stars.
           <br />
@@ -571,7 +590,7 @@ export default function CtaFooter() {
               className="transition-all duration-300 hover:-translate-y-[2px] hover:opacity-90"
             >
               <Image
-                src={btn.img}
+                src={theme === "light" ? btn.imgLight : btn.imgDark}
                 alt={btn.alt}
                 width={160}
                 height={52}
@@ -582,7 +601,10 @@ export default function CtaFooter() {
         </div>
 
         {/* Guarantee line */}
-        <div className="flex items-center justify-center gap-1.5 text-center text-[clamp(12px,1.1vw,13.5px)] text-[#8b8a98]">
+        <div
+          className="flex items-center justify-center gap-1.5 text-center text-[clamp(12px,1.1vw,13.5px)]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
           ✅ 100% results guaranteed · follow the framework · free to start
         </div>
       </div>

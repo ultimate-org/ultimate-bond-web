@@ -260,15 +260,15 @@ export default function Footer() {
     <footer
       className="relative z-[1] px-[6%] py-12 text-center"
       style={{
-        background: "#0a0e1f",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        background: "var(--site-footer-bg)",
+        borderTop: "1px solid var(--site-footer-border)",
       }}
     >
       <div className="max-w-[1160px] mx-auto">
 
         {/* .footer-brand */}
         <div
-          className="text-white font-black text-[1.1rem] mb-1"
+          className="text-[var(--site-heading)] font-black text-[1.1rem] mb-1"
           style={{ fontFamily: "'Rubik', sans-serif" }}
         >
           Ulti<span className="text-[#f97316]">Mate</span> — Family Growth Platform
@@ -289,7 +289,7 @@ export default function Footer() {
             className="h-20 w-auto"
             style={{ opacity: 0.7, filter: "grayscale(0.3)" }}
           />
-          <span className="text-[0.75rem] text-[#9ca3af]">
+          <span className="text-[0.75rem] text-[var(--site-text-muted)]">
             AICTE Accredited · Ministry of Education, Govt. of India
           </span>
         </div>
@@ -300,7 +300,7 @@ export default function Footer() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-[0.8rem] text-[#9ca3af] no-underline transition-colors duration-200 hover:text-[#f97316]"
+              className="text-[0.8rem] text-[var(--site-text-muted)] no-underline transition-colors duration-200 hover:text-[#f97316]"
             >
               {link.label}
             </Link>
@@ -316,7 +316,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-[#9ca3af] transition-all duration-200 hover:text-[#f97316] hover:-translate-y-0.5 hover:bg-[rgba(249,115,22,0.08)] hover:border-[rgba(249,115,22,0.4)]"
+              className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--site-text-muted)] transition-all duration-200 hover:text-[#f97316] hover:-translate-y-0.5 hover:bg-[rgba(249,115,22,0.08)] hover:border-[rgba(249,115,22,0.4)]"
               style={{
                 background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(255,255,255,0.08)",
@@ -328,11 +328,11 @@ export default function Footer() {
         </div>
 
         {/* .footer-contact */}
-        <div className="text-[0.78rem] text-[#9ca3af] mb-3">
+        <div className="text-[0.78rem] text-[var(--site-text-muted)] mb-3">
           📞 +91 9158810069 · ✉️{" "}
           <a
             href="mailto:contact@adeptifytechnologies.com"
-            className="text-[#9ca3af] hover:text-[#f97316] transition-colors duration-200"
+            className="text-[var(--site-text-muted)] hover:text-[#f97316] transition-colors duration-200"
           >
             contact@adeptifytechnologies.com
           </a>{" "}

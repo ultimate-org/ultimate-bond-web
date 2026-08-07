@@ -206,6 +206,62 @@ body {
   --hero-blog-pill-border: rgba(255, 154, 64, 0.45);
   --hero-blog-pill-bg: rgba(255, 255, 255, 0.04);
   --hero-blog-pill-bg-hover: rgba(255, 154, 64, 0.1);
+
+  /* ── SITE TOKENS — same pattern as --hero-*, for every section below the hero ── */
+  --site-page-bg: #050507;
+  --site-page-bg-alt: #08080d;
+
+  --site-heading: #ffffff;
+  --site-text: #c3c2ce;
+  --site-text-muted: #8b8a98;
+
+  --site-glass-blur: 16px;
+  --site-card-bg: rgba(255, 255, 255, 0.06);
+  --site-card-border: rgba(255, 255, 255, 0.12);
+  --site-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  --site-pill-bg: rgba(249, 115, 22, 0.08);
+  --site-pill-text: #f97316;
+  --site-pill-border: rgba(249, 115, 22, 0.3);
+
+  --site-ghost-border: rgba(255, 255, 255, 0.12);
+  --site-ghost-text: #ffffff;
+  --site-ghost-hover: #f97316;
+
+  --site-accent-orange: #f97316;
+  --site-accent-orange-glow: rgba(249, 115, 22, 0.35);
+
+  --site-footer-bg: #0a0e1f;
+  --site-footer-border: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  /* Sampled from the Figma light-theme mockup (App-Wireframe-UltiMate, node 25186:5408) */
+  --site-page-bg: #fff4f1;
+  --site-page-bg-alt: #fff6f0;
+
+  --site-heading: #191313;
+  --site-text: #3e3e3e;
+  --site-text-muted: #6b6b6b;
+
+  --site-glass-blur: 0px;
+  --site-card-bg: rgba(255, 255, 255, 0.85);
+  --site-card-border: #eeeeee;
+  --site-card-shadow: 0 12px 30px rgba(244, 150, 80, 0.14);
+
+  --site-pill-bg: rgba(249, 115, 22, 0.08);
+  --site-pill-text: #ea5e00;
+  --site-pill-border: rgba(249, 115, 22, 0.3);
+
+  --site-ghost-border: #ffcca9;
+  --site-ghost-text: #4e1f00;
+  --site-ghost-hover: #ea5e00;
+
+  --site-accent-orange: #f97316;
+  --site-accent-orange-glow: rgba(249, 115, 22, 0.22);
+
+  --site-footer-bg: #fff6f0;
+  --site-footer-border: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] {

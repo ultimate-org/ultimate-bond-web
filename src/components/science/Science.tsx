@@ -1066,7 +1066,7 @@ const IMG_BASE = "/images";
 
 export default function Science() {
   return (
-    <section className="relative w-full bg-[#050507] px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] text-[#c3c2ce] antialiased">
+    <section className="relative w-full bg-[var(--site-page-bg)] px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] text-[var(--site-text)] antialiased">
       <div className="mx-auto max-w-[1240px]">
         {/* Pill */}
         <div className="mb-[26px] flex justify-center">
@@ -1079,7 +1079,7 @@ export default function Science() {
         </div>
 
         {/* Heading */}
-        <h2 className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] text-white max-[560px]:tracking-[-0.6px]">
+        <h2 className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] text-[var(--site-heading)] max-[560px]:tracking-[-0.6px]">
           Built on{" "}
           <span className="bg-[linear-gradient(110.93deg,#FFB13D_0%,#FF7A18_26%,#FF4D8D_64%,#A24BFF_100%)] bg-clip-text text-transparent">
             science
@@ -1088,7 +1088,7 @@ export default function Science() {
         </h2>
 
         {/* Subtitle */}
-        <p className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+        <p className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[var(--site-text-muted)]">
           Ulti-Mate operationalises the world&apos;s most authoritative
           child-development research into simple daily family actions.
         </p>
@@ -1103,7 +1103,7 @@ export default function Science() {
         </figure>
 
         {/* Footer line */}
-        <p className="mx-auto mt-[clamp(40px,5vw,60px)] max-w-[820px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+        <p className="mx-auto mt-[clamp(40px,5vw,60px)] max-w-[820px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[var(--site-text-muted)]">
           The first 10 years shape how children learn, feel, and grow. Every
           UltiMate activity is backed by child-development research.
         </p>

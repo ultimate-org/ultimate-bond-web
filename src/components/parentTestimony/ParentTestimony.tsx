@@ -595,7 +595,7 @@ function VideoCard({
   }, []);
 
   return (
-    <div className="tst-card group w-[300px] flex-none overflow-hidden rounded-[20px] border border-white/10 bg-[rgba(18,18,24,0.7)] backdrop-blur-[7px] transition-all duration-300 hover:-translate-y-[6px] max-[400px]:w-[260px]">
+    <div className="tst-card group w-[300px] flex-none overflow-hidden rounded-[20px] border border-[var(--site-card-border)] bg-[var(--site-card-bg)] backdrop-blur-[7px] transition-all duration-300 hover:-translate-y-[6px] max-[400px]:w-[260px]">
       {/* video container — 9:14 aspect ratio */}
       <div
         className="relative overflow-hidden bg-black"
@@ -765,7 +765,8 @@ export default function ParentTestimony() {
   return (
     <section
       id="testimonials"
-      className="relative z-[1] w-full overflow-hidden bg-[#050507] px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] text-[#c3c2ce] antialiased"
+      className="relative z-[1] w-full overflow-hidden px-[clamp(20px,4vw,48px)] py-[clamp(56px,7vw,110px)] font-['Poppins',sans-serif] antialiased"
+      style={{ background: "var(--site-page-bg)", color: "var(--site-text)" }}
     >
       {/* top warm glow — matches the other sections */}
       <div
@@ -779,16 +780,25 @@ export default function ParentTestimony() {
       <div className="relative z-[1] mx-auto max-w-[1240px]">
         {/* Pill */}
         <div className="mb-[26px] flex justify-center">
-          <div className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]">
+          <div
+            className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]"
+            style={{ borderColor: "var(--site-pill-border)", background: "var(--site-pill-bg)" }}
+          >
             <span className="h-[7.2px] w-[7.2px] rounded-full bg-[#ff9a40] shadow-[0_0_8.229px_#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px] text-[#ffb36b]">
+            <span
+              className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px]"
+              style={{ color: "var(--site-pill-text)" }}
+            >
               Real Families · Real Stories
             </span>
           </div>
         </div>
 
         {/* Heading */}
-        <h2 className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] text-white max-[560px]:tracking-[-0.6px]">
+        <h2
+          className="mx-auto mb-[22px] max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(34px,4.6vw,60px)] font-extrabold leading-[1.02] tracking-[-1.2px] max-[560px]:tracking-[-0.6px]"
+          style={{ color: "var(--site-heading)" }}
+        >
           Hear It From{" "}
           <span className="bg-[linear-gradient(110.93deg,#FFB13D_0%,#FF7A18_26%,#FF4D8D_64%,#A24BFF_100%)] bg-clip-text text-transparent">
             Parents Like You
@@ -796,7 +806,10 @@ export default function ParentTestimony() {
         </h2>
 
         {/* Subtitle */}
-        <p className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+        <p
+          className="mx-auto mb-[clamp(40px,5vw,60px)] max-w-[720px] text-center text-[clamp(16px,1.5vw,20px)] font-normal leading-[1.62]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
           Families across India are building deeper bonds, one deed at a time.
           Here&apos;s what they have to say.
         </p>
@@ -841,7 +854,7 @@ export default function ParentTestimony() {
             <button
               onClick={() => goToPage(currentPage - 1)}
               aria-label="Previous"
-              className="nav-btn flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[rgba(18,18,24,0.7)] text-white transition-all duration-300 hover:-translate-y-0.5"
+              className="nav-btn flex h-12 w-12 items-center justify-center rounded-full border border-[var(--site-card-border)] bg-[var(--site-card-bg)] text-[var(--site-heading)] transition-all duration-300 hover:-translate-y-0.5"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -867,7 +880,7 @@ export default function ParentTestimony() {
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === currentPage
                       ? "w-[24px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)] shadow-[0_0_10px_rgba(255,122,24,0.35)]"
-                      : "w-2 bg-white/[0.18] hover:bg-white/40"
+                      : "w-2 bg-[var(--site-card-border)] hover:opacity-70"
                   }`}
                 />
               ))}
@@ -877,7 +890,7 @@ export default function ParentTestimony() {
             <button
               onClick={() => goToPage(currentPage + 1)}
               aria-label="Next"
-              className="nav-btn flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[rgba(18,18,24,0.7)] text-white transition-all duration-300 hover:-translate-y-0.5"
+              className="nav-btn flex h-12 w-12 items-center justify-center rounded-full border border-[var(--site-card-border)] bg-[var(--site-card-bg)] text-[var(--site-heading)] transition-all duration-300 hover:-translate-y-0.5"
             >
               <svg
                 viewBox="0 0 24 24"

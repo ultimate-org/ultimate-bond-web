@@ -4955,8 +4955,6 @@ const DIMENSIONS = [
 //   },
 // ];
 
-const TICKER_LINE = "AICTE Accredited — Ministry of Education, Government of India";
-
 const ZONE_STATE: Record<string, State> = {
   disconnected: "before",
   connected: "middle",
@@ -5119,39 +5117,32 @@ export default function Transformation() {
       ref={sectionRef}
       id="transformations"
       data-state={state}
-      className={`uxform relative w-full overflow-hidden bg-[#050507] pb-[clamp(28px,4vh,52px)] font-['Poppins',sans-serif] text-white antialiased ${shimmerKilled ? "shimmer-off" : ""
+      className={`uxform relative w-full overflow-hidden pb-[clamp(28px,4vh,52px)] font-['Poppins',sans-serif] antialiased ${shimmerKilled ? "shimmer-off" : ""
         }`}
+      style={{ background: "var(--site-page-bg)", color: "var(--site-heading)" }}
     >
-      {/* Ticker marquee */}
-      <div className="tk relative z-[2] mb-[clamp(44px,6vh,84px)] w-full overflow-hidden border-y border-white/10 bg-[linear-gradient(180deg,rgba(255,122,24,0.05)_0%,rgba(255,122,24,0.01)_100%)] py-[14px]">
-        <div className="tk-track inline-flex items-center gap-[26px] whitespace-nowrap will-change-transform">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="inline-flex items-center gap-[26px]">
-              <span
-                className={`font-['Outfit',sans-serif] text-[clamp(16px,1.7vw,26px)] font-bold tracking-[0.26px] ${i % 2 === 0 ? "text-[#ff9a40]" : "text-white"
-                  }`}
-              >
-                {TICKER_LINE}
-              </span>
-              <span className="text-[clamp(13px,1.3vw,20px)] text-[#ff7a18]">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative z-[1] mx-auto max-w-[1280px] px-[clamp(20px,4vw,48px)]">
+      <div className="relative z-[1] mx-auto max-w-[1280px] px-[clamp(20px,4vw,48px)] pt-[clamp(44px,6vh,84px)]">
         {/* Pill */}
         <div className="mb-4 flex justify-center">
-          <div className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]">
+          <div
+            className="inline-flex h-9 items-center gap-2.5 rounded-full border-[1.029px] px-[18px] shadow-[inset_0_1.029px_0_rgba(255,255,255,0.16)]"
+            style={{ borderColor: "var(--site-pill-border)", background: "var(--site-pill-bg)" }}
+          >
             <span className="h-[7.2px] w-[7.2px] rounded-[3.6px] bg-[#ff9a40] shadow-[0_0_8.229px_#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px] text-[#ffb36b]">
+            <span
+              className="font-['Outfit',sans-serif] text-[12.343px] font-semibold uppercase tracking-[1.9749px]"
+              style={{ color: "var(--site-pill-text)" }}
+            >
               The Transformation
             </span>
           </div>
         </div>
 
         {/* Heading */}
-        <h2 className="mx-auto mb-3.5 max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(30px,3.8vw,50px)] font-extrabold leading-[1.04] tracking-[-1.1px] text-white max-[560px]:text-[34px]">
+        <h2
+          className="mx-auto mb-3.5 max-w-[760px] text-center font-['Outfit',sans-serif] text-[clamp(30px,3.8vw,50px)] font-extrabold leading-[1.04] tracking-[-1.1px] max-[560px]:text-[34px]"
+          style={{ color: "var(--site-heading)" }}
+        >
           The same child.
           <br />
           <span className="bg-[linear-gradient(100deg,#ffb13d_0%,#ff7a18_26%,#ff4d8d_64%,#a24bff_100%)] bg-clip-text text-transparent">
@@ -5159,7 +5150,10 @@ export default function Transformation() {
           </span>
         </h2>
 
-        <p className="mx-auto mb-[22px] max-w-[760px] text-center text-[clamp(15px,1.1vw,20px)] font-normal leading-[1.62] text-[#8b8a98]">
+        <p
+          className="mx-auto mb-[22px] max-w-[760px] text-center text-[clamp(15px,1.1vw,20px)] font-normal leading-[1.62]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
           Watch your family&apos;s Bond Meter climb as your child grows. From distant and
           distracted to confident, curious, and connected — measured in real moments, not in
           time.
@@ -5169,14 +5163,16 @@ export default function Transformation() {
         <div className="mb-6 flex justify-center">
           <div
             role="tablist"
-            className="inline-flex h-[57px] max-w-full items-center rounded-full border border-white/10 bg-white/[0.04] p-1.5 backdrop-blur-[7px]"
+            className="inline-flex h-[57px] max-w-full items-center rounded-full border p-1.5 backdrop-blur-[7px]"
+            style={{ borderColor: "var(--site-card-border)", background: "var(--site-card-bg)" }}
           >
             <button
               data-tab="before"
               role="tab"
               aria-selected={state === "before"}
               onClick={() => handleToggle("before")}
-              className="tg-btn relative inline-flex h-[43px] cursor-pointer items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border-0 bg-transparent px-[22px] font-['Outfit',sans-serif] text-[14.5px] font-bold text-[#8b8a98] transition-[color,background] duration-[400ms] max-[560px]:px-4 max-[560px]:text-[13px]"
+              className="tg-btn relative inline-flex h-[43px] cursor-pointer items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border-0 bg-transparent px-[22px] font-['Outfit',sans-serif] text-[14.5px] font-bold transition-[color,background] duration-[400ms] max-[560px]:px-4 max-[560px]:text-[13px]"
+              style={{ color: "var(--site-text-muted)" }}
             >
               <IconClock />
               Before
@@ -5186,7 +5182,8 @@ export default function Transformation() {
               role="tab"
               aria-selected={state === "after"}
               onClick={() => handleToggle("after")}
-              className="tg-btn relative inline-flex h-[43px] cursor-pointer items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border-0 bg-transparent px-[22px] font-['Outfit',sans-serif] text-[14.5px] font-bold text-[#8b8a98] transition-[color,background] duration-[400ms] max-[560px]:px-4 max-[560px]:text-[13px]"
+              className="tg-btn relative inline-flex h-[43px] cursor-pointer items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full border-0 bg-transparent px-[22px] font-['Outfit',sans-serif] text-[14.5px] font-bold transition-[color,background] duration-[400ms] max-[560px]:px-4 max-[560px]:text-[13px]"
+              style={{ color: "var(--site-text-muted)" }}
             >
               <span className="shimmer pointer-events-none absolute left-[-120%] top-0 h-full w-[70%] bg-[linear-gradient(100deg,transparent_0%,rgba(255,174,87,0)_20%,rgba(255,174,87,0.55)_50%,rgba(255,174,87,0)_80%,transparent_100%)]" />
               <IconSparkle />
@@ -5198,7 +5195,10 @@ export default function Transformation() {
         {/* Cards grid */}
         <div className="mb-4 grid grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] items-stretch gap-6 max-[980px]:grid-cols-1">
           {/* LEFT — Bond Meter gauge */}
-          <div className="card flex flex-col rounded-[36px] border border-white/10 bg-white/[0.04] p-[26px_36px_28px] backdrop-blur-[50px] max-[980px]:p-[28px_24px]">
+          <div
+            className="card flex flex-col rounded-[36px] border p-[26px_36px_28px] backdrop-blur-[50px] max-[980px]:p-[28px_24px]"
+            style={{ borderColor: "var(--site-card-border)", background: "var(--site-card-bg)" }}
+          >
             <Label>Bond Meter</Label>
 
             <div className="relative mx-auto mt-3.5 aspect-square w-full max-w-[360px] max-[980px]:max-w-[360px]">
@@ -5223,7 +5223,8 @@ export default function Transformation() {
                   cx="120"
                   cy="120"
                   r="100"
-                  className="fill-none stroke-white/[0.06] [stroke-width:16]"
+                  className="fill-none [stroke-width:16]"
+                  style={{ stroke: "var(--site-card-border)" }}
                 />
                 <circle cx="120" cy="120" r="100" className="gauge-val" />
               </svg>
@@ -5248,7 +5249,10 @@ export default function Transformation() {
           </div>
 
           {/* RIGHT — Six dimensions */}
-          <div className="card flex flex-col rounded-[36px] border border-white/10 bg-white/[0.04] p-[26px_36px] backdrop-blur-[50px] max-[980px]:p-[28px_24px]">
+          <div
+            className="card flex flex-col rounded-[36px] border p-[26px_36px] backdrop-blur-[50px] max-[980px]:p-[28px_24px]"
+            style={{ borderColor: "var(--site-card-border)", background: "var(--site-card-bg)" }}
+          >
             <Label>Six dimensions of the bond</Label>
 
             <div className="mt-6 flex flex-1 flex-col justify-between gap-[18px]">
@@ -5266,11 +5270,17 @@ export default function Transformation() {
                     <span className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center">
                       <IconDot />
                     </span>
-                    <span className="flex-1 font-['Outfit',sans-serif] text-[14.5px] font-semibold text-[#c3c2ce]">
+                    <span
+                      className="flex-1 font-['Outfit',sans-serif] text-[14.5px] font-semibold"
+                      style={{ color: "var(--site-text)" }}
+                    >
                       {d.name}
                     </span>
                   </div>
-                  <div className="relative h-3 overflow-hidden rounded-full bg-white/[0.07]">
+                  <div
+                    className="relative h-3 overflow-hidden rounded-full"
+                    style={{ background: "var(--site-card-border)" }}
+                  >
                     <div
                       className="dim-fill absolute inset-y-0 left-0 h-full rounded-full"
                       style={filled ? undefined : { width: "0%" }}
@@ -5280,19 +5290,25 @@ export default function Transformation() {
               ))}
             </div>
 
-            <div className="mt-[26px] flex gap-3 border-t border-white/[0.06] pt-[22px]">
+            <div
+              className="mt-[26px] flex gap-3 border-t pt-[22px]"
+              style={{ borderColor: "var(--site-card-border)" }}
+            >
               <span className="mt-0.5 h-5 w-5 flex-shrink-0">
                 <IconQuote />
               </span>
-              <p className="qt font-['Poppins',sans-serif] text-[14.5px] font-normal leading-[1.6] text-[#8b8a98]">
+              <p
+                className="qt font-['Poppins',sans-serif] text-[14.5px] font-normal leading-[1.6]"
+                style={{ color: "var(--site-text-muted)" }}
+              >
                 <span className="swap-before">
                   The dashed line marks where thread of the bond started.{" "}
-                  <b className="font-semibold text-white">Before, the words came out sharp</b> and
+                  <b className="font-semibold" style={{ color: "var(--site-heading)" }}>Before, the words came out sharp</b> and
                   the moment closed before it ever opened.
                 </span>
                 <span className="swap-after">
                   Same child, same ten minutes a day.{" "}
-                  <b className="font-semibold text-white">You respond instead of react</b> — and
+                  <b className="font-semibold" style={{ color: "var(--site-heading)" }}>You respond instead of react</b> — and
                   every thread of the bond climbs into the Thriving zone.
                 </span>
               </p>
@@ -5303,7 +5319,10 @@ export default function Transformation() {
         {/* Benefits */}
 
         {/* Bottom line + CTA */}
-        <p className="mx-auto mb-4 mt-[clamp(34px,4.6vh,54px)] max-w-[760px] text-center font-['Poppins',sans-serif] text-[clamp(16px,1.4vw,20px)] font-medium leading-[1.62] text-[#8b8a98]">
+        <p
+          className="mx-auto mb-4 mt-[clamp(34px,4.6vh,54px)] max-w-[760px] text-center font-['Poppins',sans-serif] text-[clamp(16px,1.4vw,20px)] font-medium leading-[1.62]"
+          style={{ color: "var(--site-text-muted)" }}
+        >
           10 minutes a day. One deed. Three lives transformed.
         </p>
 
@@ -5340,23 +5359,11 @@ export default function Transformation() {
             0 0 60px rgba(255, 154, 64, 0.08);
         }
 
-        .tk {
-          -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
-        }
-        .tk-track {
-          animation: ux-ticker 40s linear infinite;
-        }
-        @keyframes ux-ticker {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-
         /* Toggle active states */
         :global([data-state="before"]) .tg-btn[data-tab="before"],
         :global([data-state="middle"]) .tg-btn[data-tab="before"] {
-          background: rgba(255, 255, 255, 0.1);
-          color: #fff;
+          background: var(--site-card-border);
+          color: var(--site-heading);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
         :global([data-state="after"]) .tg-btn[data-tab="after"] {
@@ -5478,7 +5485,7 @@ export default function Transformation() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .tk-track, .tg-btn, .tg-btn .shimmer { animation: none !important; }
+          .tg-btn, .tg-btn .shimmer { animation: none !important; }
         }
       `}</style>
     </section>

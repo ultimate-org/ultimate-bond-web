@@ -802,26 +802,39 @@ export default function Journey() {
     <section
       ref={sectionRef}
       id="journey"
-      className="jn relative h-[230vh] w-full bg-[#050507] font-['Poppins',sans-serif] text-[#c3c2ce] antialiased max-[1040px]:h-auto"
+      className="jn relative h-[230vh] w-full font-['Poppins',sans-serif] antialiased max-[1040px]:h-auto"
+      style={{ background: "var(--site-page-bg)", color: "var(--site-text)" }}
     >
       {/* Pinned viewport */}
       <div className="jn-pin sticky top-0 flex h-screen flex-col items-center justify-center gap-[clamp(44px,7vh,92px)] overflow-hidden px-[clamp(20px,4vw,48px)] py-[clamp(16px,3vh,40px)] max-[1040px]:static max-[1040px]:h-auto max-[1040px]:gap-[34px] max-[1040px]:px-[clamp(20px,4vw,48px)] max-[1040px]:py-[clamp(48px,7vw,90px)]">
         {/* Header */}
         <div className="relative z-[2] flex max-w-[820px] flex-col items-center gap-3.5 text-center">
-          <div className="inline-flex h-[34px] items-center gap-2.5 rounded-full border-[1.029px] border-[rgba(255,154,64,0.25)] bg-[linear-gradient(180deg,rgba(255,154,64,0.03)_0%,rgba(255,122,24,0.01)_100%)] px-[18px] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]">
+          <div
+            className="inline-flex h-[34px] items-center gap-2.5 rounded-full border-[1.029px] px-[18px] shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
+            style={{ borderColor: "var(--site-pill-border)", background: "var(--site-pill-bg)" }}
+          >
             <span className="h-[7px] w-[7px] rounded-full bg-[#ff9a40] shadow-[0_0_8px_#ff9a40]" />
-            <span className="font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[1.97px] text-[#ffb36b]">
+            <span
+              className="font-['Outfit',sans-serif] text-[12px] font-semibold uppercase tracking-[1.97px]"
+              style={{ color: "var(--site-pill-text)" }}
+            >
               The Space Journey
             </span>
           </div>
 
-          <h2 className="font-['Outfit',sans-serif] text-[clamp(28px,3.6vw,46px)] font-extrabold leading-[1.04] tracking-[-1.1px] text-white">
+          <h2
+            className="font-['Outfit',sans-serif] text-[clamp(28px,3.6vw,46px)] font-extrabold leading-[1.04] tracking-[-1.1px]"
+            style={{ color: "var(--site-heading)" }}
+          >
             Every Deed Is <GradText>Fuel.</GradText>
             <br />
             Every Milestone Is a <GradText>New Planet.</GradText>
           </h2>
 
-          <p className="max-w-[640px] text-[clamp(14px,1.2vw,17px)] font-normal leading-[1.55] text-[#8b8a98]">
+          <p
+            className="max-w-[640px] text-[clamp(14px,1.2vw,17px)] font-normal leading-[1.55]"
+            style={{ color: "var(--site-text-muted)" }}
+          >
             The moment you open Ulti-Mate, your child&apos;s growth becomes a map
             of the stars. Here&apos;s how every part of it works.
           </p>
@@ -1009,16 +1022,25 @@ function Box({
     <div
       ref={innerRef}
       data-side={side}
-      className="box relative w-[clamp(196px,15.5vw,220px)] rounded-2xl border border-white/[0.12] bg-[rgba(18,18,24,0.7)] p-[17px] opacity-0 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-[7px] [will-change:opacity,transform] max-[1040px]:w-[min(280px,42vw)] max-[640px]:w-full max-[640px]:max-w-[340px]"
+      className="box relative w-[clamp(196px,15.5vw,220px)] rounded-2xl border border-[var(--site-card-border)] bg-[var(--site-card-bg)] p-[17px] opacity-0 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-[7px] [will-change:opacity,transform] max-[1040px]:w-[min(280px,42vw)] max-[640px]:w-full max-[640px]:max-w-[340px]"
     >
-      <div className="mb-3.5 flex items-center gap-2 font-['Outfit',sans-serif] text-[10.5px] font-semibold uppercase tracking-[1.26px] text-[#ffb36b]">
+      <div
+        className="mb-3.5 flex items-center gap-2 font-['Outfit',sans-serif] text-[10.5px] font-semibold uppercase tracking-[1.26px]"
+        style={{ color: "var(--site-pill-text)" }}
+      >
         <span className="h-3.5 w-3.5 flex-none text-[#ff9a40]">{data.icon}</span>
         {data.eyebrow}
       </div>
-      <div className="mb-2.5 font-['Outfit',sans-serif] text-[15.5px] font-bold text-white">
+      <div
+        className="mb-2.5 font-['Outfit',sans-serif] text-[15.5px] font-bold"
+        style={{ color: "var(--site-heading)" }}
+      >
         {data.title}
       </div>
-      <div className="text-[12.5px] font-normal leading-[1.55] text-[#8b8a98]">
+      <div
+        className="text-[12.5px] font-normal leading-[1.55]"
+        style={{ color: "var(--site-text-muted)" }}
+      >
         {data.desc}
       </div>
     </div>

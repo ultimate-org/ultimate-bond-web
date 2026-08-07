@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { Sun, Moon } from "lucide-react";
 import { useTheme, type Theme } from "@/components/theme/ThemeProvider";
 
-const TRACK_W = 56;
-const TRACK_H = 30;
-const THUMB = 24;
-const PAD = 3;
+const TRACK_W = 68;
+const TRACK_H = 40;
+const THUMB = 32;
+const PAD = 4;
 const THUMB_TRAVEL = TRACK_W - THUMB - PAD * 2;
 
 export default function ThemeToggle({ className = "" }: { className?: string }) {
@@ -119,13 +119,13 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     >
       {/* dim static icons in the track */}
       <Sun
-        size={13}
-        className="pointer-events-none absolute left-[6px] top-1/2 -translate-y-1/2 transition-colors duration-500"
+        size={16}
+        className="pointer-events-none absolute left-[8px] top-1/2 -translate-y-1/2 transition-colors duration-500"
         style={{ color: "var(--hero-toggle-track-icon)" }}
       />
       <Moon
-        size={12}
-        className="pointer-events-none absolute right-[7px] top-1/2 -translate-y-1/2 transition-colors duration-500"
+        size={15}
+        className="pointer-events-none absolute right-[9px] top-1/2 -translate-y-1/2 transition-colors duration-500"
         style={{ color: "var(--hero-toggle-track-icon)" }}
       />
 
@@ -137,16 +137,16 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
           height: THUMB,
           left: PAD,
           top: PAD,
-          transform: `translateX(${isDark ? 0 : THUMB_TRAVEL}px)`,
+          transform: `translateX(${isDark ? THUMB_TRAVEL : 0}px)`,
           background: "var(--hero-toggle-thumb-bg)",
           boxShadow: "0 1px 3px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18)",
         }}
       >
         <span className="theme-toggle-icon inline-flex items-center justify-center">
           {isDark ? (
-            <Moon size={13} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
+            <Moon size={16} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
           ) : (
-            <Sun size={13} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
+            <Sun size={16} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
           )}
         </span>
       </span>
