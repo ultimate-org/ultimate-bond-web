@@ -1387,7 +1387,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 // const GLASS_SHADOW =
