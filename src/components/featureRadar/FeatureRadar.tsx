@@ -2621,6 +2621,23 @@ export default function FeatureCarousel() {
             0 0 44px rgba(255, 122, 24, 0.08);
         }
 
+        /* ── Light Theme Overrides ── */
+        :global([data-theme="light"]) .card {
+          --ring: #ffd6c0;
+          background: #ffffff;
+          box-shadow: 0 12px 32px rgba(244, 150, 80, 0.12), inset 0 1px 0 #ffffff;
+        }
+        :global([data-theme="light"]) .card.is-active {
+          --ring: #ea5e00;
+          background: linear-gradient(180deg, #ffffff 0%, #fff5ee 100%);
+          box-shadow: 0 24px 60px rgba(244, 150, 80, 0.22),
+            inset 0 1px 0 #ffffff,
+            0 0 32px rgba(234, 94, 0, 0.15);
+        }
+        :global([data-theme="light"]) .c-ico {
+          background: #fff0e6 !important;
+        }
+
         /* Icon box gradient ring (mask-composite) + gradient-filled glyph */
         .c-ico::before {
           content: "";
