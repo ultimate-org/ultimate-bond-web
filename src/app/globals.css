@@ -235,6 +235,17 @@ body {
   --site-footer-border: rgba(255, 255, 255, 0.08);
 }
 
+/* Forces the dark palette on a subtree regardless of the page's [data-theme]
+   attribute — used to keep shared components (e.g. Footer) dark on routes
+   that must never pick up the light theme, such as /parenting-guide. */
+[data-theme="dark"] {
+  --site-heading: #ffffff;
+  --site-text: #c3c2ce;
+  --site-text-muted: #8b8a98;
+  --site-footer-bg: #0a0e1f;
+  --site-footer-border: rgba(255, 255, 255, 0.08);
+}
+
 [data-theme="light"] {
   /* Sampled from the Figma light-theme mockup (App-Wireframe-UltiMate, node 25186:5408) */
   --site-page-bg: #fff4f1;

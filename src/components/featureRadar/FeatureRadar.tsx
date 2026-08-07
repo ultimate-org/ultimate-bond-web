@@ -2333,7 +2333,7 @@ export default function FeatureCarousel() {
     const s = relX < 0 ? -1 : 1;
     const ax = Math.abs(relX);
     if (ax <= half) return 0; // centre card
-    for (let k = 1; k <= 3; k++) {
+    for (let k = 1; k <= 2; k++) {
       const pj = persp / (persp + k * depth);
       const scale = Math.max(0.56, 1 - k * 0.15);
       const rot = (Math.min(44, k * 26) * Math.PI) / 180;
@@ -2364,7 +2364,7 @@ export default function FeatureCarousel() {
       const { card, cardH, spacing, depth } = metrics;
       const off = ringOffset(i, active);
       const abs = Math.abs(off);
-      const parked = abs > 3.15;
+      const parked = abs > 2.15;
 
       const base: React.CSSProperties = {
         width: card,
@@ -2395,11 +2395,13 @@ export default function FeatureCarousel() {
       const z = Math.round(-abs * depth);
       const rot = isActive ? 0 : Math.max(-44, Math.min(44, off * -26));
       const scale = isActive ? 1 : Math.max(0.56, 1 - abs * 0.15);
-      const op = Math.max(0, 1 - abs * 0.4);
+      const opacity = isActive
+        ? 1
+        : Math.max(0.2, 1 - Math.pow(abs / 2.3, 1.2));
 
       return {
         ...base,
-        opacity: Number(op.toFixed(3)),
+        opacity,
         transform: `translate3d(${x}px,0,${z}px) rotateY(${rot.toFixed(2)}deg) scale(${scale.toFixed(3)})`,
       };
     },
@@ -2407,7 +2409,7 @@ export default function FeatureCarousel() {
   );
 
   const visibleIndices = useMemo(
-    () => FEATURES.map((_, i) => i).filter((i) => Math.abs(ringOffset(i, active)) <= 3.15),
+    () => FEATURES.map((_, i) => i).filter((i) => Math.abs(ringOffset(i, active)) <= 2.3),
     [active]
   );
 
@@ -2541,7 +2543,7 @@ export default function FeatureCarousel() {
               onClick={() => go(i)}
               className={`car-dot h-2 cursor-pointer rounded-full border-0 p-0 transition-all duration-[280ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${i === active
                 ? "w-[26px] rounded-[5px] bg-[linear-gradient(145deg,#FFB13D_0%,#FF7A18_34%,#FF4D8D_70%,#A24BFF_100%)]"
-                : "w-2 bg-[var(--site-card-border)] hover:opacity-70"
+                : "w-2 bg-[var(--site-card-border)] hover:opacity-100"
                 }`}
             />
           ))}
@@ -2576,7 +2578,7 @@ export default function FeatureCarousel() {
            reliably. */
         .card {
           --ring: var(--site-card-border);
-          background: linear-gradient(180deg, var(--site-card-bg) 0%, var(--site-page-bg-alt) 100%);
+          background: #0f121d;
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
             inset 0 -1px 0 rgba(255, 255, 255, 0.03), 0 26px 60px rgba(0, 0, 0, 0.55);
           transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -2613,7 +2615,7 @@ export default function FeatureCarousel() {
         }
         .card.is-active {
           --ring: var(--site-ghost-hover);
-          background: linear-gradient(180deg, var(--site-card-border) 0%, var(--site-card-bg) 100%);
+          background: linear-gradient(180deg, #1a1d2e 0%, #0d0f19 100%);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
             inset 0 -1px 0 rgba(255, 255, 255, 0.05), 0 30px 74px rgba(0, 0, 0, 0.6),
             0 0 44px rgba(255, 122, 24, 0.08);
