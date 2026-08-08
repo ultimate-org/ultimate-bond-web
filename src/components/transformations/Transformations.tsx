@@ -5337,13 +5337,13 @@ export default function Transformation() {
       </div>
 
       {/* Branch illustration */}
-      <div className="relative z-0 -mt-[clamp(0px,10vh,100px)] w-full pointer-events-none">
-        <img
+      <div className="relative z-0 -mt-[clamp(0px,2vh,20px)] w-full pointer-events-none">
+        {/* <img
           src="/images/transformation/branch.webp"
           alt="A character transforming from disconnected to thriving along a mossy branch"
           className="block h-auto w-full"
           loading="lazy"
-        />
+        /> */}
       </div>
 
       <style jsx>{`
