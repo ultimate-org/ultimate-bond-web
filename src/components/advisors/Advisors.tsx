@@ -134,9 +134,8 @@ export default function Advisors() {
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
               /* Tailwind glassmorphism card */
-              className="relative flex flex-col rounded-[28px] p-[30px] min-h-[318px]
+              className="adv-card relative flex flex-col rounded-[28px] p-[30px] min-h-[318px]
                          border
-                         shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_-1px_0_rgba(255,255,255,0.04),0_26px_60px_rgba(0,0,0,0.45)]
                          transition-all duration-500 hover:-translate-y-1
                          hover:bg-white/[0.09] hover:border-white/[0.2]"
               style={{
@@ -146,13 +145,13 @@ export default function Advisors() {
                 WebkitBackdropFilter: "blur(var(--site-glass-blur))",
               }}
             >
-              {/* Gradient border — ::after mask equivalent */}
+              {/* Gradient border — ::after mask equivalent (color/box-shadow are theme-scoped below) */}
               <div
-                className="absolute inset-0 rounded-[28px] pointer-events-none"
+                className="adv-ring absolute inset-0 rounded-[28px] pointer-events-none"
                 style={{
-                  padding: "1px",
-                  background: "linear-gradient(155deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.10) 20%, rgba(255,255,255,0.03) 52%, rgba(255,255,255,0.07) 80%, rgba(255,255,255,0.16) 100%)",
-                  WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+                  padding: "1.5px",
+                  WebkitMask:
+                    "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
                   WebkitMaskComposite: "xor",
                   maskComposite: "exclude",
                 }}
@@ -198,6 +197,39 @@ export default function Advisors() {
         </div>
 
       </div>
+
+      <style jsx>{`
+        .adv-card {
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.04), 0 26px 60px rgba(0, 0, 0, 0.45);
+        }
+        .adv-ring {
+          background: linear-gradient(
+            155deg,
+            rgba(255, 255, 255, 0.34) 0%,
+            rgba(255, 255, 255, 0.1) 20%,
+            rgba(255, 255, 255, 0.03) 52%,
+            rgba(255, 255, 255, 0.07) 80%,
+            rgba(255, 255, 255, 0.16) 100%
+          );
+        }
+
+        /* Orange stroke is a light-theme-only treatment — dark theme keeps the original look above */
+        :global([data-theme="light"]) .adv-card {
+          border-width: 0;
+          box-shadow: 0 10px 40px rgba(255, 122, 24, 0.12);
+        }
+        :global([data-theme="light"]) .adv-ring {
+          background: linear-gradient(
+            180deg,
+            #e9e9e9 0%,
+            #e9e9e9 45%,
+            #f2ddd0 55%,
+            #f8c8a7 70%,
+            #ffb17a 100%
+          );
+        }
+      `}</style>
     </section>
   );
 }

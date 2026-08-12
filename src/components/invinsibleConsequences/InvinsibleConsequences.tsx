@@ -344,7 +344,7 @@ function AgePill({ tone, children }: { tone: "blue" | "red"; children: React.Rea
 export default function InvisibleConsequences() {
   return (
     <section
-      className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased"
+      className="relative w-full overflow-hidden px-[clamp(1.25rem,4vw,4.5rem)] pb-0 pt-[clamp(3.75rem,8vh,7.5rem)] font-['Poppins',sans-serif] antialiased mb-"
       style={{
         color: "var(--site-heading)",
         background: "linear-gradient(180deg, var(--site-page-bg) 0%, var(--site-page-bg-alt) 100%)",
@@ -417,19 +417,19 @@ export default function InvisibleConsequences() {
         </motion.p>
 
         {/* Branch visual — full bleed, above the grid (mirrored) */}
-        <div className="pointer-events-none relative z-[1] mb-[clamp(2.5rem,6vh,6.25rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
-          <Image
+        <div className="pointer-events-none relative z-[1] mb-[clamp(1rem,2vh,2rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+          {/* <Image
             src={`${IMG_BASE}/branch.webp`}
             alt=""
             width={1600}
             height={10}
             className="block h-auto w-full -scale-x-100 bg-transparent"
             onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-          />
+          /> */}
         </div>
 
         {/* 2x2 Grid */}
-        <div className="mx-auto grid max-w-[80rem] grid-cols-1 gap-[clamp(1.125rem,1.6vw,1.75rem)] lg:grid-cols-2">
+        <div className="mx-auto grid max-w-[80rem] grid-cols-1 gap-[clamp(1.5rem,2.2vw,2.25rem)] lg:grid-cols-2">
           {CARDS.map((card, i) => (
             <motion.article
               key={i}
@@ -513,7 +513,7 @@ export default function InvisibleConsequences() {
       {/* Branch visual — full bleed, flush to bottom */}
 
       {/* Closing image — full bleed, flush to bottom */}
-      <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
+      {/* <div className="pointer-events-none relative z-[1] mt-[clamp(0.75rem,2vh,1.75rem)] -mx-[clamp(1.25rem,4vw,4.5rem)] leading-none">
         <Image
           src={`${IMG_BASE}/ic.webp`}
           alt=""
@@ -522,7 +522,7 @@ export default function InvisibleConsequences() {
           className="block h-auto w-full bg-transparent"
           onError={(e) => { e.currentTarget.style.opacity = "0"; }}
         />
-      </div>
+      </div> */}
 
       {/* Component-scoped CSS animations and pseudo-element styles */}
       <style jsx>{`
@@ -597,6 +597,34 @@ export default function InvisibleConsequences() {
           .ic-card:hover::before {
             animation: none;
           }
+        }
+
+        /* Static stroke — light-theme only; dark theme keeps its existing border above */
+        .ic-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1.5px;
+          background: transparent;
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+        :global([data-theme="light"]) .ic-card {
+          border-width: 0;
+          background: #ffffff;
+        }
+        :global([data-theme="light"]) .ic-card::after {
+          background: linear-gradient(
+            180deg,
+            #e9e9e9 0%,
+            #e9e9e9 45%,
+            #f2ddd0 55%,
+            #f8c8a7 70%,
+            #ffb17a 100%
+          );
         }
       `}</style>
     </section>
