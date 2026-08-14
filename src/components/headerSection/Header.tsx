@@ -536,7 +536,7 @@ const NAV_LINKS = [
   { label: "Journey", href: "/#journey" },
   { label: "Transformation", href: "/#transformations" },
   { label: "Features", href: "/#features" },
-  { label: "Ulti-Bot", href: "/#ai" },
+  // { label: "Ulti-Bot", href: "/#ai" },
 ];
 
 const PG_CATEGORIES = [
@@ -655,7 +655,7 @@ export default function Navbar() {
             src="/images/logo/Ultimate-Logo.png"
             alt="UltiMate"
             width={60}
-            height={20}
+            height={40}
             className="h-auto w-auto object-contain"
             priority
           />
