@@ -120,11 +120,13 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
       {/* dim static icons in the track */}
       <Sun
         size={16}
+        fill="currentColor"
         className="pointer-events-none absolute left-[8px] top-1/2 -translate-y-1/2 transition-colors duration-500"
         style={{ color: "var(--hero-toggle-track-icon)" }}
       />
       <Moon
         size={15}
+        fill="currentColor"
         className="pointer-events-none absolute right-[9px] top-1/2 -translate-y-1/2 transition-colors duration-500"
         style={{ color: "var(--hero-toggle-track-icon)" }}
       />
@@ -144,9 +146,9 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
       >
         <span className="theme-toggle-icon inline-flex items-center justify-center">
           {isDark ? (
-            <Moon size={16} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
+            <Moon size={16} fill="currentColor" style={{ color: "var(--hero-toggle-thumb-icon)" }} />
           ) : (
-            <Sun size={16} style={{ color: "var(--hero-toggle-thumb-icon)" }} />
+            <Sun size={16} fill="currentColor" style={{ color: "var(--hero-toggle-thumb-icon)" }} />
           )}
         </span>
       </span>

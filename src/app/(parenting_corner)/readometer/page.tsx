@@ -2722,9 +2722,9 @@ function CategoryTab({
         cursor: "pointer",
         transition: "all 0.2s",
         fontFamily: "'Outfit'",
-        border: `1px solid ${active ? "#f97316" : "#2a2a2a"}`,
-        background: active ? "#f97316" : "#2C2620",
-        color: active ? "#fff" : "#9ca3af",
+        border: `1px solid ${active ? "var(--rm-accent)" : "var(--rm-border-b)"}`,
+        background: active ? "var(--rm-accent)" : "var(--rm-tab-bg)",
+        color: active ? "#fff" : "var(--rm-muted-a)",
       }}>
       <span style={{ fontSize: isMobile ? "0.75rem" : "0.875rem" }}>{icon}</span>
       {label}
@@ -2808,7 +2808,7 @@ function PodiumCard({
           width: cfg.avatarSize,
           height: cfg.avatarSize,
           borderRadius: "50%",
-          border: "3px solid #f97316",
+          border: "3px solid var(--rm-accent)",
           overflow: "hidden",
           marginBottom: isMobile ? 8 : 14,
           boxShadow: cfg.isFirst ? "0 0 24px rgba(249,115,22,0.4)" : "none",
@@ -2827,7 +2827,7 @@ function PodiumCard({
       {/* Name */}
       <p
         style={{
-          color: cfg.isFirst ? "#E8782A" : "#ffffff",
+          color: cfg.isFirst ? "var(--rm-podium-first-name)" : "var(--rm-heading)",
           fontSize: cfg.isFirst ? (isMobile ? 13 : 17) : isMobile ? 11 : 15,
           fontWeight: 700,
           margin: "0 0 2px 0",
@@ -2842,7 +2842,7 @@ function PodiumCard({
       {entry.city && !isMobile && (
         <p
           style={{
-            color: "#5C5248",
+            color: "var(--rm-muted-d)",
             fontSize: 12,
             margin: "0 0 10px 0",
             textAlign: "center",
@@ -2856,7 +2856,7 @@ function PodiumCard({
       {/* Minutes */}
       <p
         style={{
-          color: cfg.isFirst ? "#E8782A" : "#F0EAE2",
+          color: cfg.isFirst ? "#E8782A" : "var(--rm-heading-warm)",
           fontSize: cfg.fontSize,
           fontWeight: 800,
           lineHeight: `${cfg.fontSize + 4}px`,
@@ -2868,7 +2868,7 @@ function PodiumCard({
 
       <p
         style={{
-          color: "#5C5248",
+          color: "var(--rm-muted-d)",
           fontSize: isMobile ? 10 : 12,
           margin: isMobile ? "0 0 8px 0" : "0 0 14px 0",
           fontFamily: "'Outfit'",
@@ -2886,13 +2886,13 @@ function PodiumCard({
       {!isMobile && (
         <div
           style={{
-            background: "#F585232E",
+            background: cfg.isFirst ? "#F585232E" : "var(--rm-badge-secondary-bg)",
             borderRadius: "999px",
             padding: "6px 18px",
-            color: "#F58523",
+            color: cfg.isFirst ? "#F58523" : "var(--rm-badge-secondary-text)",
             fontSize: 12,
             fontWeight: 600,
-            border: "1px solid #E8782A4D",
+            border: cfg.isFirst ? "1px solid #E8782A4D" : "1px solid var(--rm-badge-secondary-border)",
             marginBottom: 16,
             fontFamily: "'Outfit'",
             display: "flex",
@@ -2916,7 +2916,7 @@ function PodiumCard({
         }}>
         <span
           style={{
-            color: "#FFFFFF66",
+            color: "var(--rm-podium-rank-text)",
             fontSize: isMobile ? 16 : 24,
             fontWeight: 800,
             fontFamily: "'Outfit'",
@@ -2946,7 +2946,7 @@ function LeaderboardRow({
         display: "flex",
         alignItems: "center",
         padding: isMobile ? "10px 14px" : "13px 24px",
-        borderBottom: !isLast ? "1px solid #2C2620" : "none",
+        borderBottom: !isLast ? "1px solid var(--rm-warm-fill)" : "none",
         gap: isMobile ? 10 : 16,
         minHeight: isMobile ? 60 : 69,
       }}>
@@ -2955,7 +2955,7 @@ function LeaderboardRow({
       <div
         style={{
           width: isMobile ? 24 : 32,
-          color: "#5C5248",
+          color: "var(--rm-muted-d)",
           fontSize: isMobile ? 14 : 20,
           fontWeight: 700,
           flexShrink: 0,
@@ -2971,10 +2971,10 @@ function LeaderboardRow({
           width: isMobile ? 34 : 42,
           height: isMobile ? 34 : 42,
           borderRadius: "50%",
-          border: "2px solid #2a2a2a",
+          border: "2px solid var(--rm-border-b)",
           overflow: "hidden",
           flexShrink: 0,
-          background: "#1f1f1f",
+          background: "var(--rm-avatar-fallback)",
           position: "relative",
         }}>
         <Image
@@ -2997,7 +2997,7 @@ function LeaderboardRow({
         }}>
         <p
           style={{
-            color: "#F0EAE2",
+            color: "var(--rm-heading-warm)",
             fontSize: isMobile ? 12 : 14,
             fontWeight: 600,
             margin: "0 0 4px 0",
@@ -3031,7 +3031,7 @@ function LeaderboardRow({
           style={{
             flex: 1,
             height: 5,
-            background: "#2C2620",
+            background: "var(--rm-warm-fill)",
             borderRadius: "999px",
             overflow: "hidden",
           }}>
@@ -3039,7 +3039,7 @@ function LeaderboardRow({
             style={{
               height: "100%",
               width: `${(entry.total_reading_min / maxMinutes) * 100}%`,
-              background: "linear-gradient(90deg, #c45e10 0%, #f97316 100%)",
+              background: "var(--rm-progress-fill)",
               borderRadius: "999px",
             }}
           />
@@ -3051,7 +3051,7 @@ function LeaderboardRow({
         style={{
           width: isMobile ? "auto" : 76,
           textAlign: "right",
-          color: "#f0eae2",
+          color: "var(--rm-heading-warm)",
           fontSize: isMobile ? 12 : 15,
           fontWeight: 700,
           flexShrink: 0,
@@ -3134,7 +3134,7 @@ export default function ReadometerPage() {
     <main
       style={{
         minHeight: "100vh",
-        background: "#080705",
+        background: "var(--rm-bg)",
         fontFamily: "'Outfit', sans-serif",
         // paddingTop:100
       }}>
@@ -3149,19 +3149,80 @@ export default function ReadometerPage() {
       {/* ── Hero Header ── */}
       <section
         style={{
+          position: "relative",
           paddingTop: isMobile ? 80 : 100,
           paddingLeft: isMobile ? 16 : 24,
           paddingRight: isMobile ? 16 : 24,
           display: "flex",
           justifyContent: "center",
-          background:
-            "radial-gradient(circle at center, rgba(222,146,92,0.18) 0%, rgba(8,7,5,1) 60%)",
+          background: "var(--rm-hero-bg)",
         }}>
+        {/* Decorative floating icons — light theme only */}
+        {!isMobile && (
+          <>
+            <span
+              aria-hidden
+              style={{
+                display: "var(--rm-hero-decor-display)",
+                position: "absolute",
+                top: "12%",
+                left: "21%",
+                fontSize: 30,
+                transform: "rotate(-8deg)",
+                filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.12))",
+                pointerEvents: "none",
+              }}>
+              🕰️
+            </span>
+            <span
+              aria-hidden
+              style={{
+                display: "var(--rm-hero-decor-display)",
+                position: "absolute",
+                bottom: "14%",
+                left: "6%",
+                fontSize: 34,
+                transform: "rotate(-10deg)",
+                filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.12))",
+                pointerEvents: "none",
+              }}>
+              📚
+            </span>
+            <span
+              aria-hidden
+              style={{
+                display: "var(--rm-hero-decor-display)",
+                position: "absolute",
+                top: "38%",
+                right: "8%",
+                fontSize: 32,
+                transform: "rotate(9deg)",
+                filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.12))",
+                pointerEvents: "none",
+              }}>
+              📖
+            </span>
+            <span
+              aria-hidden
+              style={{
+                display: "var(--rm-hero-decor-display)",
+                position: "absolute",
+                bottom: "10%",
+                right: "6%",
+                fontSize: 32,
+                transform: "rotate(8deg)",
+                filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.12))",
+                pointerEvents: "none",
+              }}>
+              ⏰
+            </span>
+          </>
+        )}
         <div style={{ width: "100%", maxWidth: 900, textAlign: "center" }}>
           <div style={{ marginBottom: 12, marginTop: 12 }}>
             <span
               style={{
-                color: "#f97316",
+                color: "var(--rm-accent)",
                 fontSize: isMobile ? 11 : 13,
                 fontWeight: 700,
                 letterSpacing: "0.4em",
@@ -3173,10 +3234,10 @@ export default function ReadometerPage() {
           </div>
 
           <h1
-            className={playfair.className}
+            className={`${playfair.className} bg-clip-text text-transparent`}
             style={{
-              color: "#f0f0f0",
-              fontSize: isMobile ? "1.8rem" : "3rem",
+              backgroundImage: "var(--rm-hero-heading-grad)",
+              fontSize: isMobile ? "1.8rem" : "var(--rm-hero-heading-size)",
               lineHeight: 1.1,
               fontWeight: 800,
               marginBottom: isMobile ? 14 : 24,
@@ -3185,12 +3246,12 @@ export default function ReadometerPage() {
           </h1>
 
           <p
-            className={playfair.className}
             style={{
-              color: "#9ca3af",
+              color: "var(--rm-muted-a)",
               fontSize: isMobile ? 14 : 17,
-              fontStyle: "italic",
-              opacity: 0.8,
+              fontFamily: "var(--rm-subtitle-font)",
+              fontStyle: "var(--rm-subtitle-style)",
+              opacity: "var(--rm-subtitle-opacity)",
               marginBottom: isMobile ? 14 : 20,
             }}>
             Ranked by minutes read. Verified by parents. Celebrated by all.
@@ -3203,14 +3264,13 @@ export default function ReadometerPage() {
               gap: 12,
               padding: isMobile ? "5px 14px" : "6px 20px",
               borderRadius: "999px",
-              border: "1px solid rgba(249,115,22,0.3)",
-              background:
-                "linear-gradient(175deg, rgba(245,166,35,0.18) 0%, rgba(232,120,42,0.12) 100%)",
+              border: "1px solid var(--rm-hero-badge-border)",
+              background: "var(--rm-hero-badge-bg)",
               marginBottom: isMobile ? 20 : 28,
             }}>
             <p
               style={{
-                color: "#f97316",
+                color: "var(--rm-accent)",
                 fontSize: isMobile ? 11 : 14,
                 fontWeight: 600,
                 margin: 0,
@@ -3226,14 +3286,14 @@ export default function ReadometerPage() {
       {/* ── Controls ── */}
       <div
         style={{
-          background: "#0f0f0f",
+          background: "var(--rm-surface)",
           padding: isMobile ? "12px 12px" : "14px 24px",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: isMobile ? "column" : "row",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: isMobile ? "center" : "space-between",
           gap: isMobile ? 10 : 16,
-          borderBottom: "1px solid rgba(255,255,255,0.1)",
+          borderBottom: "1px solid var(--rm-border-a)",
         }}>
         {/* Category tabs */}
         <div
@@ -3241,7 +3301,7 @@ export default function ReadometerPage() {
             display: "flex",
             gap: isMobile ? 6 : 8,
             flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: isMobile ? "center" : "flex-start",
           }}>
           {AGE_CATEGORIES.map((cat) => (
             <CategoryTab
@@ -3259,10 +3319,10 @@ export default function ReadometerPage() {
         <div
           style={{
             display: "flex",
-            background: "#2C2620",
+            background: "var(--rm-segment-bg)",
             borderRadius: "999px",
             padding: 4,
-            border: "1px solid rgba(255,255,255,0.06)",
+            border: "1px solid var(--rm-segment-border)",
           }}>
           {TIME_PERIODS.map((p) => (
             <button
@@ -3271,8 +3331,8 @@ export default function ReadometerPage() {
               style={{
                 padding: isMobile ? "5px 14px" : "6px 20px",
                 borderRadius: "999px",
-                background: activePeriod === p.value ? "#f97316" : "transparent",
-                color: activePeriod === p.value ? "#fff" : "#9ca3af",
+                background: activePeriod === p.value ? "var(--rm-accent)" : "transparent",
+                color: activePeriod === p.value ? "#fff" : "var(--rm-muted-a)",
                 fontSize: isMobile ? "0.7rem" : "0.8rem",
                 fontWeight: 700,
                 border: "none",
@@ -3289,14 +3349,14 @@ export default function ReadometerPage() {
       {/* ── Sub-header + Podium ── */}
       <section
         style={{
-          background: "#0f0f0f",
+          background: "var(--rm-surface)",
           padding: sectionPadding,
           fontFamily: "'Outfit', sans-serif",
         }}>
         <div style={{ maxWidth: contentMaxWidth, margin: "0 auto" }}>
           <p
             style={{
-              color: "#f97316",
+              color: "var(--rm-accent)",
               fontSize: isMobile ? 11 : 13,
               fontWeight: 700,
               letterSpacing: "3px",
@@ -3309,7 +3369,7 @@ export default function ReadometerPage() {
 
           <h1
             style={{
-              color: "#ffffff",
+              color: "var(--rm-heading)",
               fontSize: isMobile ? 20 : 28,
               fontWeight: 800,
               margin: "0 0 10px 0",
@@ -3321,7 +3381,7 @@ export default function ReadometerPage() {
 
           <p
             style={{
-              color: "#9B8F85",
+              color: "var(--rm-muted-b)",
               fontSize: isMobile ? 13 : 15,
               margin: "0 0 8px 0",
               fontFamily: "'Outfit'",
@@ -3342,7 +3402,7 @@ export default function ReadometerPage() {
               border: "1px solid #E8782A40",
               borderRadius: "999px",
               padding: "6px 16px",
-              color: "#f97316",
+              color: "var(--rm-accent)",
               fontSize: isMobile ? 11 : 12,
               marginBottom: isMobile ? 20 : 32,
               backgroundColor: "#E8782A1A",
@@ -3355,11 +3415,10 @@ export default function ReadometerPage() {
           {/* Podium card */}
           <div
             style={{
-              background:
-                "linear-gradient(135deg, #1A1612 0%, #000000 50%, #241e18ff 100%)",
+              background: "var(--rm-podium-card-bg)",
               borderRadius: 20,
               padding: isMobile ? "32px 16px 24px" : "48px 32px 32px",
-              border: "1px solid #2a2a2a",
+              border: "1px solid var(--rm-border-b)",
             }}>
             {loading ? (
               <div
@@ -3405,7 +3464,7 @@ export default function ReadometerPage() {
               <div
                 style={{
                   textAlign: "center",
-                  color: "#9B8F85",
+                  color: "var(--rm-muted-b)",
                   padding: "60px 0",
                 }}>
                 {error}
@@ -3414,7 +3473,7 @@ export default function ReadometerPage() {
               <div
                 style={{
                   textAlign: "center",
-                  color: "#9B8F85",
+                  color: "var(--rm-muted-b)",
                   padding: "60px 0",
                 }}>
                 No data available for this period.
@@ -3441,7 +3500,7 @@ export default function ReadometerPage() {
 
             <p
               style={{
-                color: "#4a453fff",
+                color: "var(--rm-muted-c)",
                 fontSize: isMobile ? 10 : 12,
                 textAlign: "center",
                 margin: "24px 0 0 0",
@@ -3465,9 +3524,9 @@ export default function ReadometerPage() {
           }}>
           <div
             style={{
-              background: "#1A1612",
+              background: "var(--rm-card-bg)",
               borderRadius: 20,
-              border: "1px solid #2a2a2a",
+              border: "1px solid var(--rm-border-b)",
               overflow: "hidden",
             }}>
             {rest.map((entry, index) => (
@@ -3496,7 +3555,7 @@ export default function ReadometerPage() {
       {/* ── CTA Footer ── */}
       <section
         style={{
-          background: "#131009",
+          background: "var(--rm-cta-bg)",
           marginTop: 31,
           padding: isMobile ? "40px 20px" : "64px 40px",
           display: "flex",
@@ -3505,12 +3564,12 @@ export default function ReadometerPage() {
           justifyContent: "center",
           textAlign: "center",
           gap: 16,
-          border: "1px solid #2C2620",
+          border: "1px solid var(--rm-warm-fill)",
           boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
         }}>
         <h2
           style={{
-            color: "#f0eae2",
+            color: "var(--rm-heading-warm)",
             fontSize: isMobile ? 20 : 28,
             fontWeight: 800,
             fontFamily: "'Playfair Display'",
@@ -3521,7 +3580,7 @@ export default function ReadometerPage() {
         </h2>
         <p
           style={{
-            color: "#9B8F85",
+            color: "var(--rm-muted-b)",
             fontSize: isMobile ? 13 : 15,
             fontWeight: 400,
             margin: 0,
@@ -3548,7 +3607,7 @@ export default function ReadometerPage() {
         </button>
         <p
           style={{
-            color: "#4a453f",
+            color: "var(--rm-muted-c)",
             fontSize: isMobile ? 11 : 12,
             fontWeight: 400,
             margin: "8px 0 0 0",
