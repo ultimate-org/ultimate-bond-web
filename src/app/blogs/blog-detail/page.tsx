@@ -227,7 +227,7 @@ function Page({ searchParams }: { searchParams: Promise<{ name?: string }> }) {
   return (
     <div
       className="min-h-screen relative z-[1]"
-      style={{ background: "#04060f", color: "#fff" }}
+      style={{ background: "var(--blog-bg)", color: "var(--blog-heading)" }}
     >
       <Header />
 
@@ -267,7 +267,7 @@ function Page({ searchParams }: { searchParams: Promise<{ name?: string }> }) {
               font-family: inherit !important;
               z-index: 1;
             }
-            .blog-content { color: #ffffff !important; }
+            .blog-content { color: var(--blog-heading) !important; }
             .blog-content h1,
             .blog-content h2,
             .blog-content h3,
@@ -277,18 +277,18 @@ function Page({ searchParams }: { searchParams: Promise<{ name?: string }> }) {
             .blog-content h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
             .blog-content h2 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); }
             .blog-content h3 { font-size: 1.1rem; }
-            .blog-content p  { color: #ffffff !important; line-height: 1.85; margin: 0.9rem 0; font-weight: 300; }
-            .blog-content .lead { color: rgba(255,255,255,0.8) !important; font-size: 1.05rem; }
-            .blog-content .note { color: rgba(255,255,255,0.6) !important; }
-            .blog-content strong { color: #ffffff !important; font-weight: 600; }
+            .blog-content p  { color: var(--blog-heading) !important; line-height: 1.85; margin: 0.9rem 0; font-weight: 300; }
+            .blog-content .lead { color: var(--blog-content-lead) !important; font-size: 1.05rem; }
+            .blog-content .note { color: var(--blog-content-note) !important; }
+            .blog-content strong { color: var(--blog-heading) !important; font-weight: 600; }
             .blog-content em    { color: #f97316 !important; font-style: italic; }
             .blog-content a     { color: #f97316 !important; text-decoration: none; }
             .blog-content a:hover { text-decoration: underline; }
             .blog-content ul,
-            .blog-content ol   { color: #ffffff !important; padding-left: 1.4rem; margin: 0.75rem 0; }
-            .blog-content li   { color: #ffffff !important; margin: 0.4rem 0; line-height: 1.8; }
+            .blog-content ol   { color: var(--blog-heading) !important; padding-left: 1.4rem; margin: 0.75rem 0; }
+            .blog-content li   { color: var(--blog-heading) !important; margin: 0.4rem 0; line-height: 1.8; }
             .blog-content .divider,
-            .blog-content hr   { border: none; height: 1px; background: rgba(255,255,255,0.08) !important; margin: 1.5rem 0; }
+            .blog-content hr   { border: none; height: 1px; background: var(--blog-card-border) !important; margin: 1.5rem 0; }
             .blog-content main { max-width: none !important; margin: 0 !important; padding: 0 !important; background: transparent !important; }
             .blog-content body { background: transparent !important; color: inherit !important; }
           `}</style>
@@ -299,7 +299,7 @@ function Page({ searchParams }: { searchParams: Promise<{ name?: string }> }) {
         </div>
       ) : (
         <div className="h-screen w-full flex justify-center items-center">
-          <p className="text-[#9ca3af] text-[1rem] animate-pulse">
+          <p className="text-[var(--blog-muted)] text-[1rem] animate-pulse">
             Loading article...
           </p>
         </div>

@@ -1243,14 +1243,14 @@ export default function Blogs() {
   return (
     <div
       className="min-h-screen relative z-[1]"
-      style={{ background: "#04060f", color: "#fff" }}
+      style={{ background: "var(--blog-bg)", color: "var(--blog-heading)" }}
     >
       <style>{KEYFRAMES}</style>
       <Header />
 
       <main
         className=" pb-[100px] relative overflow-hidden"
-        style={{ background: "#04060f" }}
+        style={{ background: "var(--blog-bg)" }}
       >
         {/* radial glow */}
         <div
@@ -1298,7 +1298,7 @@ export default function Blogs() {
           </div>
 
           <h1
-            className="text-white font-black leading-[1.0] tracking-[-0.04em] uppercase mb-4 relative z-[1]"
+            className="text-[var(--blog-heading)] font-black leading-[1.0] tracking-[-0.04em] uppercase mb-4 relative z-[1]"
             style={{
               fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
               fontFamily: "'Rubik', sans-serif",
@@ -1309,7 +1309,7 @@ export default function Blogs() {
 
           <p
             className="relative z-[1] mx-auto text-[1rem] leading-[1.8] max-w-[480px]"
-            style={{ color: "rgba(242,237,232,0.55)" }}
+            style={{ color: "var(--blog-subtitle)" }}
           >
             Expert-backed insights, practical tips, and deep dives into smart
             parenting — one article at a time.
@@ -1363,7 +1363,7 @@ export default function Blogs() {
                 {/* body */}
                 <div
                   className="flex flex-col justify-center p-10"
-                  style={{ background: "rgba(10,14,31,0.97)" }}
+                  style={{ background: "var(--blog-featured-body-bg)" }}
                 >
                   <div
                     className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 mb-5 text-[0.65rem] font-bold tracking-[0.1em] uppercase text-[#f97316] w-fit"
@@ -1377,13 +1377,13 @@ export default function Blogs() {
                   </div>
 
                   <h2
-                    className="text-white font-black leading-[1.2] tracking-[-0.02em] mb-4"
+                    className="text-[var(--blog-heading)] font-black leading-[1.2] tracking-[-0.02em] mb-4"
                     style={{ fontSize: "clamp(1.4rem, 2.2vw, 1.9rem)" }}
                   >
                     {featured.name}
                   </h2>
 
-                  <p className="text-[#9ca3af] text-[0.9rem] leading-[1.75] mb-7">
+                  <p className="text-[var(--blog-muted)] text-[0.9rem] leading-[1.75] mb-7">
                     Explore this featured insight from our parenting experts — practical,
                     research-backed and designed for today&apos;s families.
                   </p>
@@ -1425,8 +1425,8 @@ export default function Blogs() {
                     transition={{ duration: 0.4, delay: i * 0.07 }}
                     className="flex flex-col rounded-[20px] overflow-hidden transition-all duration-300 hover:-translate-y-[6px] group"
                     style={{
-                      background: "rgba(10,14,31,0.9)",
-                      border: "1px solid rgba(255,255,255,0.08)",
+                      background: "var(--blog-card-bg)",
+                      border: "1px solid var(--blog-card-border)",
                     }}
                   >
                     {/* image */}
@@ -1449,17 +1449,17 @@ export default function Blogs() {
                     {/* body */}
                     <div className="flex flex-col flex-1 p-5">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-[0.7rem] text-[#9ca3af] tracking-[0.04em]">
+                        <span className="text-[0.7rem] text-[var(--blog-muted)] tracking-[0.04em]">
                           Parenting Tips
                         </span>
-                        <span className="w-[3px] h-[3px] rounded-full bg-[#9ca3af]" />
-                        <span className="text-[0.7rem] text-[#9ca3af] tracking-[0.04em]">
+                        <span className="w-[3px] h-[3px] rounded-full bg-[var(--blog-muted)]" />
+                        <span className="text-[0.7rem] text-[var(--blog-muted)] tracking-[0.04em]">
                           5 min read
                         </span>
                       </div>
 
                       <h3
-                        className="text-white font-bold text-[1.05rem] leading-[1.35] tracking-[-0.01em] mb-2.5 flex-1 transition-colors duration-200 group-hover:text-[rgba(240,244,255,0.95)]"
+                        className="text-[var(--blog-heading)] font-bold text-[1.05rem] leading-[1.35] tracking-[-0.01em] mb-2.5 flex-1 transition-colors duration-200 group-hover:text-[var(--blog-title-hover)]"
                         style={{ fontFamily: "'Rubik', sans-serif" }}
                       >
                         {blog.name}
@@ -1467,19 +1467,15 @@ export default function Blogs() {
 
                       <div
                         className="flex items-center justify-between mt-auto pt-3.5"
-                        style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+                        style={{ borderTop: "1px solid var(--blog-footer-border)" }}
                       >
-                        <span className="text-[0.68rem] font-semibold tracking-[0.04em] text-[rgba(240,244,255,0.35)]">
+                        <span className="text-[0.68rem] font-semibold tracking-[0.04em] text-[var(--blog-muted-faint)]">
                           UltiMate Blog
                         </span>
 
                         {/* span instead of Link — no nested <a> */}
                         <span
-                          className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[0.85rem] text-[#f97316] transition-all duration-200 group-hover:text-white group-hover:translate-x-[3px]"
-                          style={{
-                            background: "rgba(249,115,22,0.08)",
-                            border: "1px solid rgba(249,115,22,0.25)",
-                          }}
+                          className="w-[34px] h-[34px] rounded-full flex items-center justify-center text-[0.85rem] text-[#f97316] transition-all duration-200 bg-[rgba(249,115,22,0.08)] border border-[rgba(249,115,22,0.25)] group-hover:text-white group-hover:translate-x-[3px] group-hover:bg-[var(--blog-arrow-hover-bg)]"
                         >
                           →
                         </span>
@@ -1494,7 +1490,7 @@ export default function Blogs() {
 
         {/* loading */}
         {blogs.length === 0 && (
-          <div className="text-center text-[#9ca3af] py-20 relative z-[1]">
+          <div className="text-center text-[var(--blog-muted)] py-20 relative z-[1]">
             Loading blog posts...
           </div>
         )}
@@ -1505,7 +1501,7 @@ export default function Blogs() {
           style={{
             height: "1px",
             background:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)",
+              "linear-gradient(90deg, transparent, var(--blog-divider), transparent)",
           }}
         />
 
@@ -1527,7 +1523,7 @@ export default function Blogs() {
             className="relative max-w-[600px] mx-auto"
           >
             <h3
-              className="text-white font-black uppercase tracking-[-0.03em] mb-3"
+              className="text-[var(--blog-heading)] font-black uppercase tracking-[-0.03em] mb-3"
               style={{
                 fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
                 fontFamily: "'Rubik', sans-serif",
@@ -1539,7 +1535,7 @@ export default function Blogs() {
 
             <p
               className="text-[0.92rem] leading-[1.7] mb-8"
-              style={{ color: "rgba(242,237,232,0.5)" }}
+              style={{ color: "var(--blog-subtitle)" }}
             >
               UltiMate Bond turns parenting knowledge into daily 20-minute activities
               your child will actually enjoy. 1800+ activities, 1000+ stories, 100% results.

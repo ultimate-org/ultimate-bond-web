@@ -233,6 +233,65 @@ body {
 
   --site-footer-bg: #0a0e1f;
   --site-footer-border: rgba(255, 255, 255, 0.08);
+
+  /* ── Readometer-page-scoped tokens ──
+     Dark values are copied verbatim from the page's original hardcoded
+     literals (so dark mode is pixel-identical to before theming); light
+     values are sampled from the light-theme mockup. */
+  --rm-bg: #080705;
+  --rm-hero-bg: radial-gradient(circle at center, rgba(222, 146, 92, 0.18) 0%, rgba(8, 7, 5, 1) 60%);
+  --rm-hero-heading: #f0f0f0;
+  --rm-heading: #ffffff;
+  --rm-heading-warm: #F0EAE2;
+  --rm-muted-a: #9ca3af;
+  --rm-muted-b: #9B8F85;
+  --rm-muted-c: #4a453f;
+  --rm-muted-d: #5C5248;
+  --rm-surface: #0f0f0f;
+  --rm-cta-bg: #131009;
+  --rm-card-bg: #1A1612;
+  --rm-warm-fill: #2C2620;
+  --rm-border-a: rgba(255, 255, 255, 0.1);
+  --rm-border-b: #2a2a2a;
+  --rm-border-c: rgba(255, 255, 255, 0.06);
+  --rm-avatar-fallback: #1f1f1f;
+  --rm-podium-card-bg: linear-gradient(135deg, #1A1612 0%, #000000 50%, #241e18 100%);
+  --rm-podium-rank-text: rgba(255, 255, 255, 0.4);
+  --rm-podium-first-name: #E8782A;
+  --rm-tab-bg: #2C2620;
+  --rm-segment-bg: #2C2620;
+  --rm-segment-border: rgba(255, 255, 255, 0.06);
+  --rm-hero-heading-grad: linear-gradient(90deg, #f0f0f0 0%, #f0f0f0 100%);
+  --rm-hero-decor-display: none;
+  --rm-accent: #f97316;
+  --rm-hero-heading-size: 3rem;
+  --rm-subtitle-font: 'Playfair Display', serif;
+  --rm-subtitle-style: italic;
+  --rm-subtitle-opacity: 0.8;
+  --rm-hero-badge-border: rgba(249, 115, 22, 0.3);
+  --rm-hero-badge-bg: linear-gradient(175deg, rgba(245, 166, 35, 0.18) 0%, rgba(232, 120, 42, 0.12) 100%);
+  --rm-progress-fill: linear-gradient(90deg, #c45e10 0%, #f97316 100%);
+  --rm-badge-secondary-bg: #F585232E;
+  --rm-badge-secondary-text: #F58523;
+  --rm-badge-secondary-border: #E8782A4D;
+
+  /* ── Blogs-page-scoped tokens ──
+     Dark values are copied verbatim from the page's original hardcoded
+     literals (so dark mode is pixel-identical to before theming). */
+  --blog-bg: #04060f;
+  --blog-heading: #ffffff;
+  --blog-subtitle: rgba(242, 237, 232, 0.55);
+  --blog-muted: #9ca3af;
+  --blog-muted-faint: rgba(240, 244, 255, 0.35);
+  --blog-title-hover: rgba(240, 244, 255, 0.95);
+  --blog-card-bg: rgba(10, 14, 31, 0.9);
+  --blog-card-border: rgba(255, 255, 255, 0.08);
+  --blog-featured-body-bg: rgba(10, 14, 31, 0.97);
+  --blog-footer-border: rgba(255, 255, 255, 0.07);
+  --blog-divider: rgba(255, 255, 255, 0.1);
+  --blog-arrow-hover-bg: transparent;
+  --blog-content-lead: rgba(255, 255, 255, 0.8);
+  --blog-content-note: rgba(255, 255, 255, 0.6);
 }
 
 /* Forces the dark palette on a subtree regardless of the page's [data-theme]
@@ -273,6 +332,61 @@ body {
 
   --site-footer-bg: #fff6f0;
   --site-footer-border: rgba(0, 0, 0, 0.08);
+
+  /* ── Readometer-page-scoped tokens (light) ──
+     Sampled from Figma (App-Wireframe-UltiMate, node 25229:4880). */
+  --rm-bg: #fff8f3;
+  --rm-hero-bg: radial-gradient(ellipse 700px 500px at 50% -60px, rgba(232, 120, 42, 0.15) 0%, rgba(232, 120, 42, 0) 70%), var(--rm-bg);
+  --rm-hero-heading: #1a1612;
+  --rm-heading: #1a1612;
+  --rm-heading-warm: #1a1612;
+  --rm-muted-a: #6b5e52;
+  --rm-muted-b: #6b5e52;
+  --rm-muted-c: #6b5e52;
+  --rm-muted-d: #6b5e52;
+  --rm-surface: rgba(255, 248, 243, 0.95);
+  --rm-cta-bg: #fff6f0;
+  --rm-card-bg: rgba(255, 255, 255, 0.85);
+  --rm-warm-fill: #f5e9e2;
+  --rm-border-a: #e8d5c4;
+  --rm-border-b: #e8d5c4;
+  --rm-border-c: rgba(0, 0, 0, 0.06);
+  --rm-avatar-fallback: #f2e6df;
+  --rm-podium-card-bg: radial-gradient(ellipse 600px 400px at 50% -25%, rgba(232, 120, 42, 0.13) 0%, rgba(232, 120, 42, 0) 70%), #fff7f2;
+  --rm-podium-rank-text: rgba(25, 19, 19, 0.35);
+  --rm-podium-first-name: var(--rm-heading);
+  --rm-tab-bg: #ffffff;
+  --rm-segment-bg: #ffffff;
+  --rm-segment-border: #e8d5c4;
+  --rm-hero-heading-grad: linear-gradient(180deg, #e8782a 60%, #5f3518 100%);
+  --rm-hero-decor-display: inline-block;
+  --rm-accent: #e8782a;
+  --rm-hero-heading-size: 58px;
+  --rm-subtitle-font: 'Outfit', sans-serif;
+  --rm-subtitle-style: normal;
+  --rm-subtitle-opacity: 1;
+  --rm-hero-badge-border: rgba(232, 120, 42, 0.35);
+  --rm-hero-badge-bg: linear-gradient(135deg, rgba(245, 166, 35, 0.18) 0%, rgba(232, 120, 42, 0.12) 100%);
+  --rm-progress-fill: linear-gradient(90deg, #a0511c 0%, #e8782a 100%);
+  --rm-badge-secondary-bg: rgba(232, 120, 42, 0.12);
+  --rm-badge-secondary-text: #e8782a;
+  --rm-badge-secondary-border: rgba(232, 120, 42, 0.3);
+
+  /* ── Blogs-page-scoped tokens (light) ── */
+  --blog-bg: #fff8f3;
+  --blog-heading: #1a1612;
+  --blog-subtitle: #6b5e52;
+  --blog-muted: #6b5e52;
+  --blog-muted-faint: rgba(26, 22, 18, 0.35);
+  --blog-title-hover: #e8782a;
+  --blog-card-bg: #ffffff;
+  --blog-card-border: #e8d5c4;
+  --blog-featured-body-bg: #ffffff;
+  --blog-footer-border: #e8d5c4;
+  --blog-divider: rgba(26, 22, 18, 0.12);
+  --blog-arrow-hover-bg: #e8782a;
+  --blog-content-lead: rgba(26, 22, 18, 0.75);
+  --blog-content-note: rgba(26, 22, 18, 0.55);
 }
 
 [data-theme="light"] {
@@ -330,10 +444,10 @@ body {
   --hero-orbit-2: rgba(150, 90, 44, 0.12);
   --hero-orbit-3: rgba(150, 90, 44, 0.09);
 
-  --hero-toggle-border: #ffcca9;
-  --hero-toggle-bg: #ffffff;
+  --hero-toggle-border: #e8d5c4;
+  --hero-toggle-bg: #f3e6da;
   --hero-toggle-icon: #ff7800;
-  --hero-toggle-track-icon: rgba(120, 68, 32, 0.32);
+  --hero-toggle-track-icon: rgba(120, 68, 32, 0.4);
   --hero-toggle-thumb-bg: #ffffff;
   --hero-toggle-thumb-icon: #ff7800;
 
