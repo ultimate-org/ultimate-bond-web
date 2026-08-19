@@ -1603,6 +1603,7 @@ export default function Hero() {
 
   return (
     <div className="relative flex h-[100svh] w-full flex-col overflow-hidden pt-[var(--nav-h,80px)] font-['Poppins',sans-serif] antialiased">
+    <div className="relative flex min-h-[100svh] w-full flex-col overflow-hidden pt-[var(--nav-h,80px)] font-['Poppins',sans-serif] antialiased"></div>
       <style>{`
         @keyframes orbit-travel { to { offset-distance: 100%; } }
         @keyframes card-float { 0%,100%{transform:translate3d(0,0,0)} 50%{transform:translate3d(0,-16px,0)} }
