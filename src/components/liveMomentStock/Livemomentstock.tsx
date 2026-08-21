@@ -389,7 +389,7 @@ export default function LiveMomentsStack({
   if (!enabled) return null;
 
   return (
-    <div className="fixed bottom-8 right-8 w-[360px] h-[200px] z-[9999] pointer-events-none font-sans max-sm:bottom-5 max-sm:right-4 max-sm:left-4 max-sm:w-auto">
+    <div className="fixed bottom-8 right-8 w-[360px] h-[200px] z-[9999] overflow-hidden pointer-events-none font-sans max-sm:bottom-5 max-sm:right-4 max-sm:left-4 max-sm:w-auto">
       {cards.map((card) => {
         const themePair = themeStyles[card.theme] || themeStyles.readometer;
         const theme = isLight ? themePair.light : themePair.dark;
